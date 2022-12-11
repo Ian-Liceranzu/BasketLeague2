@@ -1,0 +1,69 @@
+﻿@using BasketLeague2.Utils.Models
+@inject HttpClient Http
+
+@page "/Teams"
+
+<PageTitle>Teams</PageTitle>
+
+<h1>Teams</h1>
+
+<table class="table table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                NOMBRE COMPLETO
+            </th>
+            <th>
+                NOMBRE
+            </th>
+            <th>
+                DUEÑO
+            </th>
+            <th>
+                ATK
+            </th>
+            <th>
+                TIRO
+            </th>
+            <th>
+                DEF
+            </th>
+            <th>
+                REBOTE
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in teams)
+        {
+            <tr>
+                <td>@t.NombreCompleto</td>
+                <td>@t.Nombre</td>
+                <td>@t.Dueño</td>
+                <td>@t.Ataque</td>
+                <td>@t.Tiro</td>
+                <td>@t.Defensa</td>
+                <td>@t.Rebote</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    public List<Team> teams = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetTeams();
+    }
+
+    private async Task GetTeams()
+    {
+        var response = await Http.GetAsync("Teams");
+
+        if (response.IsSuccessStatusCode)
+        {
+            teams = await response.Content.ReadFromJsonAsync<List<Team>>();
+        }
+    }
+}
