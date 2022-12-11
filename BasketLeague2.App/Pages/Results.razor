@@ -1,0 +1,55 @@
+﻿@page "/Results"
+
+@inject HttpClient Http
+
+@using BasketLeague2.Utils.Models
+
+<h3>Results</h3>
+
+<table class="table table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                FECHA
+            </th>
+            <th>
+                EQUIPO 1
+            </th>
+            <th>
+                PUNTUACIÓN
+            </th>
+            <th>
+                EQUIPO 2
+            </th>
+            <th>
+                PUNTUACIÓN
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in resultados)
+        {
+            <tr>
+                <td>@r.Fecha</td>
+                <td class="@(r.Resultado1 > r.Resultado2 ? "text-success" : "text-danger")">@r.Equipo1</td>
+                <td>@r.Resultado1</td>
+                <td class="@(r.Resultado1 < r.Resultado2 ? "text-success" : "text-danger")">@r.Equipo2</td>
+                <td>@r.Resultado2</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    public List<Result> resultados = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+         var response = await Http.GetAsync("Results");
+
+        if (response.IsSuccessStatusCode)
+        {
+            resultados = await response.Content.ReadFromJsonAsync<List<Result>>();
+        }
+    }
+}

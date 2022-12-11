@@ -1,7 +1,8 @@
-﻿@using BasketLeague2.Utils.Models
-@inject HttpClient Http
+﻿@inject HttpClient Http
 
 @page "/Teams"
+
+@using BasketLeague2.Utils.Models
 
 <PageTitle>Teams</PageTitle>
 
@@ -31,6 +32,9 @@
             <th>
                 REBOTE
             </th>
+            <th>
+                OPCIONES
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -44,6 +48,14 @@
                 <td>@t.Tiro</td>
                 <td>@t.Defensa</td>
                 <td>@t.Rebote</td>
+                <td>
+                    <button class="btn btn-primary">
+                        <span class="oi oi-pencil" aria-hidden="true"></span>
+                    </button>
+                    <button class="btn btn-danger">
+                        <span class="oi oi-circle-x" aria-hidden="true"></span>
+                    </button>
+                </td>
             </tr>
         }
     </tbody>
