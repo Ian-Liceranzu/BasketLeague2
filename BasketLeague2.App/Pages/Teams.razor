@@ -71,11 +71,6 @@
 
     private async Task GetTeams()
     {
-        var response = await Http.GetAsync("Teams");
-
-        if (response.IsSuccessStatusCode)
-        {
-            teams = await response.Content.ReadFromJsonAsync<List<Team>>();
-        }
+        
     }
 }

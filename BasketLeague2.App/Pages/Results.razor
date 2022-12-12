@@ -45,11 +45,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-         var response = await Http.GetAsync("Results");
-
-        if (response.IsSuccessStatusCode)
-        {
-            resultados = await response.Content.ReadFromJsonAsync<List<Result>>();
-        }
+         
     }
 }
