@@ -1,0 +1,87 @@
+﻿@inject HttpClient Http
+
+@page "/Arena"
+
+@using BasketLeague2.Utils.Models
+@using BasketLeague2.Utils.Utils
+
+<h3>Arena</h3>
+
+@if (teams.Any())
+{
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <label>TEAM 1</label>
+                <select class="form-select" aria-label="Select team 1" @bind="@team1">
+                    <option selected>-- EQUIPO EN CASA --</option>
+                    @foreach (var t in teams)
+                    {
+                        <option value="@t.Codigo">@t.NombreCompleto</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                <label>TEAM 2</label>
+                <select class="form-select" aria-label="Select team 2" @bind="@team2">
+                    <option selected>-- EQUIPO DE FUERA --</option>
+                    @foreach (var t in teams)
+                    {
+                        <option value="@t.Codigo">@t.NombreCompleto</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="d-grip">
+    <button class="btn btn-primary" @onclick="SimulateGame">START GAME</button>
+</div>
+
+@if (result != null)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <label>@result.Equipo1</label>
+                <label>@result.Resultado1</label>
+            </div>
+            <div class="col">
+                <label>@result.Equipo2</label>
+                <label>@result.Resultado2</label>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    public List<Team> teams = new();
+
+    public int team1;
+    public int team2;
+
+    public Result result = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetTeams();
+    }
+
+    private async Task GetTeams()
+    {
+        var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
+        teams.AddRange(t.OrderBy(t => t.NombreCompleto));
+    }
+
+    private void SimulateGame()
+    {
+        Team t1 = teams.FirstOrDefault(t => t.Codigo == team1);
+        Team t2 = teams.FirstOrDefault(t => t.Codigo == team2);
+
+        if (t1 != null && t2 != null)
+        {
+            result = GameUtils.SimulateGame(t1, t2);
+        }
+    }
+}
