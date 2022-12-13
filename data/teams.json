@@ -1,0 +1,82 @@
+[
+  {
+    "Codigo": 1,
+    "NombreCompleto": "Milwaukee Platypus",
+    "Nombre": "MP",
+    "Ataque": 3,
+    "Defensa": 7,
+    "Tiro": 6,
+    "Rebote": 4,
+    "Dueño": "Eva"
+  },
+  {
+    "Codigo": 2,
+    "NombreCompleto": "Tampa Honey Bagers",
+    "Nombre": "THB",
+    "Ataque": 4,
+    "Defensa": 8,
+    "Tiro": 2,
+    "Rebote": 6,
+    "Dueño": "Jon"
+  },
+  {
+    "Codigo": 3,
+    "NombreCompleto": "Jackson Pandas",
+    "Nombre": "JP",
+    "Ataque": 3,
+    "Defensa": 7,
+    "Tiro": 6,
+    "Rebote": 4,
+    "Dueño": "Sendoa"
+  },
+  {
+    "Codigo": 4,
+    "NombreCompleto": "Little Rock Wombats",
+    "Nombre": "LRW",
+    "Ataque": 3,
+    "Defensa": 7,
+    "Tiro": 6,
+    "Rebote": 4,
+    "Dueño": "Rodrigo"
+  },
+  {
+    "Codigo": 5,
+    "NombreCompleto": "Reno Bighorns",
+    "Nombre": "RB",
+    "Ataque": 7,
+    "Defensa": 3,
+    "Tiro": 7,
+    "Rebote": 3,
+    "Dueño": "Ian"
+  },
+  {
+    "Codigo": 6,
+    "NombreCompleto": "Boston Frogs",
+    "Nombre": "MP",
+    "Ataque": 3,
+    "Defensa": 7,
+    "Tiro": 6,
+    "Rebote": 4,
+    "Dueño": "Óscar"
+  },
+  {
+    "Codigo": 7,
+    "NombreCompleto": "Honolulu Meerkats",
+    "Nombre": "HM",
+    "Ataque": 3,
+    "Defensa": 7,
+    "Tiro": 6,
+    "Rebote": 4,
+    "Dueño": "Estanis"
+  },
+  {
+    "Codigo": 7,
+    "NombreCompleto": "Seattle Killer Whales",
+    "Nombre": "SKW",
+    "Ataque": 3,
+    "Defensa": 7,
+    "Tiro": 6,
+    "Rebote": 4,
+    "Dueño": "Daira"
+  }
+]
