@@ -10,11 +10,11 @@ jobs:
     steps:
     # uses GitHub's checkout action to checkout code form the master branch
     - uses: actions/checkout@v2
-     # sets up .NET Core SDK 3.1
+     # sets up .NET Core SDK 6.0.403
     - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 3.1        
+        dotnet-version: 6.0.403        
         # publishes Blazor project to the release-folder
     - name: Publish .NET Core Project
       run: dotnet publish BasketLeague2.App/BasketLeague2.App.csproj -c Release -o release --nologo
