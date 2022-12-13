@@ -45,6 +45,18 @@
 
     protected override async Task OnInitializedAsync()
     {
-         
+        Random rng = new();
+
+        for (int i = 0; i < 10; i++)
+        {
+            resultados.Add(new()
+                {
+                    Equipo1 = $"EQUIPO {i}",
+                    Equipo2 = $"EQUIPO 2{i}",
+                    Fecha = DateTime.Now,
+                    Resultado1 = rng.Next(50, 150),
+                    Resultado2 = rng.Next(50, 150)
+                });
+        }
     }
 }
