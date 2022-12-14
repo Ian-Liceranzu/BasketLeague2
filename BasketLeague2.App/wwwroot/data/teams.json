@@ -7,7 +7,7 @@
     "Defensa": 7,
     "Tiro": 6,
     "Rebote": 4,
-    "Dueño": "Eva"
+    "Dueï¿½o": "Eva"
   },
   {
     "Codigo": 2,
@@ -17,7 +17,7 @@
     "Defensa": 8,
     "Tiro": 2,
     "Rebote": 6,
-    "Dueño": "Jon"
+    "Dueï¿½o": "Jon"
   },
   {
     "Codigo": 3,
@@ -27,7 +27,7 @@
     "Defensa": 7,
     "Tiro": 6,
     "Rebote": 4,
-    "Dueño": "Sendoa"
+    "Dueï¿½o": "Sendoa"
   },
   {
     "Codigo": 4,
@@ -37,7 +37,7 @@
     "Defensa": 7,
     "Tiro": 6,
     "Rebote": 4,
-    "Dueño": "Rodrigo"
+    "Dueï¿½o": "Rodrigo"
   },
   {
     "Codigo": 5,
@@ -47,7 +47,7 @@
     "Defensa": 3,
     "Tiro": 7,
     "Rebote": 3,
-    "Dueño": "Ian"
+    "Dueï¿½o": "Ian"
   },
   {
     "Codigo": 6,
@@ -57,7 +57,7 @@
     "Defensa": 7,
     "Tiro": 6,
     "Rebote": 4,
-    "Dueño": "Óscar"
+    "Dueï¿½o": "ï¿½scar"
   },
   {
     "Codigo": 7,
@@ -67,16 +67,16 @@
     "Defensa": 7,
     "Tiro": 6,
     "Rebote": 4,
-    "Dueño": "Estanis"
+    "Dueï¿½o": "Estanis"
   },
   {
-    "Codigo": 7,
+    "Codigo": 8,
     "NombreCompleto": "Seattle Killer Whales",
     "Nombre": "SKW",
-    "Ataque": 3,
-    "Defensa": 7,
-    "Tiro": 6,
+    "Ataque": 8,
+    "Defensa": 3,
+    "Tiro": 5,
     "Rebote": 4,
-    "Dueño": "Daira"
+    "Dueï¿½o": "Daira"
   }
 ]
