@@ -1,6 +1,6 @@
-﻿@inject HttpClient Http
+﻿@page "/Arena"
 
-@page "/Arena"
+@inject HttpClient Http
 
 @using BasketLeague2.Utils.Models
 @using BasketLeague2.Utils.Utils
@@ -14,7 +14,6 @@
             <div class="col">
                 <label>TEAM 1</label>
                 <select class="form-select" aria-label="Select team 1" @bind="@team1">
-                    <option selected>-- EQUIPO EN CASA --</option>
                     @foreach (var t in teams)
                     {
                         <option value="@t.Codigo">@t.NombreCompleto</option>
@@ -24,7 +23,6 @@
             <div class="col">
                 <label>TEAM 2</label>
                 <select class="form-select" aria-label="Select team 2" @bind="@team2">
-                    <option selected>-- EQUIPO DE FUERA --</option>
                     @foreach (var t in teams)
                     {
                         <option value="@t.Codigo">@t.NombreCompleto</option>
@@ -72,6 +70,8 @@
     {
         var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
         teams.AddRange(t.OrderBy(t => t.NombreCompleto));
+        team1 = teams.FirstOrDefault().Codigo;
+        team2 = team1;
     }
 
     private void SimulateGame()
