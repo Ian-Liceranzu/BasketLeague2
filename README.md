@@ -10,7 +10,7 @@ Basket League es una herramienta para la gestión de una liga simulada de balonc
   - Equipo con menos puntos en contra
   - Equipo con mejor racha de victorias de la temporada
 2. Clasificación
-  - Tabla de claficación actual
+  - <s>Tabla de claficación actual</s>
 3. Gestión de partidos
   - Jugar partidos programados
   - <s>Jugar partidos amistosos</s>
