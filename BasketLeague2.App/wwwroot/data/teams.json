@@ -7,7 +7,7 @@
     "Defensa": 7,
     "Tiro": 6,
     "Rebote": 4,
-    "Due�o": "Eva"
+    "Dueño": "Eva"
   },
   {
     "Codigo": 2,
@@ -17,7 +17,7 @@
     "Defensa": 8,
     "Tiro": 2,
     "Rebote": 6,
-    "Due�o": "Jon"
+    "Dueño": "Jon"
   },
   {
     "Codigo": 3,
@@ -27,7 +27,7 @@
     "Defensa": 7,
     "Tiro": 6,
     "Rebote": 4,
-    "Due�o": "Sendoa"
+    "Dueño": "Sendoa"
   },
   {
     "Codigo": 4,
@@ -37,7 +37,7 @@
     "Defensa": 7,
     "Tiro": 6,
     "Rebote": 4,
-    "Due�o": "Rodrigo"
+    "Dueño": "Rodrigo"
   },
   {
     "Codigo": 5,
@@ -47,7 +47,7 @@
     "Defensa": 3,
     "Tiro": 7,
     "Rebote": 3,
-    "Due�o": "Ian"
+    "Dueño": "Ian"
   },
   {
     "Codigo": 6,
@@ -57,7 +57,7 @@
     "Defensa": 7,
     "Tiro": 6,
     "Rebote": 4,
-    "Due�o": "�scar"
+    "Dueño": "Óscar"
   },
   {
     "Codigo": 7,
@@ -67,7 +67,7 @@
     "Defensa": 7,
     "Tiro": 6,
     "Rebote": 4,
-    "Due�o": "Estanis"
+    "Dueño": "Estanis"
   },
   {
     "Codigo": 8,
@@ -77,6 +77,6 @@
     "Defensa": 3,
     "Tiro": 5,
     "Rebote": 4,
-    "Due�o": "Daira"
+    "Dueño": "Daira"
   }
 ]
