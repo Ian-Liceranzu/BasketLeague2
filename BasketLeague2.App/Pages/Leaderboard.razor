@@ -1,5 +1,9 @@
 ﻿@page "/Leaderboard"
 
+@inject HttpClient Http
+
+@using BasketLeague2.Utils.Models
+
 <h3>Leaderboard</h3>
 
 <table class="table table-striped">
@@ -26,41 +30,31 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>EQUIPO 1</td>
-            <td>4</td>
-            <td>3</td>
-            <td>1</td>
-            <td>0.75</td>
-            <td>65</td>
-        </tr>
-        <tr>
-            <td>EQUIPO 2</td>
-            <td>4</td>
-            <td>2</td>
-            <td>2</td>
-            <td>0.5</td>
-            <td>15</td>
-        </tr>
-        <tr>
-            <td>EQUIPO 3</td>
-            <td>4</td>
-            <td>1</td>
-            <td>3</td>
-            <td>0.25</td>
-            <td>-25</td>
-        </tr>
-        <tr>
-            <td>EQUIPO 4</td>
-            <td>4</td>
-            <td>0</td>
-            <td>4</td>
-            <td>0</td>
-            <td>-70</td>
-        </tr>
+        @foreach (var t in teams)
+        {
+            <tr>
+                <td>@t.NombreCompleto</td>
+                <td>@t.GP</td>
+                <td>@t.W</td>
+                <td>@t.L</td>
+                <td>@(Math.Round((double)t.W / (double)t.GP, 4))</td>
+                <td>@t.DIF</td>
+            </tr>
+        }
     </tbody>
 </table>
 
 @code {
+    public List<Team> teams = new();
 
+    protected override async Task OnInitializedAsync()
+    {
+        await GetTeams();
+    }
+
+    private async Task GetTeams()
+    {
+        var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
+        teams.AddRange(t.OrderByDescending(t => t.W).ThenByDescending(t => t.DIF));
+    }
 }

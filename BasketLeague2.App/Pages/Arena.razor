@@ -1,6 +1,7 @@
-﻿@inject HttpClient Http
+﻿@page "/Arena"
 
-@page "/Arena"
+@inject HttpClient Http
+@inject IJSRuntime JSRuntime
 
 @using BasketLeague2.Utils.Models
 @using BasketLeague2.Utils.Utils
@@ -14,7 +15,6 @@
             <div class="col">
                 <label>TEAM 1</label>
                 <select class="form-select" aria-label="Select team 1" @bind="@team1">
-                    <option selected>-- EQUIPO EN CASA --</option>
                     @foreach (var t in teams)
                     {
                         <option value="@t.Codigo">@t.NombreCompleto</option>
@@ -24,7 +24,6 @@
             <div class="col">
                 <label>TEAM 2</label>
                 <select class="form-select" aria-label="Select team 2" @bind="@team2">
-                    <option selected>-- EQUIPO DE FUERA --</option>
                     @foreach (var t in teams)
                     {
                         <option value="@t.Codigo">@t.NombreCompleto</option>
@@ -53,6 +52,8 @@
             </div>
         </div>
     </div>
+
+    <button class="btn btn-primary" @onclick="CopyText">COPY JSON</button>
 }
 
 @code {
@@ -63,6 +64,8 @@
 
     public Result result = null;
 
+    public string jsonResult = "";
+
     protected override async Task OnInitializedAsync()
     {
         await GetTeams();
@@ -72,6 +75,8 @@
     {
         var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
         teams.AddRange(t.OrderBy(t => t.NombreCompleto));
+        team1 = teams.FirstOrDefault().Codigo;
+        team2 = team1;
     }
 
     private void SimulateGame()
@@ -82,6 +87,20 @@
         if (t1 != null && t2 != null)
         {
             result = GameUtils.SimulateGame(t1, t2);
+
+            jsonResult = System.Text.Json.JsonSerializer.Serialize(new Result()
+                {
+                    Equipo1 = $"{team1}",
+                    Equipo2 = $"{team2}",
+                    Fecha = result.Fecha,
+                    Resultado1 = result.Resultado1,
+                    Resultado2 = result.Resultado2
+                });
         }
+    }
+
+    private async void CopyText()
+    {
+         await JSRuntime.InvokeVoidAsync("clipboardCopy.copyText", jsonResult);
     }
 }

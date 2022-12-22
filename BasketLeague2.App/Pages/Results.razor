@@ -42,21 +42,31 @@
 
 @code {
     public List<Result> resultados = new();
+    public List<Team> teams = new();
 
     protected override async Task OnInitializedAsync()
     {
-        Random rng = new();
+        await GetTeams();
 
-        for (int i = 0; i < 10; i++)
+        await GetResults();
+    }
+
+    private async Task GetTeams()
+    {
+        var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");        
+        teams.AddRange(t.OrderBy(t => t.NombreCompleto));
+    }
+
+    private async Task GetResults()
+    {
+        var r = await Http.GetFromJsonAsync<IEnumerable<Result>>("data/results.json");
+
+        foreach(var result in r)
         {
-            resultados.Add(new()
-                {
-                    Equipo1 = $"EQUIPO {i}",
-                    Equipo2 = $"EQUIPO 2{i}",
-                    Fecha = DateTime.Now,
-                    Resultado1 = rng.Next(50, 150),
-                    Resultado2 = rng.Next(50, 150)
-                });
+            result.Equipo1 = teams.FirstOrDefault(t => t.Codigo == int.Parse(result.Equipo1)).NombreCompleto;
+            result.Equipo2 = teams.FirstOrDefault(t => t.Codigo == int.Parse(result.Equipo2)).NombreCompleto;
         }
+
+        resultados.AddRange(r.OrderBy(r => r.Fecha));
     }
 }
