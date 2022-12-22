@@ -23,13 +23,13 @@ namespace BasketLeague2.Utils.Utils
                 
                 if (ha < hd && ra < rd)
                 {
-                    hr = home.Resultado(rnd, hd, ha) / 2;
-                    rr = rival.Resultado(rnd, hd, ha) / 2;
+                    hr = Team.Resultado(rnd, hd, ha) / 2;
+                    rr = Team.Resultado(rnd, hd, ha) / 2;
                 }
                 else
                 {
-                    hr = home.Resultado(rnd, hd, ha);
-                    rr = rival.Resultado(rnd, rd, ra);
+                    hr = Team.Resultado(rnd, hd, ha);
+                    rr = Team.Resultado(rnd, rd, ra);
                 }
 
                 int diferencia = hr - rr;

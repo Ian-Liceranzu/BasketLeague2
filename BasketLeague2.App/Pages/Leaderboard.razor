@@ -45,16 +45,49 @@
 </table>
 
 @code {
-    public List<Team> teams = new();
+    public IEnumerable<Team> teams = new Team[] { };
+    public IEnumerable<Result> results = new Result[] { };
 
     protected override async Task OnInitializedAsync()
     {
         await GetTeams();
+        await GetResults();
+
+        CalculateStats();
     }
 
     private async Task GetTeams()
     {
         var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
-        teams.AddRange(t.OrderByDescending(t => t.W).ThenByDescending(t => t.DIF));
+        teams = teams.Concat(t);
+    }
+
+    private async Task GetResults()
+    {
+        var r = await Http.GetFromJsonAsync<IEnumerable<Result>>("data/results.json");
+        results = results.Concat(r);
+    }
+
+    private void CalculateStats()
+    {
+        foreach (var t in teams)
+        {
+            var personalResults = results.Where(r => int.Parse(r.Equipo1) == t.Codigo || int.Parse(r.Equipo2) == t.Codigo);
+            t.GP = personalResults.Count();
+            t.W = personalResults.Count(r => (int.Parse(r.Equipo1) == t.Codigo && r.Resultado1 > r.Resultado2) || (int.Parse(r.Equipo2) == t.Codigo) && r.Resultado2 > r.Resultado1);
+            t.L = t.GP - t.W;
+
+            // Suma de todos tus resultados
+            var t1 = personalResults.Where(r => int.Parse(r.Equipo1) == t.Codigo).Sum(r => r.Resultado1);
+            t1 += personalResults.Where(r => int.Parse(r.Equipo2) == t.Codigo).Sum(r => r.Resultado2);
+
+            // Suma de todos los resultados de los rivales
+            var t2 = personalResults.Where(r => int.Parse(r.Equipo1) == t.Codigo).Sum(r => r.Resultado2);
+            t2 += personalResults.Where(r => int.Parse(r.Equipo2) == t.Codigo).Sum(r => r.Resultado1);
+
+            t.DIF = t1 - t2;
+        }
+
+        teams = teams.OrderByDescending(t => t.W).ThenByDescending(t => t.DIF);
     }
 }

@@ -80,7 +80,7 @@
         /// <param name="defender">Minimun score (Defence)</param>
         /// <param name="atacar">Max score (Attack)</param>
         /// <returns>Final team score</returns>
-        public int Resultado(Random rnd, int defender, int atacar)
+        public static int Resultado(Random rnd, int defender, int atacar)
         {
             int result;
             if (defender < atacar)
