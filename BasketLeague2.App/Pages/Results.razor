@@ -41,8 +41,8 @@
 </table>
 
 @code {
-    public List<Result> resultados = new();
-    public List<Team> teams = new();
+    public IEnumerable<Result> resultados = new Result[] { };
+    public IEnumerable<Team> teams = new Team[] { };
 
     protected override async Task OnInitializedAsync()
     {
@@ -53,20 +53,20 @@
 
     private async Task GetTeams()
     {
-        var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");        
-        teams.AddRange(t.OrderBy(t => t.NombreCompleto));
+        var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
+        teams = teams.Concat(t.OrderBy(t => t.NombreCompleto));
     }
 
     private async Task GetResults()
     {
         var r = await Http.GetFromJsonAsync<IEnumerable<Result>>("data/results.json");
 
-        foreach(var result in r)
+        foreach (var result in r)
         {
             result.Equipo1 = teams.FirstOrDefault(t => t.Codigo == int.Parse(result.Equipo1)).NombreCompleto;
             result.Equipo2 = teams.FirstOrDefault(t => t.Codigo == int.Parse(result.Equipo2)).NombreCompleto;
         }
 
-        resultados.AddRange(r.OrderBy(r => r.Fecha));
+        resultados = resultados.Concat(r.OrderBy(r => r.Fecha));
     }
 }

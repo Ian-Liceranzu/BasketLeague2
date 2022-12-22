@@ -20,7 +20,7 @@ namespace BasketLeague2.Utils.Utils
 
                 int ra = rival.Atacar(home, rnd);
                 int rd = rival.Defender(home, rnd);
-                
+
                 if (ha < hd && ra < rd)
                 {
                     hr = Team.Resultado(rnd, hd, ha) / 2;

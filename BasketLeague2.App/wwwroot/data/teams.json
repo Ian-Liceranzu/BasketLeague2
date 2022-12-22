@@ -46,7 +46,8 @@
     "Ataque": 7,
     "Defensa": 3,
     "Tiro": 7,
-    "Rebote": 3
+    "Rebote": 3,
+    "Dueño": "Ian"
   },
   {
     "Codigo": 6,

@@ -1,5 +1,10 @@
 ﻿@page "/Timetable"
 
+@inject HttpClient Http
+
+@using BasketLeague2.Utils.Models
+@using BasketLeague2.Utils.Utils
+
 <h3>Timetables</h3>
 
 <table class="table table-striped">
@@ -40,6 +45,24 @@
     </tbody>
 </table>
 
-@code {
+<button @onclick="Generate">GENERATE TIMETABLES</button>
 
+@code {
+    public IEnumerable<Team> teams = new Team[] { };
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetTeams();
+    }
+
+    private async Task GetTeams()
+    {
+        var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");        
+        teams = teams.Concat(t.OrderBy(t => t.NombreCompleto));
+    }
+
+    private void Generate()
+    {
+        LeagueUtils.ListMatches(teams.ToList());
+    }
 }
