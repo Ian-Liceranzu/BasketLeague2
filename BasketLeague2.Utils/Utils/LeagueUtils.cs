@@ -4,38 +4,40 @@ namespace BasketLeague2.Utils.Utils
 {
     public class LeagueUtils
     {
-        public static void ListMatches(List<Team> teams)
+        public static List<Match> ListMatches(List<Team> listTeam)
         {
-            if (teams.Count % 2 != 0)
+            var matches = new List<Match>();
+
+            if (listTeam.Count % 2 != 0)
             {
-                teams.Add(new Team() { NombreCompleto = "EQUIPO VACIO"});
+                listTeam.Add(new Team { Codigo = 100, NombreCompleto = "PRUEBA" });
             }
 
-            int days = teams.Count - 1;
-            int half = teams.Count / 2;
+            int numDays = (listTeam.Count - 1);
+            int halfSize = listTeam.Count / 2;
 
-            List<Team> t = new();
+            List<Team> teams = new();
 
-            t.AddRange(teams);
-            t.RemoveAt(0);
+            teams.AddRange(listTeam);
+            teams.RemoveAt(0);
 
-            int tSize = t.Count;
+            int teamsSize = teams.Count;
 
-            for (int day = 0; day < days; day++)
+            for (int day = 0; day < numDays; day++)
             {
-                Console.WriteLine("Day {0}", day + 1);
+                int teamIdx = day % teamsSize;
 
-                int teamIdx = day % tSize;
+                matches.Add(new Match() { Fecha = DateTime.Now.AddDays(day + 1), Equipo1 = teams[teamIdx], Equipo2 = listTeam[0] });
 
-                Console.WriteLine("{0} vs {1}", t[teamIdx], teams[0]);
-
-                for (int idx = 1; idx < half; idx++)
+                for (int idx = 1; idx < halfSize; idx++)
                 {
-                    int first = (day + idx) % tSize;
-                    int second = (day + tSize - idx) % tSize; ;
-                    Console.WriteLine("{0} vs {1}", t[first], teams[second]);
+                    int firstTeam = (day + idx) % teamsSize;
+                    int secondTeam = (day + teamsSize - idx) % teamsSize;
+                    matches.Add(new Match() { Fecha = DateTime.Now.AddDays(day + 1), Equipo1 = teams[firstTeam], Equipo2 = teams[secondTeam] });
                 }
             }
+
+            return matches;
         }
     }
 }

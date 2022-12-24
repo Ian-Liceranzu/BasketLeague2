@@ -22,33 +22,22 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>@DateTime.Now</td>
-            <td>EQUIPO 1</td>
-            <td>EQUIPO 2</td>
-        </tr>
-        <tr>
-            <td>@DateTime.Now</td>
-            <td>EQUIPO 3</td>
-            <td>EQUIPO 4</td>
-        </tr>
-        <tr>
-            <td>@DateTime.Now</td>
-            <td>EQUIPO 2</td>
-            <td>EQUIPO 3</td>
-        </tr>
-        <tr>
-            <td>@DateTime.Now</td>
-            <td>EQUIPO 4</td>
-            <td>EQUIPO 1</td>
-        </tr>
+        @foreach (var m in matches)
+        {
+            <tr>
+                <td>@m.Fecha</td>
+                <td>@m.Equipo1</td>
+                <td>@m.Equipo2</td>
+            </tr>
+        }
     </tbody>
 </table>
 
-<button @onclick="Generate">GENERATE TIMETABLES</button>
+<button class="btn btn-primary" @onclick="Generate">GENERATE TIMETABLES</button>
 
 @code {
     public IEnumerable<Team> teams = new Team[] { };
+    public IEnumerable<Match> matches = new Match[] { };
 
     protected override async Task OnInitializedAsync()
     {
@@ -57,12 +46,12 @@
 
     private async Task GetTeams()
     {
-        var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");        
+        var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
         teams = teams.Concat(t.OrderBy(t => t.NombreCompleto));
     }
 
     private void Generate()
     {
-        LeagueUtils.ListMatches(teams.ToList());
+        matches = LeagueUtils.ListMatches(teams.ToList());
     }
 }
