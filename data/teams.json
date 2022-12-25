@@ -7,11 +7,7 @@
     "Defensa": 7,
     "Tiro": 6,
     "Rebote": 4,
-    "Dueño": "Eva",
-    "GP": 10,
-    "W": 2,
-    "L": 8,
-    "DIF":  -75
+    "Dueño": "Eva"
   },
   {
     "Codigo": 2,
@@ -21,11 +17,7 @@
     "Defensa": 8,
     "Tiro": 2,
     "Rebote": 6,
-    "Dueño": "Jon",
-    "GP": 10,
-    "W": 6,
-    "L": 4,
-    "DIF": 13
+    "Dueño": "Jon"
   },
   {
     "Codigo": 3,
@@ -35,11 +27,7 @@
     "Defensa": 7,
     "Tiro": 6,
     "Rebote": 4,
-    "Dueño": "Sendoa",
-    "GP": 10,
-    "W": 5,
-    "L": 5,
-    "DIF": 8
+    "Dueño": "Sendoa"
   },
   {
     "Codigo": 4,
@@ -49,11 +37,7 @@
     "Defensa": 7,
     "Tiro": 6,
     "Rebote": 4,
-    "Dueño": "Rodrigo",
-    "GP": 10,
-    "W": 1,
-    "L": 9,
-    "DIF": -51
+    "Dueño": "Rodrigo"
   },
   {
     "Codigo": 5,
@@ -63,11 +47,7 @@
     "Defensa": 3,
     "Tiro": 7,
     "Rebote": 3,
-    "Dueño": "Ian",
-    "GP": 10,
-    "W": 10,
-    "L": 0,
-    "DIF": 72
+    "Dueño": "Ian"
   },
   {
     "Codigo": 6,
@@ -77,11 +57,7 @@
     "Defensa": 7,
     "Tiro": 6,
     "Rebote": 4,
-    "Dueño": "Óscar",
-    "GP": 10,
-    "W": 4,
-    "L": 6,
-    "DIF": -27
+    "Dueño": "Óscar"
   },
   {
     "Codigo": 7,
@@ -91,11 +67,7 @@
     "Defensa": 7,
     "Tiro": 6,
     "Rebote": 4,
-    "Dueño": "Estanis",
-    "GP": 10,
-    "W": 6,
-    "L": 4,
-    "DIF": 21
+    "Dueño": "Estanis"
   },
   {
     "Codigo": 8,
@@ -105,10 +77,6 @@
     "Defensa": 3,
     "Tiro": 5,
     "Rebote": 4,
-    "Dueño": "Daira",
-    "GP": 10,
-    "W": 8,
-    "L": 2,
-    "DIF": 54
+    "Dueño": "Daira"
   }
 ]
