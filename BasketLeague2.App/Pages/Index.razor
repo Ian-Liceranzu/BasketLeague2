@@ -1,5 +1,9 @@
 ﻿@page "/"
 
+@inject HttpClient Http
+
+@using BasketLeague2.Utils.Models
+
 <PageTitle>Index</PageTitle>
 
 <h1>Inizias basket FRIKI LEAGUE!</h1>
@@ -8,41 +12,89 @@ Bienvenido a la mejor liga de basket del mundo
 
 <div class="row">
     <div class="col">
-        <div class="card">
-            <div class="card-header">Mayor racha de victorias</div>
+        <div class="card text-center">
+            <div class="card-header">Más puntos anotados en casa</div>
             <div class="card-body">
-                <div>EQUIPO 1</div>
+                <div>@Equipo1.NombreCompleto</div>
                 <div>
                     <i class='oi oi-arrow-thick-top'></i>
-                    <span class="text">5 victorias</span>
+                    <span class="text">@Equipo1.DIF puntos anotados</span>
                 </div>
             </div>
         </div>
     </div>
     <div class="col">
-        <div class="card">
-            <div class="card-header">Mayor puntuación a favor</div>
+        <div class="card text-center">
+            <div class="card-header">Menos puntos recibidos en casa</div>
             <div class="card-body">
-                <div>EQUIPO 2</div>
-                <div>
-                    <i class='oi oi-arrow-thick-top'></i>
-                    <span class="text">1123 puntos anotados</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card">
-            <div class="card-header">Menor puntuación en contra</div>
-            <div class="card-body">
-                <div>EQUIPO 1</div>
+                <div>@Equipo3.NombreCompleto</div>
                 <div>
                     <i class='oi oi-arrow-thick-bottom'></i>
-                    <span class="text">215 puntos en contra</span>
+                    <span class="text">@Equipo3.DIF puntos recibidos</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card text-center">
+            <div class="card-header">Más puntos anotados fuera de casa</div>
+            <div class="card-body">
+                <div>@Equipo2.NombreCompleto</div>
+                <div>
+                    <i class='oi oi-arrow-thick-top'></i>
+                    <span class="text">@Equipo2.DIF puntos anotados</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card text-center">
+            <div class="card-header">Menos puntos recibidos fuera de casa</div>
+            <div class="card-body">
+                <div>@Equipo4.NombreCompleto</div>
+                <div>
+                    <i class='oi oi-arrow-thick-bottom'></i>
+                    <span class="text">@Equipo4.DIF puntos recibidos</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+@code {
+    public IEnumerable<Team> teams = new Team[] { };
+    public IEnumerable<Result> results = new Result[] { };
 
+    public Team Equipo1 = new(); // Equipo con más puntos anotados en casa
+    public Team Equipo2 = new(); // Equipo con más puntos anotados fuera de casa
+    public Team Equipo3 = new(); // Equipo con menos puntos en contra en casa
+    public Team Equipo4 = new(); // Equipo con menos puntos en contra fuera de casa
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetTeams();
+        await GetResults();
+
+        CalcularRacha();
+    }
+
+    private async Task GetTeams()
+    {
+        var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
+        teams = teams.Concat(t);
+    }
+
+    private async Task GetResults()
+    {
+        var r = await Http.GetFromJsonAsync<IEnumerable<Result>>("data/results.json");
+        results = results.Concat(r);
+    }
+
+    private void CalcularRacha()
+    {
+        Equipo1 = results.GroupBy(r => r.Equipo1).Select(r => new Team { NombreCompleto = teams.First(t => t.Codigo == int.Parse(r.First().Equipo1)).NombreCompleto, DIF = r.Sum(r => r.Resultado1) }).OrderByDescending(r => r.DIF).FirstOrDefault();
+        Equipo2 = results.GroupBy(r => r.Equipo2).Select(r => new Team { NombreCompleto = teams.First(t => t.Codigo == int.Parse(r.First().Equipo2)).NombreCompleto, DIF = r.Sum(r => r.Resultado2) }).OrderByDescending(r => r.DIF).FirstOrDefault();
+        Equipo3 = results.GroupBy(r => r.Equipo1).Select(r => new Team { NombreCompleto = teams.First(t => t.Codigo == int.Parse(r.First().Equipo1)).NombreCompleto, DIF = r.Sum(r => r.Resultado2) }).OrderBy(r => r.DIF).FirstOrDefault();
+        Equipo4 = results.GroupBy(r => r.Equipo2).Select(r => new Team { NombreCompleto = teams.First(t => t.Codigo == int.Parse(r.First().Equipo2)).NombreCompleto, DIF = r.Sum(r => r.Resultado1) }).OrderBy(r => r.DIF).FirstOrDefault();
+    }
+}

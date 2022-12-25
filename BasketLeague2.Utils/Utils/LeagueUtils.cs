@@ -4,6 +4,11 @@ namespace BasketLeague2.Utils.Utils
 {
     public class LeagueUtils
     {
+        /// <summary>
+        /// Genera un listado de partidos en días consecutivos usando el algoritmo de round-robin
+        /// </summary>
+        /// <param name="listTeam">Listado con todos los equipos</param>
+        /// <returns>Listado de partidos con sus correspondientes fechas</returns>
         public static List<Match> ListMatches(List<Team> listTeam)
         {
             var matches = new List<Match>();
