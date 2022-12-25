@@ -1,5 +1,10 @@
 ﻿@page "/Timetable"
 
+@inject HttpClient Http
+
+@using BasketLeague2.Utils.Models
+@using BasketLeague2.Utils.Utils
+
 <h3>Timetables</h3>
 
 <table class="table table-striped">
@@ -17,29 +22,36 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>@DateTime.Now</td>
-            <td>EQUIPO 1</td>
-            <td>EQUIPO 2</td>
-        </tr>
-        <tr>
-            <td>@DateTime.Now</td>
-            <td>EQUIPO 3</td>
-            <td>EQUIPO 4</td>
-        </tr>
-        <tr>
-            <td>@DateTime.Now</td>
-            <td>EQUIPO 2</td>
-            <td>EQUIPO 3</td>
-        </tr>
-        <tr>
-            <td>@DateTime.Now</td>
-            <td>EQUIPO 4</td>
-            <td>EQUIPO 1</td>
-        </tr>
+        @foreach (var m in matches)
+        {
+            <tr>
+                <td>@m.Fecha</td>
+                <td>@m.Equipo1</td>
+                <td>@m.Equipo2</td>
+            </tr>
+        }
     </tbody>
 </table>
 
-@code {
+<button class="btn btn-primary" @onclick="Generate">GENERATE TIMETABLES</button>
 
+@code {
+    public IEnumerable<Team> teams = new Team[] { };
+    public IEnumerable<Match> matches = new Match[] { };
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetTeams();
+    }
+
+    private async Task GetTeams()
+    {
+        var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
+        teams = teams.Concat(t.OrderBy(t => t.NombreCompleto));
+    }
+
+    private void Generate()
+    {
+        matches = LeagueUtils.ListMatches(teams.ToList());
+    }
 }

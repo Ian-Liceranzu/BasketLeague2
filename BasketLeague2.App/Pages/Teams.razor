@@ -53,7 +53,7 @@
 </table>
 
 @code {
-    public List<Team> teams = new();
+    public IEnumerable<Team> teams = new Team[] { };
 
     protected override async Task OnInitializedAsync()
     {
@@ -63,6 +63,6 @@
     private async Task GetTeams()
     {
         var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");        
-        teams.AddRange(t.OrderBy(t => t.NombreCompleto));
+        teams = teams.Concat(t.OrderBy(t => t.NombreCompleto));
     }
 }

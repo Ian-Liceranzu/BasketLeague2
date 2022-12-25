@@ -57,7 +57,7 @@
 }
 
 @code {
-    public List<Team> teams = new();
+    public IEnumerable<Team> teams = new Team[] { };
 
     public int team1;
     public int team2;
@@ -74,7 +74,7 @@
     private async Task GetTeams()
     {
         var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
-        teams.AddRange(t.OrderBy(t => t.NombreCompleto));
+        teams = teams.Concat(t.OrderBy(t => t.NombreCompleto));
         team1 = teams.FirstOrDefault().Codigo;
         team2 = team1;
     }
@@ -101,6 +101,6 @@
 
     private async void CopyText()
     {
-         await JSRuntime.InvokeVoidAsync("clipboardCopy.copyText", jsonResult);
+        await JSRuntime.InvokeVoidAsync("clipboardCopy.copyText", jsonResult);
     }
 }
