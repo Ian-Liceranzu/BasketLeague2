@@ -78,5 +78,15 @@
     "Tiro": 5,
     "Rebote": 4,
     "Dueño": "Daira"
+  },
+  {
+    "Codigo": 9,
+    "NombreCompleto": "Birmingham Broncos",
+    "Nombre": "BB",
+    "Ataque": 7,
+    "Defensa": 4,
+    "Tiro": 4,
+    "Rebote": 5,
+    "Dueño": "Iñigo"
   }
 ]
