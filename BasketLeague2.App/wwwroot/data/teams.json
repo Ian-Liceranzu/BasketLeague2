@@ -7,7 +7,8 @@
     "Defensa": 7,
     "Tiro": 6,
     "Rebote": 4,
-    "Dueño": "Eva"
+    "Dueño": "Eva",
+    "Estado": "Wisconsin"
   },
   {
     "Codigo": 2,
@@ -17,7 +18,8 @@
     "Defensa": 8,
     "Tiro": 2,
     "Rebote": 6,
-    "Dueño": "Jon"
+    "Dueño": "Jon",
+    "Estado": "Florida"
   },
   {
     "Codigo": 3,
@@ -27,7 +29,8 @@
     "Defensa": 7,
     "Tiro": 6,
     "Rebote": 4,
-    "Dueño": "Sendoa"
+    "Dueño": "Sendoa",
+    "Estado": "Misisipi"
   },
   {
     "Codigo": 4,
@@ -37,7 +40,8 @@
     "Defensa": 7,
     "Tiro": 6,
     "Rebote": 4,
-    "Dueño": "Rodrigo"
+    "Dueño": "Rodrigo",
+    "Estado": "Arkansas"
   },
   {
     "Codigo": 5,
@@ -47,7 +51,8 @@
     "Defensa": 3,
     "Tiro": 7,
     "Rebote": 3,
-    "Dueño": "Ian"
+    "Dueño": "Ian",
+    "Estado": "Nevada"
   },
   {
     "Codigo": 6,
@@ -57,7 +62,8 @@
     "Defensa": 7,
     "Tiro": 6,
     "Rebote": 4,
-    "Dueño": "Óscar"
+    "Dueño": "Óscar",
+    "Estado": "Massachusetts"
   },
   {
     "Codigo": 7,
@@ -67,26 +73,29 @@
     "Defensa": 7,
     "Tiro": 6,
     "Rebote": 4,
-    "Dueño": "Estanis"
+    "Dueño": "Estanis",
+    "Estado": "Hawaii"
   },
   {
     "Codigo": 8,
-    "NombreCompleto": "Seattle Killer Whales",
-    "Nombre": "SKW",
-    "Ataque": 8,
-    "Defensa": 3,
-    "Tiro": 5,
-    "Rebote": 4,
-    "Dueño": "Daira"
-  },
-  {
-    "Codigo": 9,
     "NombreCompleto": "Birmingham Broncos",
     "Nombre": "BB",
     "Ataque": 7,
     "Defensa": 4,
     "Tiro": 4,
     "Rebote": 5,
-    "Dueño": "Iñigo"
+    "Dueño": "Iñigo",
+    "Estado": "Alabama"
+  },
+  {
+    "Codigo": 9,
+    "NombreCompleto": "Sacramento Snails",
+    "Nombre": "SS",
+    "Ataque": 1,
+    "Defensa": 1,
+    "Tiro": 1,
+    "Rebote": 1,
+    "Dueño": "Haizea",
+    "Estado": "California"
   }
 ]
