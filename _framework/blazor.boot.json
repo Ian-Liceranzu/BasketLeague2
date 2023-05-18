@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "BasketLeague2.App.dll": "sha256-rCIorR09FFxi\/cy73ni+7Cfp6ZpJTJZFaH1KtSBeVho=",
+      "BasketLeague2.App.dll": "sha256-faH8+7tJTD97jOzilK9gbBKvbq4navkTxcvTkXTov3w=",
       "BasketLeague2.Utils.dll": "sha256-e+\/sgXgWNcQb8gEk\/D2Jec4EIWKHedODTzL2LTZzZ\/o=",
       "Microsoft.AspNetCore.Components.dll": "sha256-56gsh8grsSsffqpFIr7RB+fwCsDwLlB03F1CjmMotB0=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-NEwdA8\/XC\/TmQWnzIYx2hoGBQq4hQFVkqOvtsE7LQhk=",
