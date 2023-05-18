@@ -1,0 +1,37 @@
+﻿@page "/Teams/Team/{codigo}"
+
+@inject HttpClient Http
+
+@using BasketLeague2.Utils.Models
+@using System.Drawing
+
+<PageTitle>Team @Codigo</PageTitle>
+
+<div>
+    @if (_team != null)
+    {
+        <header>@_team.NombreCompleto</header>
+        <img alt="Team logo" src=@($"assets/images/logos/{Codigo}_1.jpg") style="height: 350px;"/>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string Codigo { get; set; }
+
+    private Team _team;
+
+    private string _logo;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetTeam();
+    }
+
+    private async Task GetTeam()
+    {
+        var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
+        _team = t.First(t => t.Codigo == int.Parse(Codigo));
+    }
+
+}

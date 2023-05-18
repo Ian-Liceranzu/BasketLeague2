@@ -1,6 +1,7 @@
 ﻿@page "/Teams"
 
 @inject HttpClient Http
+@inject NavigationManager Navigation
 
 @using BasketLeague2.Utils.Models
 @using System.Text
@@ -34,6 +35,7 @@
             <th>
                 REBOTE
             </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -47,6 +49,9 @@
                 <td>@t.Tiro</td>
                 <td>@t.Defensa</td>
                 <td>@t.Rebote</td>
+                <td>
+                    <button class="btn btn-primary" @onclick="_ =>LoadEmpresa(t.Codigo)">INFO</button>
+                </td>
             </tr>
         }
     </tbody>
@@ -64,5 +69,10 @@
     {
         var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");        
         teams = teams.Concat(t.OrderBy(t => t.NombreCompleto));
+    }
+
+    private void LoadEmpresa(int codigo)
+    {
+        Navigation.NavigateTo($"Teams/Team/{codigo}");
     }
 }

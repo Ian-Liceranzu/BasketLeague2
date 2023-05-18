@@ -3,10 +3,10 @@
     "Codigo": 1,
     "NombreCompleto": "Milwaukee Platypus",
     "Nombre": "MP",
-    "Ataque": 3,
-    "Defensa": 7,
+    "Ataque": 4,
+    "Defensa": 5,
     "Tiro": 6,
-    "Rebote": 4,
+    "Rebote": 5,
     "Dueño": "Eva",
     "Estado": "Wisconsin"
   },
@@ -14,10 +14,10 @@
     "Codigo": 2,
     "NombreCompleto": "Tampa Honey Bagers",
     "Nombre": "THB",
-    "Ataque": 4,
-    "Defensa": 8,
-    "Tiro": 2,
-    "Rebote": 6,
+    "Ataque": 3,
+    "Defensa": 6,
+    "Tiro": 4,
+    "Rebote": 7,
     "Dueño": "Jon",
     "Estado": "Florida"
   },
@@ -97,5 +97,16 @@
     "Rebote": 1,
     "Dueño": "Haizea",
     "Estado": "California"
+  },
+  {
+    "Codigo": 10,
+    "NombreCompleto": "Wahpeton Ducks",
+    "Nombre": "WD",
+    "Ataque": 6,
+    "Defensa": 7,
+    "Tiro": 4,
+    "Rebote": 3,
+    "Dueño": "Edu",
+    "Estado": "Dakota del Norte"
   }
 ]
