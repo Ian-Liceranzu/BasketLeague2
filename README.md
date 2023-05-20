@@ -1,5 +1,10 @@
+![FrikiPlanet basketball association transparent logo](https://i.ibb.co/3CszjxM/image.png)
+
 # BasketLeague2
-:basketball: La verdadera liga :basketball: 
+
+![FrikiPlanet basketball association logo](https://i.ibb.co/6F4dzMn/image.png)
+
+⭐ 🪐 🏀 Astros de la canasta 🏀 🪐 ⭐
 
 Basket League es una herramienta para la gestión de una liga simulada de baloncesto.
 
@@ -17,6 +22,7 @@ Basket League es una herramienta para la gestión de una liga simulada de balonc
   - Jugar partidos programados
   - <s>Jugar partidos amistosos</s>
 4. Gestión de equipos
+  - Panel de equipo (Información avanzada del equipo)
   - Consultar estadísticas por equipo
   - Consultar resultados por equipo
 5. Gestión de resultados
