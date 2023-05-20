@@ -9,10 +9,10 @@
         /// <summary>
         /// Equipo que juega en casa
         /// </summary>
-        public Team Equipo1 { get; set; }
+        public string Equipo1 { get; set; }
         /// <summary>
         /// Equipo visitante
         /// </summary>
-        public Team Equipo2 { get; set; }
+        public string Equipo2 { get; set; }
     }
 }

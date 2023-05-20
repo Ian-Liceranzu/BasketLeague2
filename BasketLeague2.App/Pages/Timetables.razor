@@ -33,8 +33,6 @@
     </tbody>
 </table>
 
-<button class="btn btn-primary" @onclick="Generate">GENERATE TIMETABLES</button>
-
 @code {
     public IEnumerable<Team> teams = new Team[] { };
     public IEnumerable<Match> matches = new Match[] { };
@@ -42,6 +40,7 @@
     protected override async Task OnInitializedAsync()
     {
         await GetTeams();
+        await GetTimeTables();
     }
 
     private async Task GetTeams()
@@ -50,8 +49,15 @@
         teams = teams.Concat(t.OrderBy(t => t.NombreCompleto));
     }
 
-    private void Generate()
+    private async Task GetTimeTables()
     {
-        matches = LeagueUtils.ListMatches(teams.ToList());
+        var m = await Http.GetFromJsonAsync<IEnumerable<Match>>("data/matches.json");
+
+        foreach(var match in m)
+        {
+            match.Equipo1 = teams.FirstOrDefault(t => t.Codigo == int.Parse(match.Equipo1)).NombreCompleto;
+            match.Equipo2 = teams.FirstOrDefault(t => t.Codigo == int.Parse(match.Equipo2)).NombreCompleto;
+        }
+        matches = matches.Concat(m.OrderBy(m => m.Fecha));
     }
 }
