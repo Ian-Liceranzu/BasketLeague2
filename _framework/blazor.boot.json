@@ -7,8 +7,8 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "BasketLeague2.App.dll": "sha256-faH8+7tJTD97jOzilK9gbBKvbq4navkTxcvTkXTov3w=",
-      "BasketLeague2.Utils.dll": "sha256-e+\/sgXgWNcQb8gEk\/D2Jec4EIWKHedODTzL2LTZzZ\/o=",
+      "BasketLeague2.App.dll": "sha256-yPeDVCXZNyVDUqOEtjEjKoT5oyyBS8OxtgmcjgWgYPA=",
+      "BasketLeague2.Utils.dll": "sha256-093kSkmTs1y\/zHz37pmSskoT5ybZoD3zRZ+V7gomeMw=",
       "Microsoft.AspNetCore.Components.dll": "sha256-56gsh8grsSsffqpFIr7RB+fwCsDwLlB03F1CjmMotB0=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-NEwdA8\/XC\/TmQWnzIYx2hoGBQq4hQFVkqOvtsE7LQhk=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-8OOHGvxJH6NuabUFI95Fb8lGQpys8PQ+wpfkJGx9fYU=",
@@ -24,9 +24,9 @@
       "Microsoft.JSInterop.dll": "sha256-RASZjaXe16TTvmiCrIpuGU3hBrGD\/lKoLVOJeU368Mg=",
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-ymkw3R8LSzGwCT0fvq0cUpFZzdqbMi2wayvRiZKYT3A=",
       "System.Collections.Concurrent.dll": "sha256-t\/jFndAAuDNuffqUZ46yQ3ekmsGnx0YJglVNvmBGazc=",
-      "System.Collections.dll": "sha256-EsfaqGbzhTBHjXagVzXTJNgZf2MwU2O4kkB6kdcciTM=",
+      "System.Collections.dll": "sha256-1cC0IjPhy2rSeXUBYFbfR5L4E6Y1bxQ0hJ+lGLMjNRg=",
       "System.ComponentModel.dll": "sha256-fEbIyi+GOj\/xghaOcdUriigSIwifc\/khw5NpL6IA8Fw=",
-      "System.Linq.dll": "sha256-AXvBFAj8Dh\/ZnewbARmiJm5DCF5ZtOkV3SFuX7owXZw=",
+      "System.Linq.dll": "sha256-U3LwNBG8jNTm5h6AO69ur+Ur6trnSvOWX+8PbxxHjIE=",
       "System.Memory.dll": "sha256-7xWLm7P77KOQli\/VqYlz\/W52Lh9W5QufQRWmhNpQbog=",
       "System.Net.Http.dll": "sha256-FZgSSZY4ubzoJTyW3Iotidc0M7KRAcNPRm72Iwt\/hHY=",
       "System.Net.Http.Json.dll": "sha256-\/j5YPyOHruNJ4I2+cqltqw5Kt9Z91yhZ+4HNuRIfhso=",
