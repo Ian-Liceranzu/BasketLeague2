@@ -35,7 +35,7 @@
 
 @code {
     public IEnumerable<Team> teams = new Team[] { };
-    public IEnumerable<Match> matches = new Match[] { };
+    public IEnumerable<Utils.Models.Match> matches = new Utils.Models.Match[] { };
 
     protected override async Task OnInitializedAsync()
     {
@@ -51,7 +51,7 @@
 
     private async Task GetTimeTables()
     {
-        var m = await Http.GetFromJsonAsync<IEnumerable<Match>>("data/matches.json");
+        var m = await Http.GetFromJsonAsync<IEnumerable<Utils.Models.Match>>("data/matches.json");
 
         foreach(var match in m)
         {
