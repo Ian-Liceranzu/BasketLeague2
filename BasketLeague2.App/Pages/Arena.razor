@@ -37,6 +37,7 @@
 <div class="d-grip">
     <button class="btn btn-primary" @onclick="SimulateGame">START GAME</button>
     <button class="btn btn-primary" @onclick="SimulateGameWithPlayers">START GAME WITH PLAYERS</button>
+    <button class="btn btn-primary" @onclick="GeneratePlayers">RANDOM PLAYERS</button>
 </div>
 
 @if (result != null)
@@ -106,12 +107,19 @@
 
         List<Player> players1 = players.Where(p => p.Team == team1).ToList();
         List<Player> players2 = players.Where(p => p.Team == team2).ToList();
-        
-        
+
+
         if (players1 != null && players2 != null)
         {
             GameUtils.SimulateGameWithPlayers(players1, players2);
         }
+    }
+
+    private void GeneratePlayers()
+    {
+        var players = Player.RandomPlayer(10);
+        jsonResult = System.Text.Json.JsonSerializer.Serialize(players);
+        CopyText();
     }
 
     private async void CopyText()

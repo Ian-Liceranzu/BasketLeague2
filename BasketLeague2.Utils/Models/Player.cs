@@ -6,32 +6,56 @@
         public string Nickname { get; set; }
         public int Team { get; set; }
 
-        public int PointsScored { get; set; }
-        public int Rebounds { get; set; }
-        public int Assists { get; set; }
-        public int Steals { get; set; }
-        public int Blocks { get; set; }
-        public int Turnovers { get; set; }
+        public int InsideScoring { get; set; }
+        public int OutsideScoring { get; set; }
+        public int Athleticism { get; set; }
+        public int Playmaking { get; set; }
+        public int Rebounding { get; set; }
+        public int Defending { get; set; }
+        public double Overall { get; set; }
 
-        public double Rating
+        public Player() { }
+
+        public Player(string name, string nickname, int team, int insideScoring, int outsideScoring, int athleticism, int playmaking, int rebounding, int defending)
         {
-            get
-            {
-                var pointsWeight = 2.0 / 7.0;
-                var reboundsWeight = 1.0 / 7.0;
-                var assistsWeight = 1.0 / 7.0;
-                var stealsWeight = 2.0 / 7.0;
-                var blocksWeight = 2.0 / 7.0;
-                var turnoversWeight = -1.0 / 7.0;
+            Name = name;
+            Nickname = nickname;
+            Team = team;
+            InsideScoring = insideScoring;
+            OutsideScoring = outsideScoring;
+            Athleticism = athleticism;
+            Playmaking = playmaking;
+            Rebounding = rebounding;
+            Defending = defending;
+            Overall = CalculateOverall();
+        }
 
-                return PointsScored * pointsWeight +
-                       Rebounds * reboundsWeight +
-                       Assists * assistsWeight +
-                       Steals * stealsWeight +
-                       Blocks * blocksWeight +
-                       Turnovers * turnoversWeight;
+        public Player(int insideScoring, int outsideScoring, int athleticism, int playmaking, int rebounding, int defending)
+        {
+            Name = RandomNameGenerator.GenerateName();
+            Nickname = RandomNameGenerator.GenerateNickname();
+            InsideScoring = insideScoring;
+            OutsideScoring = outsideScoring;
+            Athleticism = athleticism;
+            Playmaking = playmaking;
+            Rebounding = rebounding;
+            Defending = defending;
+            Overall = CalculateOverall();
+        }
+
+        public static List<Player> RandomPlayer(int num)
+        {
+            Random random = new();
+            List<Player> players = new();
+            for (int i = 0; i < num; i++) {
+                players.Add(new Player(random.Next(70, 99), random.Next(70, 99), random.Next(70, 99), random.Next(70, 99), random.Next(70, 99), random.Next(70, 99)));
             }
-            set { }
+            return players;
+        }
+
+        private double CalculateOverall()
+        {
+            return (InsideScoring + OutsideScoring + Athleticism + Playmaking + Rebounding + Defending) / 6.0;
         }
     }
 
