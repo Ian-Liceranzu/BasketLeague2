@@ -37,7 +37,6 @@
 <div class="d-grip">
     <button class="btn btn-primary" @onclick="SimulateGame">START GAME</button>
     <button class="btn btn-primary" @onclick="SimulateGameWithPlayers">START GAME WITH PLAYERS</button>
-    <button class="btn btn-primary" @onclick="GeneratePlayers">RANDOM PLAYERS</button>
 </div>
 
 @if (result != null)
@@ -113,13 +112,6 @@
         {
             GameUtils.SimulateGameWithPlayers(players1, players2);
         }
-    }
-
-    private void GeneratePlayers()
-    {
-        var players = Player.RandomPlayer(10);
-        jsonResult = System.Text.Json.JsonSerializer.Serialize(players);
-        CopyText();
     }
 
     private async void CopyText()
