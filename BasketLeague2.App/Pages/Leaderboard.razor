@@ -25,6 +25,12 @@
                 %
             </th>
             <th>
+                HOME
+            </th>
+            <th>
+                VISITOR
+            </th>
+            <th>
                 DIF
             </th>
         </tr>
@@ -35,9 +41,15 @@
             <tr>
                 <td>@t.NombreCompleto</td>
                 <td>@t.GP</td>
-                <td>@t.W</td>
-                <td>@t.L</td>
-                <td>@(Math.Round((double)t.W / (double)t.GP, 4))</td>
+                <td>@(t.WH + t.WV)</td>
+                <td>@(t.LH + t.LV)</td>
+                <td>@(Math.Round((double)(t.WH + t.WV) / (double)t.GP, 4))</td>
+                <td>
+                    @t.WH - @t.LH
+                </td>
+                <td>
+                    @t.LV - @t.LV
+                </td>
                 <td>@t.DIF</td>
             </tr>
         }
@@ -75,22 +87,27 @@
     {
         foreach (var t in teams)
         {
-            var personalResults = results.Where(r => int.Parse(r.Equipo1) == t.Codigo || int.Parse(r.Equipo2) == t.Codigo);
-            t.GP = personalResults.Count();
-            t.W = personalResults.Count(r => (int.Parse(r.Equipo1) == t.Codigo && r.Resultado1 > r.Resultado2) || (int.Parse(r.Equipo2) == t.Codigo) && r.Resultado2 > r.Resultado1);
-            t.L = t.GP - t.W;
+            var personalResultsHome = results.Where(r => int.Parse(r.Equipo1) == t.Codigo);
+            var personalResultsVisitor = results.Where(r => int.Parse(r.Equipo2) == t.Codigo);
+            t.GP = personalResultsHome.Count() + personalResultsVisitor.Count();
+
+            t.WH = personalResultsHome.Count(r => int.Parse(r.Equipo1) == t.Codigo && r.Resultado1 > r.Resultado2);
+            t.LH = personalResultsHome.Count(r => int.Parse(r.Equipo1) == t.Codigo && r.Resultado1 < r.Resultado2);
+
+            t.WV = personalResultsVisitor.Count(r => int.Parse(r.Equipo2) == t.Codigo && r.Resultado2 > r.Resultado1);
+            t.LV = personalResultsVisitor.Count(r => int.Parse(r.Equipo2) == t.Codigo && r.Resultado2 < r.Resultado1);
 
             // Suma de todos tus resultados
-            var t1 = personalResults.Where(r => int.Parse(r.Equipo1) == t.Codigo).Sum(r => r.Resultado1);
-            t1 += personalResults.Where(r => int.Parse(r.Equipo2) == t.Codigo).Sum(r => r.Resultado2);
+            var t1 = personalResultsHome.Where(r => int.Parse(r.Equipo1) == t.Codigo).Sum(r => r.Resultado1);
+            t1 += personalResultsVisitor.Where(r => int.Parse(r.Equipo2) == t.Codigo).Sum(r => r.Resultado2);
 
             // Suma de todos los resultados de los rivales
-            var t2 = personalResults.Where(r => int.Parse(r.Equipo1) == t.Codigo).Sum(r => r.Resultado2);
-            t2 += personalResults.Where(r => int.Parse(r.Equipo2) == t.Codigo).Sum(r => r.Resultado1);
+            var t2 = personalResultsHome.Where(r => int.Parse(r.Equipo1) == t.Codigo).Sum(r => r.Resultado2);
+            t2 += personalResultsVisitor.Where(r => int.Parse(r.Equipo2) == t.Codigo).Sum(r => r.Resultado1);
 
             t.DIF = t1 - t2;
         }
 
-        teams = teams.OrderByDescending(t => t.W).ThenByDescending(t => t.DIF);
+        teams = teams.OrderByDescending(t => t.WH + t.WV).ThenByDescending(t => t.DIF);
     }
 }

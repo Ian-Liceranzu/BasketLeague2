@@ -40,17 +40,25 @@
         /// </summary>
         public int GP { get; set; }
         /// <summary>
-        /// Wins
-        /// </summary>
-        public int W { get; set; }
-        /// <summary>
-        /// Looses
-        /// </summary>
-        public int L { get; set; }
-        /// <summary>
         /// Total point diff
         /// </summary>
         public int DIF { get; set; }
+        /// <summary>
+        /// Home Wins
+        /// </summary>
+        public int WH { get; set; }
+        /// <summary>
+        /// Visitor Wins
+        /// </summary>
+        public int WV { get; set; }
+        /// <summary>
+        /// Home Looses
+        /// </summary>
+        public int LH { get; set; }
+        /// <summary>
+        /// Visitor Looses
+        /// </summary>
+        public int LV { get; set; }
 
         /// <summary>
         /// The team attacks another
