@@ -7,35 +7,53 @@
 
 <h3>Timetables</h3>
 
-<table class="table table-striped">
-    <thead class="thead-light">
-        <tr>
-            <th>
-                FECHA
-            </th>
-            <th>
-                EQUIPO 1
-            </th>
-            <th>
-                EQUIPO 2
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var m in matches)
-        {
-            <tr>
-                <td>@m.Fecha</td>
-                <td>@m.Equipo1</td>
-                <td>@m.Equipo2</td>
-            </tr>
-        }
-    </tbody>
-</table>
+<TextEdit Style="width:25%" Text="@customFilterValue" TextChanged="@OnCustomFilterValueChanged" ></TextEdit>
+<DataGrid @ref="dataGrid"
+          TItem="Utils.Models.Match"
+          Data="@matches"
+          Responsive
+          Sortable
+          ShowPager
+          CustomFilter="@OnCustomFilter"
+          ShowPageSizes
+          PagerPosition="DataGridPagerPosition.Bottom"
+          PagerOptions="new(){ ButtonSize=Size.Small }"
+          SortMode="DataGridSortMode.Single"
+          PageSize="5">
+    <DataGridColumns>
+        <DataGridCommandColumn />
+        <DataGridColumn Field="@nameof(Utils.Models.Match.Fecha)" Caption="FECHA" />
+        <DataGridColumn Field="@nameof(Utils.Models.Match.Equipo1)" Caption="EQUIPO 1" />
+        <DataGridColumn Field="@nameof(Utils.Models.Match.Equipo2)" Caption="EQUIPO 2" />
+    </DataGridColumns>
+    <PageButtonTemplate>
+        <Span TextColor="TextColor.Success">
+            @context.PageNumber
+        </Span>
+    </PageButtonTemplate>
+    <NextPageButtonTemplate><Icon Name="IconName.StepForward" TextColor="TextColor.Success" /></NextPageButtonTemplate>
+    <PreviousPageButtonTemplate><Icon Name="IconName.StepBackward" TextColor="TextColor.Success" /></PreviousPageButtonTemplate>
+    <LastPageButtonTemplate><Icon Name="IconName.Forward" TextColor="TextColor.Success" /></LastPageButtonTemplate>
+    <FirstPageButtonTemplate><Icon Name="IconName.Backward" TextColor="TextColor.Success" /></FirstPageButtonTemplate>
+    <TotalItemsTemplate><Badge Color="Color.Success">@context.TotalItems items</Badge></TotalItemsTemplate>
+    <TotalItemsShortTemplate><Badge Color="Color.Success">@context.CurrentPageSize</Badge></TotalItemsShortTemplate>
+    <PageSelectorTemplate>
+        <Select TextColor="TextColor.Success" @bind-SelectedValue="@context.CurrentPage" Size="Size.Small">
+            @for (int i = context.FirstVisiblePage; i <= context.LastVisiblePage; ++i)
+            {
+                var pageNumber = i;
+
+                <SelectItem Value="@pageNumber">@pageNumber</SelectItem>
+            }
+        </Select>
+    </PageSelectorTemplate>
+</DataGrid>
 
 @code {
     public IEnumerable<Team> teams = new Team[] { };
     public IEnumerable<Utils.Models.Match> matches = new Utils.Models.Match[] { };
+    private DataGrid<Utils.Models.Match> dataGrid = new();
+    private string customFilterValue;
 
     protected override async Task OnInitializedAsync()
     {
@@ -53,11 +71,27 @@
     {
         var m = await Http.GetFromJsonAsync<IEnumerable<Utils.Models.Match>>("data/matches.json");
 
-        foreach(var match in m)
+        foreach (var match in m)
         {
             match.Equipo1 = teams.FirstOrDefault(t => t.Codigo == int.Parse(match.Equipo1)).NombreCompleto;
             match.Equipo2 = teams.FirstOrDefault(t => t.Codigo == int.Parse(match.Equipo2)).NombreCompleto;
         }
         matches = matches.Concat(m.OrderBy(m => m.Fecha));
+    }
+
+    private Task OnCustomFilterValueChanged(string e)
+    {
+        customFilterValue = e;
+        return dataGrid.Reload();
+    }
+
+    private bool OnCustomFilter(Utils.Models.Match model)
+    {
+        // We want to accept empty value as valid or otherwise
+        // datagrid will not show anything.
+        if (string.IsNullOrEmpty(customFilterValue))
+            return true;
+
+        return model.Equipo1?.Contains(customFilterValue, StringComparison.OrdinalIgnoreCase) == true || model.Equipo2?.Contains(customFilterValue, StringComparison.OrdinalIgnoreCase) == true;
     }
 }
