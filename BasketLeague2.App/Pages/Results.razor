@@ -6,43 +6,87 @@
 
 <h3>Results</h3>
 
-<table class="table table-striped">
-    <thead class="thead-light">
-        <tr>
-            <th>
-                FECHA
-            </th>
-            <th>
-                EQUIPO 1
-            </th>
-            <th>
-                PUNTUACIÓN
-            </th>
-            <th>
-                EQUIPO 2
-            </th>
-            <th>
-                PUNTUACIÓN
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var r in resultados)
-        {
-            <tr>
-                <td>@r.Fecha</td>
-                <td class="@(r.Resultado1 > r.Resultado2 ? "text-success" : "text-danger")">@r.Equipo1</td>
-                <td>@r.Resultado1</td>
-                <td class="@(r.Resultado1 < r.Resultado2 ? "text-success" : "text-danger")">@r.Equipo2</td>
-                <td>@r.Resultado2</td>
-            </tr>
-        }
-    </tbody>
-</table>
 
-@code {
+<TextEdit Style="width:25%" Text="@customFilterValue" TextChanged="@OnCustomFilterValueChanged"></TextEdit>
+<DataGrid @ref="dataGrid"
+          TItem="Utils.Models.Result"
+          Data="@resultados"
+          Responsive
+          Sortable
+          ShowPager
+          CustomFilter="@OnCustomFilter"
+          ShowPageSizes
+          PagerPosition="DataGridPagerPosition.Bottom"
+          PagerOptions="new(){ ButtonSize=Size.Small }"
+          SortMode="DataGridSortMode.Single"
+          PageSize="10">
+    <DataGridColumns>
+        <DataGridCommandColumn />
+        <DataGridColumn Field="@nameof(Utils.Models.Result.Fecha)" Caption="FECHA" />
+        <DataGridColumn Field="@nameof(Utils.Models.Result.Equipo1)" Caption="EQUIPO 1">
+            <DisplayTemplate>
+                @{
+                    var result = (context as Result);
+
+                    if (result.Resultado1 > result.Resultado2)
+                    {
+                        <Label TextColor="TextColor.Success">@result.Equipo1</Label>
+                    }
+                    else
+                    {
+                        <Label TextColor="TextColor.Danger">@result.Equipo1</Label>
+                    }
+                }
+            </DisplayTemplate>
+        </DataGridColumn>
+        <DataGridColumn Field="@nameof(Utils.Models.Result.Resultado1)" Caption="RESULTADO 1" />
+        <DataGridColumn Field="@nameof(Utils.Models.Result.Equipo2)" Caption="EQUIPO 2">
+            <DisplayTemplate>
+                @{
+                    var result = (context as Result);
+
+                    if (result.Resultado1 < result.Resultado2)
+                    {
+                        <Label TextColor="TextColor.Success">@result.Equipo2</Label>
+                    }
+                    else
+                    {
+                        <Label TextColor="TextColor.Danger">@result.Equipo2</Label>
+                    }
+                }
+            </DisplayTemplate>
+        </DataGridColumn>
+        <DataGridColumn Field="@nameof(Utils.Models.Result.Resultado2)" Caption="RESULTADO 2" />
+    </DataGridColumns>
+    <PageButtonTemplate>
+        <Span TextColor="TextColor.Success">
+            @context.PageNumber
+        </Span>
+    </PageButtonTemplate>
+    <NextPageButtonTemplate><Icon Name="IconName.StepForward" TextColor="TextColor.Success" /></NextPageButtonTemplate>
+    <PreviousPageButtonTemplate><Icon Name="IconName.StepBackward" TextColor="TextColor.Success" /></PreviousPageButtonTemplate>
+    <LastPageButtonTemplate><Icon Name="IconName.Forward" TextColor="TextColor.Success" /></LastPageButtonTemplate>
+    <FirstPageButtonTemplate><Icon Name="IconName.Backward" TextColor="TextColor.Success" /></FirstPageButtonTemplate>
+    <TotalItemsTemplate><Badge Color="Color.Success">@context.TotalItems items</Badge></TotalItemsTemplate>
+    <TotalItemsShortTemplate><Badge Color="Color.Success">@context.CurrentPageSize</Badge></TotalItemsShortTemplate>
+    <PageSelectorTemplate>
+        <Select TextColor="TextColor.Success" @bind-SelectedValue="@context.CurrentPage" Size="Size.Small">
+            @for (int i = context.FirstVisiblePage; i <= context.LastVisiblePage; ++i)
+                {
+                    var pageNumber = i;
+
+                    <SelectItem Value="@pageNumber">@pageNumber</SelectItem>
+                }
+            </Select>
+        </PageSelectorTemplate>
+    </DataGrid>
+
+    @code {
     public IEnumerable<Result> resultados = new Result[] { };
     public IEnumerable<Team> teams = new Team[] { };
+
+    private DataGrid<Utils.Models.Result> dataGrid = new();
+    private string customFilterValue;
 
     protected override async Task OnInitializedAsync()
     {
@@ -68,5 +112,21 @@
         }
 
         resultados = resultados.Concat(r.OrderBy(r => r.Fecha));
+    }
+
+    private Task OnCustomFilterValueChanged(string e)
+    {
+        customFilterValue = e;
+        return dataGrid.Reload();
+    }
+
+    private bool OnCustomFilter(Utils.Models.Result model)
+    {
+        // We want to accept empty value as valid or otherwise
+        // datagrid will not show anything.
+        if (string.IsNullOrEmpty(customFilterValue))
+            return true;
+
+        return model.Equipo1?.Contains(customFilterValue, StringComparison.OrdinalIgnoreCase) == true || model.Equipo2?.Contains(customFilterValue, StringComparison.OrdinalIgnoreCase) == true;
     }
 }

@@ -7,7 +7,7 @@
 
 <h3>Timetables</h3>
 
-<TextEdit Style="width:25%" Text="@customFilterValue" TextChanged="@OnCustomFilterValueChanged" ></TextEdit>
+<TextEdit Style="width:25%" Text="@customFilterValue" TextChanged="@OnCustomFilterValueChanged"></TextEdit>
 <DataGrid @ref="dataGrid"
           TItem="Utils.Models.Match"
           Data="@matches"
@@ -40,16 +40,16 @@
     <PageSelectorTemplate>
         <Select TextColor="TextColor.Success" @bind-SelectedValue="@context.CurrentPage" Size="Size.Small">
             @for (int i = context.FirstVisiblePage; i <= context.LastVisiblePage; ++i)
-            {
-                var pageNumber = i;
+                {
+                    var pageNumber = i;
 
-                <SelectItem Value="@pageNumber">@pageNumber</SelectItem>
-            }
-        </Select>
-    </PageSelectorTemplate>
-</DataGrid>
+                    <SelectItem Value="@pageNumber">@pageNumber</SelectItem>
+                }
+            </Select>
+        </PageSelectorTemplate>
+    </DataGrid>
 
-@code {
+    @code {
     public IEnumerable<Team> teams = new Team[] { };
     public IEnumerable<Utils.Models.Match> matches = new Utils.Models.Match[] { };
     private DataGrid<Utils.Models.Match> dataGrid = new();
