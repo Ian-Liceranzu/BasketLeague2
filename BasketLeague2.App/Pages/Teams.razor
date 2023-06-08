@@ -1,11 +1,8 @@
 ﻿@page "/Teams"
+@using BasketLeague2.Utils.Models
 
 @inject HttpClient Http
 @inject NavigationManager Navigation
-
-@using BasketLeague2.Utils.Models
-@using System.Text
-@using System.Text.Json
 
 <PageTitle>Teams</PageTitle>
 
@@ -13,52 +10,52 @@
 
 <table class="table table-striped">
     <thead class="thead-light">
-        <tr>
-            <th>
-                NOMBRE COMPLETO
-            </th>
-            <th>
-                NOMBRE
-            </th>
-            <th>
-                DUEÑO
-            </th>
-            <th>
-                ATK
-            </th>
-            <th>
-                TIRO
-            </th>
-            <th>
-                DEF
-            </th>
-            <th>
-                REBOTE
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            NOMBRE COMPLETO
+        </th>
+        <th>
+            NOMBRE
+        </th>
+        <th>
+            DUEÑO
+        </th>
+        <th>
+            ATK
+        </th>
+        <th>
+            TIRO
+        </th>
+        <th>
+            DEF
+        </th>
+        <th>
+            REBOTE
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var t in teams)
-        {
-            <tr>
-                <td>@t.NombreCompleto</td>
-                <td>@t.Nombre</td>
-                <td>@t.Dueño</td>
-                <td>@t.Ataque</td>
-                <td>@t.Tiro</td>
-                <td>@t.Defensa</td>
-                <td>@t.Rebote</td>
-                <td>
-                    <button class="btn btn-primary" @onclick="_ =>LoadEmpresa(t.Codigo)">INFO</button>
-                </td>
-            </tr>
-        }
+    @foreach (var t in _teams)
+    {
+        <tr>
+            <td>@t.NombreCompleto</td>
+            <td>@t.Nombre</td>
+            <td>@t.Dueño</td>
+            <td>@t.Ataque</td>
+            <td>@t.Tiro</td>
+            <td>@t.Defensa</td>
+            <td>@t.Rebote</td>
+            <td>
+                <button class="btn btn-primary" @onclick="_ => LoadEmpresa(t.Codigo)">INFO</button>
+            </td>
+        </tr>
+    }
     </tbody>
 </table>
 
 @code {
-    public IEnumerable<Team> teams = new Team[] { };
+    private IEnumerable<Team> _teams = new Team[] { };
 
     protected override async Task OnInitializedAsync()
     {
@@ -67,12 +64,13 @@
 
     private async Task GetTeams()
     {
-        var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");        
-        teams = teams.Concat(t.OrderBy(t => t.NombreCompleto));
+        var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
+        _teams = _teams.Concat(t.OrderBy(t => t.NombreCompleto));
     }
 
     private void LoadEmpresa(int codigo)
     {
         Navigation.NavigateTo($"Teams/Team/{codigo}");
     }
+
 }
