@@ -103,7 +103,7 @@
         if (string.IsNullOrEmpty(_customFilterValue))
             return true;
 
-        return model.Equipo1?.Contains(_customFilterValue, StringComparison.OrdinalIgnoreCase) == true || model.Equipo2?.Contains(_customFilterValue, StringComparison.OrdinalIgnoreCase) == true;
+        return model.Equipo1?.Contains(_customFilterValue, StringComparison.OrdinalIgnoreCase) == true || model.Equipo2?.Contains(_customFilterValue, StringComparison.OrdinalIgnoreCase) == true || model.Fecha.ToString().Contains(_customFilterValue, StringComparison.OrdinalIgnoreCase);
     }
 
 }
