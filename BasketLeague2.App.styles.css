@@ -22,20 +22,20 @@ main[b-16rlqjsgyx] {
     align-items: center;
 }
 
-    .top-row[b-16rlqjsgyx]  a, .top-row[b-16rlqjsgyx]  .btn-link {
-        white-space: nowrap;
-        margin-left: 1.5rem;
-        text-decoration: none;
-    }
+.top-row[b-16rlqjsgyx]  a, .top-row[b-16rlqjsgyx]  .btn-link {
+    white-space: nowrap;
+    margin-left: 1.5rem;
+    text-decoration: none;
+}
 
-    .top-row[b-16rlqjsgyx]  a:hover, .top-row[b-16rlqjsgyx]  .btn-link:hover {
-        text-decoration: underline;
-    }
+.top-row[b-16rlqjsgyx]  a:hover, .top-row[b-16rlqjsgyx]  .btn-link:hover {
+    text-decoration: underline;
+}
 
-    .top-row[b-16rlqjsgyx]  a:first-child {
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+.top-row[b-16rlqjsgyx]  a:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 @media (max-width: 640.98px) {
     .top-row:not(.auth)[b-16rlqjsgyx] {
@@ -87,7 +87,7 @@ main[b-16rlqjsgyx] {
 
 .top-row[b-184v3czvnr] {
     height: 3.5rem;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .navbar-brand[b-184v3czvnr] {
@@ -106,30 +106,30 @@ main[b-16rlqjsgyx] {
     padding-bottom: 0.5rem;
 }
 
-    .nav-item:first-of-type[b-184v3czvnr] {
-        padding-top: 1rem;
-    }
+.nav-item:first-of-type[b-184v3czvnr] {
+    padding-top: 1rem;
+}
 
-    .nav-item:last-of-type[b-184v3czvnr] {
-        padding-bottom: 1rem;
-    }
+.nav-item:last-of-type[b-184v3czvnr] {
+    padding-bottom: 1rem;
+}
 
-    .nav-item[b-184v3czvnr]  a {
-        color: #d7d7d7;
-        border-radius: 4px;
-        height: 3rem;
-        display: flex;
-        align-items: center;
-        line-height: 3rem;
-    }
+.nav-item[b-184v3czvnr]  a {
+    color: #d7d7d7;
+    border-radius: 4px;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    line-height: 3rem;
+}
 
 .nav-item[b-184v3czvnr]  a.active {
-    background-color: rgba(255,255,255,0.25);
+    background-color: rgba(255, 255, 255, 0.25);
     color: white;
 }
 
 .nav-item[b-184v3czvnr]  a:hover {
-    background-color: rgba(255,255,255,0.1);
+    background-color: rgba(255, 255, 255, 0.1);
     color: white;
 }
 
