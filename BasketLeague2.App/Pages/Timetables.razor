@@ -1,59 +1,70 @@
 ﻿@page "/Timetable"
+@using BasketLeague2.Utils.Models
+@using Match = BasketLeague2.Utils.Models.Match
 
 @inject HttpClient Http
 
-@using BasketLeague2.Utils.Models
-@using BasketLeague2.Utils.Utils
-
 <h3>Timetables</h3>
 
-<TextEdit Style="width:25%" Text="@customFilterValue" TextChanged="@OnCustomFilterValueChanged"></TextEdit>
-<DataGrid @ref="dataGrid"
-          TItem="Utils.Models.Match"
-          Data="@matches"
+<TextEdit Style="width:25%" Text="@_customFilterValue" TextChanged="@OnCustomFilterValueChanged"></TextEdit>
+<DataGrid @ref="_dataGrid"
+          TItem="Match"
+          Data="@_matches"
           Responsive
           Sortable
           ShowPager
           CustomFilter="@OnCustomFilter"
           ShowPageSizes
           PagerPosition="DataGridPagerPosition.Bottom"
-          PagerOptions="new(){ ButtonSize=Size.Small }"
+          PagerOptions="new DataGridPagerOptions { ButtonSize = Size.Small }"
           SortMode="DataGridSortMode.Single"
           PageSize="5">
     <DataGridColumns>
-        <DataGridCommandColumn />
-        <DataGridColumn Field="@nameof(Utils.Models.Match.Fecha)" Caption="FECHA" />
-        <DataGridColumn Field="@nameof(Utils.Models.Match.Equipo1)" Caption="EQUIPO 1" />
-        <DataGridColumn Field="@nameof(Utils.Models.Match.Equipo2)" Caption="EQUIPO 2" />
+        <DataGridCommandColumn/>
+        <DataGridColumn Field="@nameof(Match.Fecha)" Caption="FECHA"/>
+        <DataGridColumn Field="@nameof(Match.Equipo1)" Caption="EQUIPO 1"/>
+        <DataGridColumn Field="@nameof(Match.Equipo2)" Caption="EQUIPO 2"/>
     </DataGridColumns>
     <PageButtonTemplate>
         <Span TextColor="TextColor.Success">
             @context.PageNumber
         </Span>
     </PageButtonTemplate>
-    <NextPageButtonTemplate><Icon Name="IconName.StepForward" TextColor="TextColor.Success" /></NextPageButtonTemplate>
-    <PreviousPageButtonTemplate><Icon Name="IconName.StepBackward" TextColor="TextColor.Success" /></PreviousPageButtonTemplate>
-    <LastPageButtonTemplate><Icon Name="IconName.Forward" TextColor="TextColor.Success" /></LastPageButtonTemplate>
-    <FirstPageButtonTemplate><Icon Name="IconName.Backward" TextColor="TextColor.Success" /></FirstPageButtonTemplate>
-    <TotalItemsTemplate><Badge Color="Color.Success">@context.TotalItems items</Badge></TotalItemsTemplate>
-    <TotalItemsShortTemplate><Badge Color="Color.Success">@context.CurrentPageSize</Badge></TotalItemsShortTemplate>
+    <NextPageButtonTemplate>
+        <Icon Name="IconName.StepForward" TextColor="TextColor.Success"/>
+    </NextPageButtonTemplate>
+    <PreviousPageButtonTemplate>
+        <Icon Name="IconName.StepBackward" TextColor="TextColor.Success"/>
+    </PreviousPageButtonTemplate>
+    <LastPageButtonTemplate>
+        <Icon Name="IconName.Forward" TextColor="TextColor.Success"/>
+    </LastPageButtonTemplate>
+    <FirstPageButtonTemplate>
+        <Icon Name="IconName.Backward" TextColor="TextColor.Success"/>
+    </FirstPageButtonTemplate>
+    <TotalItemsTemplate>
+        <Badge Color="Color.Success">@context.TotalItems items</Badge>
+    </TotalItemsTemplate>
+    <TotalItemsShortTemplate>
+        <Badge Color="Color.Success">@context.CurrentPageSize</Badge>
+    </TotalItemsShortTemplate>
     <PageSelectorTemplate>
         <Select TextColor="TextColor.Success" @bind-SelectedValue="@context.CurrentPage" Size="Size.Small">
-            @for (int i = context.FirstVisiblePage; i <= context.LastVisiblePage; ++i)
-                {
-                    var pageNumber = i;
+            @for (var i = context.FirstVisiblePage; i <= context.LastVisiblePage; ++i)
+            {
+                var pageNumber = i;
 
-                    <SelectItem Value="@pageNumber">@pageNumber</SelectItem>
-                }
-            </Select>
-        </PageSelectorTemplate>
-    </DataGrid>
+                <SelectItem Value="@pageNumber">@pageNumber</SelectItem>
+            }
+        </Select>
+    </PageSelectorTemplate>
+</DataGrid>
 
-    @code {
-    public IEnumerable<Team> teams = new Team[] { };
-    public IEnumerable<Utils.Models.Match> matches = new Utils.Models.Match[] { };
-    private DataGrid<Utils.Models.Match> dataGrid = new();
-    private string customFilterValue;
+@code {
+    private IEnumerable<Team> _teams = new Team[] { };
+    private IEnumerable<Match> _matches = new Match[] { };
+    private DataGrid<Match> _dataGrid = new();
+    private string _customFilterValue;
 
     protected override async Task OnInitializedAsync()
     {
@@ -64,34 +75,35 @@
     private async Task GetTeams()
     {
         var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
-        teams = teams.Concat(t.OrderBy(t => t.NombreCompleto));
+        _teams = _teams.Concat(t.OrderBy(t => t.NombreCompleto));
     }
 
     private async Task GetTimeTables()
     {
-        var m = await Http.GetFromJsonAsync<IEnumerable<Utils.Models.Match>>("data/matches.json");
+        var m = await Http.GetFromJsonAsync<IEnumerable<Match>>("data/matches.json");
 
         foreach (var match in m)
         {
-            match.Equipo1 = teams.FirstOrDefault(t => t.Codigo == int.Parse(match.Equipo1)).NombreCompleto;
-            match.Equipo2 = teams.FirstOrDefault(t => t.Codigo == int.Parse(match.Equipo2)).NombreCompleto;
+            match.Equipo1 = _teams.FirstOrDefault(t => t.Codigo == int.Parse(match.Equipo1)).NombreCompleto;
+            match.Equipo2 = _teams.FirstOrDefault(t => t.Codigo == int.Parse(match.Equipo2)).NombreCompleto;
         }
-        matches = matches.Concat(m.OrderBy(m => m.Fecha));
+        _matches = _matches.Concat(m.OrderBy(m => m.Fecha));
     }
 
     private Task OnCustomFilterValueChanged(string e)
     {
-        customFilterValue = e;
-        return dataGrid.Reload();
+        _customFilterValue = e;
+        return _dataGrid.Reload();
     }
 
-    private bool OnCustomFilter(Utils.Models.Match model)
+    private bool OnCustomFilter(Match model)
     {
-        // We want to accept empty value as valid or otherwise
-        // datagrid will not show anything.
-        if (string.IsNullOrEmpty(customFilterValue))
+    // We want to accept empty value as valid or otherwise
+    // datagrid will not show anything.
+        if (string.IsNullOrEmpty(_customFilterValue))
             return true;
 
-        return model.Equipo1?.Contains(customFilterValue, StringComparison.OrdinalIgnoreCase) == true || model.Equipo2?.Contains(customFilterValue, StringComparison.OrdinalIgnoreCase) == true;
+        return model.Equipo1?.Contains(_customFilterValue, StringComparison.OrdinalIgnoreCase) == true || model.Equipo2?.Contains(_customFilterValue, StringComparison.OrdinalIgnoreCase) == true || model.Fecha.ToString().Contains(_customFilterValue, StringComparison.OrdinalIgnoreCase);
     }
+
 }

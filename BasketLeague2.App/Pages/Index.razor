@@ -15,10 +15,10 @@ Bienvenido a la mejor liga de basket del mundo
         <div class="card text-center">
             <div class="card-header">Más puntos anotados en casa</div>
             <div class="card-body">
-                <div>@Equipo1.NombreCompleto</div>
+                <div>@_equipo1.NombreCompleto</div>
                 <div>
-                    <i class='oi oi-arrow-thick-top'></i>
-                    <span class="text">@Equipo1.DIF puntos anotados</span>
+                    <i class="oi oi-arrow-thick-top"></i>
+                    <span class="text">@_equipo1.DIF puntos anotados</span>
                 </div>
             </div>
         </div>
@@ -27,10 +27,10 @@ Bienvenido a la mejor liga de basket del mundo
         <div class="card text-center">
             <div class="card-header">Menos puntos recibidos en casa</div>
             <div class="card-body">
-                <div>@Equipo3.NombreCompleto</div>
+                <div>@_equipo3.NombreCompleto</div>
                 <div>
-                    <i class='oi oi-arrow-thick-bottom'></i>
-                    <span class="text">@Equipo3.DIF puntos recibidos</span>
+                    <i class="oi oi-arrow-thick-bottom"></i>
+                    <span class="text">@_equipo3.DIF puntos recibidos</span>
                 </div>
             </div>
         </div>
@@ -39,10 +39,10 @@ Bienvenido a la mejor liga de basket del mundo
         <div class="card text-center">
             <div class="card-header">Más puntos anotados fuera de casa</div>
             <div class="card-body">
-                <div>@Equipo2.NombreCompleto</div>
+                <div>@_equipo2.NombreCompleto</div>
                 <div>
                     <i class='oi oi-arrow-thick-top'></i>
-                    <span class="text">@Equipo2.DIF puntos anotados</span>
+                    <span class="text">@_equipo2.DIF puntos anotados</span>
                 </div>
             </div>
         </div>
@@ -51,10 +51,10 @@ Bienvenido a la mejor liga de basket del mundo
         <div class="card text-center">
             <div class="card-header">Menos puntos recibidos fuera de casa</div>
             <div class="card-body">
-                <div>@Equipo4.NombreCompleto</div>
+                <div>@_equipo4.NombreCompleto</div>
                 <div>
-                    <i class='oi oi-arrow-thick-bottom'></i>
-                    <span class="text">@Equipo4.DIF puntos recibidos</span>
+                    <i class="oi oi-arrow-thick-bottom"></i>
+                    <span class="text">@_equipo4.DIF puntos recibidos</span>
                 </div>
             </div>
         </div>
@@ -62,13 +62,13 @@ Bienvenido a la mejor liga de basket del mundo
 </div>
 
 @code {
-    public IEnumerable<Team> teams = new Team[] { };
-    public IEnumerable<Result> results = new Result[] { };
+    private IEnumerable<Team> _teams = new Team[] { };
+    private IEnumerable<Result> _results = new Result[] { };
 
-    public Team Equipo1 = new(); // Equipo con más puntos anotados en casa
-    public Team Equipo2 = new(); // Equipo con más puntos anotados fuera de casa
-    public Team Equipo3 = new(); // Equipo con menos puntos en contra en casa
-    public Team Equipo4 = new(); // Equipo con menos puntos en contra fuera de casa
+    private Team _equipo1 = new(); // Equipo con más puntos anotados en casa
+    private Team _equipo2 = new(); // Equipo con más puntos anotados fuera de casa
+    private Team _equipo3 = new(); // Equipo con menos puntos en contra en casa
+    private Team _equipo4 = new(); // Equipo con menos puntos en contra fuera de casa
 
     protected override async Task OnInitializedAsync()
     {
@@ -81,20 +81,21 @@ Bienvenido a la mejor liga de basket del mundo
     private async Task GetTeams()
     {
         var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
-        teams = teams.Concat(t);
+        _teams = _teams.Concat(t);
     }
 
     private async Task GetResults()
     {
         var r = await Http.GetFromJsonAsync<IEnumerable<Result>>("data/results.json");
-        results = results.Concat(r);
+        _results = _results.Concat(r);
     }
 
     private void CalcularRacha()
     {
-        Equipo1 = results.GroupBy(r => r.Equipo1).Select(r => new Team { NombreCompleto = teams.First(t => t.Codigo == int.Parse(r.First().Equipo1)).NombreCompleto, DIF = r.Sum(r => r.Resultado1) }).OrderByDescending(r => r.DIF).FirstOrDefault();
-        Equipo2 = results.GroupBy(r => r.Equipo2).Select(r => new Team { NombreCompleto = teams.First(t => t.Codigo == int.Parse(r.First().Equipo2)).NombreCompleto, DIF = r.Sum(r => r.Resultado2) }).OrderByDescending(r => r.DIF).FirstOrDefault();
-        Equipo3 = results.GroupBy(r => r.Equipo1).Select(r => new Team { NombreCompleto = teams.First(t => t.Codigo == int.Parse(r.First().Equipo1)).NombreCompleto, DIF = r.Sum(r => r.Resultado2) }).OrderBy(r => r.DIF).FirstOrDefault();
-        Equipo4 = results.GroupBy(r => r.Equipo2).Select(r => new Team { NombreCompleto = teams.First(t => t.Codigo == int.Parse(r.First().Equipo2)).NombreCompleto, DIF = r.Sum(r => r.Resultado1) }).OrderBy(r => r.DIF).FirstOrDefault();
+        _equipo1 = _results.GroupBy(r => r.Equipo1).Select(r => new Team { NombreCompleto = _teams.First(t => t.Codigo == int.Parse(r.First().Equipo1)).NombreCompleto, DIF = r.Sum(r => r.Resultado1) }).MaxBy(r => r.DIF);
+        _equipo2 = _results.GroupBy(r => r.Equipo2).Select(r => new Team { NombreCompleto = _teams.First(t => t.Codigo == int.Parse(r.First().Equipo2)).NombreCompleto, DIF = r.Sum(r => r.Resultado2) }).MaxBy(r => r.DIF);
+        _equipo3 = _results.GroupBy(r => r.Equipo1).Select(r => new Team { NombreCompleto = _teams.First(t => t.Codigo == int.Parse(r.First().Equipo1)).NombreCompleto, DIF = r.Sum(r => r.Resultado2) }).MinBy(r => r.DIF);
+        _equipo4 = _results.GroupBy(r => r.Equipo2).Select(r => new Team { NombreCompleto = _teams.First(t => t.Codigo == int.Parse(r.First().Equipo2)).NombreCompleto, DIF = r.Sum(r => r.Resultado1) }).MinBy(r => r.DIF);
     }
+
 }

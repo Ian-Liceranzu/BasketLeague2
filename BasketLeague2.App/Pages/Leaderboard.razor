@@ -8,57 +8,57 @@
 
 <table class="table table-striped">
     <thead class="thead-light">
-        <tr>
-            <th>
-                EQUIPO
-            </th>
-            <th>
-                GP
-            </th>
-            <th>
-                W
-            </th>
-            <th>
-                L
-            </th>
-            <th>
-                %
-            </th>
-            <th>
-                HOME
-            </th>
-            <th>
-                VISITOR
-            </th>
-            <th>
-                DIF
-            </th>
-        </tr>
+    <tr>
+        <th>
+            EQUIPO
+        </th>
+        <th>
+            GP
+        </th>
+        <th>
+            W
+        </th>
+        <th>
+            L
+        </th>
+        <th>
+            %
+        </th>
+        <th>
+            HOME
+        </th>
+        <th>
+            VISITOR
+        </th>
+        <th>
+            DIF
+        </th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var t in teams)
-        {
-            <tr>
-                <td>@t.NombreCompleto</td>
-                <td>@t.GP</td>
-                <td>@(t.WH + t.WV)</td>
-                <td>@(t.LH + t.LV)</td>
-                <td>@(Math.Round((double)(t.WH + t.WV) / (double)t.GP, 4))</td>
-                <td>
-                    @t.WH - @t.LH
-                </td>
-                <td>
-                    @t.WV - @t.LV
-                </td>
-                <td>@t.DIF</td>
-            </tr>
-        }
+    @foreach (var t in _teams)
+    {
+        <tr>
+            <td>@t.NombreCompleto</td>
+            <td>@t.GP</td>
+            <td>@(t.WH + t.WV)</td>
+            <td>@(t.LH + t.LV)</td>
+            <td>@(Math.Round((double)(t.WH + t.WV) / (double)t.GP, 4))</td>
+            <td>
+                @t.WH - @t.LH
+            </td>
+            <td>
+                @t.WV - @t.LV
+            </td>
+            <td>@t.DIF</td>
+        </tr>
+    }
     </tbody>
 </table>
 
 @code {
-    public IEnumerable<Team> teams = new Team[] { };
-    public IEnumerable<Result> results = new Result[] { };
+    private IEnumerable<Team> _teams = new Team[] { };
+    private IEnumerable<Result> _results = new Result[] { };
 
     protected override async Task OnInitializedAsync()
     {
@@ -71,13 +71,13 @@
     private async Task GetTeams()
     {
         var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
-        teams = teams.Concat(t);
+        _teams = _teams.Concat(t);
     }
 
     private async Task GetResults()
     {
         var r = await Http.GetFromJsonAsync<IEnumerable<Result>>("data/results.json");
-        results = results.Concat(r);
+        _results = _results.Concat(r);
     }
 
     /// <summary>
@@ -85,10 +85,10 @@
     /// </summary>
     private void CalculateStats()
     {
-        foreach (var t in teams)
+        foreach (var t in _teams)
         {
-            var personalResultsHome = results.Where(r => int.Parse(r.Equipo1) == t.Codigo);
-            var personalResultsVisitor = results.Where(r => int.Parse(r.Equipo2) == t.Codigo);
+            var personalResultsHome = _results.Where(r => int.Parse(r.Equipo1) == t.Codigo);
+            var personalResultsVisitor = _results.Where(r => int.Parse(r.Equipo2) == t.Codigo);
             t.GP = personalResultsHome.Count() + personalResultsVisitor.Count();
 
             t.WH = personalResultsHome.Count(r => int.Parse(r.Equipo1) == t.Codigo && r.Resultado1 > r.Resultado2);
@@ -97,17 +97,18 @@
             t.WV = personalResultsVisitor.Count(r => int.Parse(r.Equipo2) == t.Codigo && r.Resultado2 > r.Resultado1);
             t.LV = personalResultsVisitor.Count(r => int.Parse(r.Equipo2) == t.Codigo && r.Resultado2 < r.Resultado1);
 
-            // Suma de todos tus resultados
+    // Suma de todos tus resultados
             var t1 = personalResultsHome.Where(r => int.Parse(r.Equipo1) == t.Codigo).Sum(r => r.Resultado1);
             t1 += personalResultsVisitor.Where(r => int.Parse(r.Equipo2) == t.Codigo).Sum(r => r.Resultado2);
 
-            // Suma de todos los resultados de los rivales
+    // Suma de todos los resultados de los rivales
             var t2 = personalResultsHome.Where(r => int.Parse(r.Equipo1) == t.Codigo).Sum(r => r.Resultado2);
             t2 += personalResultsVisitor.Where(r => int.Parse(r.Equipo2) == t.Codigo).Sum(r => r.Resultado1);
 
             t.DIF = t1 - t2;
         }
 
-        teams = teams.OrderByDescending(t => t.WH + t.WV).ThenByDescending(t => t.DIF);
+        _teams = _teams.OrderByDescending(t => t.WH + t.WV).ThenByDescending(t => t.DIF);
     }
+
 }
