@@ -208,5 +208,40 @@
     "Equipo2": "4",
     "Resultado1": 83,
     "Resultado2": 114
+  },
+  {
+    "Fecha": "2023-06-13T09:12:51.139+02:00",
+    "Equipo1": "10",
+    "Equipo2": "6",
+    "Resultado1": 94,
+    "Resultado2": 71
+  },
+  {
+    "Fecha": "2023-06-13T09:29:18.386+02:00",
+    "Equipo1": "8",
+    "Equipo2": "7",
+    "Resultado1": 80,
+    "Resultado2": 96
+  },
+  {
+    "Fecha": "2023-06-13T10:07:03.975+02:00",
+    "Equipo1": "5",
+    "Equipo2": "3",
+    "Resultado1": 62,
+    "Resultado2": 77
+  },
+  {
+    "Fecha": "2023-06-13T10:08:17.299+02:00",
+    "Equipo1": "9",
+    "Equipo2": "1",
+    "Resultado1": 128,
+    "Resultado2": 130
+  },
+  {
+    "Fecha": "2023-06-13T11:00:50.569+02:00",
+    "Equipo1": "2",
+    "Equipo2": "4",
+    "Resultado1": 56,
+    "Resultado2": 55
   }
 ]
