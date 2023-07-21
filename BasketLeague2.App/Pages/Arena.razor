@@ -36,6 +36,7 @@
 
 <div class="d-grip">
     <button class="btn btn-primary" @onclick="SimulateGame">START GAME</button>
+    <button class="btn btn-primary" @onclick="SimulateGameWithPlayers">START GAME WITH PLAYERS</button>
 </div>
 
 @if (_result != null)
@@ -57,18 +58,21 @@
 }
 
 @code {
-    private IEnumerable<Team> _teams = new Team[] { };
+    public IEnumerable<Team> teams = new Team[] { };
+    public IEnumerable<Player> players = new Player[] { };
 
     private int _team1;
     private int _team2;
 
-    private Result _result = null;
+    public Result result = null;
+    public AdvancedResult aResult = null;
 
     private string _jsonResult = "";
 
     protected override async Task OnInitializedAsync()
     {
         await GetTeams();
+        await GetPlayers();
     }
 
     private async Task GetTeams()
@@ -79,22 +83,51 @@
         _team2 = _team1;
     }
 
+    private async Task GetPlayers()
+    {
+        var p = await Http.GetFromJsonAsync<IEnumerable<Player>>("data/players.json");
+        players = players.Concat(p.OrderBy(p => p.Team));
+    }
+
     private void SimulateGame()
     {
-        var t1 = _teams.FirstOrDefault(t => t.Codigo == _team1);
-        var t2 = _teams.FirstOrDefault(t => t.Codigo == _team2);
+        var t1 = teams.FirstOrDefault(t => t.Codigo == team1);
+        var t2 = teams.FirstOrDefault(t => t.Codigo == team2);
 
         if (t1 != null && t2 != null)
         {
-            _result = GameUtils.SimulateGame(t1, t2);
+            result = GameUtils.SimulateGame(t1, t2);
 
-            _jsonResult = System.Text.Json.JsonSerializer.Serialize(new Result()
+            jsonResult = System.Text.Json.JsonSerializer.Serialize(new Result
             {
-                Equipo1 = $"{_team1}",
-                Equipo2 = $"{_team2}",
-                Fecha = _result.Fecha,
-                Resultado1 = _result.Resultado1,
-                Resultado2 = _result.Resultado2
+                Equipo1 = $"{team1}",
+                Equipo2 = $"{team2}",
+                Fecha = result.Fecha,
+                Resultado1 = result.Resultado1,
+                Resultado2 = result.Resultado2
+            });
+        }
+    }
+
+    private async void SimulateGameWithPlayers()
+    {
+        var players1 = players.Where(p => p.Team == team1).ToList();
+        var players2 = players.Where(p => p.Team == team2).ToList();
+
+        if (players1 != null && players2 != null)
+        {
+            aResult = GameUtils.SimulateGameWithPlayers(players1, players2);
+            result = aResult;
+
+            jsonResult = System.Text.Json.JsonSerializer.Serialize(new AdvancedResult
+            {
+                Equipo1 = $"{team1}",
+                Equipo2 = $"{team2}",
+                Fecha = aResult.Fecha,
+                Resultado1 = aResult.Resultado1,
+                Resultado2 = aResult.Resultado2,
+                Stats1 = aResult.Stats1,
+                Stats2 = aResult.Stats2
             });
         }
     }

@@ -8,4 +8,10 @@
         public int Resultado1 { get; set; }
         public int Resultado2 { get; set; }
     }
+
+    public class AdvancedResult : Result
+    {
+        public int[][] Stats1 { get; set; }
+        public int[][] Stats2 { get; set; }
+    }
 }
