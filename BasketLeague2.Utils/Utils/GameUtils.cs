@@ -15,11 +15,11 @@ namespace BasketLeague2.Utils.Utils
 
             do
             {
-                int ha = home.Atacar(rival, rnd);
-                int hd = home.Defender(rival, rnd);
+                var ha = home.Atacar(rival, rnd);
+                var hd = home.Defender(rival, rnd);
 
-                int ra = rival.Atacar(home, rnd);
-                int rd = rival.Defender(home, rnd);
+                var ra = rival.Atacar(home, rnd);
+                var rd = rival.Defender(home, rnd);
 
                 if (ha < hd && ra < rd)
                 {
@@ -32,23 +32,17 @@ namespace BasketLeague2.Utils.Utils
                     rr = Team.Resultado(rnd, rd, ra);
                 }
 
-                int diferencia = hr - rr;
+                var diferencia = hr - rr;
 
-                if (diferencia == 0)
+                repeat = diferencia switch
                 {
-                    repeat = true;
-                }
-                else if (diferencia > 0)
-                {
-                    repeat = false;
-                }
-                else
-                {
-                    repeat = false;
-                }
+                    0 => true,
+                    > 0 => false,
+                    _ => false
+                };
             } while (repeat);
 
-            return new Result()
+            return new Result
             {
                 Equipo1 = home.NombreCompleto,
                 Equipo2 = rival.NombreCompleto,
@@ -58,7 +52,7 @@ namespace BasketLeague2.Utils.Utils
             };
         }
 
-        public static void SimulateGameWithPlayers(List<Player> homePlayers, List<Player> rivalPlayers)
+        public static AdvancedResult SimulateGameWithPlayers(List<Player> homePlayers, List<Player> rivalPlayers)
         {
             // Generate random stats for each player on each team
             var rand = new Random();
@@ -66,12 +60,23 @@ namespace BasketLeague2.Utils.Utils
             var teamBStats = GenerateStats(rivalPlayers, rand);
 
             // Calculate the total score for each team
-            int teamAScore = CalculateScore(teamAStats);
-            int teamBScore = CalculateScore(teamBStats);
+            var teamAScore = CalculateScore(teamAStats);
+            var teamBScore = CalculateScore(teamBStats);
 
             // Determine the winner and print the result
             var winner = (teamAScore > teamBScore) ? "Team A" : "Team B";
             Console.WriteLine("The winner is {0} with a score of {1}-{2}", winner, teamAScore, teamBScore);
+
+            return new AdvancedResult
+            {
+                Equipo1 = "Home",
+                Equipo2 = "Rival",
+                Fecha = DateTime.Now,
+                Resultado1 = teamAScore,
+                Resultado2 = teamBScore,
+                Stats1 = teamAStats,
+                Stats2 = teamBStats
+            };
         }
 
         public static int[][] GenerateStats(List<Player> players, Random rand)
@@ -79,13 +84,14 @@ namespace BasketLeague2.Utils.Utils
             var stats = new int[players.Count][];
             for (var i = 0; i < players.Count; i++)
             {
-                stats[i] = new int[6];
-                stats[i][0] = (int)(rand.Next(0, 20) * (players[i].InsideScoring / 100.0)); // Dobles
-                stats[i][1] = MakeDivisible((int)(rand.Next(0, 15) * (players[i].OutsideScoring / 90.0)), 3); // Triples
-                stats[i][2] = (int)(rand.Next(0, 5) * (players[i].Athleticism / 85.0)); // Athleticism
-                stats[i][3] = (int)(rand.Next(0, 5) * (players[i].Playmaking / 85.0)); // Playmaking
-                stats[i][4] = (int)(rand.Next(0, 15) * (players[i].Rebounding / 90.0)); // Rebounding
-                stats[i][5] = (int)(rand.Next(0, 5) * (players[i].Defending / 85.0)); // Defending
+                stats[i] = new int[7];
+                stats[i][0] = players[i].Codigo; // Player
+                stats[i][1] = (int)(rand.Next(0, 20) * (players[i].InsideScoring / 100.0)); // Dobles
+                stats[i][2] = MakeDivisible((int)(rand.Next(0, 15) * (players[i].OutsideScoring / 90.0)), 3); // Triples
+                stats[i][3] = (int)(rand.Next(0, 5) * (players[i].Athleticism / 85.0)); // Athleticism
+                stats[i][4] = (int)(rand.Next(0, 5) * (players[i].Playmaking / 85.0)); // Playmaking
+                stats[i][5] = (int)(rand.Next(0, 15) * (players[i].Rebounding / 90.0)); // Rebounding
+                stats[i][6] = (int)(rand.Next(0, 5) * (players[i].Defending / 85.0)); // Defending
             }
 
             Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(stats));
@@ -99,21 +105,23 @@ namespace BasketLeague2.Utils.Utils
             for (var i = 0; i < stats.Length; i++)
             {
                 var playerScore = 0;
-                for (var j = 0; j < stats[i].Length; j++)
+                for (var j = 1; j < stats[i].Length; j++)
                 {
                     playerScore += stats[i][j];
                 }
+
                 totalScore += playerScore;
             }
+
             return totalScore;
         }
 
         private static int MakeDivisible(int num, int div)
         {
-            string numStr = num.ToString();
-            int sum = 0;
+            var numStr = num.ToString();
+            var sum = 0;
 
-            for (int i = 0; i < numStr.Length; i++)
+            for (var i = 0; i < numStr.Length; i++)
             {
                 sum += int.Parse(numStr[i].ToString());
             }
@@ -125,6 +133,5 @@ namespace BasketLeague2.Utils.Utils
 
             return num;
         }
-
     }
 }

@@ -8,14 +8,14 @@
 
 <h3>Arena</h3>
 
-@if (teams.Any())
+@if (_teams.Any())
 {
     <div class="container">
         <div class="row">
             <div class="col">
                 <label>TEAM 1</label>
-                <select class="form-select" aria-label="Select team 1" @bind="@team1">
-                    @foreach (var t in teams)
+                <select class="form-select" aria-label="Select team 1" @bind="@_team1">
+                    @foreach (var t in _teams)
                     {
                         <option value="@t.Codigo">@t.NombreCompleto</option>
                     }
@@ -23,8 +23,8 @@
             </div>
             <div class="col">
                 <label>TEAM 2</label>
-                <select class="form-select" aria-label="Select team 2" @bind="@team2">
-                    @foreach (var t in teams)
+                <select class="form-select" aria-label="Select team 2" @bind="@_team2">
+                    @foreach (var t in _teams)
                     {
                         <option value="@t.Codigo">@t.NombreCompleto</option>
                     }
@@ -39,17 +39,17 @@
     <button class="btn btn-primary" @onclick="SimulateGameWithPlayers">START GAME WITH PLAYERS</button>
 </div>
 
-@if (result != null)
+@if (_result != null)
 {
     <div class="container">
         <div class="row">
             <div class="col">
-                <label>@result.Equipo1</label>
-                <label>@result.Resultado1</label>
+                <label>@_result.Equipo1</label>
+                <label>@_result.Resultado1</label>
             </div>
             <div class="col">
-                <label>@result.Equipo2</label>
-                <label>@result.Resultado2</label>
+                <label>@_result.Equipo2</label>
+                <label>@_result.Resultado2</label>
             </div>
         </div>
     </div>
@@ -58,64 +58,83 @@
 }
 
 @code {
-    public IEnumerable<Team> teams = new Team[] { };
+    private IEnumerable<Team> _teams = new Team[] { };
+    private IEnumerable<Player> _players = new Player[] { };
 
-    public int team1;
-    public int team2;
+    private int _team1;
+    private int _team2;
 
-    public Result result = null;
+    private Result _result = null;
+    private AdvancedResult _aResult = null;
 
-    public string jsonResult = "";
+    private string _jsonResult = "";
 
     protected override async Task OnInitializedAsync()
     {
         await GetTeams();
+        await GetPlayers();
     }
 
     private async Task GetTeams()
     {
         var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
-        teams = teams.Concat(t.OrderBy(t => t.NombreCompleto));
-        team1 = teams.FirstOrDefault().Codigo;
-        team2 = team1;
+        _teams = _teams.Concat(t.OrderBy(t => t.NombreCompleto));
+        _team1 = _teams.FirstOrDefault().Codigo;
+        _team2 = _team1;
+    }
+
+    private async Task GetPlayers()
+    {
+        var p = await Http.GetFromJsonAsync<IEnumerable<Player>>("data/players.json");
+        _players = _players.Concat(p.OrderBy(p => p.Team));
     }
 
     private void SimulateGame()
     {
-        Team t1 = teams.FirstOrDefault(t => t.Codigo == team1);
-        Team t2 = teams.FirstOrDefault(t => t.Codigo == team2);
+        var t1 = _teams.FirstOrDefault(t => t.Codigo == _team1);
+        var t2 = _teams.FirstOrDefault(t => t.Codigo == _team2);
 
         if (t1 != null && t2 != null)
         {
-            result = GameUtils.SimulateGame(t1, t2);
+            _result = GameUtils.SimulateGame(t1, t2);
 
-            jsonResult = System.Text.Json.JsonSerializer.Serialize(new Result()
-                {
-                    Equipo1 = $"{team1}",
-                    Equipo2 = $"{team2}",
-                    Fecha = result.Fecha,
-                    Resultado1 = result.Resultado1,
-                    Resultado2 = result.Resultado2
-                });
+            _jsonResult = System.Text.Json.JsonSerializer.Serialize(new Result
+            {
+                Equipo1 = $"{_team1}",
+                Equipo2 = $"{_team2}",
+                Fecha = _result.Fecha,
+                Resultado1 = _result.Resultado1,
+                Resultado2 = _result.Resultado2
+            });
         }
     }
 
     private async void SimulateGameWithPlayers()
     {
-        var players = await Http.GetFromJsonAsync<IEnumerable<Player>>("data/players.json");
-
-        List<Player> players1 = players.Where(p => p.Team == team1).ToList();
-        List<Player> players2 = players.Where(p => p.Team == team2).ToList();
-
+        var players1 = _players.Where(p => p.Team == _team1).ToList();
+        var players2 = _players.Where(p => p.Team == _team2).ToList();
 
         if (players1 != null && players2 != null)
         {
-            GameUtils.SimulateGameWithPlayers(players1, players2);
+            _aResult = GameUtils.SimulateGameWithPlayers(players1, players2);
+            _result = _aResult;
+
+            _jsonResult = System.Text.Json.JsonSerializer.Serialize(new AdvancedResult
+            {
+                Equipo1 = $"{_team1}",
+                Equipo2 = $"{_team2}",
+                Fecha = _aResult.Fecha,
+                Resultado1 = _aResult.Resultado1,
+                Resultado2 = _aResult.Resultado2,
+                Stats1 = _aResult.Stats1,
+                Stats2 = _aResult.Stats2
+            });
         }
     }
 
     private async void CopyText()
     {
-        await JSRuntime.InvokeVoidAsync("clipboardCopy.copyText", jsonResult);
+        await JSRuntime.InvokeVoidAsync("clipboardCopy.copyText", _jsonResult);
     }
+
 }

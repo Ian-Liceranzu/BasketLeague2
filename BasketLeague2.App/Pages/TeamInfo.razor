@@ -14,16 +14,17 @@
         <Row>
             <Column ColumnSize="ColumnSize.Is6">
                 <header>@_team.NombreCompleto</header>
-                <img alt="Team logo" src=@($"assets/images/logos/{Codigo}_1.jpg") style="height: 350px;" />
+                <img alt="Team logo" src=@($"assets/images/logos/{Codigo}_1.jpg") style="height: 350px;"/>
             </Column>
             <Column ColumnSize="ColumnSize.Is6">
-                <RadarChart @ref="_radarChart" TItem="double" />
+                <RadarChart @ref="_radarChart" TItem="double"/>
             </Column>
         </Row>
     }
 </div>
 
 @code {
+
     [Parameter]
     public string Codigo { get; set; }
 
@@ -41,7 +42,6 @@
         await GetTeam();
 
         await FillRadarChart();
-
     }
 
     private async Task GetTeam()
@@ -59,14 +59,14 @@
     private RadarChartDataset<double> GetRadarChartDataset()
     {
         return new RadarChartDataset<double>
-            {
-                Label = "Stats",
-                Data = new List<double> { _team.Ataque, _team.Tiro, _team.Defensa, _team.Rebote },
-                BackgroundColor = backgroundColors,
-                BorderColor = borderColors,
-                Fill = true,
-                PointRadius = 3
-            };
+        {
+            Label = "Stats",
+            Data = new List<double> { _team.Ataque, _team.Tiro, _team.Defensa, _team.Rebote },
+            BackgroundColor = backgroundColors,
+            BorderColor = borderColors,
+            Fill = true,
+            PointRadius = 3
+        };
     }
 
 }

@@ -1,0 +1,93 @@
+[
+  {
+    "Fecha": "2023-07-26T11:31:28.855+02:00",
+    "Equipo1": "1",
+    "Equipo2": "6",
+    "Resultado1": 118,
+    "Resultado2": 92
+  },
+  {
+    "Fecha": "2023-07-26T11:31:47.882+02:00",
+    "Equipo1": "1",
+    "Equipo2": "6",
+    "Resultado1": 68,
+    "Resultado2": 111
+  },
+  {
+    "Fecha": "2023-07-26T11:31:53.632+02:00",
+    "Equipo1": "1",
+    "Equipo2": "6",
+    "Resultado1": 132,
+    "Resultado2": 110
+  },
+  {
+    "Fecha": "2023-07-26T11:31:58.452+02:00",
+    "Equipo1": "1",
+    "Equipo2": "6",
+    "Resultado1": 95,
+    "Resultado2": 82
+  },
+  {
+    "Fecha": "2023-07-26T11:45:45.93+02:00",
+    "Equipo1": "5",
+    "Equipo2": "2",
+    "Resultado1": 130,
+    "Resultado2": 107
+  },
+  {
+    "Fecha": "2023-07-26T11:45:52.53+02:00",
+    "Equipo1": "5",
+    "Equipo2": "2",
+    "Resultado1": 144,
+    "Resultado2": 112
+  },
+  {
+    "Fecha": "2023-07-26T11:45:58.813+02:00",
+    "Equipo1": "5",
+    "Equipo2": "2",
+    "Resultado1": 74,
+    "Resultado2": 131
+  },
+  {
+    "Fecha": "2023-07-26T11:46:04.556+02:00",
+    "Equipo1": "5",
+    "Equipo2": "2",
+    "Resultado1": 137,
+    "Resultado2": 121
+  },
+  {
+    "Fecha": "2023-07-26T11:51:12.307+02:00",
+    "Equipo1": "1",
+    "Equipo2": "2",
+    "Resultado1": 116,
+    "Resultado2": 101
+  },
+  {
+    "Fecha": "2023-07-26T11:51:18.144+02:00",
+    "Equipo1": "1",
+    "Equipo2": "2",
+    "Resultado1": 140,
+    "Resultado2": 98
+  },
+  {
+    "Fecha": "2023-07-26T11:51:23.726+02:00",
+    "Equipo1": "1",
+    "Equipo2": "2",
+    "Resultado1": 95,
+    "Resultado2": 120
+  },
+  {
+    "Fecha": "2023-07-26T11:51:28.725+02:00",
+    "Equipo1": "1",
+    "Equipo2": "2",
+    "Resultado1": 90,
+    "Resultado2": 114
+  },
+  {
+    "Fecha": "2023-07-26T11:51:33.911+02:00",
+    "Equipo1": "1",
+    "Equipo2": "2",
+    "Resultado1": 112,
+    "Resultado2": 98
+  }
+]

@@ -1,7 +1,8 @@
 [
   {
-    "Name": "Victoria Yang",
-    "Nickname": "Panda",
+    "Codigo": 1,
+    "Name": "Paulino Gasolino",
+    "Nickname": "El oso",
     "Team": 1,
     "InsideScoring": 97,
     "OutsideScoring": 90,
@@ -12,8 +13,9 @@
     "Overall": 92.83333333333333
   },
   {
-    "Name": "Xander Quinn",
-    "Nickname": "Knight",
+    "Codigo": 2,
+    "Name": "Nikola Jovanovic",
+    "Nickname": "El serbio",
     "Team": 2,
     "InsideScoring": 90,
     "OutsideScoring": 96,
@@ -24,8 +26,9 @@
     "Overall": 94.5
   },
   {
-    "Name": "Thomas Carter",
-    "Nickname": "Lucky",
+    "Codigo": 3,
+    "Name": "George Marcus",
+    "Nickname": "Dipping Sauce",
     "Team": 3,
     "InsideScoring": 92,
     "OutsideScoring": 97,
@@ -36,8 +39,9 @@
     "Overall": 93.5
   },
   {
-    "Name": "Emma Edwards",
-    "Nickname": "Duke",
+    "Codigo": 4,
+    "Name": "René Gustavo",
+    "Nickname": "La rana",
     "Team": 4,
     "InsideScoring": 93,
     "OutsideScoring": 95,
@@ -48,8 +52,9 @@
     "Overall": 94.16666666666667
   },
   {
-    "Name": "Yara Baker",
-    "Nickname": "Wizard",
+    "Codigo": 5,
+    "Name": "Ranni Moon",
+    "Nickname": "Witch",
     "Team": 5,
     "InsideScoring": 93,
     "OutsideScoring": 91,
@@ -60,8 +65,9 @@
     "Overall": 93
   },
   {
-    "Name": "Sophia Smith",
-    "Nickname": "Yogi",
+    "Codigo": 6,
+    "Name": "James Smithers",
+    "Nickname": "King",
     "Team": 6,
     "InsideScoring": 95,
     "OutsideScoring": 96,
@@ -72,8 +78,9 @@
     "Overall": 94.66666666666667
   },
   {
-    "Name": "Jack Baker",
-    "Nickname": "Knight",
+    "Codigo": 7,
+    "Name": "Elena Johnson",
+    "Nickname": "Queen D",
     "Team": 7,
     "InsideScoring": 92,
     "OutsideScoring": 90,
@@ -84,8 +91,9 @@
     "Overall": 94
   },
   {
-    "Name": "Noah Taylor",
-    "Nickname": "Queen",
+    "Codigo": 8,
+    "Name": "Jorge Mikael",
+    "Nickname": "Air J",
     "Team": 8,
     "InsideScoring": 91,
     "OutsideScoring": 97,
@@ -96,8 +104,9 @@
     "Overall": 93.16666666666667
   },
   {
-    "Name": "Victoria Baker",
-    "Nickname": "Foxy",
+    "Codigo": 9,
+    "Name": "Corina Byron",
+    "Nickname": "Culebra",
     "Team": 9,
     "InsideScoring": 91,
     "OutsideScoring": 94,
@@ -108,8 +117,9 @@
     "Overall": 93.83333333333333
   },
   {
-    "Name": "Alice Adams",
-    "Nickname": "Ace",
+    "Codigo": 10,
+    "Name": "Joe Hope",
+    "Nickname": "The bird",
     "Team": 10,
     "InsideScoring": 95,
     "OutsideScoring": 92,
@@ -120,8 +130,9 @@
     "Overall": 93.83333333333333
   },
   {
-    "Name": "Charlie Davis",
-    "Nickname": "Queen",
+    "Codigo": 11,
+    "Name": "Bob Carlson",
+    "Nickname": "Sin piernas",
     "Team": 1,
     "InsideScoring": 44,
     "OutsideScoring": 41,
@@ -132,8 +143,9 @@
     "Overall": 46.333333333333336
   },
   {
-    "Name": "Yara Upton",
-    "Nickname": "Tiger",
+    "Codigo": 12,
+    "Name": "Olivia Carlson",
+    "Nickname": "Sin manos",
     "Team": 2,
     "InsideScoring": 42,
     "OutsideScoring": 40,
@@ -144,8 +156,9 @@
     "Overall": 43.166666666666664
   },
   {
-    "Name": "Olivia Vargas",
-    "Nickname": "Viper",
+    "Codigo": 13,
+    "Name": "Carl Finner",
+    "Nickname": "Muñones",
     "Team": 3,
     "InsideScoring": 42,
     "OutsideScoring": 47,
@@ -156,8 +169,9 @@
     "Overall": 44.5
   },
   {
-    "Name": "Liam Ingram",
-    "Nickname": "Jazz",
+    "Codigo": 14,
+    "Name": "Victor Corvus",
+    "Nickname": "Victo",
     "Team": 4,
     "InsideScoring": 41,
     "OutsideScoring": 49,
@@ -168,8 +182,9 @@
     "Overall": 43.666666666666664
   },
   {
-    "Name": "Mia O'Brien",
-    "Nickname": "Guru",
+    "Codigo": 15,
+    "Name": "Yue Sun",
+    "Nickname": "Novato",
     "Team": 5,
     "InsideScoring": 49,
     "OutsideScoring": 40,
@@ -180,8 +195,9 @@
     "Overall": 45.666666666666664
   },
   {
-    "Name": "Kate Adams",
-    "Nickname": "Champ",
+    "Codigo": 16,
+    "Name": "Erika Mordic",
+    "Nickname": "Ojo loco",
     "Team": 6,
     "InsideScoring": 40,
     "OutsideScoring": 49,
@@ -192,8 +208,9 @@
     "Overall": 45
   },
   {
-    "Name": "Victoria Adams",
-    "Nickname": "Maverick",
+    "Codigo": 17,
+    "Name": "Süben Bäjen",
+    "Nickname": "Strüjen",
     "Team": 7,
     "InsideScoring": 45,
     "OutsideScoring": 40,
@@ -204,8 +221,9 @@
     "Overall": 43.666666666666664
   },
   {
-    "Name": "Grace Johnson",
-    "Nickname": "Ranger",
+    "Codigo": 18,
+    "Name": "Borja San José",
+    "Nickname": "Bausan",
     "Team": 8,
     "InsideScoring": 42,
     "OutsideScoring": 40,
@@ -216,8 +234,9 @@
     "Overall": 44.333333333333336
   },
   {
-    "Name": "Quinn Nguyen",
-    "Nickname": "Zeus",
+    "Codigo": 19,
+    "Name": "Yuki Busarda",
+    "Nickname": "La rata",
     "Team": 9,
     "InsideScoring": 43,
     "OutsideScoring": 40,
@@ -228,8 +247,9 @@
     "Overall": 43.666666666666664
   },
   {
-    "Name": "Ursula Xu",
-    "Nickname": "Lucky",
+    "Codigo": 20,
+    "Name": "Frank Adams",
+    "Nickname": "Siesta",
     "Team": 10,
     "InsideScoring": 41,
     "OutsideScoring": 43,
@@ -240,6 +260,7 @@
     "Overall": 44.166666666666664
   },
   {
+    "Codigo": 21,
     "Name": "Victoria Zhang",
     "Nickname": "Viper",
     "Team": 1,
@@ -252,6 +273,7 @@
     "Overall": 74.83333333333333
   },
   {
+    "Codigo": 20,
     "Name": "Sophia Zhang",
     "Nickname": "Ace",
     "Team": 2,
@@ -264,6 +286,7 @@
     "Overall": 73
   },
   {
+    "Codigo": 20,
     "Name": "Ursula Miller",
     "Nickname": "Lucky",
     "Team": 3,
@@ -276,6 +299,7 @@
     "Overall": 73.16666666666667
   },
   {
+    "Codigo": 20,
     "Name": "Olivia Wilson",
     "Nickname": "Champ",
     "Team": 4,
@@ -288,6 +312,7 @@
     "Overall": 75.5
   },
   {
+    "Codigo": 20,
     "Name": "Jack Taylor",
     "Nickname": "Ace",
     "Team": 5,
@@ -300,6 +325,7 @@
     "Overall": 75.16666666666667
   },
   {
+    "Codigo": 20,
     "Name": "Jack Fisher",
     "Nickname": "Jazz",
     "Team": 6,
@@ -312,6 +338,7 @@
     "Overall": 74.83333333333333
   },
   {
+    "Codigo": 20,
     "Name": "Mia Miller",
     "Nickname": "Queen",
     "Team": 7,
@@ -324,6 +351,7 @@
     "Overall": 76.5
   },
   {
+    "Codigo": 20,
     "Name": "William Vargas",
     "Nickname": "Maverick",
     "Team": 8,
@@ -336,6 +364,7 @@
     "Overall": 74
   },
   {
+    "Codigo": 20,
     "Name": "Emma Zhang",
     "Nickname": "Shark",
     "Team": 9,
@@ -348,6 +377,7 @@
     "Overall": 75.83333333333333
   },
   {
+    "Codigo": 20,
     "Name": "Olivia Adams",
     "Nickname": "Jazz",
     "Team": 10,
@@ -360,6 +390,7 @@
     "Overall": 74.5
   },
   {
+    "Codigo": 20,
     "Name": "Zoe Upton",
     "Nickname": "Foxy",
     "Team": 1,
@@ -372,6 +403,7 @@
     "Overall": 75.5
   },
   {
+    "Codigo": 20,
     "Name": "Frank Patel",
     "Nickname": "Tiger",
     "Team": 2,
@@ -384,6 +416,7 @@
     "Overall": 74.66666666666667
   },
   {
+    "Codigo": 20,
     "Name": "Thomas Khan",
     "Nickname": "Yogi",
     "Team": 3,
@@ -396,6 +429,7 @@
     "Overall": 75.16666666666667
   },
   {
+    "Codigo": 20,
     "Name": "Zoe Garcia",
     "Nickname": "X-Man",
     "Team": 4,
@@ -408,6 +442,7 @@
     "Overall": 76.5
   },
   {
+    "Codigo": 20,
     "Name": "Jack Adams",
     "Nickname": "Ace",
     "Team": 5,
@@ -420,6 +455,7 @@
     "Overall": 75.5
   },
   {
+    "Codigo": 20,
     "Name": "David Patel",
     "Nickname": "X-Man",
     "Team": 6,
@@ -432,6 +468,7 @@
     "Overall": 74.66666666666667
   },
   {
+    "Codigo": 20,
     "Name": "Grace Upton",
     "Nickname": "Ninja",
     "Team": 7,
@@ -444,6 +481,7 @@
     "Overall": 73.5
   },
   {
+    "Codigo": 20,
     "Name": "Henry Hernandez",
     "Nickname": "Zeus",
     "Team": 8,
@@ -456,6 +494,7 @@
     "Overall": 75.83333333333333
   },
   {
+    "Codigo": 20,
     "Name": "Ursula Taylor",
     "Nickname": "Foxy",
     "Team": 9,
@@ -468,6 +507,7 @@
     "Overall": 75.33333333333333
   },
   {
+    "Codigo": 20,
     "Name": "Xander Davis",
     "Nickname": "Maverick",
     "Team": 10,
@@ -480,6 +520,7 @@
     "Overall": 75.16666666666667
   },
   {
+    "Codigo": 20,
     "Name": "Ursula Upton",
     "Nickname": "Buddy",
     "Team": 1,
@@ -492,6 +533,7 @@
     "Overall": 75.33333333333333
   },
   {
+    "Codigo": 20,
     "Name": "Isabella Fisher",
     "Nickname": "Wizard",
     "Team": 2,
@@ -504,6 +546,7 @@
     "Overall": 72.16666666666667
   },
   {
+    "Codigo": 20,
     "Name": "Victoria Carter",
     "Nickname": "Ninja",
     "Team": 3,
@@ -516,6 +559,7 @@
     "Overall": 73.16666666666667
   },
   {
+    "Codigo": 20,
     "Name": "Charlie Rodriguez",
     "Nickname": "Guru",
     "Team": 4,
@@ -528,6 +572,7 @@
     "Overall": 72.5
   },
   {
+    "Codigo": 20,
     "Name": "Mia Vargas",
     "Nickname": "Maverick",
     "Team": 5,
@@ -540,6 +585,7 @@
     "Overall": 74.83333333333333
   },
   {
+    "Codigo": 20,
     "Name": "Penelope Zhang",
     "Nickname": "Shark",
     "Team": 6,
@@ -552,6 +598,7 @@
     "Overall": 75.16666666666667
   },
   {
+    "Codigo": 20,
     "Name": "Xander O'Brien",
     "Nickname": "Jazz",
     "Team": 7,
@@ -564,6 +611,7 @@
     "Overall": 74.16666666666667
   },
   {
+    "Codigo": 20,
     "Name": "Ruby O'Brien",
     "Nickname": "Shark",
     "Team": 8,
@@ -576,6 +624,7 @@
     "Overall": 74.33333333333333
   },
   {
+    "Codigo": 20,
     "Name": "Sophia Davis",
     "Nickname": "Duke",
     "Team": 9,
@@ -588,6 +637,7 @@
     "Overall": 73.16666666666667
   },
   {
+    "Codigo": 20,
     "Name": "Ruby Xu",
     "Nickname": "Jazz",
     "Team": 10,
