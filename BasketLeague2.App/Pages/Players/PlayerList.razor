@@ -1,0 +1,90 @@
+﻿@page "/Players"
+@page "/Players/{codigo}"
+
+@inject HttpClient Http
+@inject IJSRuntime JsRuntime
+
+@using BasketLeague2.Utils.Models
+
+<h3>PlayerList</h3>
+
+<button Class="btn btn-primary" @onclick="GeneratePlayers">GENERATE RANDOM PLAYER</button>
+
+<table class="table table-striped">
+    <thead class="thead-light">
+    <tr>
+        <th>
+            NOMBRE
+        </th>
+        <th>
+            EQUIPO
+        </th>
+        <th>
+            TIRO DOBLE
+        </th>
+        <th>
+            TIRO TRIPLE
+        </th>
+        <th>
+            FÍSICO
+        </th>
+        <th>
+            PLAYMAKING
+        </th>
+        <th>
+            REBOTE
+        </th>
+        <th>
+            DEFENSA
+        </th>
+        <th>
+            MEDIA
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var p in players)
+    {
+        <tr>
+            <td>@p.Name "@p.Nickname"</td>
+            <td>@p.Team</td>
+            <td>@p.InsideScoring</td>
+            <td>@p.OutsideScoring</td>
+            <td>@p.Athleticism</td>
+            <td>@p.Playmaking</td>
+            <td>@p.Rebounding</td>
+            <td>@p.Defending</td>
+            <td>@p.Overall</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@code {
+
+    [Parameter]
+    public string Codigo { get; set; }
+
+    public string jsonResult = "";
+
+    public IEnumerable<Player> players = new Player[] { };
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetPlayers();
+    }
+
+    private async Task GetPlayers()
+    {
+        var p = await Http.GetFromJsonAsync<IEnumerable<Player>>("data/players.json");
+        players = players.Concat(p.OrderByDescending(p => p.Overall));
+    }
+
+    private async Task GeneratePlayers()
+    {
+        var players = Player.RandomPlayer(10);
+        jsonResult = System.Text.Json.JsonSerializer.Serialize(players);
+        await JsRuntime.InvokeVoidAsync("clipboardCopy.copyText", jsonResult);
+    }
+
+}

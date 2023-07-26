@@ -6,10 +6,12 @@
         /// Fecha del partido
         /// </summary>
         public DateTime Fecha { get; set; }
+
         /// <summary>
         /// Equipo que juega en casa
         /// </summary>
         public string Equipo1 { get; set; }
+
         /// <summary>
         /// Equipo visitante
         /// </summary>
