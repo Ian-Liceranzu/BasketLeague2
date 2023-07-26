@@ -86,7 +86,7 @@ Bienvenido a la mejor liga de basket del mundo
 
     private async Task GetResults()
     {
-        var r = await Http.GetFromJsonAsync<IEnumerable<Result>>("data/results/S2.json");
+        var r = await Http.GetFromJsonAsync<IEnumerable<Result>>("data/results/R_S2.json");
         _results = _results.Concat(r);
     }
 
