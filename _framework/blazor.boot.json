@@ -7,8 +7,8 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "BasketLeague2.App.dll": "sha256-WkKlXc99pUzjP1wqIAUcPdb2FdzovJQLDNCDPfyBqIc=",
-      "BasketLeague2.Utils.dll": "sha256-La4FRHdntIjZJgvBaWJycmYiB9bZDIa+LJaycMJNNzM=",
+      "BasketLeague2.App.dll": "sha256-s4dAitTikEHHyV9kUcj5Sasv2YuXnYA7ntHFueHCIA4=",
+      "BasketLeague2.Utils.dll": "sha256-AUXhifaLxoIVB4kqrYZ0VB8Y23s43v2LMWLUF0XlHzI=",
       "Blazorise.Bootstrap.dll": "sha256-wiHxV8O2zuWSE6BewPawezPy4LHMF4fe\/8qdEY0rJqg=",
       "Blazorise.Charts.dll": "sha256-DvpUtEWqeZKmBjMabfQ2oZQukd7TNDP1nq7UZ7Y63UY=",
       "Blazorise.DataGrid.dll": "sha256-nmR61VW3tfBzhkSz6q5EFYykqiPKjaRU5sXNe3f0NgI=",
@@ -40,6 +40,7 @@
       "System.ComponentModel.EventBasedAsync.dll": "sha256-knraneafXQ2CMnlB02Ah7g4Jn3sTCnJQwxKI0\/AYytc=",
       "System.ComponentModel.Primitives.dll": "sha256-4fJQnPTCRAMF0ulklvxm5VYTe6yxeMmyxPz2i+FzHuw=",
       "System.ComponentModel.TypeConverter.dll": "sha256-qLLwJ2LPKzR\/uncqe7sn30211M1lKfUkjjiKswweAfE=",
+      "System.Console.dll": "sha256-CdjftbvV8Xzlxr0Y9DRR0og\/UkdhrfG23fbZdG3L+ug=",
       "System.dll": "sha256-PgXY3KU9eBwBHCfE2uH8Gn3rD9JdUKsLWLUMRQ2L21o=",
       "System.Drawing.dll": "sha256-GDDpRuSgr57CIkUMoALZ8rjfmXZ+c9KqgsGIu32\/JNA=",
       "System.Drawing.Primitives.dll": "sha256-RU9Iz9QDiPZ8WqzdBEVntPz9kQZHmvVNyx2Y5miabHs=",
@@ -51,7 +52,7 @@
       "System.Net.Http.Json.dll": "sha256-7W2ZfoCQwilQ9NRqUgrmLjhllfGBORvG99tPUTOxY0s=",
       "System.Net.Primitives.dll": "sha256-LC\/SKTKYsrqBptkBVAm31\/ewUA7UABVMdXAEv0uR83E=",
       "System.ObjectModel.dll": "sha256-7KkfrrL8gRf2dZNtWsKU6OrBJhbQ59dHJJiGo3PszfY=",
-      "System.Private.CoreLib.dll": "sha256-nbI9dylQQtK9Y7PT3hlM3SvoSZuaqbptm9Nmx+Vo2Y0=",
+      "System.Private.CoreLib.dll": "sha256-usU3nc2vgQ21mFYhvsJjK73Xe+3DwWqu\/8CTTcNvNag=",
       "System.Private.Runtime.InteropServices.JavaScript.dll": "sha256-v8xnnikKdjccZofDmZJ4Wx1GSdNUldidfrTsbjhX8tg=",
       "System.Private.Uri.dll": "sha256-gDLrEy03QeO8BioMcDJUkkyaYPhOcLbtQ+RPG6Ox\/sQ=",
       "System.Runtime.CompilerServices.Unsafe.dll": "sha256-Tw4ihVPZo3u4pWJVVdae2B8Qz\/2VA1ZXa7OHes6FXaw=",
