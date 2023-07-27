@@ -79,7 +79,7 @@ namespace BasketLeague2.Utils.Utils
             };
         }
 
-        public static int[][] GenerateStats(List<Player> players, Random rand)
+        private static int[][] GenerateStats(IReadOnlyList<Player> players, Random rand)
         {
             var stats = new int[players.Count][];
             for (var i = 0; i < players.Count; i++)
@@ -102,12 +102,12 @@ namespace BasketLeague2.Utils.Utils
         private static int CalculateScore(int[][] stats)
         {
             var totalScore = 0;
-            for (var i = 0; i < stats.Length; i++)
+            foreach (var stat in stats)
             {
                 var playerScore = 0;
-                for (var j = 1; j < stats[i].Length; j++)
+                for (var j = 1; j < stat.Length; j++)
                 {
-                    playerScore += stats[i][j];
+                    playerScore += stat[j];
                 }
 
                 totalScore += playerScore;
@@ -119,12 +119,7 @@ namespace BasketLeague2.Utils.Utils
         private static int MakeDivisible(int num, int div)
         {
             var numStr = num.ToString();
-            var sum = 0;
-
-            for (var i = 0; i < numStr.Length; i++)
-            {
-                sum += int.Parse(numStr[i].ToString());
-            }
+            var sum = numStr.Sum(t => int.Parse(t.ToString()));
 
             if (sum % div != 0)
             {

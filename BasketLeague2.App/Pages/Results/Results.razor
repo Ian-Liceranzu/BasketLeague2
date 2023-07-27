@@ -8,7 +8,7 @@
 
 <TextEdit Style="width:25%" Text="@_customFilterValue" TextChanged="@OnCustomFilterValueChanged"></TextEdit>
 <DataGrid @ref="_dataGrid"
-          TItem="Result"
+          TItem="AdvancedResult"
           Data="@_resultados"
           Responsive
           Sortable
@@ -18,7 +18,9 @@
           PagerPosition="DataGridPagerPosition.Bottom"
           PagerOptions="new DataGridPagerOptions { ButtonSize = Size.Small }"
           SortMode="DataGridSortMode.Single"
-          PageSize="10">
+          PageSize="10"
+          DetailRowStartsVisible="false"
+          DetailRowTrigger="@((e) => e.Item.Stats1?.Length > 0)">
     <DataGridColumns>
         <DataGridCommandColumn/>
         <DataGridColumn Field="@nameof(Result.Fecha)" Caption="FECHA"/>
@@ -57,6 +59,58 @@
         </DataGridColumn>
         <DataGridColumn Field="@nameof(Result.Resultado2)" Caption="RESULTADO 2"/>
     </DataGridColumns>
+    <DetailRowTemplate>
+        @{
+            var stats1 = context.Stats1.ConvertToPlayerResult();
+            var stats2 = context.Stats2.ConvertToPlayerResult();
+
+            <DataGrid TItem="PlayerResult"
+                      Data="stats1"
+                      Sortable="false"
+                      ShowCaptions="false">
+                <DataGridCommandColumn/>
+                <DataGridColumn Field="@nameof(PlayerResult.Codigo)" Caption="Jugador">
+                    <DisplayTemplate Context="prContext">
+                        @{
+                            var player = _players.FirstOrDefault(p => p.Codigo == (prContext as PlayerResult).Codigo);
+
+                            <Label>@player.Name "@player.Nickname"</Label>
+                        }
+                    </DisplayTemplate>
+                </DataGridColumn>
+                <DataGridColumn Field="@nameof(PlayerResult.Dobles)" Caption="Dobles"/>
+                <DataGridColumn Field="@nameof(PlayerResult.Triples)" Caption="Triples"/>
+                <DataGridColumn Field="@nameof(PlayerResult.Athleticism)" Caption="Atletismo"/>
+                <DataGridColumn Field="@nameof(PlayerResult.Playmaking)" Caption="Jugadas"/>
+                <DataGridColumn Field="@nameof(PlayerResult.Rebounding)" Caption="Rebotes"/>
+                <DataGridColumn Field="@nameof(PlayerResult.Defending)" Caption="Defensa"/>
+                <DataGridColumn Field="@nameof(PlayerResult.Total)" Caption="TOTAL"/>
+            </DataGrid>
+
+            <DataGrid TItem="PlayerResult"
+                      Data="stats2"
+                      Sortable="false"
+                      ShowCaptions="false">
+                <DataGridCommandColumn/>
+                <DataGridColumn Field="@nameof(PlayerResult.Codigo)" Caption="Jugador">
+                    <DisplayTemplate Context="prContext">
+                        @{
+                            var player = _players.FirstOrDefault(p => p.Codigo == (prContext as PlayerResult).Codigo);
+
+                            <Label>@player.Name "@player.Nickname"</Label>
+                        }
+                    </DisplayTemplate>
+                </DataGridColumn>
+                <DataGridColumn Field="@nameof(PlayerResult.Dobles)" Caption="Dobles"/>
+                <DataGridColumn Field="@nameof(PlayerResult.Triples)" Caption="Triples"/>
+                <DataGridColumn Field="@nameof(PlayerResult.Athleticism)" Caption="Atletismo"/>
+                <DataGridColumn Field="@nameof(PlayerResult.Playmaking)" Caption="Jugadas"/>
+                <DataGridColumn Field="@nameof(PlayerResult.Rebounding)" Caption="Rebotes"/>
+                <DataGridColumn Field="@nameof(PlayerResult.Defending)" Caption="Defensa"/>
+                <DataGridColumn Field="@nameof(PlayerResult.Total)" Caption="TOTAL"/>
+            </DataGrid>
+        }
+    </DetailRowTemplate>
     <PageButtonTemplate>
         <Span TextColor="TextColor.Success">
             @context.PageNumber
@@ -97,10 +151,11 @@
     [Parameter]
     public string Season { get; set; }
 
-    private IEnumerable<Result> _resultados = new Result[] { };
+    private IEnumerable<AdvancedResult> _resultados = new AdvancedResult[] { };
     private IEnumerable<Team> _teams = new Team[] { };
+    private IEnumerable<Player> _players = new Player[] { };
 
-    private DataGrid<Result> _dataGrid = new();
+    private DataGrid<AdvancedResult> _dataGrid = new();
     private string _customFilterValue;
 
     protected override async Task OnInitializedAsync()
@@ -108,6 +163,8 @@
         await GetTeams();
 
         await GetResults();
+
+        await GetPlayers();
     }
 
     private async Task GetTeams()
@@ -118,7 +175,7 @@
 
     private async Task GetResults()
     {
-        var r = await Http.GetFromJsonAsync<IEnumerable<Result>>($"data/results/R_{Season}.json");
+        var r = await Http.GetFromJsonAsync<IEnumerable<AdvancedResult>>($"data/results/R_{Season}.json");
 
         foreach (var result in r)
         {
@@ -127,6 +184,12 @@
         }
 
         _resultados = _resultados.Concat(r.OrderBy(r => r.Fecha));
+    }
+
+    private async Task GetPlayers()
+    {
+        var p = await Http.GetFromJsonAsync<IEnumerable<Player>>("data/players.json");
+        _players = _players.Concat(p.OrderBy(p => p.Codigo));
     }
 
     private Task OnCustomFilterValueChanged(string e)
