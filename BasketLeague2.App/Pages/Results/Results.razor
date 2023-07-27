@@ -158,6 +158,11 @@
     private DataGrid<AdvancedResult> _dataGrid = new();
     private string _customFilterValue;
 
+    protected override async Task OnParametersSetAsync()
+    {
+        await OnInitializedAsync();
+    }
+
     protected override async Task OnInitializedAsync()
     {
         await GetTeams();
@@ -165,16 +170,20 @@
         await GetResults();
 
         await GetPlayers();
+        
+        StateHasChanged();
     }
 
     private async Task GetTeams()
     {
+        _teams = new Team[] { };
         var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
         _teams = _teams.Concat(t.OrderBy(t => t.NombreCompleto));
     }
 
     private async Task GetResults()
     {
+        _resultados = new AdvancedResult[] { };
         var r = await Http.GetFromJsonAsync<IEnumerable<AdvancedResult>>($"data/results/R_{Season}.json");
 
         foreach (var result in r)
@@ -188,6 +197,7 @@
 
     private async Task GetPlayers()
     {
+        _players = new Player[] { };
         var p = await Http.GetFromJsonAsync<IEnumerable<Player>>("data/players.json");
         _players = _players.Concat(p.OrderBy(p => p.Codigo));
     }
