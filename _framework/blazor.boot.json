@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "BasketLeague2.App.dll": "sha256-w0DedOhBTm6x3KVDFPNbkj10AWegBVNCOj8T15zx4U0=",
+      "BasketLeague2.App.dll": "sha256-lX8qfUv4E6hSFHB3VqqOaPPhBUrw7Hf4Ugm1VEmrK8M=",
       "BasketLeague2.Utils.dll": "sha256-ajcHi9dhX2ry46OFXT7Dmci2TSSjQWuYgAHkUdJ+AJk=",
       "Blazorise.Bootstrap.dll": "sha256-wiHxV8O2zuWSE6BewPawezPy4LHMF4fe\/8qdEY0rJqg=",
       "Blazorise.Charts.dll": "sha256-DvpUtEWqeZKmBjMabfQ2oZQukd7TNDP1nq7UZ7Y63UY=",
