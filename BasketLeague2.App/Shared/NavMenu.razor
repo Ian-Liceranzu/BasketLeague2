@@ -15,14 +15,27 @@
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="LeaderboardList">
+            <NavLink class="nav-link" @onclick="() => expandSubNavLeaderboard = !expandSubNavLeaderboard">
                 <span class="oi oi-clipboard" aria-hidden="true"></span> Leaderboard
             </NavLink>
+            @if (expandSubNavLeaderboard)
+            {
+                <NavLink class="nav-link" href="Leaderboard/S2">
+                    Temporada 2 (2022-2023)
+                </NavLink>
+            }
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="TimetableList">
+            <NavLink class="nav-link" @onclick="() => expandSubNavTimetables = !expandSubNavTimetables">
                 <span class="oi oi-clock" aria-hidden="true"></span> Timetables
             </NavLink>
+            @if (expandSubNavTimetables)
+            {
+                <NavLink class="nav-link" href="timetable/S2">
+                    Temporada 2 (2022-2023)
+                </NavLink>
+            }
+
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="teams">
@@ -40,15 +53,30 @@
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="ResultList">
+            <NavLink class="nav-link" @onclick="() => expandSubNavResults = !expandSubNavResults">
                 <span class="oi oi-file" aria-hidden="true"></span> Results
             </NavLink>
+            @if (expandSubNavResults)
+            {
+                <NavLink class="nav-link" href="results/S2">
+                    Temporada 2 (2022-2023)
+                </NavLink>
+                <NavLink class="nav-link" href="results/S2-PO">
+                    Temporada 2 (Playoffs)
+                </NavLink>
+                <NavLink class="nav-link" href="results/S3">
+                    Temporada 3 (PRUEBAS)
+                </NavLink>
+            }
         </div>
     </nav>
 </div>
 
 @code {
     private bool collapseNavMenu = true;
+    private bool expandSubNavResults;
+    private bool expandSubNavLeaderboard;
+    private bool expandSubNavTimetables;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
