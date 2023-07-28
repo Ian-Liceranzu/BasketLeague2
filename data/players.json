@@ -314,7 +314,7 @@
   {
     "Codigo": 25,
     "Name": "Jack Taylor",
-    "Nickname": "Ace",
+    "Nickname": "Jackity",
     "Team": 5,
     "InsideScoring": 78,
     "OutsideScoring": 72,
@@ -340,7 +340,7 @@
   {
     "Codigo": 27,
     "Name": "Mia Miller",
-    "Nickname": "Queen",
+    "Nickname": "M&Ms",
     "Team": 7,
     "InsideScoring": 75,
     "OutsideScoring": 79,
@@ -379,7 +379,7 @@
   {
     "Codigo": 30,
     "Name": "Olivia Adams",
-    "Nickname": "Jazz",
+    "Nickname": "Olvidona",
     "Team": 10,
     "InsideScoring": 75,
     "OutsideScoring": 79,
@@ -444,7 +444,7 @@
   {
     "Codigo": 35,
     "Name": "Jack Adams",
-    "Nickname": "Ace",
+    "Nickname": "Adamizador",
     "Team": 5,
     "InsideScoring": 76,
     "OutsideScoring": 73,
@@ -457,7 +457,7 @@
   {
     "Codigo": 36,
     "Name": "David Patel",
-    "Nickname": "X-Man",
+    "Nickname": "DP",
     "Team": 6,
     "InsideScoring": 74,
     "OutsideScoring": 75,
@@ -496,7 +496,7 @@
   {
     "Codigo": 39,
     "Name": "Ursula Taylor",
-    "Nickname": "Foxy",
+    "Nickname": "Octaylor",
     "Team": 9,
     "InsideScoring": 79,
     "OutsideScoring": 77,
@@ -509,7 +509,7 @@
   {
     "Codigo": 40,
     "Name": "Xander Davis",
-    "Nickname": "Maverick",
+    "Nickname": "X-Rex",
     "Team": 10,
     "InsideScoring": 78,
     "OutsideScoring": 79,
@@ -521,8 +521,8 @@
   },
   {
     "Codigo": 41,
-    "Name": "Ursula Upton",
-    "Nickname": "Buddy",
+    "Name": "Marcelino Gasolino",
+    "Nickname": "Hermano Oso",
     "Team": 1,
     "InsideScoring": 78,
     "OutsideScoring": 72,
@@ -548,7 +548,7 @@
   {
     "Codigo": 43,
     "Name": "Victoria Carter",
-    "Nickname": "Ninja",
+    "Nickname": "Ad Victoriam",
     "Team": 3,
     "InsideScoring": 77,
     "OutsideScoring": 70,
@@ -574,7 +574,7 @@
   {
     "Codigo": 45,
     "Name": "Mia Vargas",
-    "Nickname": "Maverick",
+    "Nickname": "Monk",
     "Team": 5,
     "InsideScoring": 79,
     "OutsideScoring": 73,
@@ -587,7 +587,7 @@
   {
     "Codigo": 46,
     "Name": "Penelope Zhang",
-    "Nickname": "Shark",
+    "Nickname": "Not Cruz",
     "Team": 6,
     "InsideScoring": 75,
     "OutsideScoring": 73,
@@ -600,7 +600,7 @@
   {
     "Codigo": 47,
     "Name": "Xander O'Brien",
-    "Nickname": "Jazz",
+    "Nickname": "The Irishman",
     "Team": 7,
     "InsideScoring": 70,
     "OutsideScoring": 73,
@@ -613,7 +613,7 @@
   {
     "Codigo": 48,
     "Name": "Ruby O'Brien",
-    "Nickname": "Shark",
+    "Nickname": "Piranha",
     "Team": 8,
     "InsideScoring": 75,
     "OutsideScoring": 75,
@@ -626,7 +626,7 @@
   {
     "Codigo": 49,
     "Name": "Sophia Davis",
-    "Nickname": "Duke",
+    "Nickname": "Countess",
     "Team": 9,
     "InsideScoring": 79,
     "OutsideScoring": 73,
@@ -639,7 +639,7 @@
   {
     "Codigo": 50,
     "Name": "Ruby Xu",
-    "Nickname": "Jazz",
+    "Nickname": "Xubixury",
     "Team": 10,
     "InsideScoring": 79,
     "OutsideScoring": 75,

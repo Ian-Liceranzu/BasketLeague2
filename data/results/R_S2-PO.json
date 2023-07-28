@@ -201,5 +201,75 @@
     "Equipo2": "8",
     "Resultado1": 118,
     "Resultado2": 123
+  },
+  {
+    "Fecha": "2023-07-28T09:34:54.534+02:00",
+    "Equipo1": "1",
+    "Equipo2": "4",
+    "Resultado1": 141,
+    "Resultado2": 109
+  },
+  {
+    "Fecha": "2023-07-28T09:35:00.338+02:00",
+    "Equipo1": "1",
+    "Equipo2": "4",
+    "Resultado1": 91,
+    "Resultado2": 104
+  },
+  {
+    "Fecha": "2023-07-28T09:35:05.808+02:00",
+    "Equipo1": "1",
+    "Equipo2": "4",
+    "Resultado1": 124,
+    "Resultado2": 114
+  },
+  {
+    "Fecha": "2023-07-28T09:35:12.168+02:00",
+    "Equipo1": "1",
+    "Equipo2": "4",
+    "Resultado1": 101,
+    "Resultado2": 110
+  },
+  {
+    "Fecha": "2023-07-28T09:35:17.515+02:00",
+    "Equipo1": "1",
+    "Equipo2": "4",
+    "Resultado1": 96,
+    "Resultado2": 118
+  },
+  {
+    "Fecha": "2023-07-28T11:54:04.507+02:00",
+    "Equipo1": "3",
+    "Equipo2": "8",
+    "Resultado1": 115,
+    "Resultado2": 97
+  },
+  {
+    "Fecha": "2023-07-28T11:54:09.787+02:00",
+    "Equipo1": "3",
+    "Equipo2": "8",
+    "Resultado1": 110,
+    "Resultado2": 118
+  },
+  {
+    "Fecha": "2023-07-28T11:54:14.921+02:00",
+    "Equipo1": "3",
+    "Equipo2": "8",
+    "Resultado1": 76,
+    "Resultado2": 62
+  },
+  {
+    "Fecha": "2023-07-28T11:54:20.714+02:00",
+    "Equipo1": "3",
+    "Equipo2": "8",
+    "Resultado1": 81,
+    "Resultado2": 145
+  },
+  {
+    "Fecha": "2023-07-28T11:54:26.06+02:00",
+    "Equipo1": "3",
+    "Equipo2": "8",
+    "Resultado1": 116,
+    "Resultado2": 132
   }
 ]
