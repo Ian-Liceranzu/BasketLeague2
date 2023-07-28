@@ -22,6 +22,11 @@ a, .btn-link {
     padding-top: 1.1rem;
 }
 
+.horizontal-gradient {
+    color: white;
+    background-image: linear-gradient(90deg, rgba(0,48,73,1) 0%, rgba(102,155,188,1) 100% );
+}
+
 .valid.modified:not([type=checkbox]) {
     outline: 1px solid #26b050;
 }
