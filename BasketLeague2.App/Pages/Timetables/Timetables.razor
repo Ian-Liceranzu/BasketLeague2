@@ -61,28 +61,39 @@
 </DataGrid>
 
 @code {
+
     [Parameter]
     public string Season { get; set; }
-    
+
     private IEnumerable<Team> _teams = new Team[] { };
     private IEnumerable<Match> _matches = new Match[] { };
     private DataGrid<Match> _dataGrid = new();
     private string _customFilterValue;
 
+    protected override async Task OnParametersSetAsync()
+    {
+        await OnInitializedAsync();
+    }
+
     protected override async Task OnInitializedAsync()
     {
         await GetTeams();
+        
         await GetTimeTables();
+
+        StateHasChanged();
     }
 
     private async Task GetTeams()
     {
+        _teams = new Team[] {};
         var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
         _teams = _teams.Concat(t.OrderBy(t => t.NombreCompleto));
     }
 
     private async Task GetTimeTables()
     {
+        _matches = new List<Match>();
         var m = await Http.GetFromJsonAsync<IEnumerable<Match>>($"data/matches/M_{Season}.json");
 
         foreach (var match in m)
