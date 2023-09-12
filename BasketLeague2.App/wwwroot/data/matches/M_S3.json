@@ -1,2 +1,452 @@
-{
-}
+[
+  {
+    "Fecha": "2023-10-03",
+    "Equipo1": "1",
+    "Equipo2": "10"
+  },
+  {
+    "Fecha": "2023-10-03",
+    "Equipo1": "6",
+    "Equipo2": "9"
+  },
+  {
+    "Fecha": "2023-10-05",
+    "Equipo1": "4",
+    "Equipo2": "8"
+  },
+  {
+    "Fecha": "2023-10-05",
+    "Equipo1": "3",
+    "Equipo2": "7"
+  },
+  {
+    "Fecha": "2023-10-05",
+    "Equipo1": "5",
+    "Equipo2": "2"
+  },
+  {
+    "Fecha": "2023-10-10",
+    "Equipo1": "8",
+    "Equipo2": "3"
+  },
+  {
+    "Fecha": "2023-10-10",
+    "Equipo1": "6",
+    "Equipo2": "5"
+  },
+  {
+    "Fecha": "2023-10-12",
+    "Equipo1": "9",
+    "Equipo2": "4"
+  },
+  {
+    "Fecha": "2023-10-12",
+    "Equipo1": "2",
+    "Equipo2": "1"
+  },
+  {
+    "Fecha": "2023-10-12",
+    "Equipo1": "10",
+    "Equipo2": "7"
+  },
+  {
+    "Fecha": "2023-10-17",
+    "Equipo1": "1",
+    "Equipo2": "6"
+  },
+  {
+    "Fecha": "2023-10-17",
+    "Equipo1": "3",
+    "Equipo2": "10"
+  },
+  {
+    "Fecha": "2023-10-19",
+    "Equipo1": "8",
+    "Equipo2": "9"
+  },
+  {
+    "Fecha": "2023-10-19",
+    "Equipo1": "7",
+    "Equipo2": "2"
+  },
+  {
+    "Fecha": "2023-10-19",
+    "Equipo1": "5",
+    "Equipo2": "4"
+  },
+  {
+    "Fecha": "2023-10-24",
+    "Equipo1": "6",
+    "Equipo2": "7"
+  },
+  {
+    "Fecha": "2023-10-24",
+    "Equipo1": "8",
+    "Equipo2": "5"
+  },
+  {
+    "Fecha": "2023-10-26",
+    "Equipo1": "2",
+    "Equipo2": "10"
+  },
+  {
+    "Fecha": "2023-10-26",
+    "Equipo1": "9",
+    "Equipo2": "3"
+  },
+  {
+    "Fecha": "2023-10-26",
+    "Equipo1": "4",
+    "Equipo2": "1"
+  },
+  {
+    "Fecha": "2023-10-31",
+    "Equipo1": "7",
+    "Equipo2": "4"
+  },
+  {
+    "Fecha": "2023-10-26",
+    "Equipo1": "10",
+    "Equipo2": "6"
+  },
+  {
+    "Fecha": "2023-10-26",
+    "Equipo1": "5",
+    "Equipo2": "9"
+  },
+  {
+    "Fecha": "2023-10-26",
+    "Equipo1": "3",
+    "Equipo2": "2"
+  },
+  {
+    "Fecha": "2023-10-31",
+    "Equipo1": "1",
+    "Equipo2": "8"
+  },
+  {
+    "Fecha": "2023-10-31",
+    "Equipo1": "4",
+    "Equipo2": "10"
+  },
+  {
+    "Fecha": "2023-11-02",
+    "Equipo1": "8",
+    "Equipo2": "7"
+  },
+  {
+    "Fecha": "2023-11-02",
+    "Equipo1": "6",
+    "Equipo2": "2"
+  },
+  {
+    "Fecha": "2023-11-02",
+    "Equipo1": "5",
+    "Equipo2": "3"
+  },
+  {
+    "Fecha": "2023-11-07",
+    "Equipo1": "9",
+    "Equipo2": "1"
+  },
+  {
+    "Fecha": "2023-11-07",
+    "Equipo1": "10",
+    "Equipo2": "8"
+  },
+  {
+    "Fecha": "2023-11-09",
+    "Equipo1": "1",
+    "Equipo2": "5"
+  },
+  {
+    "Fecha": "2023-11-09",
+    "Equipo1": "7",
+    "Equipo2": "9"
+  },
+  {
+    "Fecha": "2023-11-09",
+    "Equipo1": "2",
+    "Equipo2": "4"
+  },
+  {
+    "Fecha": "2023-11-14",
+    "Equipo1": "3",
+    "Equipo2": "6"
+  },
+  {
+    "Fecha": "2023-11-14",
+    "Equipo1": "8",
+    "Equipo2": "2"
+  },
+  {
+    "Fecha": "2023-11-16",
+    "Equipo1": "9",
+    "Equipo2": "10"
+  },
+  {
+    "Fecha": "2023-11-16",
+    "Equipo1": "5",
+    "Equipo2": "7"
+  },
+  {
+    "Fecha": "2023-11-16",
+    "Equipo1": "1",
+    "Equipo2": "3"
+  },
+  {
+    "Fecha": "2023-11-21",
+    "Equipo1": "4",
+    "Equipo2": "6"
+  },
+  {
+    "Fecha": "2023-11-21",
+    "Equipo1": "7",
+    "Equipo2": "1"
+  },
+  {
+    "Fecha": "2023-11-23",
+    "Equipo1": "10",
+    "Equipo2": "5"
+  },
+  {
+    "Fecha": "2023-11-23",
+    "Equipo1": "3",
+    "Equipo2": "4"
+  },
+  {
+    "Fecha": "2023-11-23",
+    "Equipo1": "6",
+    "Equipo2": "8"
+  },
+  {
+    "Fecha": "2023-11-28",
+    "Equipo1": "2",
+    "Equipo2": "9"
+  },
+  {
+    "Fecha": "2023-11-28",
+    "Equipo1": "9",
+    "Equipo2": "6"
+  },
+  {
+    "Fecha": "2023-11-30",
+    "Equipo1": "2",
+    "Equipo2": "5"
+  },
+  {
+    "Fecha": "2023-11-30",
+    "Equipo1": "10",
+    "Equipo2": "1"
+  },
+  {
+    "Fecha": "2023-11-30",
+    "Equipo1": "7",
+    "Equipo2": "3"
+  },
+  {
+    "Fecha": "2023-12-05",
+    "Equipo1": "8",
+    "Equipo2": "4"
+  },
+  {
+    "Fecha": "2023-12-05",
+    "Equipo1": "7",
+    "Equipo2": "10"
+  },
+  {
+    "Fecha": "2023-12-07",
+    "Equipo1": "1",
+    "Equipo2": "2"
+  },
+  {
+    "Fecha": "2023-12-07",
+    "Equipo1": "3",
+    "Equipo2": "8"
+  },
+  {
+    "Fecha": "2023-12-07",
+    "Equipo1": "4",
+    "Equipo2": "9"
+  },
+  {
+    "Fecha": "2023-12-12",
+    "Equipo1": "5",
+    "Equipo2": "6"
+  },
+  {
+    "Fecha": "2023-12-12",
+    "Equipo1": "2",
+    "Equipo2": "7"
+  },
+  {
+    "Fecha": "2023-12-14",
+    "Equipo1": "4",
+    "Equipo2": "5"
+  },
+  {
+    "Fecha": "2023-12-14",
+    "Equipo1": "9",
+    "Equipo2": "8"
+  },
+  {
+    "Fecha": "2023-12-14",
+    "Equipo1": "6",
+    "Equipo2": "1"
+  },
+  {
+    "Fecha": "2023-12-19",
+    "Equipo1": "10",
+    "Equipo2": "3"
+  },
+  {
+    "Fecha": "2023-12-19",
+    "Equipo1": "3",
+    "Equipo2": "9"
+  },
+  {
+    "Fecha": "2023-12-21",
+    "Equipo1": "10",
+    "Equipo2": "2"
+  },
+  {
+    "Fecha": "2023-12-21",
+    "Equipo1": "5",
+    "Equipo2": "8"
+  },
+  {
+    "Fecha": "2023-12-21",
+    "Equipo1": "7",
+    "Equipo2": "6"
+  },
+  {
+    "Fecha": "2023-12-26",
+    "Equipo1": "1",
+    "Equipo2": "4"
+  },
+  {
+    "Fecha": "2023-12-26",
+    "Equipo1": "9",
+    "Equipo2": "5"
+  },
+  {
+    "Fecha": "2023-12-28",
+    "Equipo1": "8",
+    "Equipo2": "1"
+  },
+  {
+    "Fecha": "2023-12-28",
+    "Equipo1": "2",
+    "Equipo2": "3"
+  },
+  {
+    "Fecha": "2023-12-28",
+    "Equipo1": "6",
+    "Equipo2": "10"
+  },
+  {
+    "Fecha": "2024-01-02",
+    "Equipo1": "4",
+    "Equipo2": "7"
+  },
+  {
+    "Fecha": "2024-01-02",
+    "Equipo1": "10",
+    "Equipo2": "4"
+  },
+  {
+    "Fecha": "2024-01-04",
+    "Equipo1": "2",
+    "Equipo2": "6"
+  },
+  {
+    "Fecha": "2024-01-04",
+    "Equipo1": "1",
+    "Equipo2": "9"
+  },
+  {
+    "Fecha": "2024-01-04",
+    "Equipo1": "7",
+    "Equipo2": "8"
+  },
+  {
+    "Fecha": "2024-01-09",
+    "Equipo1": "3",
+    "Equipo2": "5"
+  },
+  {
+    "Fecha": "2024-01-09",
+    "Equipo1": "9",
+    "Equipo2": "7"
+  },
+  {
+    "Fecha": "2024-01-11",
+    "Equipo1": "5",
+    "Equipo2": "1"
+  },
+  {
+    "Fecha": "2024-01-11",
+    "Equipo1": "8",
+    "Equipo2": "10"
+  },
+  {
+    "Fecha": "2024-01-11",
+    "Equipo1": "4",
+    "Equipo2": "2"
+  },
+  {
+    "Fecha": "2024-01-16",
+    "Equipo1": "6",
+    "Equipo2": "3"
+  },
+  {
+    "Fecha": "2024-01-16",
+    "Equipo1": "6",
+    "Equipo2": "4"
+  },
+  {
+    "Fecha": "2024-01-18",
+    "Equipo1": "3",
+    "Equipo2": "1"
+  },
+  {
+    "Fecha": "2024-01-18",
+    "Equipo1": "7",
+    "Equipo2": "5"
+  },
+  {
+    "Fecha": "2024-01-18",
+    "Equipo1": "10",
+    "Equipo2": "9"
+  },
+  {
+    "Fecha": "2024-01-23",
+    "Equipo1": "2",
+    "Equipo2": "8"
+  },
+  {
+    "Fecha": "2024-01-23",
+    "Equipo1": "4",
+    "Equipo2": "3"
+  },
+  {
+    "Fecha": "2024-01-25",
+    "Equipo1": "1",
+    "Equipo2": "7"
+  },
+  {
+    "Fecha": "2024-01-25",
+    "Equipo1": "9",
+    "Equipo2": "2"
+  },
+  {
+    "Fecha": "2024-01-25",
+    "Equipo1": "8",
+    "Equipo2": "6"
+  },
+  {
+    "Fecha": "2024-01-30",
+    "Equipo1": "5",
+    "Equipo2": "10"
+  }
+]
