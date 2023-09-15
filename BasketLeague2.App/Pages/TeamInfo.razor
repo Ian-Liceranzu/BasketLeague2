@@ -1,4 +1,4 @@
-﻿@page "/Teams/Team/{codigo}"
+﻿@page "/Teams/Team/{Codigo}"
 
 @inject HttpClient Http
 
@@ -9,17 +9,83 @@
 <div>
     @if (_team != null)
     {
-        <Button Color="Color.Primary" Clicked="@(async () => await FillRadarChart())">Show stats</Button>
-
         <Row>
             <Column ColumnSize="ColumnSize.Is6">
                 <header>@_team.NombreCompleto</header>
                 <img alt="Team logo" src=@($"assets/images/logos/{Codigo}_1.jpg") style="height: 350px;"/>
             </Column>
-            <Column ColumnSize="ColumnSize.Is6">
-                <RadarChart @ref="_radarChart" TItem="double"/>
-            </Column>
         </Row>
+
+        <h3>Players</h3>
+
+        <table class="table table-striped">
+            <thead class="thead-light">
+            <tr>
+                <th>
+                    NOMBRE
+                </th>
+                <th>
+                    TIRO DOBLE
+                </th>
+                <th>
+                    TIRO TRIPLE
+                </th>
+                <th>
+                    FÍSICO
+                </th>
+                <th>
+                    PLAYMAKING
+                </th>
+                <th>
+                    REBOTE
+                </th>
+                <th>
+                    DEFENSA
+                </th>
+                <th>
+                    MEDIA
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var p in _players)
+            {
+                <tr>
+                    <td>@p.Name "@p.Nickname"</td>
+                    <td>@p.InsideScoring</td>
+                    <td>@p.OutsideScoring</td>
+                    <td>@p.Athleticism</td>
+                    <td>@p.Playmaking</td>
+                    <td>@p.Rebounding</td>
+                    <td>@p.Defending</td>
+                    <td>@p.Overall</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
+        if (_playersHistoricos.Count() != 0)
+        {
+            <h3>Players historial</h3>
+            
+            <table class="table table-striped">
+                <thead class="thead-light">
+                <tr>
+                    <th>
+                        NOMBRE
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var p in _playersHistoricos)
+                {
+                    <tr>
+                        <td>@p.Name "@p.Nickname"</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        }
     }
 </div>
 
@@ -28,20 +94,18 @@
     [Parameter]
     public string Codigo { get; set; }
 
-    private RadarChart<double> _radarChart = new();
-    private string[] _labels = { "Ataque", "Tiro", "Defensa", "Rebote" };
-
-    private List<string> backgroundColors = new List<string> { ChartColor.FromRgba(255, 99, 132, 0.2f), ChartColor.FromRgba(54, 162, 235, 0.2f), ChartColor.FromRgba(255, 206, 86, 0.2f), ChartColor.FromRgba(75, 192, 192, 0.2f), ChartColor.FromRgba(153, 102, 255, 0.2f), ChartColor.FromRgba(255, 159, 64, 0.2f) };
-    private List<string> borderColors = new List<string> { ChartColor.FromRgba(255, 99, 132, 1f), ChartColor.FromRgba(54, 162, 235, 1f), ChartColor.FromRgba(255, 206, 86, 1f), ChartColor.FromRgba(75, 192, 192, 1f), ChartColor.FromRgba(153, 102, 255, 1f), ChartColor.FromRgba(255, 159, 64, 1f) };
+    private string _logo;
 
     private Team _team;
-    private string _logo;
+    private IEnumerable<PlayerTeams> _playerTeams = new PlayerTeams[] { };
+    private IEnumerable<Player> _players = new Player[] { };
+    private IEnumerable<Player> _playersHistoricos = new Player[] { };
 
     protected override async Task OnInitializedAsync()
     {
         await GetTeam();
 
-        await FillRadarChart();
+        await GetPlayers();
     }
 
     private async Task GetTeam()
@@ -50,23 +114,19 @@
         _team = t.First(t => t.Codigo == int.Parse(Codigo));
     }
 
-    private async Task FillRadarChart()
+    private async Task GetPlayers()
     {
-        await _radarChart.Clear();
-        await _radarChart.AddLabelsDatasetsAndUpdate(_labels, GetRadarChartDataset());
+        var p = await Http.GetFromJsonAsync<IEnumerable<Player>>("data/players.json");
+        _players = _players.Concat(p.Where(p => p.Team == _team.Codigo).OrderByDescending(p => p.Overall));
+
+        await GetPlayerTeams(p);
     }
 
-    private RadarChartDataset<double> GetRadarChartDataset()
+    private async Task GetPlayerTeams(IEnumerable<Player> players)
     {
-        return new RadarChartDataset<double>
-        {
-            Label = "Stats",
-            Data = new List<double> { _team.Ataque, _team.Tiro, _team.Defensa, _team.Rebote },
-            BackgroundColor = backgroundColors,
-            BorderColor = borderColors,
-            Fill = true,
-            PointRadius = 3
-        };
+        var pt = await Http.GetFromJsonAsync<IEnumerable<PlayerTeams>>("data/PlayersTeams.json");
+        _playerTeams = _playerTeams.Concat(pt.Where(pt => pt.Team == _team.Codigo).OrderByDescending(pt => pt.Start));
+        _playersHistoricos = _playersHistoricos.Concat(players.Where(p => _playerTeams.Select(pt => pt.Player).Contains(p.Codigo)));
     }
 
 }
