@@ -7,8 +7,8 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "BasketLeague2.App.dll": "sha256-C59TUio9CGYx8W0fNpnmvXeWTVaEdqYd29\/IcFMrDtI=",
-      "BasketLeague2.Utils.dll": "sha256-ZstG+MQkE7UYqbkTwDzt5RSm6o9nsIOQmHKGoQmUOZE=",
+      "BasketLeague2.App.dll": "sha256-p+F0te2N9CkJfAhDnw8is\/SzSIY3w2qGKg5z24IVb+o=",
+      "BasketLeague2.Utils.dll": "sha256-STWjmz6HLOb5u75VwCkuLABoh0cIRXAnJGGcCJ4hoTE=",
       "Blazorise.Bootstrap.dll": "sha256-wiHxV8O2zuWSE6BewPawezPy4LHMF4fe\/8qdEY0rJqg=",
       "Blazorise.Charts.dll": "sha256-DvpUtEWqeZKmBjMabfQ2oZQukd7TNDP1nq7UZ7Y63UY=",
       "Blazorise.DataGrid.dll": "sha256-nmR61VW3tfBzhkSz6q5EFYykqiPKjaRU5sXNe3f0NgI=",
@@ -49,7 +49,7 @@
       "System.dll": "sha256-YlYMVn7u5A21lWID0kcog16NDRf1BPRMjJ7BsIjfahs=",
       "System.Drawing.dll": "sha256-bRFj+o8ON04VWhHivDW\/sUF3RvWc7dVuVXtpqXQlXR0=",
       "System.Drawing.Primitives.dll": "sha256-A+QK3HOGZCV5l22ekkjJu0+jtWvddCHFKys9k8PgwB0=",
-      "System.Linq.dll": "sha256-DL6SNXEZyCoEtbh57s9A1uxFkv0DOVBNziJGpN2yIWM=",
+      "System.Linq.dll": "sha256-7RoZuLaXsWpxarvWY8spSgEsqL2OGaP5IMBzKlhKze8=",
       "System.Linq.Expressions.dll": "sha256-5du6mLM\/i\/eaYeX72ExCMNSTVFC5Hk+Ezl7HCVuOMCg=",
       "System.Linq.Queryable.dll": "sha256-3Ef3xXlG1twvbtP+9ttbJuN3SJ5PfGnGXZAKVS1itp4=",
       "System.Memory.dll": "sha256-YU6c1RCcIYo\/KdupKUYpDupmgBWOPO7riuuk5CGXO9k=",
