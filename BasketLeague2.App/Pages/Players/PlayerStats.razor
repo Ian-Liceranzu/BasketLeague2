@@ -1,5 +1,188 @@
-﻿<h3>PlayerStats</h3>
+﻿@page "/Players/Player/{Codigo}"
+
+@inject HttpClient Http
+
+@using BasketLeague2.Utils.Models
+
+<h3>PlayerStats</h3>
+
+<table class="table table-striped">
+    <thead class="thead-light">
+    <tr>
+        <th>
+            NOMBRE
+        </th>
+        <th>
+            TIRO DOBLE
+        </th>
+        <th>
+            TIRO TRIPLE
+        </th>
+        <th>
+            FÍSICO
+        </th>
+        <th>
+            PLAYMAKING
+        </th>
+        <th>
+            REBOTE
+        </th>
+        <th>
+            DEFENSA
+        </th>
+        <th>
+            MEDIA
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>@_player.Name "@_player.Nickname"</td>
+        <td>@_player.InsideScoring</td>
+        <td>@_player.OutsideScoring</td>
+        <td>@_player.Athleticism</td>
+        <td>@_player.Playmaking</td>
+        <td>@_player.Rebounding</td>
+        <td>@_player.Defending</td>
+        <td>@_player.Overall</td>
+    </tr>
+    </tbody>
+</table>
+
+<h3>Play by play</h3>
+<table class="table table-striped">
+    <thead class="thead-light">
+    <tr>
+        <th>
+            TIRO DOBLE
+        </th>
+        <th>
+            TIRO TRIPLE
+        </th>
+        <th>
+            FÍSICO
+        </th>
+        <th>
+            PLAYMAKING
+        </th>
+        <th>
+            REBOTE
+        </th>
+        <th>
+            DEFENSA
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var day in _diary)
+    {
+        <tr>
+            <td>@day[1]</td>
+            <td>@day[2]</td>
+            <td>@day[3]</td>
+            <td>@day[4]</td>
+            <td>@day[5]</td>
+            <td>@day[6]</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<h3>Total</h3>
+
+<table class="table table-striped">
+    <thead class="thead-light">
+    <tr>
+        <th>
+            TIRO DOBLE
+        </th>
+        <th>
+            TIRO TRIPLE
+        </th>
+        <th>
+            FÍSICO
+        </th>
+        <th>
+            PLAYMAKING
+        </th>
+        <th>
+            REBOTE
+        </th>
+        <th>
+            DEFENSA
+        </th>
+        <th>
+            TOTAL
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>@_totals[0]</td>
+        <td>@_totals[1]</td>
+        <td>@_totals[2]</td>
+        <td>@_totals[3]</td>
+        <td>@_totals[4]</td>
+        <td>@_totals[5]</td>
+        <td>@_totals.Sum()</td>
+    </tr>
+    </tbody>
+</table>
 
 @code {
+
+    [Parameter]
+    public string Codigo { get; set; }
+
+    private Player _player = new();
+    private List<int[]> _diary = new();
+    private int[] _totals = { 0, 0, 0, 0, 0, 0 };
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetPlayer();
+
+        await GetPlayerStatistics("S3");
+    }
+
+    private async Task GetPlayer()
+    {
+        var p = await Http.GetFromJsonAsync<IEnumerable<Player>>("data/players.json");
+        _player = p.SingleOrDefault(p => p.Codigo == int.Parse(Codigo));
+    }
+
+    private async Task GetPlayerStatistics(string season)
+    {
+        var r = await Http.GetFromJsonAsync<IEnumerable<AdvancedResult>>($"data/results/R_{season}.json");
+        var stats1 = r.Select(r => r.Stats1);
+        var stats2 = r.Select(r => r.Stats2);
+
+        foreach (var s1 in stats1)
+        {
+            foreach (var ss1 in s1.Where(s => s[0] == int.Parse(Codigo)))
+            {
+                _diary.Add(ss1);
+                _totals[0] += ss1[1];
+                _totals[1] += ss1[2];
+                _totals[2] += ss1[3];
+                _totals[3] += ss1[4];
+                _totals[4] += ss1[5];
+                _totals[5] += ss1[6];
+            }
+        }
+        foreach (var s2 in stats2)
+        {
+            foreach (var ss2 in s2.Where(s => s[0] == int.Parse(Codigo)))
+            {
+                _diary.Add(ss2);
+                _totals[0] += ss2[1];
+                _totals[1] += ss2[2];
+                _totals[2] += ss2[3];
+                _totals[3] += ss2[4];
+                _totals[4] += ss2[5];
+                _totals[5] += ss2[6];
+            }
+        }
+    }
 
 }
