@@ -47,7 +47,7 @@
             <td>@t.Defensa</td>
             <td>@t.Rebote</td>
             <td>
-                <button class="btn btn-primary" @onclick="_ => LoadEmpresa(t.Codigo)">INFO</button>
+                <button class="btn btn-primary" @onclick="_ => LoadTeam(t.Codigo)">INFO</button>
             </td>
         </tr>
     }
@@ -68,7 +68,7 @@
         _teams = _teams.Concat(t.OrderBy(t => t.NombreCompleto));
     }
 
-    private void LoadEmpresa(int codigo)
+    private void LoadTeam(int codigo)
     {
         Navigation.NavigateTo($"Teams/Team/{codigo}");
     }
