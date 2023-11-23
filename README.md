@@ -19,15 +19,15 @@ Basket League es una herramienta para la gestión de una liga simulada de balonc
 2. Clasificación
   - <s>Tabla de claficación actual</s>
 3. Gestión de partidos
-  - Jugar partidos programados
   - <s>Jugar partidos amistosos</s>
 4. Gestión de equipos
-  - Panel de equipo (Información avanzada del equipo)
+  - <s>Panel de equipo (Información avanzada del equipo)</s>
   - Consultar estadísticas por equipo
-  - Consultar resultados por equipo
+  - <s>Consultar resultados por equipo</s>
 5. Gestión de resultados
   - <s>Consultar tabla con los últimos resultados</s>
+  - <s>Información detallada de los resultados</s>
 6. Gestión de fechas
-  - Consultar próximos partidos
+  - <s>Consultar próximos partidos</s>
   - <s>Generar calendario de partidos</s>
 
