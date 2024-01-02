@@ -1,7 +1,7 @@
 {
   "entryAssembly": "BasketLeague2.App",
   "resources": {
-    "hash": "sha256-4/faM/J+CsS+8iOsf1mF21P4L2mzZR6qOje2VYY7Tcg=",
+    "hash": "sha256-4I0LlprQ9drV5i4JAJCg1sxPLioqPcsqQhKH/jI5Jko=",
     "runtime": {
       "dotnet.6.0.25.0ibdzzkyii.js": "sha256-1jUGCCSGH9JWhkqbHdQk8JBjBI8K/VC63En5zlypVps=",
       "dotnet.timezones.blat": "sha256-KsGUR9nqtXb3Hy6IrNlnc1HoSS+AFlsXTX9rq4oChtA=",
@@ -11,8 +11,8 @@
       "icudt_no_CJK.dat": "sha256-OxylFgLJlFqixsj+nLxYVsv5iZLvfIKMpLf9hrWaChA="
     },
     "assembly": {
-      "BasketLeague2.App.dll": "sha256-8i6DEuKas1k5FAAGfGmfs0nMy8MpLKGCZ3/TasbqNao=",
-      "BasketLeague2.Utils.dll": "sha256-FebTWiFwDmNuA6mFgPLDRdu0v8ML+MDi7HvVQlK7qWw=",
+      "BasketLeague2.App.dll": "sha256-U1KLOolKNweA5ruBiaH+boIYiUSEDSxCKCGAFsB2dyU=",
+      "BasketLeague2.Utils.dll": "sha256-2GppCIeGLafwtOiLbTJ3v7P0ep0BPFGGbsrBDVn1iZE=",
       "Blazorise.Bootstrap.dll": "sha256-wiHxV8O2zuWSE6BewPawezPy4LHMF4fe/8qdEY0rJqg=",
       "Blazorise.Charts.dll": "sha256-DvpUtEWqeZKmBjMabfQ2oZQukd7TNDP1nq7UZ7Y63UY=",
       "Blazorise.DataGrid.dll": "sha256-nmR61VW3tfBzhkSz6q5EFYykqiPKjaRU5sXNe3f0NgI=",
