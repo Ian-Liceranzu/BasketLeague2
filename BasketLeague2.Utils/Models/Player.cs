@@ -54,8 +54,8 @@
             List<Player> players = new();
             for (var i = 0; i < num; i++)
             {
-                players.Add(new Player(random.Next(70, 99), random.Next(70, 99), random.Next(70, 99),
-                    random.Next(70, 99), random.Next(70, 99), random.Next(70, 99)));
+                players.Add(new Player(random.Next(70, 80), random.Next(70, 80), random.Next(70, 80),
+                    random.Next(70, 80), random.Next(70, 80), random.Next(70, 80)));
             }
 
             return players;
@@ -71,22 +71,17 @@
     {
         private static readonly string[] _firstNames =
         {
-            "Alice", "Bob", "Charlie", "David", "Emma", "Frank", "Grace", "Henry", "Isabella", "Jack", "Kate", "Liam",
-            "Mia", "Noah", "Olivia", "Penelope", "Quinn", "Ruby", "Sophia", "Thomas", "Ursula", "Victoria", "William",
-            "Xander", "Yara", "Zoe"
+            "Aiden", "Amelia", "Aria", "Ava", "Caden", "Charlotte", "David", "Elijah", "Emily", "Grace", "Grayson", "Harper", "Isabella", "Jackson", "John", "Landon", "Liam", "Lily", "Lucas", "Mateo", "Mia", "Nicole", "Noah", "Olivia", "Sophia", "Sophie", "Zoe"
         };
 
         private static readonly string[] _lastNames =
         {
-            "Adams", "Baker", "Carter", "Davis", "Edwards", "Fisher", "Garcia", "Hernandez", "Ingram", "Johnson",
-            "Khan", "Lee", "Miller", "Nguyen", "O'Brien", "Patel", "Quinn", "Rodriguez", "Smith", "Taylor", "Upton",
-            "Vargas", "Wilson", "Xu", "Yang", "Zhang"
+            "Allen", "Anderson", "Brown", "Clark", "Davis", "Garcia", "Hall", "Harris", "Jackson", "Johnson", "Jones", "King", "Lee", "Lewis", "Martinez", "Martin", "Miller", "Moore", "Robinson", "Rodriguez", "Smith", "Taylor", "Thomas", "Thompson", "Walker", "White", "Williams", "Wilson", "Wright", "Young"
         };
 
         private static readonly string[] _nicknames =
         {
-            "Ace", "Buddy", "Champ", "Duke", "Foxy", "Guru", "Hawk", "Jazz", "Knight", "Lucky", "Maverick", "Ninja",
-            "Panda", "Queen", "Ranger", "Shark", "Tiger", "Viper", "Wizard", "X-Man", "Yogi", "Zeus"
+            "Ace", "Blaze", "Blitz", "Bolt", "Cypher", "Dagger", "Echo", "Ember", "Fox", "Fury", "Jinx", "Luna", "Mystic", "Nyx", "Nova", "Phoenix", "Raptor", "Raven", "Rex", "Rogue", "Sage", "Sapphire", "Shadow", "Serenity", "Spark", "Storm", "Typhoon", "Viper", "Vortex", "Zephyr"
         };
 
         public static string GenerateName()

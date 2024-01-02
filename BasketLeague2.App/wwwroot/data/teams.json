@@ -1,5 +1,16 @@
 [
   {
+    "Codigo": 0,
+    "NombreCompleto": "Agentes Libres",
+    "Nombre": "AL",
+    "Ataque": 0,
+    "Defensa":0,
+    "Tiro": 0,
+    "Rebote": 0,
+    "Dueño": "-",
+    "Estado": "-"
+  },
+  {
     "Codigo": 1,
     "NombreCompleto": "Milwaukee Platypus",
     "Nombre": "MP",
