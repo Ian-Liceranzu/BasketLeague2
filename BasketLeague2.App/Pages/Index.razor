@@ -1,8 +1,7 @@
 ﻿@page "/"
+@using BasketLeague2.Utils.Models
 
 @inject HttpClient Http
-
-@using BasketLeague2.Utils.Models
 
 <PageTitle>Index</PageTitle>
 
@@ -63,6 +62,21 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
 <div class="row mt-3">
     <div class="col-lg-8">
         <Carousel @bind-SelectedSlide="@_selectedSlide" Autoplay="false" Crossfade="true">
+            <CarouselSlide Name="8">
+                <div class="card mb-3" style="min-height: 600px">
+                    <div class="card-body">
+                        <h5 class="card-title">Pandas, eternos amantes de la siesta.</h5>
+                        <p class="card-text">El partido entre los Wahpeton Ducks y los Jackson Pandas fue una exhibición de la incompetencia y debilidad del equipo de los Pandas. Aunque lograron anotar 108 puntos, la mayoría de ellos no fueron más que suerte y errores defensivos por parte de los Ducks.</p>
+                        <p class="card-text">Desde el inicio del juego, los Pandas demostraron su incapacidad para competir a un nivel de alto rendimiento. Su defensa era inexistente, permitiendo que los Ducks anotaran con facilidad en cada posesión. Además, su falta de coordinación y disciplina en ambos lados de la cancha fue obvia.</p>
+                        <p class="card-text">A pesar de los esfuerzos desesperados de los Pandas por mantenerse en el juego, su ineptitud y falta de talento les impidió acercarse al marcador. El equipo carecía de jugadores destacados y ninguna de sus estrategias fue efectiva contra la defensa de los Ducks.</p>
+                        <p class="card-text">Los Pandas solo lograron anotar puntos en situaciones de contraataque o gracias a jugadas aisladas de uno o dos jugadores. Su falta de juego en equipo y comunicación fue evidente en todo momento.</p>
+                        <p class="card-text">En resumen, el partido entre los Wahpeton Ducks y los Jackson Pandas fue un ejemplo de la falta de habilidad y competencia de los Pandas. Su derrota por 122 a 108 solo confirmó lo que todos ya sabían: los Pandas son un equipo débil y sin posibilidades de éxito en el básquetbol.</p>
+                        <p class="card-text">
+                            <small class="text-muted">Publicado el 16 de Enero, 2024</small>
+                        </p>
+                    </div>
+                </div>
+            </CarouselSlide>
             <CarouselSlide Name="7">
                 <div class="card mb-3" style="min-height: 600px">
                     <div class="card-body">
@@ -205,21 +219,24 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
 
 @code {
     private IEnumerable<Team> _teams = new Team[] { };
-    private IEnumerable<Result> _results = new Result[] { };
+    private IEnumerable<AdvancedResult> _results = new AdvancedResult[] { };
+    private IEnumerable<Player> _players = new Player[] { };
 
     private Team _equipo1 = new(); // Equipo con más puntos anotados en casa
     private Team _equipo2 = new(); // Equipo con más puntos anotados fuera de casa
     private Team _equipo3 = new(); // Equipo con menos puntos en contra en casa
     private Team _equipo4 = new(); // Equipo con menos puntos en contra fuera de casa
 
-    private string _selectedSlide = "7";
+    private string _selectedSlide = "8";
 
     protected override async Task OnInitializedAsync()
     {
         await GetTeams();
         await GetResults();
+        // await GetPlayers();
 
         CalcularRacha();
+        // CalcularScores();
     }
 
     private async Task GetTeams()
@@ -230,8 +247,14 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
 
     private async Task GetResults()
     {
-        var r = await Http.GetFromJsonAsync<IEnumerable<Result>>("data/results/R_S3.json");
+        var r = await Http.GetFromJsonAsync<IEnumerable<AdvancedResult>>("data/results/R_S3.json");
         _results = _results.Concat(r);
+    }
+
+    private async Task GetPlayers()
+    {
+        var p = await Http.GetFromJsonAsync<IEnumerable<Player>>("data/players.json");
+        _players = _players.Concat(p);
     }
 
     private void CalcularRacha()
@@ -240,6 +263,19 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
         _equipo2 = _results.GroupBy(r => r.Equipo2).Select(r => new Team { NombreCompleto = _teams.First(t => t.Codigo == int.Parse(r.First().Equipo2)).NombreCompleto, DIF = r.Sum(r => r.Resultado2) }).MaxBy(r => r.DIF);
         _equipo3 = _results.GroupBy(r => r.Equipo1).Select(r => new Team { NombreCompleto = _teams.First(t => t.Codigo == int.Parse(r.First().Equipo1)).NombreCompleto, DIF = r.Sum(r => r.Resultado2) }).MinBy(r => r.DIF);
         _equipo4 = _results.GroupBy(r => r.Equipo2).Select(r => new Team { NombreCompleto = _teams.First(t => t.Codigo == int.Parse(r.First().Equipo2)).NombreCompleto, DIF = r.Sum(r => r.Resultado1) }).MinBy(r => r.DIF);
+    }
+
+    private void CalcularScores()
+    {
+        var stats1 = _results.Select(r => r.Stats1);
+        var stats2 = _results.Select(r => r.Stats2);
+
+        var stats = stats1.Concat(stats2);
+
+        List<int[]> diary = (from s in stats from ss in s select new[] { ss[0], ss.Skip(1).Sum() }).ToList();
+
+        var grouped = diary.GroupBy(d => d[0]).ToList();
+        var playerScores = grouped.Select(g => new KeyValuePair<string, int>(_players.Single(p => p.Codigo == g.Key).Nickname, g.Sum(gg => gg.Skip(1).Sum()))).ToList();
     }
 
 }
