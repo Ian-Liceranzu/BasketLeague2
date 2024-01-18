@@ -108,5 +108,16 @@
     "Rebote": 3,
     "Dueño": "Edu",
     "Estado": "Dakota del Norte"
+  },
+  {
+    "Codigo": 11,
+    "NombreCompleto": "Seattle Killer Whales",
+    "Nombre": "SKW",
+    "Ataque": 10,
+    "Defensa": 10,
+    "Tiro": 10,
+    "Rebote": 10,
+    "Dueño": "Daira",
+    "Estado": "Washington"
   }
 ]

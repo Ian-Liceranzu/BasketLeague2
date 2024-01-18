@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using BasketLeague2.Utils.Models
+@using Newtonsoft.Json
 
 @inject HttpClient Http
 
@@ -196,6 +197,13 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
     <div class="col-lg-4">
         <div class="card mb-3">
             <div class="card-body">
+                <h5 class="card-title">Regreso de los OG</h5>
+                <p class="card-text">Vuelven a nuestra prestigiosa liga los Seattle Killer Whales.</p>
+                <p class="card-text">Bienvenidos a vuestra casa!!</p>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-body">
                 <h5 class="card-title">Jugadores draft 2024</h5>
                 <p class="card-text">Han llegado ya a nuestra puerta los jugadores para el próximo draft.</p>
                 <p class="card-text">Vayan al listado de jugadores para consultarlos.</p>
@@ -233,10 +241,10 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
     {
         await GetTeams();
         await GetResults();
-        // await GetPlayers();
+        await GetPlayers();
 
         CalcularRacha();
-        // CalcularScores();
+        CalcularScores();
     }
 
     private async Task GetTeams()
@@ -276,6 +284,8 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
 
         var grouped = diary.GroupBy(d => d[0]).ToList();
         var playerScores = grouped.Select(g => new KeyValuePair<string, int>(_players.Single(p => p.Codigo == g.Key).Nickname, g.Sum(gg => gg.Skip(1).Sum()))).ToList();
+
+        Console.WriteLine(JsonConvert.SerializeObject(playerScores));
     }
 
 }
