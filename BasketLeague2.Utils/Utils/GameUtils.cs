@@ -64,7 +64,7 @@ namespace BasketLeague2.Utils.Utils
             var teamBScore = CalculateScore(teamBStats);
 
             // Determine the winner and print the result
-            var winner = (teamAScore > teamBScore) ? "Team A" : "Team B";
+            var winner = teamAScore > teamBScore ? "Team A" : "Team B";
             Console.WriteLine("The winner is {0} with a score of {1}-{2}", winner, teamAScore, teamBScore);
 
             return new AdvancedResult
@@ -123,7 +123,7 @@ namespace BasketLeague2.Utils.Utils
 
             if (sum % div != 0)
             {
-                num += (div - (sum % div));
+                num += div - sum % div;
             }
 
             return num;

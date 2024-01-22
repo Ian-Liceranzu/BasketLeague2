@@ -62,8 +62,7 @@
 
 @code {
 
-    [Parameter]
-    public string Season { get; set; }
+    [Parameter] public string Season { get; set; }
 
     private IEnumerable<Team> _teams = new Team[] { };
     private IEnumerable<Match> _matches = new Match[] { };
@@ -78,7 +77,7 @@
     protected override async Task OnInitializedAsync()
     {
         await GetTeams();
-        
+
         await GetTimeTables();
 
         StateHasChanged();
@@ -86,7 +85,7 @@
 
     private async Task GetTeams()
     {
-        _teams = new Team[] {};
+        _teams = new Team[] { };
         var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
         _teams = _teams.Concat(t.OrderBy(t => t.NombreCompleto));
     }
@@ -101,6 +100,7 @@
             match.Equipo1 = _teams.FirstOrDefault(t => t.Codigo == int.Parse(match.Equipo1)).NombreCompleto;
             match.Equipo2 = _teams.FirstOrDefault(t => t.Codigo == int.Parse(match.Equipo2)).NombreCompleto;
         }
+
         _matches = _matches.Concat(m.OrderBy(m => m.Fecha));
     }
 
@@ -112,8 +112,8 @@
 
     private bool OnCustomFilter(Match model)
     {
-    // We want to accept empty value as valid or otherwise
-    // datagrid will not show anything.
+        // We want to accept empty value as valid or otherwise
+        // datagrid will not show anything.
         if (string.IsNullOrEmpty(_customFilterValue))
             return true;
 
