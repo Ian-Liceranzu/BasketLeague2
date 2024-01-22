@@ -49,6 +49,14 @@
     </tbody>
 </table>
 
+<h3>Season</h3>
+<Select TValue="string" SelectedValue="_season" SelectedValueChanged="@OnSeasonValueChanged">
+    @foreach (var s in _seasons)
+    {
+        <SelectItem Value="s">@s</SelectItem>
+    }
+</Select>
+
 <h3>Play by play</h3>
 <table class="table table-striped">
     <thead class="thead-light">
@@ -135,18 +143,20 @@
 
 @code {
 
-    [Parameter]
-    public string Codigo { get; set; }
+    [Parameter] public string Codigo { get; set; }
 
     private Player _player = new();
     private List<int[]> _diary = new();
     private int[] _totals = { 0, 0, 0, 0, 0, 0 };
 
+    private string[] _seasons = { "S3" };
+    private string _season = "S3";
+
     protected override async Task OnInitializedAsync()
     {
         await GetPlayer();
 
-        await GetPlayerStatistics("S3");
+        await GetPlayerStatistics(_season);
     }
 
     private async Task GetPlayer()
@@ -174,6 +184,7 @@
                 _totals[5] += ss1[6];
             }
         }
+
         foreach (var s2 in stats2)
         {
             foreach (var ss2 in s2.Where(s => s[0] == int.Parse(Codigo)))
@@ -187,6 +198,15 @@
                 _totals[5] += ss2[6];
             }
         }
+    }
+
+    async Task OnSeasonValueChanged(string value)
+    {
+        _season = value;
+
+        _diary.Clear();
+        _totals = new[] { 0, 0, 0, 0, 0, 0 };
+        await GetPlayerStatistics(value);
     }
 
 }

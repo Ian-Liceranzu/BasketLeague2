@@ -19,7 +19,7 @@
           SortMode="DataGridSortMode.Single"
           PageSize="10"
           DetailRowStartsVisible="false"
-          DetailRowTrigger="@((e) => e.Item.Stats1?.Length > 0)">
+          DetailRowTrigger="@(e => e.Item.Stats1?.Length > 0)">
     <DataGridColumns>
         <DataGridCommandColumn/>
         <DataGridColumn Field="@nameof(Result.Fecha)" Caption="FECHA"/>
@@ -147,8 +147,7 @@
 
 @code {
 
-    [Parameter]
-    public string Season { get; set; }
+    [Parameter] public string Season { get; set; }
 
     private IEnumerable<AdvancedResult> _resultados = new AdvancedResult[] { };
     private IEnumerable<Team> _teams = new Team[] { };
@@ -169,7 +168,7 @@
         await GetResults();
 
         await GetPlayers();
-        
+
         StateHasChanged();
     }
 
@@ -209,8 +208,8 @@
 
     private bool OnCustomFilter(Result model)
     {
-    // We want to accept empty value as valid or otherwise
-    // datagrid will not show anything.
+        // We want to accept empty value as valid or otherwise
+        // datagrid will not show anything.
         if (string.IsNullOrEmpty(_customFilterValue))
             return true;
 
