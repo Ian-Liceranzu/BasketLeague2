@@ -64,6 +64,22 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
 <div class="row mt-3">
     <div class="col-lg-8">
         <Carousel @bind-SelectedSlide="@_selectedSlide" Autoplay="false" Crossfade="true">
+            <CarouselSlide Name="9">
+                <div class="card mb-3" style="min-height: 600px">
+                    <div class="card-body">
+                    <h5 class="card-title">Los Broncos galopan hacia la victoria.</h5>
+                        <p class="card-text">¡Relincho, relincho! Hoy presencié un emocionante partido de baloncesto entre los Tampa Honey Badgers y los Birmingham Broncos. Fue un juego de pura velocidad y habilidad donde los Broncos demostraron su dominio desde el principio.</p>
+                        <p class="card-text">Desde el primer relincho, los Broncos establecieron un ritmo rápido y furioso, anotando canasta tras canasta. Sus movimientos elegantes y coordinados eran como una danza en el aire. Parecían imparables, como una manada de corceles salvajes galopando hacia la victoria.</p>
+                        <p class="card-text">Los Honey Badgers intentaron mantenerse al ritmo, pero sus esfuerzos fueron en vano. Tropezaron constantemente con la brillante defensa de los Broncos y les resultaba difícil encontrar su oportunidad de anotar. Aunque lucharon con todas sus fuerzas, simplemente no podían competir con la potencia y la velocidad de los Broncos.</p>
+                        <p class="card-text">A lo largo del partido, los Broncos mostraron una increíble habilidad de tiro, anotando desde todas las posiciones posibles. Su precisión era como un arco lanzando flechas con una precisión impresionante. Mientras tanto, los Honey Badgers se esforzaban por encontrar su ritmo y se veían frustrados por el poderío defensivo de los Broncos.</p>
+                        <p class="card-text">El partido llegó a su fin con un marcador final de 86 a 118 a favor de los Broncos. Fue una victoria arrolladora, como una carrera sin obstáculos hacia la línea de meta. Los Broncos demostraron su valía como un equipo cohesionado y dominante, mientras que los Honey Badgers se vieron superados por la fuerza deslumbrante de sus oponentes.</p>
+                        <p class="card-text">En definitiva, este partido de baloncesto entre los Tampa Honey Badgers y los Birmingham Broncos fue un espectáculo impresionante. Los Broncos jugaron como unos jinetes expertos, mientras que los Honey Badgers tuvieron dificultades para mantenerse a su nivel. ¡Relincho, relincho!</p>
+                        <p class="card-text">
+                            <small class="text-muted">Publicado el 23 de Enero, 2024</small>
+                        </p>
+                    </div>
+                </div>
+            </CarouselSlide>
             <CarouselSlide Name="8">
                 <div class="card mb-3" style="min-height: 600px">
                     <div class="card-body">
@@ -236,7 +252,7 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
     private Team _equipo3 = new(); // Equipo con menos puntos en contra en casa
     private Team _equipo4 = new(); // Equipo con menos puntos en contra fuera de casa
 
-    private string _selectedSlide = "8";
+    private string _selectedSlide = "9";
 
     protected override async Task OnInitializedAsync()
     {
