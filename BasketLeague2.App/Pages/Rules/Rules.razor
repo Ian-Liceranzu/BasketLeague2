@@ -1,0 +1,106 @@
+@page "/Rules"
+
+<h1 id="fba-rules" class="h1">FBA Rules</h1>
+
+<h2 id="equipos" class="h2">Equipos</h2>
+
+<p>Los equipos deben ser una ciudad + un animal. <em class="text-info">Kansas Kangaroos</em></p>
+<p>La ciudad debe pertenecer a Estados Unidos.</p>
+<p>Los nombres de los equipos deben estar en inglés, tanto lugar como animal del mismo.</p>
+<p><strong class="text-danger">No puede</strong> haber dos equipos del mismo estado hasta agotar previamente los estados.</p>
+<p><strong class="text-danger">No puede</strong> haber dos equipos de la misma ciudad hasta agotar previamente las ciudades.</p>
+<p><strong class="text-danger">No puede</strong> haber dos equipos con el mismo animal hasta agotar previamente los animales.</p>
+<p> En caso de ciudades que compartan el nombre en distintos estados, el último equipo en llegar debería añadir el estado al nombre de su equipo. <em class="text-info">Madrid Snakes</em> &amp; <em class="text-info">Madrid Colorado Dolphins</em> </p>
+<p> En caso de animales que compartan nombre sin ser el mismo animal, el último equipo en llegar debería añadir nombre más completo del mismo. <em class="text-info">Baltimore Crows</em> &amp; <em class="text-info">St. Paul Hooded Crows</em> </p>
+
+<h2 id="competici-n" class="h2">Competición</h2>
+
+<p>La temporada regular constará de un formato de partido simple a ida y vuelta.</p>
+<p>Es decir cada equipo jugará dos veces contra todos los demás equipos.</p>
+<p> El sistema de puntuación será simple, siendo lo importante partidos ganados, seguido por diferencia total de puntos y en caso de empate absoluto, duelo directo entre ambos equipos y diferencia de puntos en esos mismos encuentros. </p>
+<p>Cada temporada cuenta con una parte de playoffs al final de la misma.</p>
+<p> Al final de la segunda temporada del año se realizará un partido entre los ganadores de ambos playoffs, que será la gran final, determinando el vencedor real y único ganador del anillo de la liga. </p>
+
+<h3 id="playoffs" class="h3">Playoffs</h3>
+
+<p> Al finalizar la temporada regular se pasa a un formato playoffs donde los 10 primeros equipos competirán en duelos directos por avanzar de ronda con el siguiente esquema. </p>
+<p>
+    <img src="../../assets/images/examples/img.png" alt="img.png" class="img-fluid" style="max-height: 600px">
+</p>
+<p>Las plazas 7 y 8 son decididas en el playin.</p>
+<p>La primera ronda es a mejor de 3.</p>
+<p>Semifinales a mejores de 5.</p>
+<p>La final al mejor de 7.</p>
+<p>El ganador del playoff es considerado el ganador de la temporada.</p>
+
+<h4 id="playin" class="h4">Playin</h4>
+
+<p>Torneo simplificado para decidir entre los puestos 7-8-9-10, qué dos avanzan al playoff.</p>
+<p>Es un torneo a partido simple.</p>
+<p>7 - 8 =&gt; 7 plaza del Playoff</p>
+<p>9 - 10 deben enfrentarse primero y el ganador se enfrentará al perdedor de 7 - 8 por la 8 plaza del playoff.</p>
+
+<h2 id="temporadas" class="h2">Temporadas</h2>
+
+<p> Un año está dividido en dos temporadas, otoño-invierno <em class="text-info">(desde septiembre hasta febrero)</em> y primavera-verano <em class="text-info">(desde marzo a julio)</em>. </p>
+<p>Cada temporada consta con la parte de temporada regular y una parte final en formato torneo llamada Playoffs.</p>
+<p>Cada temporada consta con su propio draft al iniciar y su playoff para determinar el ganador de la misma.</p>
+
+<h3 id="draft" class="h3">Draft</h3>
+
+<p>El draft es el sistema de fichar jugadores que tiene la liga.</p>
+<p>Al inicio de cada temporada se realizará uno.</p>
+<p> Un draft consiste en 5 rondas de fichajes ordenados de forma semi-aleatoria en la que los presidentes decidirán sus selecciones de un listado preconfigurado de jugadores. </p>
+<p> El listado contará con un mínimo de 50 jugadores base, 10 Superestrellas, 10 Malardos y 30 Medios, a los cuales se incorporarán los descartes de los equipos de la temporada anterior. </p>
+<p> Los jugadores descartados solo estarán disponibles durante el primer draft posterior a su descarte. <em class="text-info"> Jugador descartado en la temporada 2, solo estará disponible en el draft para la temporada 3 </em> </p>
+<p>Los jugadores del draft que no sean fichados desapareceran del draft.</p>
+<p>Un equipo <strong class="text-danger">no puede</strong> fichar a su propio descarte.</p>
+
+<h4 id="orden-del-draft" class="h4">Orden del draft</h4>
+
+<p>El sistema de draft para calcular el orden de selecciones es el siguiente.</p>
+<p>Primera ronda de picks, sistema draft NBA, un algoritmo calcula en base al standing del final de temporada la posición en la que elegirá cada equipo.</p>
+<p>Segunda ronda de picks, orden inverso de la clasificación. <em class="text-info">El equipo que haya quedado último elegirá primero, el anteúltimo segundo y así sucesivamente</em></p>
+<p>Rondas posteriores, sistema aleatorio clásico, serán ordenados de forma completamente aleatoria.</p>
+
+<h3 id="descartes" class="h3">Descartes</h3>
+
+<p> Conforme se acerque el final de una temporada los equipos deberán elegir los descartes de su plantilla, siendo estos un mínimo de 2 jugadores y un máximo de 4. </p>
+<p> Siempre que sea posible mínimo 1 de los jugadores debe ser de una temporada anterior, priorizando cuanto más antigua, a la que esté en curso. <em class="text-info"> Conforme se esté acabando la temporada 4, los presidentes descartarían mínimo 1 jugador que fichasen en la temporada 1, en caso de no tener, debería ser de la temporada 2, así sucesivamente. </em> </p>
+<p> Los jugadores cuentan como elegidos en el primer draft que fueron elegidos, no en el draft que les fichó su equipo actual. <em class="text-info"> Si un jugador está la temporada 1 en un equipo, la 2 en otro y la 3 en otro, al tercer equipo le sigue contando como jugador de 1 temporada a la hora de descartar. </em> </p>
+<p>Se puede mantener a un jugador que se estuviera obligado a descartar si se decide descartar a todo el resto en su lugar.</p>
+<p>Si un jugador ha competido durante 3 temporadas seguidas en el mismo equipo, se podría utilizar un descarte especial llamado <em class="text-info">Hall de la fama</em>, sería como un descarte normal, con la diferencia de que no pasaría al draft, se le retiraría directamente de la competición.</p>
+
+<h2 id="jugadores" class="h2">Jugadores</h2>
+
+<p>Hay 3 categorías distintas de jugadores.</p>
+<p>Todos los jugadores constan de un nombre, apellidos y motes, tanto aleatorizados como personalizados por presidentes.</p>
+<p>Un jugador solo puede estar en un equipo a la vez.</p>
+<p>Los datos informativos de un jugador podrán modificarse mediante un acuerdo con la directiva y siempre antes de ser elegidos en el draft.</p>
+<p>Las estadísticas de cada jugador <strong class="text-danger">no se podrán modificar modificar</strong>.</p>
+
+<h3 id="superestrellas" class="h3">Superestrellas</h3>
+
+<p>Los jugadores con media +90. <em class="text-info"> Puntuaciones entre 90-99 </em> </p>
+<p>Tendrán nombres o motes referenciales a grandes jugadores o cuestiones personales de importancia. <em class="text-info">Sheel O'Quile</em> &amp; <em class="text-info"> Ranni Moon </em> </p>
+
+<h3 id="medios" class="h3">Medios</h3>
+
+<p>Los jugadores con medias de +70-80. <em class="text-info"> Puntuaciones entre 70-79 </em> </p>
+<p>Tendrán nombres y motes totalmente randomizados de forma general. <em class="text-info">Ada Adamson "Doble A"</em> </p>
+
+<h3 id="malardos" class="h3">Malardos</h3>
+
+<p>Los jugadores con medias de -50. <em class="text-info"> Puntuaciones entre 40-49 </em> </p>
+<p>Tendrán nombres totalmente randomizados. <em class="text-info"> John Lee </em> </p>
+<p>Tendrán motes en su mayoría de casos irónicos, vejatorios, chistosos. <em class="text-info">"Sin piernas"</em> </p>
+
+<h2 id="alineaciones" class="h2">Alineaciones</h2>
+
+<p>Todos los equipos deben estar compuestos por plantillas de 5 jugadores.</p>
+<p>Un equipo debe estar compuesto por 1 jugador super estrella, 1 jugador malardo y 3 jugadores medios.</p>
+
+
+@code{
+
+}

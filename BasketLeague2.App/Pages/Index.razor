@@ -64,10 +64,29 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
 <div class="row mt-3">
     <div class="col-lg-8">
         <Carousel @bind-SelectedSlide="@_selectedSlide" Autoplay="false" Crossfade="true">
+            <CarouselSlide Name="10">
+                <div class="card mb-3" style="min-height: 600px">
+                    <div class="card-body">
+                        <h5 class="card-title">El Éxtasis del Deporte: El Mejor Partido de Baloncesto en la Historia.</h5>
+                        <p class="card-text">¡Increíble! ¡El partido entre los Reno Bighorns y los Wahpeton Ducks ha sido simplemente asombroso! Estoy al borde del éxtasis mientras trato de resumir lo que acabamos de presenciar. Ha sido sin duda el mejor partido de baloncesto de la historia.</p>
+                        <p class="card-text">Desde el comienzo, ambos equipos mostraron una intensidad y una habilidad que nos dejaron a todos sin aliento. Las jugadas ofensivas y defensivas se sucedieron sin pausa, cada equipo luchando por cada balón como si fuera el último.</p>
+                        <p class="card-text">Los Reno Bighorns tomaron la iniciativa en el primer cuarto, con su estrella, Jack Adams "Adamizador", liderando el ataque con una precisión y una determinación increíbles. Sus tiros desde el perímetro y su capacidad para penetrar en la defensa rival fueron simplemente imparables.</p>
+                        <p class="card-text">Pero los Wahpeton Ducks no se quedaron atrás. Charlie Rodriquez "Guru", su líder indiscutible, llevó a su equipo en el segundo cuarto con una exhibición de velocidad y agilidad. Sus habilidades para driblar y su capacidad para anotar desde cualquier posición dejaron a todos los presentes boquiabiertos.</p>
+                        <p class="card-text">Ambos equipos se intercambiaron el liderazgo en el marcador a lo largo del partido, manteniendo a los espectadores en vilo en todo momento. La tensión en el ambiente era palpable, y el estadio estaba a reventar con la emoción desatada.</p>
+                        <p class="card-text">El último cuarto fue un auténtico espectáculo. Los Reno Bighorns mostraron una resistencia y una determinación increíbles, remontando una desventaja de 10 puntos a falta de solo tres minutos para el final. Los tiros de tres puntos de Paulino Gasolino "El Oso" y las penetraciones explosivas de su compañero de equipo, "Adamizador", desataron la locura en las gradas.</p>
+                        <p class="card-text">Pero los Wahpeton Ducks no estaban dispuestos a rendirse. Con unos segundos en el reloj, "Guru" se elevó desde la línea de tres puntos y anotó un tiro imposible que llevó su equipo a la victoria. Los jugadores de ambos equipos se fundieron en abrazos, mientras los fanáticos celebraban enardecidos.</p>
+                        <p class="card-text">El resultado final, 103-105 a favor de los Wahpeton Ducks, no hace justicia al nivel de juego y a la pasión que presenciamos en este partido. Fue un enfrentamiento épico entre dos equipos formidables, luchando hasta el último segundo para conseguir la victoria.</p>
+                        <p class="card-text">En resumen, el partido entre los Reno Bighorns y los Wahpeton Ducks ha sido simplemente histórico. La intensidad, el talento y la emoción desatada nos han mantenido al borde del éxtasis durante todo el encuentro. ¡Sin duda, será recordado como uno de los mejores partidos de baloncesto de todos los tiempos!</p>
+                        <p class="card-text">
+                            <small class="text-muted">Publicado el 30 de Enero, 2024</small>
+                        </p>
+                    </div>
+                </div>
+            </CarouselSlide>
             <CarouselSlide Name="9">
                 <div class="card mb-3" style="min-height: 600px">
                     <div class="card-body">
-                    <h5 class="card-title">Los Broncos galopan hacia la victoria.</h5>
+                        <h5 class="card-title">Los Broncos galopan hacia la victoria.</h5>
                         <p class="card-text">¡Relincho, relincho! Hoy presencié un emocionante partido de baloncesto entre los Tampa Honey Badgers y los Birmingham Broncos. Fue un juego de pura velocidad y habilidad donde los Broncos demostraron su dominio desde el principio.</p>
                         <p class="card-text">Desde el primer relincho, los Broncos establecieron un ritmo rápido y furioso, anotando canasta tras canasta. Sus movimientos elegantes y coordinados eran como una danza en el aire. Parecían imparables, como una manada de corceles salvajes galopando hacia la victoria.</p>
                         <p class="card-text">Los Honey Badgers intentaron mantenerse al ritmo, pero sus esfuerzos fueron en vano. Tropezaron constantemente con la brillante defensa de los Broncos y les resultaba difícil encontrar su oportunidad de anotar. Aunque lucharon con todas sus fuerzas, simplemente no podían competir con la potencia y la velocidad de los Broncos.</p>
@@ -214,6 +233,12 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
     <div class="col-lg-4">
         <div class="card mb-3">
             <div class="card-body">
+                <h5 class="card-title">La normativa tiene ahora su lugar</h5>
+                <p class="card-text">Accede a <b>rules</b> para consultar la normativa actualizada.</p>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-body">
                 <h5 class="card-title">Regreso de los OG</h5>
                 <p class="card-text">Vuelven a nuestra prestigiosa liga los Seattle Killer Whales.</p>
                 <p class="card-text">Bienvenidos a vuestra casa!!</p>
@@ -233,12 +258,6 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
                 <p class="card-text">Sus declaraciones fueron: <b>*Sonidos ininteligibles* Sois unos garrulos.</b></p>
             </div>
         </div>
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">Habemus blog</h5>
-                <p class="card-text">Ahora la liga también tiene un blog de noticias con los partidos destacados de cada jornada.</p>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -252,7 +271,7 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
     private Team _equipo3 = new(); // Equipo con menos puntos en contra en casa
     private Team _equipo4 = new(); // Equipo con menos puntos en contra fuera de casa
 
-    private string _selectedSlide = "9";
+    private string _selectedSlide = "10";
 
     protected override async Task OnInitializedAsync()
     {
@@ -262,6 +281,8 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
 
         CalcularRacha();
         CalcularScores();
+
+        LeagueUtils.GetTeamOrder();
     }
 
     private async Task GetTeams()
