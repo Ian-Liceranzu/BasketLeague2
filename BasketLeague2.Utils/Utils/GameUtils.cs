@@ -99,7 +99,7 @@ namespace BasketLeague2.Utils.Utils
             return stats;
         }
 
-        private static int CalculateScore(int[][] stats)
+        private static int CalculateScore(IEnumerable<int[]> stats)
         {
             var totalScore = 0;
             foreach (var stat in stats)

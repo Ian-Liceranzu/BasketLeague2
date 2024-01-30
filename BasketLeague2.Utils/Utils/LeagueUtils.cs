@@ -87,7 +87,7 @@ namespace BasketLeague2.Utils.Utils
         private static int GetTeamIndex(Random random)
         {
             int[] choiceWeight =
-                { 3, 3, 4, 4, 5, 5, 5, 6, 6, 8 }; // Modificar en base a resultados de temporada regular
+                { 3, 4, 4, 4, 5, 5, 5, 6, 6, 8 }; // Modificar en base a resultados de temporada regular
             var cumulativeSum = new int[choiceWeight.Length];
             var sum = 0;
             for (var i = 0; i < choiceWeight.Length; i++)

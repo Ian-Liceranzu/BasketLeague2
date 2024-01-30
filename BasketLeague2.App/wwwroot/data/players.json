@@ -821,7 +821,7 @@
   {
     "Codigo": 64,
     "Name": "Quinn Fisher",
-    "Nickname": "Queenfish",
+    "Nickname": "Queen't",
     "Team": 0,
     "InsideScoring": 43,
     "OutsideScoring": 41,
@@ -860,7 +860,7 @@
   {
     "Codigo": 67,
     "Name": "Alice Yang",
-    "Nickname": "Ying",
+    "Nickname": "Ying Yang",
     "Team": 0,
     "InsideScoring": 44,
     "OutsideScoring": 44,
@@ -898,8 +898,8 @@
   },
   {
     "Codigo": 70,
-    "Name": "Gonzalo Gomez Garcia",
-    "Nickname": "Punto G",
+    "Name": "Jose Angel",
+    "Nickname": "Sises",
     "Team": 0,
     "InsideScoring": 47,
     "OutsideScoring": 42,
@@ -1145,8 +1145,8 @@
   },
   {
     "Codigo": 89,
-    "Name": "Jose Angel",
-    "Nickname": "Sises",
+    "Name": "Gonzalo Gomez Garcia",
+    "Nickname": "G Trix",
     "Team": 0,
     "InsideScoring": 75,
     "OutsideScoring": 79,
