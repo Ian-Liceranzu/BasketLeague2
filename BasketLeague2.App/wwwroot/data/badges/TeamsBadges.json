@@ -1,0 +1,20 @@
+[
+  {
+    "Id": 6,
+    "Name": "S1 WINNER",
+    "Description": "Ganador de la S1 de la FBA.",
+    "Color": "warning"
+  },
+  {
+    "Id": 11,
+    "Name": "SUMMER EVENT WINNER",
+    "Description": "Ganador de la temporada playera de la FBA.",
+    "Color": "info"
+  },
+  {
+    "Id": 4,
+    "Name": "S2 WINNER",
+    "Description": "Ganador de la S2 de la FBA.",
+    "Color": "warning"
+  }
+]

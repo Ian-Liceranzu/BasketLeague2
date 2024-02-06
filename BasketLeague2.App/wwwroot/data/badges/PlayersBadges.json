@@ -1,0 +1,14 @@
+[
+  {
+    "Id": 2,
+    "Name": "MVP S3",
+    "Description": "Más puntos anotados en la temporada 3.",
+    "Color": "warning"
+  },
+  {
+    "Id": 17,
+    "Name": "MALARDO S3",
+    "Description": "Menos puntos anotados en la temporada 3.",
+    "Color": "dark"
+  }
+]
