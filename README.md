@@ -15,19 +15,31 @@ Basket League es una herramienta para la gestión de una liga simulada de balonc
   - <s>Equipo con más puntos fuera de casa</s>
   - <s>Equipo con menos puntos en contra en casa</s>
   - <s>Equipo con menos puntos en contra fuera de casa</s>
-  - Resumen de las últimas jornadas
+  - <s>Resumen de las últimas jornadas</s>
+  - <s>Noticias de la liga</s>
 2. Clasificación
   - <s>Tabla de claficación actual</s>
+  - <s>Tabla de clasificación de temporadas pasadas</s>
 3. Gestión de partidos
   - <s>Jugar partidos amistosos</s>
+  - <s>Jugar partidos con sistema de jugadores</s>
+  - Mostrar resultados individuales al jugar partidos
 4. Gestión de equipos
   - <s>Panel de equipo (Información avanzada del equipo)</s>
-  - Consultar estadísticas por equipo
+  - <s>Consultar estadísticas por equipo</s>
   - <s>Consultar resultados por equipo</s>
+  - <s>Consultar resultados históricos por equipos</s>
+  - Mostrar logros históricos de los equipos
 5. Gestión de resultados
   - <s>Consultar tabla con los últimos resultados</s>
   - <s>Información detallada de los resultados</s>
 6. Gestión de fechas
   - <s>Consultar próximos partidos</s>
   - <s>Generar calendario de partidos</s>
+7. Gestión de jugadores
+  - <s>Consultar estadísticas de los jugadores</s>
+  - <s>Consultar estadísticas históricas de los jugadores</s>
+  - <s>Mostrar logros individuales de los jugadores</s>
+8. Gestión de drafts
+  - Consultar decisiones históricas de los drafts
 
