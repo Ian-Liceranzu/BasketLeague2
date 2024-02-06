@@ -1,73 +1,16 @@
 ﻿@page "/"
-@using BasketLeague2.Utils.Models
-@using BasketLeague2.Utils.Utils
-@using Newtonsoft.Json
-
-@inject HttpClient Http
 
 <PageTitle>Index</PageTitle>
 
 <h1>FRIKI PLANET BASKETBALL ASSOCIATION</h1>
 
-Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
-
-<div class="row">
-    <div class="col">
-        <div class="card text-center">
-            <div class="card-header horizontal-gradient">Más puntos anotados en casa</div>
-            <div class="card-body">
-                <div>@_equipo1.NombreCompleto</div>
-                <div>
-                    <i class="oi oi-arrow-thick-top"></i>
-                    <span class="text">@_equipo1.DIF puntos anotados</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card text-center">
-            <div class="card-header horizontal-gradient">Menos puntos recibidos en casa</div>
-            <div class="card-body">
-                <div>@_equipo3.NombreCompleto</div>
-                <div>
-                    <i class="oi oi-arrow-thick-bottom"></i>
-                    <span class="text">@_equipo3.DIF puntos recibidos</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card text-center">
-            <div class="card-header horizontal-gradient">Más puntos anotados fuera de casa</div>
-            <div class="card-body">
-                <div>@_equipo2.NombreCompleto</div>
-                <div>
-                    <i class="oi oi-arrow-thick-top"></i>
-                    <span class="text">@_equipo2.DIF puntos anotados</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card text-center">
-            <div class="card-header horizontal-gradient">Menos puntos recibidos fuera de casa</div>
-            <div class="card-body">
-                <div>@_equipo4.NombreCompleto</div>
-                <div>
-                    <i class="oi oi-arrow-thick-bottom"></i>
-                    <span class="text">@_equipo4.DIF puntos recibidos</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="row mt-3">
     <div class="col-lg-8">
         <Carousel @bind-SelectedSlide="@_selectedSlide" Autoplay="false" Crossfade="true">
             <CarouselSlide Name="10">
                 <div class="card mb-3" style="min-height: 600px">
+                    <div class="card-header horizontal-gradient text-center">El Éxtasis del Deporte: El Mejor Partido de Baloncesto en la Historia.</div>
                     <div class="card-body">
-                        <h5 class="card-title">El Éxtasis del Deporte: El Mejor Partido de Baloncesto en la Historia.</h5>
                         <p class="card-text">Desde el comienzo, ambos equipos mostraron una intensidad y una habilidad que nos dejaron a todos sin aliento. Las jugadas ofensivas y defensivas se sucedieron sin pausa, cada equipo luchando por cada balón como si fuera el último.</p>
                         <p class="card-text">Los Reno Bighorns tomaron la iniciativa en el primer cuarto, con su estrella, Jack Adams "Adamizador", liderando el ataque con una precisión y una determinación increíbles. Sus tiros desde el perímetro fueron simplemente imparables.</p>
                         <p class="card-text">Pero los Wahpeton Ducks no se quedaron atrás. Charlie Rodriquez "Guru", su líder indiscutible, llevó a su equipo en el segundo cuarto con una exhibición de velocidad y agilidad. Sus habilidades para driblar y su capacidad para anotar desde cualquier posición dejaron a todos los presentes boquiabiertos.</p>
@@ -83,8 +26,8 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
             </CarouselSlide>
             <CarouselSlide Name="9">
                 <div class="card mb-3" style="min-height: 600px">
+                    <div class="card-header horizontal-gradient text-center">Los Broncos galopan hacia la victoria.</div>
                     <div class="card-body">
-                        <h5 class="card-title">Los Broncos galopan hacia la victoria.</h5>
                         <p class="card-text">¡Relincho, relincho! Hoy presencié un emocionante partido de baloncesto entre los Tampa Honey Badgers y los Birmingham Broncos. Fue un juego de pura velocidad y habilidad donde los Broncos demostraron su dominio desde el principio.</p>
                         <p class="card-text">Desde el primer relincho, los Broncos establecieron un ritmo rápido y furioso, anotando canasta tras canasta. Sus movimientos elegantes y coordinados eran como una danza en el aire. Parecían imparables, como una manada de corceles salvajes galopando hacia la victoria.</p>
                         <p class="card-text">Los Honey Badgers intentaron mantenerse al ritmo, pero sus esfuerzos fueron en vano. Tropezaron constantemente con la brillante defensa de los Broncos y les resultaba difícil encontrar su oportunidad de anotar. Aunque lucharon con todas sus fuerzas, simplemente no podían competir con la potencia y la velocidad de los Broncos.</p>
@@ -99,8 +42,8 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
             </CarouselSlide>
             <CarouselSlide Name="8">
                 <div class="card mb-3" style="min-height: 600px">
+                    <div class="card-header horizontal-gradient text-center">Pandas, eternos amantes de la siesta.</div>
                     <div class="card-body">
-                        <h5 class="card-title">Pandas, eternos amantes de la siesta.</h5>
                         <p class="card-text">El partido entre los Wahpeton Ducks y los Jackson Pandas fue una exhibición de la incompetencia y debilidad del equipo de los Pandas. Aunque lograron anotar 108 puntos, la mayoría de ellos no fueron más que suerte y errores defensivos por parte de los Ducks.</p>
                         <p class="card-text">Desde el inicio del juego, los Pandas demostraron su incapacidad para competir a un nivel de alto rendimiento. Su defensa era inexistente, permitiendo que los Ducks anotaran con facilidad en cada posesión. Además, su falta de coordinación y disciplina en ambos lados de la cancha fue obvia.</p>
                         <p class="card-text">A pesar de los esfuerzos desesperados de los Pandas por mantenerse en el juego, su ineptitud y falta de talento les impidió acercarse al marcador. El equipo carecía de jugadores destacados y ninguna de sus estrategias fue efectiva contra la defensa de los Ducks.</p>
@@ -114,8 +57,8 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
             </CarouselSlide>
             <CarouselSlide Name="7">
                 <div class="card mb-3" style="min-height: 600px">
+                    <div class="card-header horizontal-gradient text-center">Pandas al borde de la extinción.</div>
                     <div class="card-body">
-                        <h5 class="card-title">Pandas al borde de la extinción.</h5>
                         <p class="card-text">¡Oh, vaya juego tuvimos el otro día, amigos! ¡Los Reno Bighorns dominaron el encuentro de baloncesto contra los Jackson Pandas de principio a fin! ¡Fue una exhibición impresionante de talento y habilidad por parte de nuestros queridos Bighorns!</p>
                         <p class="card-text">Desde el primer salto, nuestros chicos salieron a la cancha con una determinación inquebrantable. ¡No había vuelta atrás en su búsqueda de la victoria! Fue increíble verlos volar por la cancha, anotando canasta tras canasta sin piedad. ¡Nuestro ataque fue imparable, como un tornado de encestes!</p>
                         <p class="card-text">Y hablemos de nuestra defensa, ¡simplemente no tenían oportunidad los pobres Pandas! Los Bighorns ejercieron una presión implacable sobre sus oponentes, negándoles cualquier oportunidad de respirar en la cancha. Robo tras robo, bloqueo tras bloqueo, ¡no había escape para los Pandas bajo nuestra feroz defensa!</p>
@@ -131,8 +74,8 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
             </CarouselSlide>
             <CarouselSlide Name="6">
                 <div class="card mb-3" style="min-height: 600px">
+                    <div class="card-header horizontal-gradient text-center">Los suricatos salen de la madriguera.</div>
                     <div class="card-body">
-                        <h5 class="card-title">Los suricatos salen de la madriguera.</h5>
                         <p class="card-text">En un emocionante partido entre los Little Rock Wombats y los Honolulu Meerkats, fue este último quien dominó el encuentro de principio a fin, terminando con una abrumadora ventaja de 82-132.</p>
                         <p class="card-text">El partido comenzó con los Meerkats estableciendo su ritmo desde el principio, logrando una rápida ventaja en el marcador. Mientras tanto, los Wombats luchaban por encontrar su lugar en la cancha, cometiendo varios errores y fallando en aprovechar las oportunidades de anotar.</p>
                         <p class="card-text">A lo largo del juego, los Meerkats demostraron una gran coordinación en equipo y una excelente capacidad de tiro, anotando puntos desde todas las posiciones en la cancha. Además, jugaron una defensa sólida, dificultando el avance ofensivo de los Wombats y asegurándose de que cada posesión fuera difícil para su oponente.</p>
@@ -146,8 +89,8 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
             </CarouselSlide>
             <CarouselSlide Name="5">
                 <div class="card mb-3" style="min-height: 600px">
+                    <div class="card-header horizontal-gradient text-center">Mi más sentido pésame para los fans de los Jackson Pandas.</div>
                     <div class="card-body">
-                        <h5 class="card-title">Mi más sentido pésame para los fans de los Jackson Pandas.</h5>
                         <p class="card-text">El partido entre los Wahpeton Ducks y los Jackson Pandas fue emocionante y lleno de acción de principio a fin. Ambos equipos mostraron una gran habilidad y determinación en la cancha, pero al final, los Ducks se llevaron la victoria con un marcador de 101-92.</p>
                         <p class="card-text">El partido comenzó muy parejo, con ambos equipos anotando de manera constante y sin dar tregua. Los Pandas demostraron una gran precisión en los tiros de tres puntos, mientras que los Ducks destacaron en el juego en la pintura y en el contraataque. Al final del primer cuarto, el marcador estaba muy parejo, con una mínima ventaja para los Pandas de 25-24.</p>
                         <p class="card-text">En el segundo cuarto, los Ducks intensificaron su defensa y comenzaron a presionar a los Pandas, lo que les permitió robar varios balones y convertirlos en puntos rápidos. El juego se volvió más físico y competitivo, con jugadas espectaculares por parte de ambos equipos. Los Ducks lograron tomar una pequeña ventaja al medio tiempo, liderando el marcador 52-48.</p>
@@ -162,8 +105,8 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
             </CarouselSlide>
             <CarouselSlide Name="4">
                 <div class="card mb-3" style="min-height: 600px">
+                    <div class="card-header horizontal-gradient text-center">[...] más dura será la caída!</div>
                     <div class="card-body">
-                        <h5 class="card-title">[...] más dura será la caída!</h5>
                         <p class="card-text">¡Ash, mi amigo! Reúnanse y déjenme contarles la historia de un épico partido de baloncesto entre los Tampa Honey Badgers y los Sacramento Snails. Fue un enfrentamiento electrizante que mantuvo a la multitud al borde de sus asientos.</p>
                         <p class="card-text">Con movimientos rápidos como el rayo y una coordinación afilada como una navaja, los Tampa Honey Badgers se lanzaron a la cancha como una bandada de Pidgeys. Su ofensiva era una fuerza a tener en cuenta. Los Honey Badgers se movían rápidamente, pasando el balón con la elegancia de un Ninjask y disparando con la precisión de un Machamp. Sus clavadas eran tan poderosas como el ataque Splash de un Gyarados, dejando a la multitud asombrada.</p>
                         <p class="card-text">¡Pero no olvidemos a los animados Sacramento Snails! Aunque carecían de la velocidad de un Rapidash, mostraron resistencia y determinación. Con su defensa en forma de caparazón, hicieron difícil el avance de los Honey Badgers. Los Snails lograron anotar 107 puntos, liderados por su jugador estrella, un Snorlax conocido por sus poderosos mates y su precisión experta.</p>
@@ -178,8 +121,8 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
             </CarouselSlide>
             <CarouselSlide Name="3">
                 <div class="card mb-3" style="min-height: 600px">
+                    <div class="card-header horizontal-gradient text-center">El Urdaneto se impone a White Chocolate.</div>
                     <div class="card-body">
-                        <h5 class="card-title">El Urdaneto se impone a White Chocolate.</h5>
                         <p class="card-text">En un emocionante enfrentamiento de baloncesto, los Little Rock Wombats y los Boston Frogs se enfrentaron cabeza a cabeza en la cancha. El juego estuvo lleno de acción constante y momentos de suspenso.</p>
                         <p class="card-text">Desde el saque inicial, ambos equipos mostraron su destreza ofensiva, anotando canasta tras canasta. Los Wombats lucharon valientemente y demostraron sus habilidades de tiro, pero los Frogs fueron implacables en sus ataques.</p>
                         <p class="card-text">A lo largo del partido, los Frogs mantuvieron una sólida ventaja sobre los Wombats, aprovechando su sólida defensa y su ofensiva rápida. Su trabajo en equipo y coordinación fueron realmente impresionantes, lo que les permitió dominar el juego.</p>
@@ -195,8 +138,8 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
             </CarouselSlide>
             <CarouselSlide Name="2">
                 <div class="card mb-3" style="min-height: 600px">
+                    <div class="card-header horizontal-gradient text-center">Las ranas sueñan con el título.</div>
                     <div class="card-body">
-                        <h5 class="card-title">Las ranas sueñan con el título.</h5>
                         <p class="card-text">En un emocionante partido de baloncesto, los Jackson Pandas se enfrentaron a los Boston Frogs en un duelo lleno de acción y emoción. Desde el inicio del juego, ambos equipos mostraron un gran nivel de competitividad y determinación.</p>
                         <p class="card-text">Los Jackson Pandas lucharon valientemente en la cancha, pero los Boston Frogs demostraron su dominio en el juego con una actuación excepcional. Con una ofensiva poderosa y una defensa sólida, los Frogs lograron mantener una ventaja constante a lo largo del partido.</p>
                         <p class="card-text">A pesar de los esfuerzos de los Pandas por remontar, los Frogs se mostraron imparables, anotando canasta tras canasta con gran habilidad y precisión. Sus jugadores brillaron en cada jugada, realizando jugadas espectaculares y demostrando su destreza en el deporte.</p>
@@ -211,8 +154,8 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
             </CarouselSlide>
             <CarouselSlide Name="1">
                 <div class="card mb-3" style="min-height: 600px">
+                    <div class="card-header horizontal-gradient text-center">¿Es un Lockheed SR-71? No, es un caracol!</div>
                     <div class="card-body">
-                        <h5 class="card-title">¿Es un Lockheed SR-71? No, es un caracol!</h5>
                         <p class="card-text">¡En la cancha, señoras y señores! ¡Bienvenidos al partido de baloncesto entre los Sacramento Snails y los Milwaukee Platypus! Un encuentro lleno de emoción y talento en la duela.</p>
                         <p class="card-text">Desde el primer instante, los Snails dejaron claro que estaban dispuestos a morder en cada jugada. Con un ataque veloz y una defensa asfixiante, dominaron la cancha. ¡No podían parar de anotar! Triples, mates, jugadas espectaculares... ¡Un verdadero festín de baloncesto!</p>
                         <p class="card-text">Pero los Platypus no se rindieron fácilmente. Con un juego inteligente y un espíritu de lucha incansable, intentaron dar guerra en cada posesión. Sin embargo, los Snails se encontraban imparables, moviendo el balón con maestría y encontrando siempre al jugador libre para anotar.</p>
@@ -230,28 +173,28 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
     </div>
     <div class="col-lg-4">
         <div class="card mb-3">
+            <div class="card-header horizontal-gradient text-center">La normativa tiene ahora su lugar</div>
             <div class="card-body">
-                <h5 class="card-title">La normativa tiene ahora su lugar</h5>
                 <p class="card-text">Accede a <b>rules</b> para consultar la normativa actualizada.</p>
             </div>
         </div>
         <div class="card mb-3">
+            <div class="card-header horizontal-gradient text-center">Regreso de los OG</div>
             <div class="card-body">
-                <h5 class="card-title">Regreso de los OG</h5>
                 <p class="card-text">Vuelven a nuestra prestigiosa liga los Seattle Killer Whales.</p>
                 <p class="card-text">Bienvenidos a vuestra casa!!</p>
             </div>
         </div>
         <div class="card mb-3">
+            <div class="card-header horizontal-gradient text-center">Jugadores draft 2024</div>
             <div class="card-body">
-                <h5 class="card-title">Jugadores draft 2024</h5>
                 <p class="card-text">Han llegado ya a nuestra puerta los jugadores para el próximo draft.</p>
                 <p class="card-text">Vayan al listado de jugadores para consultarlos.</p>
             </div>
         </div>
         <div class="card mb-3">
+            <div class="card-header horizontal-gradient text-center">Sendoa Unchained</div>
             <div class="card-body">
-                <h5 class="card-title">Sendoa Unchained</h5>
                 <p class="card-text">Sendoa Del Campo, presidente de Jackson Pandas, estalla contra la directiva por no avisarle con los horarios de los partidos.</p>
                 <p class="card-text">Sus declaraciones fueron: <b>*Sonidos ininteligibles* Sois unos garrulos.</b></p>
             </div>
@@ -260,66 +203,8 @@ Bienvenido a la mejor liga de basket del mundo - FRIKI LEAGUE
 </div>
 
 @code {
-    private IEnumerable<Team> _teams = new Team[] { };
-    private IEnumerable<AdvancedResult> _results = new AdvancedResult[] { };
-    private IEnumerable<Player> _players = new Player[] { };
-
-    private Team _equipo1 = new(); // Equipo con más puntos anotados en casa
-    private Team _equipo2 = new(); // Equipo con más puntos anotados fuera de casa
-    private Team _equipo3 = new(); // Equipo con menos puntos en contra en casa
-    private Team _equipo4 = new(); // Equipo con menos puntos en contra fuera de casa
 
     private string _selectedSlide = "10";
 
-    protected override async Task OnInitializedAsync()
-    {
-        await GetTeams();
-        await GetResults();
-        await GetPlayers();
-
-        CalcularRacha();
-        CalcularScores();
-    }
-
-    private async Task GetTeams()
-    {
-        var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
-        _teams = _teams.Concat(t);
-    }
-
-    private async Task GetResults()
-    {
-        var r = await Http.GetFromJsonAsync<IEnumerable<AdvancedResult>>("data/results/R_S3.json");
-        _results = _results.Concat(r);
-    }
-
-    private async Task GetPlayers()
-    {
-        var p = await Http.GetFromJsonAsync<IEnumerable<Player>>("data/players.json");
-        _players = _players.Concat(p);
-    }
-
-    private void CalcularRacha()
-    {
-        _equipo1 = _results.GroupBy(r => r.Equipo1).Select(r => new Team { NombreCompleto = _teams.First(t => t.Codigo == int.Parse(r.First().Equipo1)).NombreCompleto, DIF = r.Sum(r => r.Resultado1) }).MaxBy(r => r.DIF);
-        _equipo2 = _results.GroupBy(r => r.Equipo2).Select(r => new Team { NombreCompleto = _teams.First(t => t.Codigo == int.Parse(r.First().Equipo2)).NombreCompleto, DIF = r.Sum(r => r.Resultado2) }).MaxBy(r => r.DIF);
-        _equipo3 = _results.GroupBy(r => r.Equipo1).Select(r => new Team { NombreCompleto = _teams.First(t => t.Codigo == int.Parse(r.First().Equipo1)).NombreCompleto, DIF = r.Sum(r => r.Resultado2) }).MinBy(r => r.DIF);
-        _equipo4 = _results.GroupBy(r => r.Equipo2).Select(r => new Team { NombreCompleto = _teams.First(t => t.Codigo == int.Parse(r.First().Equipo2)).NombreCompleto, DIF = r.Sum(r => r.Resultado1) }).MinBy(r => r.DIF);
-    }
-
-    private void CalcularScores()
-    {
-        var stats1 = _results.Select(r => r.Stats1);
-        var stats2 = _results.Select(r => r.Stats2);
-
-        var stats = stats1.Concat(stats2);
-
-        List<int[]> diary = (from s in stats from ss in s select new[] { ss[0], ss.Skip(1).Sum() }).ToList();
-
-        var grouped = diary.GroupBy(d => d[0]).ToList();
-        var playerScores = grouped.Select(g => new KeyValuePair<string, int>(_players.Single(p => p.Codigo == g.Key).Nickname, g.Sum(gg => gg.Skip(1).Sum()))).ToList();
-
-        Console.WriteLine(JsonConvert.SerializeObject(playerScores.OrderByDescending(kvp => kvp.Value)));
-    }
 
 }
