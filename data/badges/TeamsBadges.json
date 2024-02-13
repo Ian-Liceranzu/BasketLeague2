@@ -9,7 +9,7 @@
     "Id": 11,
     "Name": "SUMMER EVENT WINNER",
     "Description": "Ganador de la temporada playera de la FBA.",
-    "Color": "info"
+    "Color": "danger"
   },
   {
     "Id": 4,
