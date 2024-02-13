@@ -15,10 +15,10 @@
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" @onclick="() => expandSubNavLeaderboard = !expandSubNavLeaderboard">
+            <NavLink class="nav-link" @onclick="() => _expandSubNavLeaderboard = !_expandSubNavLeaderboard">
                 <span class="oi oi-clipboard" aria-hidden="true"></span> Leaderboard
             </NavLink>
-            @if (expandSubNavLeaderboard)
+            @if (_expandSubNavLeaderboard)
             {
                 <NavLink class="nav-link" href="Leaderboard/S2">
                     Temporada 2 (2022-2023)
@@ -29,10 +29,10 @@
             }
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" @onclick="() => expandSubNavTimetables = !expandSubNavTimetables">
+            <NavLink class="nav-link" @onclick="() => _expandSubNavTimetables = !_expandSubNavTimetables">
                 <span class="oi oi-clock" aria-hidden="true"></span> Timetables
             </NavLink>
-            @if (expandSubNavTimetables)
+            @if (_expandSubNavTimetables)
             {
                 <NavLink class="nav-link" href="timetable/S2">
                     Temporada 2 (2022-2023)
@@ -62,10 +62,10 @@
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" @onclick="() => expandSubNavResults = !expandSubNavResults">
+            <NavLink class="nav-link" @onclick="() => _expandSubNavResults = !_expandSubNavResults">
                 <span class="oi oi-file" aria-hidden="true"></span> Results
             </NavLink>
-            @if (expandSubNavResults)
+            @if (_expandSubNavResults)
             {
                 <NavLink class="nav-link" href="results/S2">
                     Temporada 2 (2022-2023)
@@ -90,16 +90,16 @@
 </div>
 
 @code {
-    private bool collapseNavMenu = true;
-    private bool expandSubNavResults;
-    private bool expandSubNavLeaderboard;
-    private bool expandSubNavTimetables;
+    private bool _collapseNavMenu = true;
+    private bool _expandSubNavResults;
+    private bool _expandSubNavLeaderboard;
+    private bool _expandSubNavTimetables;
 
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private string? NavMenuCssClass => _collapseNavMenu ? "collapse" : null;
 
     private void ToggleNavMenu()
     {
-        collapseNavMenu = !collapseNavMenu;
+        _collapseNavMenu = !_collapseNavMenu;
     }
 
 }

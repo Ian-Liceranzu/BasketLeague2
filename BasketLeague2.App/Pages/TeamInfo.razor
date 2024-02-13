@@ -3,99 +3,89 @@
 @inject HttpClient Http
 
 @using BasketLeague2.Utils.Models
+@using Badge = BasketLeague2.Utils.Models.Badge
 
 <PageTitle>Team @Codigo</PageTitle>
 
 <div>
-    @if (_team != null)
-    {
-        <Row>
-            <Column ColumnSize="ColumnSize.Is6">
-                <header>@_team.NombreCompleto</header>
-                <img alt="Team logo" src=@($"assets/images/logos/{Codigo}_1.jpg") style="height: 350px;"/>
-            </Column>
-        </Row>
+    <Row>
+        <Column ColumnSize="ColumnSize.Is6">
+            <header>@_team.NombreCompleto</header>
+            <img alt="Team logo" src=@($"assets/images/logos/{Codigo}_1.jpg") style="height: 350px;"/>
+        </Column>
+    </Row>
 
-        <h3>Players</h3>
+    @foreach (var badge in _badges)
+    {
+        <Badge Color="@badge.Color">
+            <Tooltip Text="@badge.Description">
+                @badge.Name
+            </Tooltip>
+        </Badge>
+    }
+
+    <h3>Players</h3>
+
+    <table class="table table-striped">
+        <thead class="thead-light">
+        <tr>
+            <th>NOMBRE</th>
+            <th>TIRO DOBLE</th>
+            <th>TIRO TRIPLE</th>
+            <th>FÍSICO</th>
+            <th>PLAYMAKING</th>
+            <th>REBOTE</th>
+            <th>DEFENSA</th>
+            <th>MEDIA</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var p in _players)
+        {
+            <tr>
+                <td>@p.Name "@p.Nickname"</td>
+                <td>@p.InsideScoring</td>
+                <td>@p.OutsideScoring</td>
+                <td>@p.Athleticism</td>
+                <td>@p.Playmaking</td>
+                <td>@p.Rebounding</td>
+                <td>@p.Defending</td>
+                <td>@p.Overall</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    @if (_playersHistoricos.Count() != 0)
+    {
+        <h3>Players historial</h3>
 
         <table class="table table-striped">
             <thead class="thead-light">
             <tr>
-                <th>
-                    NOMBRE
-                </th>
-                <th>
-                    TIRO DOBLE
-                </th>
-                <th>
-                    TIRO TRIPLE
-                </th>
-                <th>
-                    FÍSICO
-                </th>
-                <th>
-                    PLAYMAKING
-                </th>
-                <th>
-                    REBOTE
-                </th>
-                <th>
-                    DEFENSA
-                </th>
-                <th>
-                    MEDIA
-                </th>
+                <th>NOMBRE</th>
             </tr>
             </thead>
             <tbody>
-            @foreach (var p in _players)
+            @foreach (var p in _playersHistoricos)
             {
                 <tr>
                     <td>@p.Name "@p.Nickname"</td>
-                    <td>@p.InsideScoring</td>
-                    <td>@p.OutsideScoring</td>
-                    <td>@p.Athleticism</td>
-                    <td>@p.Playmaking</td>
-                    <td>@p.Rebounding</td>
-                    <td>@p.Defending</td>
-                    <td>@p.Overall</td>
                 </tr>
             }
             </tbody>
         </table>
-
-        if (_playersHistoricos.Count() != 0)
-        {
-            <h3>Players historial</h3>
-
-            <table class="table table-striped">
-                <thead class="thead-light">
-                <tr>
-                    <th>
-                        NOMBRE
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach (var p in _playersHistoricos)
-                {
-                    <tr>
-                        <td>@p.Name "@p.Nickname"</td>
-                    </tr>
-                }
-                </tbody>
-            </table>
-        }
     }
+
 </div>
 
 @code {
 
-    [Parameter] public string Codigo { get; set; }
+    [Parameter] public string Codigo { get; set; } = "";
 
-    private string _logo;
+    private List<Badge> _badges = new();
 
-    private Team _team;
+    private Team _team = new();
     private IEnumerable<PlayerTeams> _playerTeams = new PlayerTeams[] { };
     private IEnumerable<Player> _players = new Player[] { };
     private IEnumerable<Player> _playersHistoricos = new Player[] { };
@@ -104,28 +94,36 @@
     {
         await GetTeam();
 
+        await GetTeamBadges();
+
         await GetPlayers();
     }
 
     private async Task GetTeam()
     {
         var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
-        _team = t.First(t => t.Codigo == int.Parse(Codigo));
+        _team = t!.First(team => team.Codigo == int.Parse(Codigo));
+    }
+
+    private async Task GetTeamBadges()
+    {
+        var badges = await Http.GetFromJsonAsync<IEnumerable<Badge>>("data/badges/TeamsBadges.json");
+        _badges.AddRange(badges!.Where(b => b.Id == _team.Codigo));
     }
 
     private async Task GetPlayers()
     {
-        var p = await Http.GetFromJsonAsync<IEnumerable<Player>>("data/players.json");
-        _players = _players.Concat(p.Where(p => p.Team == _team.Codigo).OrderByDescending(p => p.Overall));
+        var p = await Http.GetFromJsonAsync<List<Player>>("data/players.json");
+        _players = _players.Concat(p!.Where(player => player.Team == _team.Codigo).OrderByDescending(player => player.Overall));
 
-        await GetPlayerTeams(p);
+        await GetPlayerTeams(p!);
     }
 
     private async Task GetPlayerTeams(IEnumerable<Player> players)
     {
         var pt = await Http.GetFromJsonAsync<IEnumerable<PlayerTeams>>("data/PlayersTeams.json");
-        _playerTeams = _playerTeams.Concat(pt.Where(pt => pt.Team == _team.Codigo).OrderByDescending(pt => pt.Start));
-        _playersHistoricos = _playersHistoricos.Concat(players.Where(p => _playerTeams.Select(pt => pt.Player).Contains(p.Codigo)));
+        _playerTeams = _playerTeams.Concat(pt!.Where(playerTeams => playerTeams.Team == _team.Codigo).OrderByDescending(playerTeams => playerTeams.Start));
+        _playersHistoricos = _playersHistoricos.Concat(players.Where(p => _playerTeams.Select(playerTeams => playerTeams.Player).Contains(p.Codigo)));
     }
 
 }

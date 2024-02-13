@@ -1,7 +1,7 @@
 ﻿@page "/Arena"
 
 @inject HttpClient Http
-@inject IJSRuntime JSRuntime
+@inject IJSRuntime JsRuntime
 
 @using BasketLeague2.Utils.Models
 @using BasketLeague2.Utils.Utils
@@ -64,8 +64,8 @@
     private int _team1;
     private int _team2;
 
-    private Result _result = null;
-    private AdvancedResult _aResult = null;
+    private Result? _result;
+    private AdvancedResult? _aResult;
 
     private string _jsonResult = "";
 
@@ -78,15 +78,15 @@
     private async Task GetTeams()
     {
         var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
-        _teams = _teams.Concat(t.OrderBy(t => t.NombreCompleto));
-        _team1 = _teams.FirstOrDefault().Codigo;
+        _teams = _teams.Concat(t!.OrderBy(team => team.NombreCompleto));
+        _team1 = _teams.First().Codigo;
         _team2 = _team1;
     }
 
     private async Task GetPlayers()
     {
         var p = await Http.GetFromJsonAsync<IEnumerable<Player>>("data/players.json");
-        _players = _players.Concat(p.OrderBy(p => p.Team));
+        _players = _players.Concat(p!.OrderBy(player => player.Team));
     }
 
     private void SimulateGame()
@@ -94,47 +94,43 @@
         var t1 = _teams.FirstOrDefault(t => t.Codigo == _team1);
         var t2 = _teams.FirstOrDefault(t => t.Codigo == _team2);
 
-        if (t1 != null && t2 != null)
-        {
-            _result = GameUtils.SimulateGame(t1, t2);
+        if (t1 == null || t2 == null) return;
 
-            _jsonResult = System.Text.Json.JsonSerializer.Serialize(new Result
-            {
-                Equipo1 = $"{_team1}",
-                Equipo2 = $"{_team2}",
-                Fecha = _result.Fecha,
-                Resultado1 = _result.Resultado1,
-                Resultado2 = _result.Resultado2
-            });
-        }
+        _result = GameUtils.SimulateGame(t1, t2);
+
+        _jsonResult = System.Text.Json.JsonSerializer.Serialize(new Result
+        {
+            Equipo1 = $"{_team1}",
+            Equipo2 = $"{_team2}",
+            Fecha = _result.Fecha,
+            Resultado1 = _result.Resultado1,
+            Resultado2 = _result.Resultado2
+        });
     }
 
-    private async void SimulateGameWithPlayers()
+    private void SimulateGameWithPlayers()
     {
         var players1 = _players.Where(p => p.Team == _team1).ToList();
         var players2 = _players.Where(p => p.Team == _team2).ToList();
 
-        if (players1 != null && players2 != null)
-        {
-            _aResult = GameUtils.SimulateGameWithPlayers(players1, players2);
-            _result = _aResult;
+        _aResult = GameUtils.SimulateGameWithPlayers(players1, players2);
+        _result = _aResult;
 
-            _jsonResult = System.Text.Json.JsonSerializer.Serialize(new AdvancedResult
-            {
-                Equipo1 = $"{_team1}",
-                Equipo2 = $"{_team2}",
-                Fecha = _aResult.Fecha,
-                Resultado1 = _aResult.Resultado1,
-                Resultado2 = _aResult.Resultado2,
-                Stats1 = _aResult.Stats1,
-                Stats2 = _aResult.Stats2
-            });
-        }
+        _jsonResult = System.Text.Json.JsonSerializer.Serialize(new AdvancedResult
+        {
+            Equipo1 = $"{_team1}",
+            Equipo2 = $"{_team2}",
+            Fecha = _aResult.Fecha,
+            Resultado1 = _aResult.Resultado1,
+            Resultado2 = _aResult.Resultado2,
+            Stats1 = _aResult.Stats1,
+            Stats2 = _aResult.Stats2
+        });
     }
 
     private async void CopyText()
     {
-        await JSRuntime.InvokeVoidAsync("clipboardCopy.copyText", _jsonResult);
+        await JsRuntime.InvokeVoidAsync("clipboardCopy.copyText", _jsonResult);
     }
 
 }

@@ -24,17 +24,13 @@
     {
         <tr>
             <td>@t.NombreCompleto</td>
-            <td>@t.GP</td>
-            <td>@(t.WH + t.WV)</td>
-            <td>@(t.LH + t.LV)</td>
-            <td>@Math.Round((double)(t.WH + t.WV) / (double)t.GP, 4)</td>
-            <td>
-                @t.WH - @t.LH
-            </td>
-            <td>
-                @t.WV - @t.LV
-            </td>
-            <td>@t.DIF</td>
+            <td>@t.Gp</td>
+            <td>@(t.Wh + t.Wv)</td>
+            <td>@(t.Lh + t.Lv)</td>
+            <td>@Math.Round((double)(t.Wh + t.Wv) / t.Gp, 4)</td>
+            <td>@t.Wh - @t.Lh</td>
+            <td>@t.Wv - @t.Lv</td>
+            <td>@t.Dif</td>
         </tr>
     }
     </tbody>
@@ -42,7 +38,7 @@
 
 @code {
 
-    [Parameter] public string Season { get; set; }
+    [Parameter] public string Season { get; set; } = "";
 
     private IEnumerable<Team> _teams = new Team[] { };
     private IEnumerable<Result> _results = new Result[] { };
@@ -51,7 +47,7 @@
     {
         await OnInitializedAsync();
     }
-    
+
     protected override async Task OnInitializedAsync()
     {
         await GetTeams();
@@ -64,14 +60,14 @@
     {
         _teams = new Team[] { };
         var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
-        _teams = _teams.Concat(t);
+        _teams = _teams.Concat(t!);
     }
 
     private async Task GetResults()
     {
         _results = new Result[] { };
         var r = await Http.GetFromJsonAsync<IEnumerable<Result>>($"data/results/R_{Season}.json");
-        _results = _results.Concat(r);
+        _results = _results.Concat(r!);
     }
 
     /// <summary>
@@ -81,15 +77,15 @@
     {
         foreach (var t in _teams)
         {
-            var personalResultsHome = _results.Where(r => int.Parse(r.Equipo1) == t.Codigo);
-            var personalResultsVisitor = _results.Where(r => int.Parse(r.Equipo2) == t.Codigo);
-            t.GP = personalResultsHome.Count() + personalResultsVisitor.Count();
+            var personalResultsHome = _results.Where(r => int.Parse(r.Equipo1) == t.Codigo).ToList();
+            var personalResultsVisitor = _results.Where(r => int.Parse(r.Equipo2) == t.Codigo).ToList();
+            t.Gp = personalResultsHome.Count + personalResultsVisitor.Count;
 
-            t.WH = personalResultsHome.Count(r => int.Parse(r.Equipo1) == t.Codigo && r.Resultado1 > r.Resultado2);
-            t.LH = personalResultsHome.Count(r => int.Parse(r.Equipo1) == t.Codigo && r.Resultado1 < r.Resultado2);
+            t.Wh = personalResultsHome.Count(r => int.Parse(r.Equipo1) == t.Codigo && r.Resultado1 > r.Resultado2);
+            t.Lh = personalResultsHome.Count(r => int.Parse(r.Equipo1) == t.Codigo && r.Resultado1 < r.Resultado2);
 
-            t.WV = personalResultsVisitor.Count(r => int.Parse(r.Equipo2) == t.Codigo && r.Resultado2 > r.Resultado1);
-            t.LV = personalResultsVisitor.Count(r => int.Parse(r.Equipo2) == t.Codigo && r.Resultado2 < r.Resultado1);
+            t.Wv = personalResultsVisitor.Count(r => int.Parse(r.Equipo2) == t.Codigo && r.Resultado2 > r.Resultado1);
+            t.Lv = personalResultsVisitor.Count(r => int.Parse(r.Equipo2) == t.Codigo && r.Resultado2 < r.Resultado1);
 
             // Suma de todos tus resultados
             var t1 = personalResultsHome.Where(r => int.Parse(r.Equipo1) == t.Codigo).Sum(r => r.Resultado1);
@@ -99,10 +95,10 @@
             var t2 = personalResultsHome.Where(r => int.Parse(r.Equipo1) == t.Codigo).Sum(r => r.Resultado2);
             t2 += personalResultsVisitor.Where(r => int.Parse(r.Equipo2) == t.Codigo).Sum(r => r.Resultado1);
 
-            t.DIF = t1 - t2;
+            t.Dif = t1 - t2;
         }
 
-        _teams = _teams.OrderByDescending(t => t.WH + t.WV).ThenByDescending(t => t.DIF);
+        _teams = _teams.OrderByDescending(t => t.Wh + t.Wv).ThenByDescending(t => t.Dif);
     }
 
 }

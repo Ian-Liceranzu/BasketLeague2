@@ -11,27 +11,13 @@
 <table class="table table-striped">
     <thead class="thead-light">
     <tr>
-        <th>
-            NOMBRE COMPLETO
-        </th>
-        <th>
-            NOMBRE
-        </th>
-        <th>
-            DUEÑO
-        </th>
-        <th>
-            ATK
-        </th>
-        <th>
-            TIRO
-        </th>
-        <th>
-            DEF
-        </th>
-        <th>
-            REBOTE
-        </th>
+        <th>NOMBRE COMPLETO</th>
+        <th>NOMBRE</th>
+        <th>DUEÑO</th>
+        <th>ATK</th>
+        <th>TIRO</th>
+        <th>DEF</th>
+        <th>REBOTE</th>
         <th></th>
     </tr>
     </thead>
@@ -65,7 +51,7 @@
     private async Task GetTeams()
     {
         var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
-        _teams = _teams.Concat(t.OrderBy(t => t.NombreCompleto));
+        _teams = _teams.Concat(t!.OrderBy(team => team.NombreCompleto));
     }
 
     private void LoadTeam(int codigo)

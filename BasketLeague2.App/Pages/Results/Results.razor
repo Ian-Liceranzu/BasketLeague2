@@ -43,7 +43,7 @@
         <DataGridColumn Field="@nameof(Result.Equipo2)" Caption="EQUIPO 2">
             <DisplayTemplate>
                 @{
-                    var result = (context as Result);
+                    var result = context as Result;
 
                     if (result.Resultado1 < result.Resultado2)
                     {
@@ -71,7 +71,7 @@
                 <DataGridColumn Field="@nameof(PlayerResult.Codigo)" Caption="Jugador">
                     <DisplayTemplate Context="prContext">
                         @{
-                            var player = _players.FirstOrDefault(p => p.Codigo == (prContext as PlayerResult).Codigo);
+                            var player = _players.First(p => p.Codigo == prContext.Codigo);
 
                             <Label>@player.Name "@player.Nickname"</Label>
                         }
@@ -94,7 +94,7 @@
                 <DataGridColumn Field="@nameof(PlayerResult.Codigo)" Caption="Jugador">
                     <DisplayTemplate Context="prContext">
                         @{
-                            var player = _players.FirstOrDefault(p => p.Codigo == (prContext as PlayerResult).Codigo);
+                            var player = _players.First(p => p.Codigo == prContext.Codigo);
 
                             <Label>@player.Name "@player.Nickname"</Label>
                         }
@@ -147,14 +147,14 @@
 
 @code {
 
-    [Parameter] public string Season { get; set; }
+    [Parameter] public string Season { get; set; } = "";
 
     private IEnumerable<AdvancedResult> _resultados = new AdvancedResult[] { };
     private IEnumerable<Team> _teams = new Team[] { };
     private IEnumerable<Player> _players = new Player[] { };
 
     private DataGrid<AdvancedResult> _dataGrid = new();
-    private string _customFilterValue;
+    private string _customFilterValue = "";
 
     protected override async Task OnParametersSetAsync()
     {
@@ -176,28 +176,28 @@
     {
         _teams = new Team[] { };
         var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
-        _teams = _teams.Concat(t.OrderBy(t => t.NombreCompleto));
+        _teams = _teams.Concat(t!.OrderBy(team => team.NombreCompleto));
     }
 
     private async Task GetResults()
     {
         _resultados = new AdvancedResult[] { };
-        var r = await Http.GetFromJsonAsync<IEnumerable<AdvancedResult>>($"data/results/R_{Season}.json");
+        var r = await Http.GetFromJsonAsync<List<AdvancedResult>>($"data/results/R_{Season}.json");
 
-        foreach (var result in r)
+        foreach (var result in r!)
         {
-            result.Equipo1 = _teams.FirstOrDefault(t => t.Codigo == int.Parse(result.Equipo1)).NombreCompleto;
-            result.Equipo2 = _teams.FirstOrDefault(t => t.Codigo == int.Parse(result.Equipo2)).NombreCompleto;
+            result.Equipo1 = _teams.First(team => team.Codigo == int.Parse(result.Equipo1)).NombreCompleto;
+            result.Equipo2 = _teams.First(team => team.Codigo == int.Parse(result.Equipo2)).NombreCompleto;
         }
 
-        _resultados = _resultados.Concat(r.OrderBy(r => r.Fecha));
+        _resultados = _resultados.Concat(r!.OrderBy(result => result.Fecha));
     }
 
     private async Task GetPlayers()
     {
         _players = new Player[] { };
         var p = await Http.GetFromJsonAsync<IEnumerable<Player>>("data/players.json");
-        _players = _players.Concat(p.OrderBy(p => p.Codigo));
+        _players = _players.Concat(p!.OrderBy(player => player.Codigo));
     }
 
     private Task OnCustomFilterValueChanged(string e)
