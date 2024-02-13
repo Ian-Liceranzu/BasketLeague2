@@ -16,48 +16,32 @@
     </Badge>
 }
 
-<table class="table table-striped">
-    <thead class="thead-light">
-    <tr>
-        <th>
-            NOMBRE
-        </th>
-        <th>
-            TIRO DOBLE
-        </th>
-        <th>
-            TIRO TRIPLE
-        </th>
-        <th>
-            FÍSICO
-        </th>
-        <th>
-            PLAYMAKING
-        </th>
-        <th>
-            REBOTE
-        </th>
-        <th>
-            DEFENSA
-        </th>
-        <th>
-            MEDIA
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>@_player.Name "@_player.Nickname"</td>
-        <td>@_player.InsideScoring</td>
-        <td>@_player.OutsideScoring</td>
-        <td>@_player.Athleticism</td>
-        <td>@_player.Playmaking</td>
-        <td>@_player.Rebounding</td>
-        <td>@_player.Defending</td>
-        <td>@_player.Overall</td>
-    </tr>
-    </tbody>
-</table>
+<Table Striped>
+    <TableHeader ThemeContrast="ThemeContrast.Light">
+        <TableRow>
+            <TableHeaderCell>NOMBRE</TableHeaderCell>
+            <TableHeaderCell>TIRO DOBLE</TableHeaderCell>
+            <TableHeaderCell>TIRO TRIPLE</TableHeaderCell>
+            <TableHeaderCell>FÍSICO</TableHeaderCell>
+            <TableHeaderCell>PLAYMAKING</TableHeaderCell>
+            <TableHeaderCell>REBOTE</TableHeaderCell>
+            <TableHeaderCell>DEFENSA</TableHeaderCell>
+            <TableHeaderCell>MEDIA</TableHeaderCell>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        <TableRow>
+            <TableRowCell>@_player.Name "@_player.Nickname"</TableRowCell>
+            <TableRowCell>@_player.InsideScoring</TableRowCell>
+            <TableRowCell>@_player.OutsideScoring</TableRowCell>
+            <TableRowCell>@_player.Athleticism</TableRowCell>
+            <TableRowCell>@_player.Playmaking</TableRowCell>
+            <TableRowCell>@_player.Rebounding</TableRowCell>
+            <TableRowCell>@_player.Defending</TableRowCell>
+            <TableRowCell>@_player.Overall</TableRowCell>
+        </TableRow>
+    </TableBody>
+</Table>
 
 <h3>Season</h3>
 <Select TValue="string" Size="Size.Medium" SelectedValue="_season" SelectedValueChanged="@OnSeasonValueChanged">
@@ -68,99 +52,71 @@
 </Select>
 
 <h3>Play by play</h3>
-<table class="table table-striped">
-    <thead class="thead-light">
-    <tr>
-        <th>
-            TIRO DOBLE
-        </th>
-        <th>
-            TIRO TRIPLE
-        </th>
-        <th>
-            FÍSICO
-        </th>
-        <th>
-            PLAYMAKING
-        </th>
-        <th>
-            REBOTE
-        </th>
-        <th>
-            DEFENSA
-        </th>
-        <th>
-            TOTAL
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var day in _diary)
-    {
-        <tr>
-            <td>@day[1]</td>
-            <td>@day[2]</td>
-            <td>@day[3]</td>
-            <td>@day[4]</td>
-            <td>@day[5]</td>
-            <td>@day[6]</td>
-            <td>@day.Skip(1).Sum()</td>
-        </tr>
-    }
-    </tbody>
-</table>
+<Table Striped>
+    <TableHeader ThemeContrast="ThemeContrast.Light">
+        <TableRow>
+            <TableHeaderCell>TIRO DOBLE</TableHeaderCell>
+            <TableHeaderCell>TIRO TRIPLE</TableHeaderCell>
+            <TableHeaderCell>FÍSICO</TableHeaderCell>
+            <TableHeaderCell>PLAYMAKING</TableHeaderCell>
+            <TableHeaderCell>REBOTE</TableHeaderCell>
+            <TableHeaderCell>DEFENSA</TableHeaderCell>
+            <TableHeaderCell>TOTAL</TableHeaderCell>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        @foreach (var day in _diary)
+        {
+            <TableRow>
+                <TableRowCell>@day[1]</TableRowCell>
+                <TableRowCell>@day[2]</TableRowCell>
+                <TableRowCell>@day[3]</TableRowCell>
+                <TableRowCell>@day[4]</TableRowCell>
+                <TableRowCell>@day[5]</TableRowCell>
+                <TableRowCell>@day[6]</TableRowCell>
+                <TableRowCell>@day.Skip(1).Sum()</TableRowCell>
+            </TableRow>
+        }
+    </TableBody>
+</Table>
 
 <h3>Total</h3>
 
-<table class="table table-striped">
-    <thead class="thead-light">
-    <tr>
-        <th>
-            TIRO DOBLE
-        </th>
-        <th>
-            TIRO TRIPLE
-        </th>
-        <th>
-            FÍSICO
-        </th>
-        <th>
-            PLAYMAKING
-        </th>
-        <th>
-            REBOTE
-        </th>
-        <th>
-            DEFENSA
-        </th>
-        <th>
-            TOTAL
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>@_totals[0]</td>
-        <td>@_totals[1]</td>
-        <td>@_totals[2]</td>
-        <td>@_totals[3]</td>
-        <td>@_totals[4]</td>
-        <td>@_totals[5]</td>
-        <td>@_totals.Sum()</td>
-    </tr>
-    </tbody>
-</table>
+<Table Striped>
+    <TableHeader ThemeContrast="ThemeContrast.Light">
+        <TableRow>
+            <TableHeaderCell>TIRO DOBLE</TableHeaderCell>
+            <TableHeaderCell>TIRO TRIPLE</TableHeaderCell>
+            <TableHeaderCell>FÍSICO</TableHeaderCell>
+            <TableHeaderCell>PLAYMAKING</TableHeaderCell>
+            <TableHeaderCell>REBOTE</TableHeaderCell>
+            <TableHeaderCell>DEFENSA</TableHeaderCell>
+            <TableHeaderCell>TOTAL</TableHeaderCell>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        <TableRow>
+            <TableRowCell>@_totals[0]</TableRowCell>
+            <TableRowCell>@_totals[1]</TableRowCell>
+            <TableRowCell>@_totals[2]</TableRowCell>
+            <TableRowCell>@_totals[3]</TableRowCell>
+            <TableRowCell>@_totals[4]</TableRowCell>
+            <TableRowCell>@_totals[5]</TableRowCell>
+            <TableRowCell>@_totals.Sum()</TableRowCell>
+        </TableRow>
+    </TableBody>
+</Table>
 
 @code {
 
-    [Parameter] public string Codigo { get; set; }
+    [Parameter] public string Codigo { get; set; } = "";
 
     private Player _player = new();
     private List<Badge> _badges = new();
     private List<int[]> _diary = new();
     private int[] _totals = { 0, 0, 0, 0, 0, 0 };
 
-    private string[] _seasons = { "S3" };
+    private readonly string[] _seasons = { "S3", "S3-PO" };
     private string _season = "S3";
 
     protected override async Task OnInitializedAsync()
@@ -175,20 +131,20 @@
     private async Task GetPlayer()
     {
         var p = await Http.GetFromJsonAsync<IEnumerable<Player>>("data/players.json");
-        _player = p.SingleOrDefault(p => p.Codigo == int.Parse(Codigo));
+        _player = p!.Single(player => player.Codigo == int.Parse(Codigo));
     }
 
     private async Task GetPlayerBadges()
     {
         var badges = await Http.GetFromJsonAsync<IEnumerable<Badge>>("data/badges/PlayersBadges.json");
-        _badges.AddRange(badges.Where(b => b.Id == _player.Codigo));
+        _badges.AddRange(badges!.Where(b => b.Id == _player.Codigo));
     }
 
     private async Task GetPlayerStatistics(string season)
     {
-        var r = await Http.GetFromJsonAsync<IEnumerable<AdvancedResult>>($"data/results/R_{season}.json");
-        var stats1 = r.Select(r => r.Stats1);
-        var stats2 = r.Select(r => r.Stats2);
+        var r = await Http.GetFromJsonAsync<List<AdvancedResult>>($"data/results/R_{season}.json");
+        var stats1 = r!.Select(result => result.Stats1);
+        var stats2 = r!.Select(result => result.Stats2);
 
         foreach (var s1 in stats1)
         {

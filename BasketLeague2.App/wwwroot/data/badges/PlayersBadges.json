@@ -10,5 +10,17 @@
     "Name": "MALARDO S3",
     "Description": "Menos puntos anotados en la temporada 3.",
     "Color": "dark"
+  },
+  {
+    "Id": 11,
+    "Name": "NO TAN MALARDO S3",
+    "Description": "Malardo con más puntos anotados en la temporada 3.",
+    "Color": "success"
+  },
+  {
+    "Id": 34,
+    "Name": "DEL MONTÓN BUENO S3",
+    "Description": "Medio con más puntos anotados en la temporada 3.",
+    "Color": "success"
   }
 ]

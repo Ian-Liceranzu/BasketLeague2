@@ -2,7 +2,7 @@
 
 public class RoundRobin<T>
 {
-    private List<T> _items;
+    private readonly List<T> _items;
     private int _currentIndex;
 
     public RoundRobin(IEnumerable<T> items)

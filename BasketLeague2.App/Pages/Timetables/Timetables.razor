@@ -1,6 +1,7 @@
 ﻿@page "/Timetable/{Season}"
 @using BasketLeague2.Utils.Models
 @using Match = BasketLeague2.Utils.Models.Match
+@using System.Globalization
 
 @inject HttpClient Http
 
@@ -62,12 +63,12 @@
 
 @code {
 
-    [Parameter] public string Season { get; set; }
+    [Parameter] public string Season { get; set; } = "";
 
     private IEnumerable<Team> _teams = new Team[] { };
     private IEnumerable<Match> _matches = new Match[] { };
     private DataGrid<Match> _dataGrid = new();
-    private string _customFilterValue;
+    private string _customFilterValue = "";
 
     protected override async Task OnParametersSetAsync()
     {
@@ -87,21 +88,21 @@
     {
         _teams = new Team[] { };
         var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
-        _teams = _teams.Concat(t.OrderBy(t => t.NombreCompleto));
+        _teams = _teams.Concat(t!.OrderBy(team => team.NombreCompleto));
     }
 
     private async Task GetTimeTables()
     {
         _matches = new List<Match>();
-        var m = await Http.GetFromJsonAsync<IEnumerable<Match>>($"data/matches/M_{Season}.json");
+        var m = await Http.GetFromJsonAsync<List<Match>>($"data/matches/M_{Season}.json");
 
-        foreach (var match in m)
+        foreach (var match in m!)
         {
-            match.Equipo1 = _teams.FirstOrDefault(t => t.Codigo == int.Parse(match.Equipo1)).NombreCompleto;
-            match.Equipo2 = _teams.FirstOrDefault(t => t.Codigo == int.Parse(match.Equipo2)).NombreCompleto;
+            match.Equipo1 = _teams.First(t => t.Codigo == int.Parse(match.Equipo1)).NombreCompleto;
+            match.Equipo2 = _teams.First(t => t.Codigo == int.Parse(match.Equipo2)).NombreCompleto;
         }
 
-        _matches = _matches.Concat(m.OrderBy(m => m.Fecha));
+        _matches = _matches.Concat(m.OrderBy(match => match.Fecha));
     }
 
     private Task OnCustomFilterValueChanged(string e)
@@ -117,7 +118,7 @@
         if (string.IsNullOrEmpty(_customFilterValue))
             return true;
 
-        return model.Equipo1?.Contains(_customFilterValue, StringComparison.OrdinalIgnoreCase) == true || model.Equipo2?.Contains(_customFilterValue, StringComparison.OrdinalIgnoreCase) == true || model.Fecha.ToString().Contains(_customFilterValue, StringComparison.OrdinalIgnoreCase);
+        return model.Equipo1.Contains(_customFilterValue, StringComparison.OrdinalIgnoreCase) || model.Equipo2.Contains(_customFilterValue, StringComparison.OrdinalIgnoreCase) || model.Fecha.ToString(new CultureInfo("es-ES")).Contains(_customFilterValue, StringComparison.OrdinalIgnoreCase);
     }
 
 }
