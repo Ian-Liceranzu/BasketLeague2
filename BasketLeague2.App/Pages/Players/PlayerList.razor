@@ -10,41 +10,41 @@
 
 <button Class="btn btn-primary" @onclick="GeneratePlayers">GENERATE RANDOM PLAYER</button>
 
-<table class="table table-striped">
-    <thead class="thead-light">
-    <tr>
-        <th>NOMBRE</th>
-        <th>EQUIPO</th>
-        <th>TIRO DOBLE</th>
-        <th>TIRO TRIPLE</th>
-        <th>FÍSICO</th>
-        <th>PLAYMAKING</th>
-        <th>REBOTE</th>
-        <th>DEFENSA</th>
-        <th>MEDIA</th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var p in _players)
-    {
-        <tr>
-            <td>@p.Name "@p.Nickname"</td>
-            <td>@p.Team</td>
-            <td>@p.InsideScoring</td>
-            <td>@p.OutsideScoring</td>
-            <td>@p.Athleticism</td>
-            <td>@p.Playmaking</td>
-            <td>@p.Rebounding</td>
-            <td>@p.Defending</td>
-            <td>@p.Overall</td>
-            <td>
-                <button class="btn btn-primary" @onclick="_ => LoadJugador(p.Codigo)">INFO</button>
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+<Table Striped>
+    <TableHeader ThemeContrast="ThemeContrast.Light">
+        <TableRow>
+            <TableHeaderCell>NOMBRE</TableHeaderCell>
+            <TableHeaderCell>EQUIPO</TableHeaderCell>
+            <TableHeaderCell>TIRO DOBLE</TableHeaderCell>
+            <TableHeaderCell>TIRO TRIPLE</TableHeaderCell>
+            <TableHeaderCell>FÍSICO</TableHeaderCell>
+            <TableHeaderCell>PLAYMAKING</TableHeaderCell>
+            <TableHeaderCell>REBOTE</TableHeaderCell>
+            <TableHeaderCell>DEFENSA</TableHeaderCell>
+            <TableHeaderCell>MEDIA</TableHeaderCell>
+            <TableHeaderCell></TableHeaderCell>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        @foreach (var p in _players)
+        {
+            <TableRow>
+                <TableRowCell>@p.Name "@p.Nickname"</TableRowCell>
+                <TableRowCell>@p.Team</TableRowCell>
+                <TableRowCell>@p.InsideScoring</TableRowCell>
+                <TableRowCell>@p.OutsideScoring</TableRowCell>
+                <TableRowCell>@p.Athleticism</TableRowCell>
+                <TableRowCell>@p.Playmaking</TableRowCell>
+                <TableRowCell>@p.Rebounding</TableRowCell>
+                <TableRowCell>@p.Defending</TableRowCell>
+                <TableRowCell>@p.Overall</TableRowCell>
+                <TableRowCell>
+                    <button class="btn btn-primary" @onclick="_ => LoadJugador(p.Codigo)">INFO</button>
+                </TableRowCell>
+            </TableRow>
+        }
+    </TableBody>
+</Table>
 
 @code {
     private string _jsonResult = "";

@@ -1,0 +1,97 @@
+﻿@page "/draft/simulator"
+
+@using BasketLeague2.Utils.Models
+@using Newtonsoft.Json
+
+@inject HttpClient Http
+@inject IJSRuntime JsRuntime
+
+<PageTitle>Draft Simulator</PageTitle>
+
+<h3>Draft Simulator Beta</h3>
+
+<button class="btn btn-primary" @onclick="GetPlayersJson">COPY JSON</button>
+
+<DropContainer TItem="Player" Items="_players" ItemsFilter="@((item, dropZone) => item.Team.ToString() == dropZone)" ItemDropped="@ItemDropped" Flex="Flex.Wrap.Grow.Is1">
+    <ChildContent>
+        <DropZone TItem="Player" Name="0" Border="Border.Rounded" Background="Background.Light" Padding="Padding.Is3" Margin="Margin.Is3" Flex="Flex.Grow.Is1">
+            <Heading Size="HeadingSize.Is4" Margin="Margin.Is3.FromBottom">Draft</Heading>
+        </DropZone>
+        <DropZone TItem="Player" Name="1" Border="Border.Rounded" Background="Background.Light" Padding="Padding.Is3" Margin="Margin.Is3" Flex="Flex.Grow.Is1">
+            <Heading Size="HeadingSize.Is4" Margin="Margin.Is3.FromBottom">MP</Heading>
+        </DropZone>
+        <DropZone TItem="Player" Name="2" Border="Border.Rounded" Background="Background.Light" Padding="Padding.Is3" Margin="Margin.Is3" Flex="Flex.Grow.Is1">
+            <Heading Size="HeadingSize.Is4" Margin="Margin.Is3.FromBottom">THB</Heading>
+        </DropZone>
+        <DropZone TItem="Player" Name="3" Border="Border.Rounded" Background="Background.Light" Padding="Padding.Is3" Margin="Margin.Is3" Flex="Flex.Grow.Is1">
+            <Heading Size="HeadingSize.Is4" Margin="Margin.Is3.FromBottom">JP</Heading>
+        </DropZone>
+        <DropZone TItem="Player" Name="4" Border="Border.Rounded" Background="Background.Light" Padding="Padding.Is3" Margin="Margin.Is3" Flex="Flex.Grow.Is1">
+            <Heading Size="HeadingSize.Is4" Margin="Margin.Is3.FromBottom">LRW</Heading>
+        </DropZone>
+        <DropZone TItem="Player" Name="5" Border="Border.Rounded" Background="Background.Light" Padding="Padding.Is3" Margin="Margin.Is3" Flex="Flex.Grow.Is1">
+            <Heading Size="HeadingSize.Is4" Margin="Margin.Is3.FromBottom">RB</Heading>
+        </DropZone>
+        <DropZone TItem="Player" Name="6" Border="Border.Rounded" Background="Background.Light" Padding="Padding.Is3" Margin="Margin.Is3" Flex="Flex.Grow.Is1">
+            <Heading Size="HeadingSize.Is4" Margin="Margin.Is3.FromBottom">BF</Heading>
+        </DropZone>
+        <DropZone TItem="Player" Name="7" Border="Border.Rounded" Background="Background.Light" Padding="Padding.Is3" Margin="Margin.Is3" Flex="Flex.Grow.Is1">
+            <Heading Size="HeadingSize.Is4" Margin="Margin.Is3.FromBottom">HM</Heading>
+        </DropZone>
+        <DropZone TItem="Player" Name="8" Border="Border.Rounded" Background="Background.Light" Padding="Padding.Is3" Margin="Margin.Is3" Flex="Flex.Grow.Is1">
+            <Heading Size="HeadingSize.Is4" Margin="Margin.Is3.FromBottom">BB</Heading>
+        </DropZone>
+        <DropZone TItem="Player" Name="9" Border="Border.Rounded" Background="Background.Light" Padding="Padding.Is3" Margin="Margin.Is3" Flex="Flex.Grow.Is1">
+            <Heading Size="HeadingSize.Is4" Margin="Margin.Is3.FromBottom">SS</Heading>
+        </DropZone>
+        <DropZone TItem="Player" Name="10" Border="Border.Rounded" Background="Background.Light" Padding="Padding.Is3" Margin="Margin.Is3" Flex="Flex.Grow.Is1">
+            <Heading Size="HeadingSize.Is4" Margin="Margin.Is3.FromBottom">WD</Heading>
+        </DropZone>
+        <DropZone TItem="Player" Name="11" Border="Border.Rounded" Background="Background.Light" Padding="Padding.Is3" Margin="Margin.Is3" Flex="Flex.Grow.Is1">
+            <Heading Size="HeadingSize.Is4" Margin="Margin.Is3.FromBottom">SKW</Heading>
+        </DropZone>
+        <DropZone TItem="Player" Name="-1" Border="Border.Rounded" Background="Background.Dark" Padding="Padding.Is3" Margin="Margin.Is3" Flex="Flex.Grow.Is1">
+            <Heading Size="HeadingSize.Is4" Margin="Margin.Is3.FromBottom" TextColor="TextColor.Light">Trash</Heading>
+        </DropZone>
+    </ChildContent>
+    <ItemTemplate>
+        <Card Shadow="Shadow.Default" Margin="Margin.Is3.OnY">
+            <CardBody>
+                @context.Name "@context.Nickname"
+            </CardBody>
+        </Card>
+    </ItemTemplate>
+</DropContainer>
+
+@code {
+
+    private List<Player> _players = new()
+    {
+        new Player { Name = "Prueba", Nickname = "P", Team = 0 }
+    };
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetPlayers();
+
+        StateHasChanged();
+    }
+
+    private async Task GetPlayers()
+    {
+        var p = await Http.GetFromJsonAsync<List<Player>>("data/players.json");
+        _players = p!.OrderByDescending(player => player.Overall).ToList();
+    }
+
+    private static Task ItemDropped(DraggableDroppedEventArgs<Player> dropItem)
+    {
+        dropItem.Item.Team = int.Parse(dropItem.DropZoneName);
+        return Task.CompletedTask;
+    }
+
+    private async void GetPlayersJson()
+    {
+        await JsRuntime.InvokeVoidAsync("clipboardCopy.copyText", JsonConvert.SerializeObject(_players.OrderBy(p => p.Codigo)));
+    }
+
+}

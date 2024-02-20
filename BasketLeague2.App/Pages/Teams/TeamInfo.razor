@@ -1,0 +1,144 @@
+﻿@page "/Teams/Team/{Codigo}"
+
+@inject HttpClient Http
+
+@using BasketLeague2.Utils.Models
+@using Badge = BasketLeague2.Utils.Models.Badge
+
+<PageTitle>Team @Codigo</PageTitle>
+
+<Breadcrumb>
+    <BreadcrumbItem>
+        <BreadcrumbLink To="/Teams">Teams</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbItem Active>
+        <BreadcrumbLink To="#">Team</BreadcrumbLink>
+    </BreadcrumbItem>
+</Breadcrumb>
+
+<div>
+    <Row>
+        <Column ColumnSize="ColumnSize.Is6">
+            <header>@_team.NombreCompleto</header>
+            <img alt="Team logo" src=@($"assets/images/logos/{Codigo}_1.jpg") style="height: 350px;"/>
+        </Column>
+    </Row>
+
+    @foreach (var badge in _badges)
+    {
+        <Badge Color="@badge.Color">
+            <Tooltip Text="@badge.Description">
+                @badge.Name
+            </Tooltip>
+        </Badge>
+    }
+
+    <h3>Players</h3>
+
+    <Table Striped>
+        <TableHeader ThemeContrast="ThemeContrast.Light">
+            <TableRow>
+                <TableHeaderCell>NOMBRE</TableHeaderCell>
+                <TableHeaderCell>TIRO DOBLE</TableHeaderCell>
+                <TableHeaderCell>TIRO TRIPLE</TableHeaderCell>
+                <TableHeaderCell>FÍSICO</TableHeaderCell>
+                <TableHeaderCell>PLAYMAKING</TableHeaderCell>
+                <TableHeaderCell>REBOTE</TableHeaderCell>
+                <TableHeaderCell>DEFENSA</TableHeaderCell>
+                <TableHeaderCell>MEDIA</TableHeaderCell>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
+            @foreach (var p in _players)
+            {
+                <TableRow>
+                    <TableRowCell>@p.Name "@p.Nickname"</TableRowCell>
+                    <TableRowCell>@p.InsideScoring</TableRowCell>
+                    <TableRowCell>@p.OutsideScoring</TableRowCell>
+                    <TableRowCell>@p.Athleticism</TableRowCell>
+                    <TableRowCell>@p.Playmaking</TableRowCell>
+                    <TableRowCell>@p.Rebounding</TableRowCell>
+                    <TableRowCell>@p.Defending</TableRowCell>
+                    <TableRowCell>@p.Overall</TableRowCell>
+                </TableRow>
+            }
+        </TableBody>
+    </Table>
+
+    @if (_playerTeams.Count != 0)
+    {
+        <h3>Players historial</h3>
+
+        <Table Striped>
+            <TableHeader ThemeContrast="ThemeContrast.Light">
+                <TableRow>
+                    <TableHeaderCell>NOMBRE</TableHeaderCell>
+                    <TableHeaderCell>ENTRADA</TableHeaderCell>
+                    <TableHeaderCell>SALIDA</TableHeaderCell>
+                </TableRow>
+            </TableHeader>
+            <TableBody>
+                @foreach (var pt in _playerTeams)
+                {
+                    var p = _allPlayers.First(p => p.Codigo == pt.Player);
+
+                    <TableRow>
+                        <TableRowCell>@p.Name "@p.Nickname"</TableRowCell>
+                        <TableRowCell>@pt.Start.ToShortDateString()</TableRowCell>
+                        <TableRowCell>@pt.End.ToShortDateString()</TableRowCell>
+                    </TableRow>
+                }
+            </TableBody>
+        </Table>
+    }
+
+</div>
+
+@code {
+
+    [Parameter] public string Codigo { get; set; } = "";
+
+    private List<Badge> _badges = new();
+
+    private Team _team = new();
+    private List<PlayerTeams> _playerTeams = new();
+    private List<Player> _allPlayers = new();
+    private List<Player> _players = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetTeam();
+
+        await GetTeamBadges();
+
+        await GetPlayers();
+    }
+
+    private async Task GetTeam()
+    {
+        var t = await Http.GetFromJsonAsync<List<Team>>("data/teams.json");
+        _team = t!.First(team => team.Codigo == int.Parse(Codigo));
+    }
+
+    private async Task GetTeamBadges()
+    {
+        var badges = await Http.GetFromJsonAsync<List<Badge>>("data/badges/TeamsBadges.json");
+        _badges.AddRange(badges!.Where(b => b.Id == _team.Codigo));
+    }
+
+    private async Task GetPlayers()
+    {
+        var p = await Http.GetFromJsonAsync<List<Player>>("data/players.json");
+        _allPlayers = p!;
+        _players = p!.Where(player => player.Team == _team.Codigo).OrderByDescending(player => player.Overall).ToList();
+
+        await GetPlayerTeams();
+    }
+
+    private async Task GetPlayerTeams()
+    {
+        var pt = await Http.GetFromJsonAsync<IEnumerable<PlayerTeams>>("data/PlayersTeams.json");
+        _playerTeams = pt!.Where(playerTeams => playerTeams.Team == _team.Codigo).OrderByDescending(playerTeams => playerTeams.Start).ToList();
+    }
+
+}

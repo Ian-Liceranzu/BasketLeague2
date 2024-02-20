@@ -6,53 +6,123 @@
 @using BasketLeague2.Utils.Models
 @using BasketLeague2.Utils.Utils
 
+<PageTitle>Arena</PageTitle>
+
 <h3>Arena</h3>
 
 @if (_teams.Any())
 {
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <label>TEAM 1</label>
-                <select class="form-select" aria-label="Select team 1" @bind="@_team1">
+    <Container>
+        <Row>
+            <Column>
+                <Label>TEAM 1</Label>
+                <Select TValue="int" aria-label="Select team 1" @bind-SelectedValue="@_team1">
                     @foreach (var t in _teams)
                     {
-                        <option value="@t.Codigo">@t.NombreCompleto</option>
+                        <SelectItem Value="@t.Codigo">@t.NombreCompleto</SelectItem>
                     }
-                </select>
-            </div>
-            <div class="col">
-                <label>TEAM 2</label>
-                <select class="form-select" aria-label="Select team 2" @bind="@_team2">
+                </Select>
+            </Column>
+            <Column>
+                <Label>TEAM 2</Label>
+                <Select TValue="int" aria-label="Select team 2" @bind-SelectedValue="@_team2">
                     @foreach (var t in _teams)
                     {
-                        <option value="@t.Codigo">@t.NombreCompleto</option>
+                        <SelectItem Value="@t.Codigo">@t.NombreCompleto</SelectItem>
                     }
-                </select>
-            </div>
-        </div>
-    </div>
+                </Select>
+            </Column>
+        </Row>
+    </Container>
 }
 
-<div class="d-grip">
+<Container>
     <button class="btn btn-primary" @onclick="SimulateGame">START GAME</button>
     <button class="btn btn-primary" @onclick="SimulateGameWithPlayers">START GAME WITH PLAYERS</button>
-</div>
+</Container>
 
 @if (_result != null)
 {
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <label>@_result.Equipo1</label>
-                <label>@_result.Resultado1</label>
-            </div>
-            <div class="col">
-                <label>@_result.Equipo2</label>
-                <label>@_result.Resultado2</label>
-            </div>
-        </div>
-    </div>
+    @if (_aResult == null)
+    {
+        <Container>
+            <Row >
+                <Column>
+                    <label>@_result.Equipo1</label>
+                    <label>@_result.Resultado1</label>
+                </Column>
+                <Column >
+                    <label>@_result.Equipo2</label>
+                    <label>@_result.Resultado2</label>
+                </Column>
+            </Row>
+        </Container>
+    }
+    else
+    {
+        <Container>
+            <Row>
+                <Column>
+                    <Table Striped>
+                        <TableHeader ThemeContrast="ThemeContrast.Light">
+                            <TableRow>
+                                <TableHeaderCell>Player</TableHeaderCell>
+                                <TableHeaderCell>Pts</TableHeaderCell>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            @foreach (var playerResult in _aResult.Stats1.ConvertToPlayerResult())
+                            {
+                                var p = _players.First(p => p.Codigo == playerResult.Codigo);
+
+                                <TableRow>
+                                    <TableRowCell>@p.Name "@p.Nickname"</TableRowCell>
+                                    <TableRowCell>@playerResult.Total</TableRowCell>
+                                </TableRow>
+                            }
+                            <TableRow>
+                                <TableRowCell>
+                                    <strong>TOTAL</strong>
+                                </TableRowCell>
+                                <TableRowCell>
+                                    <strong>@_result.Resultado1</strong>
+                                </TableRowCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </Column>
+                <Column>
+                    <Table Striped>
+                        <TableHeader ThemeContrast="ThemeContrast.Light">
+                            <TableRow>
+                                <TableHeaderCell>Player</TableHeaderCell>
+                                <TableHeaderCell>Pts</TableHeaderCell>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            @foreach (var playerResult in _aResult.Stats2.ConvertToPlayerResult())
+                            {
+                                var p = _players.First(p => p.Codigo == playerResult.Codigo);
+
+                                <TableRow>
+                                    <TableRowCell>@p.Name "@p.Nickname"</TableRowCell>
+                                    <TableRowCell>@playerResult.Total</TableRowCell>
+                                </TableRow>
+                            }
+                            <TableRow>
+                                <TableRowCell>
+                                    <strong>TOTAL</strong>
+                                </TableRowCell>
+                                <TableRowCell>
+                                    <strong>@_result.Resultado2</strong>
+                                </TableRowCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </Column>
+            </Row>
+        </Container>
+    }
 
     <button class="btn btn-primary" @onclick="CopyText">COPY JSON</button>
 }
@@ -91,11 +161,10 @@
 
     private void SimulateGame()
     {
-        var t1 = _teams.FirstOrDefault(t => t.Codigo == _team1);
-        var t2 = _teams.FirstOrDefault(t => t.Codigo == _team2);
+        var t1 = _teams.First(t => t.Codigo == _team1);
+        var t2 = _teams.First(t => t.Codigo == _team2);
 
-        if (t1 == null || t2 == null) return;
-
+        _aResult = null;
         _result = GameUtils.SimulateGame(t1, t2);
 
         _jsonResult = System.Text.Json.JsonSerializer.Serialize(new Result
