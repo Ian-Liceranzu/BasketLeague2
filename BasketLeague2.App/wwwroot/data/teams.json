@@ -45,14 +45,15 @@
   },
   {
     "Codigo": 5,
-    "NombreCompleto": "Reno Bighorns",
-    "Nombre": "RB",
+    "NombreCompleto": "Las Vegas Bighorns",
+    "Nombre": "LVB",
     "Ataque": 7,
     "Defensa": 3,
     "Tiro": 7,
     "Rebote": 3,
     "Dueño": "Ian",
-    "Estado": "Nevada"
+    "Estado": "Nevada",
+    "Observaciones": "Antiguamente conocido como Reno Bighorns durante las temporadas 1,2,3"
   },
   {
     "Codigo": 6,

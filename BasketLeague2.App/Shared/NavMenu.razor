@@ -82,10 +82,25 @@
             }
         </div>
         <div class="nav-item px-3">
+            <NavLink class="nav-link" @onclick="() => _expandSubNavDraft = !_expandSubNavDraft">
+                <span class="oi oi-briefcase" aria-hidden="true"></span> Drafts
+            </NavLink>
+            @if (_expandSubNavDraft)
+            {
+                <NavLink class="nav-link" href="draft/history">
+                    Historial Drafts
+                </NavLink>
+                <NavLink class="nav-link" href="draft/simulator">
+                    Simulador Draft
+                </NavLink>
+            }
+        </div>
+        <div class="nav-item px-3">
             <NavLink class="nav-link" href="rules">
                 <span class="oi oi-book" aria-hidden="true"></span> Rules
             </NavLink>
         </div>
+
     </nav>
 </div>
 
@@ -94,6 +109,7 @@
     private bool _expandSubNavResults;
     private bool _expandSubNavLeaderboard;
     private bool _expandSubNavTimetables;
+    private bool _expandSubNavDraft;
 
     private string? NavMenuCssClass => _collapseNavMenu ? "collapse" : null;
 

@@ -1,0 +1,81 @@
+﻿@page "/draft/history"
+
+@using BasketLeague2.Utils.Models
+
+@inject HttpClient Http
+
+<PageTitle>Draft History</PageTitle>
+
+<h3>Draft History</h3>
+
+<h3>Season</h3>
+<Select TValue="string" Size="Size.Medium" SelectedValue="_season" SelectedValueChanged="@OnSeasonValueChanged">
+    @foreach (var s in _seasons)
+    {
+        <SelectItem Value="s">@s</SelectItem>
+    }
+</Select>
+
+<Table Striped>
+    <TableHeader ThemeContrast="ThemeContrast.Light">
+        <TableRow>
+            <TableHeaderCell>#</TableHeaderCell>
+            <TableHeaderCell>TEAM</TableHeaderCell>
+            <TableHeaderCell>PLAYER</TableHeaderCell>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        @foreach (var pick in _picks)
+        {
+            var player = _players.First(p => p.Codigo == pick.Player);
+            <TableRow>
+                <TableRowCell>@pick.Pick</TableRowCell>
+                <TableRowCell>@_teams.First(t => t.Codigo == pick.Team).NombreCompleto</TableRowCell>
+                <TableRowCell>@player.Name "@player.Nickname"</TableRowCell>
+            </TableRow>
+        }
+    </TableBody>
+</Table>
+
+@code {
+    private List<Player> _players = new();
+    private List<Team> _teams = new();
+    private List<DraftPick> _picks = new();
+
+    private readonly string[] _seasons = { "S3" };
+    private string _season = "S3";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetPlayers();
+
+        await GetTeams();
+
+        await GetDraft();
+    }
+
+    private async Task GetPlayers()
+    {
+        var p = await Http.GetFromJsonAsync<List<Player>>("data/players.json");
+        _players = p!;
+    }
+
+    private async Task GetTeams()
+    {
+        var t = await Http.GetFromJsonAsync<List<Team>>("data/teams.json");
+        _teams = t!;
+    }
+
+    private async Task GetDraft()
+    {
+        var d = await Http.GetFromJsonAsync<List<DraftPick>>($"data/Drafts/D_{_season}.json");
+        _picks = d!;
+    }
+
+    async Task OnSeasonValueChanged(string value)
+    {
+        _season = value;
+        await GetDraft();
+    }
+
+}
