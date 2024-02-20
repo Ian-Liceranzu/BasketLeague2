@@ -5,6 +5,15 @@
 @using BasketLeague2.Utils.Models
 @using Badge = BasketLeague2.Utils.Models.Badge
 
+<Breadcrumb>
+    <BreadcrumbItem>
+        <BreadcrumbLink To="/Players">Players</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbItem Active>
+        <BreadcrumbLink To="#">Player</BreadcrumbLink>
+    </BreadcrumbItem>
+</Breadcrumb>
+
 <h3>PlayerStats</h3>
 
 @foreach (var badge in _badges)

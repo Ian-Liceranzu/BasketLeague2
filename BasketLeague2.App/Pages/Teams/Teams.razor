@@ -1,0 +1,62 @@
+﻿@page "/Teams"
+@using BasketLeague2.Utils.Models
+
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+<PageTitle>Teams</PageTitle>
+
+<h1>Teams</h1>
+
+<Table Striped>
+    <TableHeader ThemeContrast="ThemeContrast.Light">
+        <TableRow>
+            <TableHeaderCell>NOMBRE COMPLETO</TableHeaderCell>
+            <TableHeaderCell>NOMBRE</TableHeaderCell>
+            <TableHeaderCell>DUEÑO</TableHeaderCell>
+            <TableHeaderCell>ATK</TableHeaderCell>
+            <TableHeaderCell>TIRO</TableHeaderCell>
+            <TableHeaderCell>DEF</TableHeaderCell>
+            <TableHeaderCell>REBOTE</TableHeaderCell>
+            <TableHeaderCell></TableHeaderCell>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        @foreach (var t in _teams)
+        {
+            <TableRow>
+                <TableRowCell>@t.NombreCompleto</TableRowCell>
+                <TableRowCell>@t.Nombre</TableRowCell>
+                <TableRowCell>@t.Dueño</TableRowCell>
+                <TableRowCell>@t.Ataque</TableRowCell>
+                <TableRowCell>@t.Tiro</TableRowCell>
+                <TableRowCell>@t.Defensa</TableRowCell>
+                <TableRowCell>@t.Rebote</TableRowCell>
+                <TableRowCell>
+                    <button class="btn btn-primary" @onclick="_ => LoadTeam(t.Codigo)">INFO</button>
+                </TableRowCell>
+            </TableRow>
+        }
+    </TableBody>
+</Table>
+
+@code {
+    private IEnumerable<Team> _teams = new Team[] { };
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetTeams();
+    }
+
+    private async Task GetTeams()
+    {
+        var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
+        _teams = _teams.Concat(t!.OrderBy(team => team.NombreCompleto));
+    }
+
+    private void LoadTeam(int codigo)
+    {
+        Navigation.NavigateTo($"Teams/Team/{codigo}");
+    }
+
+}

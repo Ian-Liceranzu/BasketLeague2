@@ -5,6 +5,8 @@
 
 @inject HttpClient Http
 
+<PageTitle>Timetables</PageTitle>
+
 <h3>Timetables</h3>
 
 <TextEdit Style="width:25%" Text="@_customFilterValue" TextChanged="@OnCustomFilterValueChanged"></TextEdit>
@@ -22,7 +24,9 @@
           PageSize="5">
     <DataGridColumns>
         <DataGridCommandColumn/>
-        <DataGridColumn Field="@nameof(Match.Fecha)" Caption="FECHA"/>
+        <DataGridColumn Field="@nameof(Match.Fecha)" Caption="FECHA">
+            <DisplayTemplate>@context.Fecha.ToShortDateString()</DisplayTemplate>
+        </DataGridColumn>
         <DataGridColumn Field="@nameof(Match.Equipo1)" Caption="EQUIPO 1"/>
         <DataGridColumn Field="@nameof(Match.Equipo2)" Caption="EQUIPO 2"/>
     </DataGridColumns>

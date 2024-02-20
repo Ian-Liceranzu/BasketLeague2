@@ -4,37 +4,39 @@
 
 @using BasketLeague2.Utils.Models
 
+<PageTitle>Leaderboard</PageTitle>
+
 <h3>Leaderboard</h3>
 
-<table class="table table-striped">
-    <thead class="thead-light">
-    <tr>
-        <th>EQUIPO</th>
-        <th>GP</th>
-        <th>W</th>
-        <th>L</th>
-        <th>%</th>
-        <th>HOME</th>
-        <th>VISITOR</th>
-        <th>DIF</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var t in _teams)
-    {
-        <tr>
-            <td>@t.NombreCompleto</td>
-            <td>@t.Gp</td>
-            <td>@(t.Wh + t.Wv)</td>
-            <td>@(t.Lh + t.Lv)</td>
-            <td>@Math.Round((double)(t.Wh + t.Wv) / t.Gp, 4)</td>
-            <td>@t.Wh - @t.Lh</td>
-            <td>@t.Wv - @t.Lv</td>
-            <td>@t.Dif</td>
-        </tr>
-    }
-    </tbody>
-</table>
+<Table Striped>
+    <TableHeader ThemeContrast="ThemeContrast.Light">
+        <TableRow>
+            <TableHeaderCell>EQUIPO</TableHeaderCell>
+            <TableHeaderCell>GP</TableHeaderCell>
+            <TableHeaderCell>W</TableHeaderCell>
+            <TableHeaderCell>L</TableHeaderCell>
+            <TableHeaderCell>%</TableHeaderCell>
+            <TableHeaderCell>HOME</TableHeaderCell>
+            <TableHeaderCell>VISITOR</TableHeaderCell>
+            <TableHeaderCell>DIF</TableHeaderCell>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        @foreach (var t in _teams)
+        {
+            <TableRow>
+                <TableRowCell>@t.NombreCompleto</TableRowCell>
+                <TableRowCell>@t.Gp</TableRowCell>
+                <TableRowCell>@(t.Wh + t.Wv)</TableRowCell>
+                <TableRowCell>@(t.Lh + t.Lv)</TableRowCell>
+                <TableRowCell>@Math.Round((double)(t.Wh + t.Wv) / t.Gp, 4)</TableRowCell>
+                <TableRowCell>@t.Wh - @t.Lh</TableRowCell>
+                <TableRowCell>@t.Wv - @t.Lv</TableRowCell>
+                <TableRowCell>@t.Dif</TableRowCell>
+            </TableRow>
+        }
+    </TableBody>
+</Table>
 
 @code {
 
