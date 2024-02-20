@@ -1,5 +1,5 @@
-﻿import "./vendors/jsencrypt.js?v=1.2.3.0";
-import "./vendors/sha512.js?v=1.2.3.0";
+﻿import "./vendors/jsencrypt.js?v=1.4.2.0";
+import "./vendors/sha512.js?v=1.4.2.0";
 
 // adds a classname to the specified element
 export function addClass(element, classname) {
@@ -119,7 +119,7 @@ export function setProperty(element, property, value) {
 }
 
 export function getElementInfo(element, elementId) {
-    if (!element) {
+    if (!element || (element && element.id !== elementId)) {
         element = document.getElementById(elementId);
     }
 
@@ -301,4 +301,14 @@ export function verifyRsa(publicKey, content, signature) {
 
 export function log(message, args) {
     console.log(message, args);
+}
+
+export function createEvent(name) {
+    const e = document.createEvent("Event");
+    e.initEvent(name, true, true);
+    return e;
+}
+
+export function coalesce(value, defaultValue) {
+    return value === null || value === undefined ? defaultValue : value;
 }

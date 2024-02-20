@@ -1,4 +1,4 @@
-﻿import { addClassToBody, removeClassFromBody } from "../Blazorise/utilities.js?v=1.2.3.0";
+import { addClassToBody, removeClassFromBody } from "../Blazorise/utilities.js?v=1.4.2.0";
 
 export function open(element, scrollToTop) {
     adjustDialogDimensionsBeforeShow(element);
@@ -85,6 +85,7 @@ export function adjustDialogDimensionsBeforeShow(element) {
         }
     }
 }
+
 export function resetAdjustments(element) {
     // Restore element padding
     if (element && element.style) {

@@ -1,5 +1,7 @@
-﻿import "./vendors/flatpickr.js?v=1.2.3.0";
-import * as utilities from "./utilities.js?v=1.2.3.0";
+﻿import "./vendors/flatpickr.js?v=1.4.2.0";
+import * as utilities from "./utilities.js?v=1.4.2.0";
+import * as inputmask from "./inputMask.js?v=1.4.2.0";
+import { ClassWatcher } from "./observer.js?v=1.4.2.0";
 
 const _pickers = [];
 
@@ -53,7 +55,10 @@ export function initialize(dotnetAdapter, element, elementId, options) {
         disable: options.disabledDates || [],
         inline: options.inline || false,
         disableMobile: options.disableMobile || true,
-        static: true
+        static: options.staticPicker,
+        errorHandler: (error) => {
+            // do nothing to prevent warnings in the console
+        }
     };
 
     if (options.selectionMode)
@@ -74,7 +79,51 @@ export function initialize(dotnetAdapter, element, elementId, options) {
     if (options) {
         picker.altInput.disabled = options.disabled || false;
         picker.altInput.readOnly = options.readOnly || false;
-        picker.altInput.placeholder = options.placeholder;
+        picker.altInput.placeholder = utilities.coalesce(options.placeholder, "");
+
+        picker.altInput.addEventListener("blur", (e) => {
+            const isInput = e.target === picker._input;
+
+            // Workaround for: onchange does not fire when user writes the time and then click outside of the input area.
+            if (isInput && picker.isOpen === false) {
+                picker.input.dispatchEvent(utilities.createEvent("change"));
+                picker.input.dispatchEvent(utilities.createEvent("input"));
+            }
+        });
+
+        if (options.inputFormat) {
+            setInputMask(picker, options.inputFormat, options.placeholder);
+        }
+
+        if (options.validationStatus) {
+            const flatpickrWrapper = picker.altInput.parentElement;
+
+            if (flatpickrWrapper) {
+                if (options.validationStatus.errorClass) {
+                    function errorClassAddHandler() {
+                        flatpickrWrapper.classList.add(options.validationStatus.errorClass);
+                    }
+
+                    function errorClassRemoveHandler() {
+                        flatpickrWrapper.classList.remove(options.validationStatus.errorClass);
+                    }
+
+                    picker.errorClassWatcher = new ClassWatcher(picker.altInput, options.validationStatus.errorClass, errorClassAddHandler, errorClassRemoveHandler);
+                }
+            }
+        }
+
+        if (options.validationStatus.successClass) {
+            function successClassAddHandler() {
+                flatpickrWrapper.classList.add(options.validationStatus.successClass);
+            }
+
+            function successClassRemoveHandler() {
+                flatpickrWrapper.classList.remove(options.validationStatus.successClass);
+            }
+
+            picker.successClassWatcher = new ClassWatcher(picker.altInput, options.validationStatus.successClass, successClassAddHandler, successClassRemoveHandler);
+        }
     }
 
     picker.customOptions = {
@@ -158,6 +207,14 @@ export function destroy(element, elementId) {
     }
 
     if (instance) {
+        if (instance.errorClassWatcher) {
+            instance.errorClassWatcher.disconnect();
+        }
+
+        if (instance.successClassWatcher) {
+            instance.successClassWatcher.disconnect();
+        }
+
         instance.destroy();
     }
 
@@ -188,6 +245,10 @@ export function updateOptions(element, elementId, options) {
 
         if (options.displayFormat.changed) {
             picker.set("altFormat", options.displayFormat.value);
+        }
+
+        if (options.inputFormat.changed) {
+            setInputMask(picker, options.inputFormat.value, options.placeholder.value);
         }
 
         if (options.timeAs24hr.changed) {
@@ -228,7 +289,11 @@ export function updateOptions(element, elementId, options) {
         }
 
         if (options.placeholder.changed) {
-            picker.altInput.placeholder = options.placeholder.value;
+            picker.altInput.placeholder = utilities.coalesce(options.placeholder.value, "");
+        }
+
+        if (options.staticPicker.changed) {
+            picker.set("static", options.staticPicker.value);
         }
     }
 }
@@ -302,5 +367,19 @@ export function select(element, elementId, focus) {
 
     if (picker && picker.altInput) {
         utilities.select(picker.altInput, null, focus);
+    }
+}
+
+function setInputMask(picker, inputFormat, placeholder) {
+    if (picker && picker.altInput) {
+        if (picker.inputMask && picker.inputMask.remove) {
+            picker.inputMask.remove();
+        }
+
+        picker.inputMask = inputmask.initialize(null, picker.altInput, null, {
+            placeholder: utilities.coalesce(placeholder, inputFormat),
+            alias: "datetime",
+            inputFormat: inputFormat
+        });
     }
 }
