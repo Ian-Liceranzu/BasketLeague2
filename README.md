@@ -23,13 +23,13 @@ Basket League es una herramienta para la gestión de una liga simulada de balonc
 3. Gestión de partidos
   - <s>Jugar partidos amistosos</s>
   - <s>Jugar partidos con sistema de jugadores</s>
-  - Mostrar resultados individuales al jugar partidos
+  - <s>Mostrar resultados individuales al jugar partidos</s>
 4. Gestión de equipos
   - <s>Panel de equipo (Información avanzada del equipo)</s>
   - <s>Consultar estadísticas por equipo</s>
   - <s>Consultar resultados por equipo</s>
   - <s>Consultar resultados históricos por equipos</s>
-  - Mostrar logros históricos de los equipos
+  - <s>Mostrar logros históricos de los equipos</s>
 5. Gestión de resultados
   - <s>Consultar tabla con los últimos resultados</s>
   - <s>Información detallada de los resultados</s>
@@ -41,5 +41,9 @@ Basket League es una herramienta para la gestión de una liga simulada de balonc
   - <s>Consultar estadísticas históricas de los jugadores</s>
   - <s>Mostrar logros individuales de los jugadores</s>
 8. Gestión de drafts
-  - Consultar decisiones históricas de los drafts
+  - <s>Consultar decisiones históricas de los drafts</s>
+  - Simulador de draft
+9. Rueda de la fortuna
+  - Sistema de cartas de tarot para decidir la suerte de los equipos en cada temporada
+  - Entrenamientos personalizados semanales y por temporada para los jugadores
 
