@@ -1,0 +1,67 @@
+﻿@page "/Fortune/WheelOfFortune"
+@using BasketLeague2.Utils.Models
+@using Newtonsoft.Json
+
+<PageTitle>Wheel of Fortune</PageTitle>
+
+<Button Color="Color.Info" Clicked="RollTheWheel">Roll the Wheel of Fortune</Button>
+
+@if (_tarotCard is not null)
+{
+    <Row VerticalGutter="16">
+        <Column ColumnSize="ColumnSize.Is4.Is4.WithOffset">
+            <Card>
+                <Row HorizontalGutter="16">
+                    <Column ColumnSize="ColumnSize.Is6">
+                        <CardImage Source="@($"assets/images/tarotCards/RWS_Tarot_{_tarotCard.Number}.jpg")" Alt="Tarot card" Class="card-image-full"/>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is6">
+                        <CardBody>
+                            <CardTitle TextAlignment="TextAlignment.Center" TextTransform="TextTransform.Uppercase" TextWeight="TextWeight.Bold" Size="5">@_tarotCard.Name</CardTitle>
+                            <Divider/>
+                            <CardText>@_tarotCard.Description</CardText>
+                            <Divider/>
+                            <CardText Italic="true">@_tarotCard.Detailed</CardText>
+                        </CardBody>
+                    </Column>
+                </Row>
+            </Card>
+        </Column>
+    </Row>
+}
+
+<h3> Tarot cards </h3>
+
+<Row HorizontalGutter="32" VerticalGutter="16">
+    @foreach (var card in TarotCard.MajorArcana)
+    {
+        <Column ColumnSize="ColumnSize.Is2">
+            <Card>
+                <CardImage Source="@($"assets/images/tarotCards/RWS_Tarot_{card.Number}.jpg")" Alt="Tarot card" Class="card-image-full"/>
+                <CardBody>
+                    <CardTitle TextAlignment="TextAlignment.Center" TextTransform="TextTransform.Uppercase" TextWeight="TextWeight.Bold" Size="5">@card.Name</CardTitle>
+                    <CardText Italic="true">@card.Description</CardText>
+                </CardBody>
+            </Card>
+        </Column>
+    }
+</Row>
+
+@code {
+
+    private TarotCard? _tarotCard;
+
+    void RollTheWheel()
+    {
+        Random rng = new();
+
+        var num = rng.Next(0, 22);
+
+        Console.WriteLine(num);
+
+        _tarotCard = TarotCard.MajorArcana.First(t => t.Number == num);
+
+        Console.WriteLine(JsonConvert.SerializeObject(_tarotCard));
+    }
+
+}

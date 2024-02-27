@@ -1,0 +1,43 @@
+﻿@page "/Fortune/MinorWheelOfFortune"
+@using BasketLeague2.Utils.Models
+@using BasketLeague2.Utils.Utils
+
+<PageTitle>Wheel of Fortune</PageTitle>
+
+<Button Color="Color.Info" Clicked="RollTheWheel">Roll the Wheel of Fortune</Button>
+
+<Table Striped>
+    <TableHeader ThemeContrast="ThemeContrast.Light">
+        <TableRow>
+            <TableHeaderCell>TIRO DOBLE</TableHeaderCell>
+            <TableHeaderCell>TIRO TRIPLE</TableHeaderCell>
+            <TableHeaderCell>FÍSICO</TableHeaderCell>
+            <TableHeaderCell>PLAYMAKING</TableHeaderCell>
+            <TableHeaderCell>REBOTE</TableHeaderCell>
+            <TableHeaderCell>DEFENSA</TableHeaderCell>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        <TableRow>
+            <TableRowCell>@_player.InsideScoring</TableRowCell>
+            <TableRowCell>@_player.OutsideScoring</TableRowCell>
+            <TableRowCell>@_player.Athleticism</TableRowCell>
+            <TableRowCell>@_player.Playmaking</TableRowCell>
+            <TableRowCell>@_player.Rebounding</TableRowCell>
+            <TableRowCell>@_player.Defending</TableRowCell>
+        </TableRow>
+    </TableBody>
+</Table>
+
+@code {
+
+    private Player _player = new();
+
+    private void RollTheWheel()
+    {
+        _player = new Player();
+
+        _player.PlayerRoulette();
+    }
+
+}
