@@ -68,7 +68,7 @@
 
     private async Task GetDraft()
     {
-        var d = await Http.GetFromJsonAsync<List<DraftPick>>($"data/Drafts/D_{_season}.json");
+        var d = await Http.GetFromJsonAsync<List<DraftPick>>($"data/drafts/D_{_season}.json");
         _picks = d!;
     }
 
