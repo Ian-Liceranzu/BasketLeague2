@@ -16,5 +16,11 @@
     "Name": "S2 WINNER",
     "Description": "Ganador de la S2 de la FBA.",
     "Color": "warning"
+  },
+  {
+    "Id": 5,
+    "Name": "S3 WINTER WINNER",
+    "Description": "Ganador de la S3 de la FBA.",
+    "Color": "info"
   }
 ]
