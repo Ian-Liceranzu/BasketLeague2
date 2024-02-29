@@ -10,6 +10,8 @@
 
 <h3>Draft Simulator Beta</h3>
 
+<p>Esto es meramente una herramienta de prueba para realizar posibles simulaciones de draft.</p>
+
 <button class="btn btn-primary" @onclick="GetPlayersJson">COPY JSON</button>
 
 <DropContainer TItem="Player" Items="_players" ItemsFilter="@((item, dropZone) => item.Team.ToString() == dropZone)" ItemDropped="@ItemDropped" Flex="Flex.Wrap.Grow.Is1">
@@ -50,9 +52,6 @@
         <DropZone TItem="Player" Name="11" Border="Border.Rounded" Background="Background.Light" Padding="Padding.Is3" Margin="Margin.Is3" Flex="Flex.Grow.Is1">
             <Heading Size="HeadingSize.Is4" Margin="Margin.Is3.FromBottom">SKW</Heading>
         </DropZone>
-        <DropZone TItem="Player" Name="-1" Border="Border.Rounded" Background="Background.Dark" Padding="Padding.Is3" Margin="Margin.Is3" Flex="Flex.Grow.Is1">
-            <Heading Size="HeadingSize.Is4" Margin="Margin.Is3.FromBottom" TextColor="TextColor.Light">Trash</Heading>
-        </DropZone>
     </ChildContent>
     <ItemTemplate>
         <Card Shadow="Shadow.Default" Margin="Margin.Is3.OnY">
@@ -80,7 +79,7 @@
     private async Task GetPlayers()
     {
         var p = await Http.GetFromJsonAsync<List<Player>>("data/players.json");
-        _players = p!.OrderByDescending(player => player.Overall).ToList();
+        _players = p!.OrderByDescending(player => player.CalculateOverall()).ToList();
     }
 
     private static Task ItemDropped(DraggableDroppedEventArgs<Player> dropItem)

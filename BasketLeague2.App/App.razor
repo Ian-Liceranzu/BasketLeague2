@@ -1,12 +1,43 @@
-﻿<Router AppAssembly="@typeof(App).Assembly">
-    <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"/>
-        <FocusOnNavigate RouteData="@routeData" Selector="h1"/>
-    </Found>
-    <NotFound>
-        <PageTitle>Not found</PageTitle>
-        <LayoutView Layout="@typeof(MainLayout)">
-            <p role="alert">Sorry, there's nothing at this address.</p>
-        </LayoutView>
-    </NotFound>
-</Router>
+﻿<ThemeProvider Theme="@_theme">
+    <Router AppAssembly="@typeof(App).Assembly">
+        <Found Context="routeData">
+            <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"/>
+            <FocusOnNavigate RouteData="@routeData" Selector="h1"/>
+        </Found>
+        <NotFound>
+            <PageTitle>Not found</PageTitle>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <p role="alert">Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </NotFound>
+    </Router>
+</ThemeProvider>
+
+@code{
+
+    private Theme _theme = new()
+    {
+        ColorOptions = new ThemeColorOptions
+        {
+            Primary = "#003049",
+            Secondary = "#FDF3DC",
+            Danger = "#780000",
+            Info = "#669BBC",
+        },
+        TextColorOptions = new ThemeTextColorOptions
+        {
+            Primary = "#003049",
+            Secondary = "#FDF3DC",
+            Danger = "#780000",
+            Info = "#669BBC",
+        },
+        BackgroundOptions = new ThemeBackgroundOptions
+        {
+            Primary = "#003049",
+            Secondary = "#FDF3DC",
+            Danger = "#780000",
+            Info = "#669BBC",
+        }
+    };
+
+}

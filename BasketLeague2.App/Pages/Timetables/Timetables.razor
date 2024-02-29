@@ -31,30 +31,30 @@
         <DataGridColumn Field="@nameof(Match.Equipo2)" Caption="EQUIPO 2"/>
     </DataGridColumns>
     <PageButtonTemplate>
-        <Span TextColor="TextColor.Success">
+        <Span TextColor="TextColor.Info">
             @context.PageNumber
         </Span>
     </PageButtonTemplate>
     <NextPageButtonTemplate>
-        <Icon Name="IconName.StepForward" TextColor="TextColor.Success"/>
+        <Icon Name="IconName.StepForward" TextColor="TextColor.Info"/>
     </NextPageButtonTemplate>
     <PreviousPageButtonTemplate>
-        <Icon Name="IconName.StepBackward" TextColor="TextColor.Success"/>
+        <Icon Name="IconName.StepBackward" TextColor="TextColor.Info"/>
     </PreviousPageButtonTemplate>
     <LastPageButtonTemplate>
-        <Icon Name="IconName.Forward" TextColor="TextColor.Success"/>
+        <Icon Name="IconName.Forward" TextColor="TextColor.Info"/>
     </LastPageButtonTemplate>
     <FirstPageButtonTemplate>
-        <Icon Name="IconName.Backward" TextColor="TextColor.Success"/>
+        <Icon Name="IconName.Backward" TextColor="TextColor.Info"/>
     </FirstPageButtonTemplate>
     <TotalItemsTemplate>
-        <Badge Color="Color.Success">@context.TotalItems items</Badge>
+        <Badge Color="Color.Info">@context.TotalItems items</Badge>
     </TotalItemsTemplate>
     <TotalItemsShortTemplate>
-        <Badge Color="Color.Success">@context.CurrentPageSize</Badge>
+        <Badge Color="Color.Info">@context.CurrentPageSize</Badge>
     </TotalItemsShortTemplate>
     <PageSelectorTemplate>
-        <Select TextColor="TextColor.Success" @bind-SelectedValue="@context.CurrentPage" Size="Size.Small">
+        <Select TextColor="TextColor.Info" @bind-SelectedValue="@context.CurrentPage" Size="Size.Small">
             @for (var i = context.FirstVisiblePage; i <= context.LastVisiblePage; ++i)
             {
                 var pageNumber = i;
