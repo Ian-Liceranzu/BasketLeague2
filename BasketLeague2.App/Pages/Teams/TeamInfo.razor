@@ -59,7 +59,7 @@
                     <TableRowCell>@p.Playmaking</TableRowCell>
                     <TableRowCell>@p.Rebounding</TableRowCell>
                     <TableRowCell>@p.Defending</TableRowCell>
-                    <TableRowCell>@p.Overall</TableRowCell>
+                    <TableRowCell>@p.CalculateOverall()</TableRowCell>
                 </TableRow>
             }
         </TableBody>
@@ -130,7 +130,7 @@
     {
         var p = await Http.GetFromJsonAsync<List<Player>>("data/players.json");
         _allPlayers = p!;
-        _players = p!.Where(player => player.Team == _team.Codigo).OrderByDescending(player => player.Overall).ToList();
+        _players = p!.Where(player => player.Team == _team.Codigo).OrderByDescending(player => player.CalculateOverall()).ToList();
 
         await GetPlayerTeams();
     }
