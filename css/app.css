@@ -41,6 +41,12 @@ a, .btn-link {
     outline: 1px solid red;
 }
 
+.logo-index {
+    height: 100%;
+    width: 15%;
+    object-fit: contain;
+}
+
 .validation-message {
     color: red;
 }

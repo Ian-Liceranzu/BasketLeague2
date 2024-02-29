@@ -22,5 +22,11 @@
     "Name": "DEL MONTÓN BUENO S3",
     "Description": "Medio con más puntos anotados en la temporada 3.",
     "Color": "success"
+  },
+  {
+    "Id": 8,
+    "Name": "EL DIABLO",
+    "Description": "Se convirtió en diablo.",
+    "Color": "danger"
   }
 ]
