@@ -9,8 +9,7 @@
     "Athleticism": 90,
     "Playmaking": 90,
     "Rebounding": 98,
-    "Defending": 92,
-    "Overall": 92.83333333333333
+    "Defending": 92
   },
   {
     "Codigo": 2,
@@ -22,8 +21,7 @@
     "Athleticism": 92,
     "Playmaking": 96,
     "Rebounding": 97,
-    "Defending": 94,
-    "Overall": 94.5
+    "Defending": 94
   },
   {
     "Codigo": 3,
@@ -35,8 +33,7 @@
     "Athleticism": 97,
     "Playmaking": 90,
     "Rebounding": 90,
-    "Defending": 95,
-    "Overall": 93.5
+    "Defending": 95
   },
   {
     "Codigo": 4,
@@ -48,8 +45,7 @@
     "Athleticism": 90,
     "Playmaking": 97,
     "Rebounding": 96,
-    "Defending": 94,
-    "Overall": 94.16666666666667
+    "Defending": 94
   },
   {
     "Codigo": 5,
@@ -61,8 +57,7 @@
     "Athleticism": 92,
     "Playmaking": 95,
     "Rebounding": 94,
-    "Defending": 97,
-    "Overall": 93
+    "Defending": 97
   },
   {
     "Codigo": 6,
@@ -74,8 +69,7 @@
     "Athleticism": 99,
     "Playmaking": 90,
     "Rebounding": 96,
-    "Defending": 94,
-    "Overall": 94.66666666666667
+    "Defending": 94
   },
   {
     "Codigo": 7,
@@ -87,8 +81,7 @@
     "Athleticism": 95,
     "Playmaking": 97,
     "Rebounding": 97,
-    "Defending": 93,
-    "Overall": 94
+    "Defending": 93
   },
   {
     "Codigo": 8,
@@ -100,8 +93,7 @@
     "Athleticism": 91,
     "Playmaking": 91,
     "Rebounding": 92,
-    "Defending": 90,
-    "Overall": 93.16666666666667
+    "Defending": 90
   },
   {
     "Codigo": 9,
@@ -113,8 +105,7 @@
     "Athleticism": 90,
     "Playmaking": 92,
     "Rebounding": 99,
-    "Defending": 97,
-    "Overall": 93.83333333333333
+    "Defending": 97
   },
   {
     "Codigo": 10,
@@ -126,8 +117,7 @@
     "Athleticism": 95,
     "Playmaking": 92,
     "Rebounding": 95,
-    "Defending": 94,
-    "Overall": 93.83333333333333
+    "Defending": 94
   },
   {
     "Codigo": 11,
@@ -139,8 +129,7 @@
     "Athleticism": 48,
     "Playmaking": 47,
     "Rebounding": 49,
-    "Defending": 49,
-    "Overall": 47
+    "Defending": 49
   },
   {
     "Codigo": 12,
@@ -152,8 +141,7 @@
     "Athleticism": 47,
     "Playmaking": 44,
     "Rebounding": 42,
-    "Defending": 44,
-    "Overall": 43.166666666666664
+    "Defending": 44
   },
   {
     "Codigo": 13,
@@ -165,8 +153,7 @@
     "Athleticism": 44,
     "Playmaking": 47,
     "Rebounding": 40,
-    "Defending": 46,
-    "Overall": 44.5
+    "Defending": 46
   },
   {
     "Codigo": 14,
@@ -178,8 +165,7 @@
     "Athleticism": 47,
     "Playmaking": 41,
     "Rebounding": 42,
-    "Defending": 42,
-    "Overall": 43.666666666666664
+    "Defending": 42
   },
   {
     "Codigo": 15,
@@ -191,8 +177,7 @@
     "Athleticism": 49,
     "Playmaking": 48,
     "Rebounding": 40,
-    "Defending": 48,
-    "Overall": 45.666666666666664
+    "Defending": 48
   },
   {
     "Codigo": 16,
@@ -204,8 +189,7 @@
     "Athleticism": 46,
     "Playmaking": 46,
     "Rebounding": 44,
-    "Defending": 48,
-    "Overall": 45
+    "Defending": 48
   },
   {
     "Codigo": 17,
@@ -217,8 +201,7 @@
     "Athleticism": 41,
     "Playmaking": 47,
     "Rebounding": 49,
-    "Defending": 42,
-    "Overall": 43.666666666666664
+    "Defending": 42
   },
   {
     "Codigo": 18,
@@ -230,8 +213,7 @@
     "Athleticism": 45,
     "Playmaking": 45,
     "Rebounding": 46,
-    "Defending": 48,
-    "Overall": 44.333333333333336
+    "Defending": 48
   },
   {
     "Codigo": 19,
@@ -243,8 +225,7 @@
     "Athleticism": 40,
     "Playmaking": 47,
     "Rebounding": 46,
-    "Defending": 46,
-    "Overall": 43.666666666666664
+    "Defending": 46
   },
   {
     "Codigo": 20,
@@ -256,8 +237,7 @@
     "Athleticism": 40,
     "Playmaking": 47,
     "Rebounding": 48,
-    "Defending": 48,
-    "Overall": 44.166666666666664
+    "Defending": 48
   },
   {
     "Codigo": 21,
@@ -269,8 +249,7 @@
     "Athleticism": 71,
     "Playmaking": 77,
     "Rebounding": 75,
-    "Defending": 78,
-    "Overall": 74.83333333333333
+    "Defending": 78
   },
   {
     "Codigo": 22,
@@ -282,8 +261,7 @@
     "Athleticism": 73,
     "Playmaking": 74,
     "Rebounding": 72,
-    "Defending": 72,
-    "Overall": 73
+    "Defending": 72
   },
   {
     "Codigo": 23,
@@ -295,8 +273,7 @@
     "Athleticism": 77,
     "Playmaking": 73,
     "Rebounding": 74,
-    "Defending": 71,
-    "Overall": 73.16666666666667
+    "Defending": 71
   },
   {
     "Codigo": 24,
@@ -308,8 +285,7 @@
     "Athleticism": 72,
     "Playmaking": 75,
     "Rebounding": 77,
-    "Defending": 76,
-    "Overall": 75.5
+    "Defending": 76
   },
   {
     "Codigo": 25,
@@ -321,8 +297,7 @@
     "Athleticism": 74,
     "Playmaking": 79,
     "Rebounding": 74,
-    "Defending": 74,
-    "Overall": 75.16666666666667
+    "Defending": 74
   },
   {
     "Codigo": 26,
@@ -334,8 +309,7 @@
     "Athleticism": 78,
     "Playmaking": 76,
     "Rebounding": 73,
-    "Defending": 73,
-    "Overall": 74.83333333333333
+    "Defending": 73
   },
   {
     "Codigo": 27,
@@ -347,8 +321,7 @@
     "Athleticism": 77,
     "Playmaking": 77,
     "Rebounding": 79,
-    "Defending": 72,
-    "Overall": 76.5
+    "Defending": 72
   },
   {
     "Codigo": 28,
@@ -360,8 +333,7 @@
     "Athleticism": 74,
     "Playmaking": 74,
     "Rebounding": 74,
-    "Defending": 79,
-    "Overall": 74
+    "Defending": 79
   },
   {
     "Codigo": 29,
@@ -373,8 +345,7 @@
     "Athleticism": 77,
     "Playmaking": 76,
     "Rebounding": 79,
-    "Defending": 72,
-    "Overall": 77.166666666667
+    "Defending": 72
   },
   {
     "Codigo": 30,
@@ -386,8 +357,7 @@
     "Athleticism": 75,
     "Playmaking": 73,
     "Rebounding": 75,
-    "Defending": 73,
-    "Overall": 75
+    "Defending": 73
   },
   {
     "Codigo": 31,
@@ -399,8 +369,7 @@
     "Athleticism": 71,
     "Playmaking": 78,
     "Rebounding": 74,
-    "Defending": 75,
-    "Overall": 75.5
+    "Defending": 75
   },
   {
     "Codigo": 32,
@@ -412,8 +381,7 @@
     "Athleticism": 79,
     "Playmaking": 78,
     "Rebounding": 77,
-    "Defending": 72,
-    "Overall": 74.66666666666667
+    "Defending": 72
   },
   {
     "Codigo": 33,
@@ -425,8 +393,7 @@
     "Athleticism": 76,
     "Playmaking": 77,
     "Rebounding": 79,
-    "Defending": 74,
-    "Overall": 75.16666666666667
+    "Defending": 74
   },
   {
     "Codigo": 34,
@@ -438,8 +405,7 @@
     "Athleticism": 78,
     "Playmaking": 77,
     "Rebounding": 74,
-    "Defending": 79,
-    "Overall": 76.5
+    "Defending": 79
   },
   {
     "Codigo": 35,
@@ -451,8 +417,7 @@
     "Athleticism": 78,
     "Playmaking": 76,
     "Rebounding": 79,
-    "Defending": 75,
-    "Overall": 76.83333333333
+    "Defending": 75
   },
   {
     "Codigo": 36,
@@ -464,8 +429,7 @@
     "Athleticism": 74,
     "Playmaking": 79,
     "Rebounding": 73,
-    "Defending": 73,
-    "Overall": 74.66666666666667
+    "Defending": 73
   },
   {
     "Codigo": 37,
@@ -477,8 +441,7 @@
     "Athleticism": 78,
     "Playmaking": 75,
     "Rebounding": 70,
-    "Defending": 71,
-    "Overall": 73.5
+    "Defending": 71
   },
   {
     "Codigo": 38,
@@ -490,8 +453,7 @@
     "Athleticism": 77,
     "Playmaking": 76,
     "Rebounding": 77,
-    "Defending": 71,
-    "Overall": 75.83333333333333
+    "Defending": 71
   },
   {
     "Codigo": 39,
@@ -503,8 +465,7 @@
     "Athleticism": 78,
     "Playmaking": 73,
     "Rebounding": 71,
-    "Defending": 74,
-    "Overall": 75.33333333333333
+    "Defending": 74
   },
   {
     "Codigo": 40,
@@ -516,8 +477,7 @@
     "Athleticism": 74,
     "Playmaking": 72,
     "Rebounding": 74,
-    "Defending": 74,
-    "Overall": 75.16666666666667
+    "Defending": 74
   },
   {
     "Codigo": 41,
@@ -529,8 +489,7 @@
     "Athleticism": 78,
     "Playmaking": 73,
     "Rebounding": 74,
-    "Defending": 75,
-    "Overall": 75.33333333333333
+    "Defending": 75
   },
   {
     "Codigo": 42,
@@ -542,8 +501,7 @@
     "Athleticism": 74,
     "Playmaking": 70,
     "Rebounding": 70,
-    "Defending": 70,
-    "Overall": 72.16666666666667
+    "Defending": 70
   },
   {
     "Codigo": 43,
@@ -555,8 +513,7 @@
     "Athleticism": 70,
     "Playmaking": 72,
     "Rebounding": 79,
-    "Defending": 71,
-    "Overall": 73.16666666666667
+    "Defending": 71
   },
   {
     "Codigo": 44,
@@ -568,8 +525,7 @@
     "Athleticism": 72,
     "Playmaking": 72,
     "Rebounding": 74,
-    "Defending": 73,
-    "Overall": 72.5
+    "Defending": 73
   },
   {
     "Codigo": 45,
@@ -581,8 +537,7 @@
     "Athleticism": 77,
     "Playmaking": 75,
     "Rebounding": 72,
-    "Defending": 73,
-    "Overall": 74.83333333333333
+    "Defending": 73
   },
   {
     "Codigo": 46,
@@ -594,8 +549,7 @@
     "Athleticism": 78,
     "Playmaking": 77,
     "Rebounding": 71,
-    "Defending": 79,
-    "Overall": 75.5
+    "Defending": 79
   },
   {
     "Codigo": 47,
@@ -607,8 +561,7 @@
     "Athleticism": 71,
     "Playmaking": 79,
     "Rebounding": 74,
-    "Defending": 78,
-    "Overall": 74.16666666666667
+    "Defending": 78
   },
   {
     "Codigo": 48,
@@ -620,8 +573,7 @@
     "Athleticism": 75,
     "Playmaking": 77,
     "Rebounding": 70,
-    "Defending": 74,
-    "Overall": 74.33333333333333
+    "Defending": 74
   },
   {
     "Codigo": 49,
@@ -633,8 +585,7 @@
     "Athleticism": 71,
     "Playmaking": 72,
     "Rebounding": 71,
-    "Defending": 72,
-    "Overall": 72.83333333333333
+    "Defending": 72
   },
   {
     "Codigo": 50,
@@ -646,8 +597,7 @@
     "Athleticism": 70,
     "Playmaking": 72,
     "Rebounding": 75,
-    "Defending": 76,
-    "Overall": 74.5
+    "Defending": 76
   },
   {
     "Codigo": 51,
@@ -659,8 +609,7 @@
     "Athleticism": 93,
     "Playmaking": 96,
     "Rebounding": 91,
-    "Defending": 90,
-    "Overall": 92.5
+    "Defending": 90
   },
   {
     "Codigo": 52,
@@ -672,8 +621,7 @@
     "Athleticism": 93,
     "Playmaking": 95,
     "Rebounding": 92,
-    "Defending": 92,
-    "Overall": 92.66666666666667
+    "Defending": 92
   },
   {
     "Codigo": 53,
@@ -685,8 +633,7 @@
     "Athleticism": 97,
     "Playmaking": 95,
     "Rebounding": 95,
-    "Defending": 98,
-    "Overall": 95.5
+    "Defending": 98
   },
   {
     "Codigo": 54,
@@ -698,8 +645,7 @@
     "Athleticism": 94,
     "Playmaking": 96,
     "Rebounding": 91,
-    "Defending": 91,
-    "Overall": 94.66666666666667
+    "Defending": 91
   },
   {
     "Codigo": 55,
@@ -711,8 +657,7 @@
     "Athleticism": 97,
     "Playmaking": 95,
     "Rebounding": 91,
-    "Defending": 91,
-    "Overall": 94
+    "Defending": 91
   },
   {
     "Codigo": 56,
@@ -724,8 +669,7 @@
     "Athleticism": 98,
     "Playmaking": 97,
     "Rebounding": 91,
-    "Defending": 98,
-    "Overall": 94.83333333333333
+    "Defending": 98
   },
   {
     "Codigo": 57,
@@ -737,8 +681,7 @@
     "Athleticism": 93,
     "Playmaking": 94,
     "Rebounding": 98,
-    "Defending": 91,
-    "Overall": 93.33333333333333
+    "Defending": 91
   },
   {
     "Codigo": 58,
@@ -750,8 +693,7 @@
     "Athleticism": 94,
     "Playmaking": 93,
     "Rebounding": 97,
-    "Defending": 98,
-    "Overall": 95.66666666666667
+    "Defending": 98
   },
   {
     "Codigo": 59,
@@ -763,8 +705,7 @@
     "Athleticism": 96,
     "Playmaking": 94,
     "Rebounding": 95,
-    "Defending": 98,
-    "Overall": 95.83333333333333
+    "Defending": 98
   },
   {
     "Codigo": 60,
@@ -776,8 +717,7 @@
     "Athleticism": 99,
     "Playmaking": 95,
     "Rebounding": 94,
-    "Defending": 94,
-    "Overall": 95.5
+    "Defending": 94
   },
   {
     "Codigo": 61,
@@ -789,8 +729,7 @@
     "Athleticism": 47,
     "Playmaking": 46,
     "Rebounding": 49,
-    "Defending": 40,
-    "Overall": 44.833333333333336
+    "Defending": 40
   },
   {
     "Codigo": 62,
@@ -802,8 +741,7 @@
     "Athleticism": 43,
     "Playmaking": 49,
     "Rebounding": 43,
-    "Defending": 40,
-    "Overall": 43.5
+    "Defending": 40
   },
   {
     "Codigo": 63,
@@ -815,8 +753,7 @@
     "Athleticism": 41,
     "Playmaking": 41,
     "Rebounding": 47,
-    "Defending": 44,
-    "Overall": 43.5
+    "Defending": 44
   },
   {
     "Codigo": 64,
@@ -828,8 +765,7 @@
     "Athleticism": 40,
     "Playmaking": 48,
     "Rebounding": 44,
-    "Defending": 42,
-    "Overall": 43
+    "Defending": 42
   },
   {
     "Codigo": 65,
@@ -841,8 +777,7 @@
     "Athleticism": 47,
     "Playmaking": 46,
     "Rebounding": 46,
-    "Defending": 43,
-    "Overall": 45.333333333333336
+    "Defending": 43
   },
   {
     "Codigo": 66,
@@ -854,8 +789,7 @@
     "Athleticism": 40,
     "Playmaking": 44,
     "Rebounding": 44,
-    "Defending": 42,
-    "Overall": 42.666666666666664
+    "Defending": 42
   },
   {
     "Codigo": 67,
@@ -867,8 +801,7 @@
     "Athleticism": 40,
     "Playmaking": 43,
     "Rebounding": 43,
-    "Defending": 41,
-    "Overall": 42.5
+    "Defending": 41
   },
   {
     "Codigo": 68,
@@ -880,8 +813,7 @@
     "Athleticism": 43,
     "Playmaking": 48,
     "Rebounding": 49,
-    "Defending": 46,
-    "Overall": 46.5
+    "Defending": 46
   },
   {
     "Codigo": 69,
@@ -893,8 +825,7 @@
     "Athleticism": 47,
     "Playmaking": 45,
     "Rebounding": 47,
-    "Defending": 49,
-    "Overall": 45
+    "Defending": 49
   },
   {
     "Codigo": 70,
@@ -906,8 +837,7 @@
     "Athleticism": 42,
     "Playmaking": 42,
     "Rebounding": 46,
-    "Defending": 42,
-    "Overall": 43.5
+    "Defending": 42
   },
   {
     "Codigo": 71,
@@ -919,8 +849,7 @@
     "Athleticism": 76,
     "Playmaking": 73,
     "Rebounding": 76,
-    "Defending": 75,
-    "Overall": 74
+    "Defending": 75
   },
   {
     "Codigo": 72,
@@ -932,8 +861,7 @@
     "Athleticism": 70,
     "Playmaking": 78,
     "Rebounding": 70,
-    "Defending": 76,
-    "Overall": 73.83333333333333
+    "Defending": 76
   },
   {
     "Codigo": 73,
@@ -945,8 +873,7 @@
     "Athleticism": 72,
     "Playmaking": 71,
     "Rebounding": 78,
-    "Defending": 72,
-    "Overall": 74.33333333333333
+    "Defending": 72
   },
   {
     "Codigo": 74,
@@ -958,8 +885,7 @@
     "Athleticism": 72,
     "Playmaking": 73,
     "Rebounding": 71,
-    "Defending": 73,
-    "Overall": 72.5
+    "Defending": 73
   },
   {
     "Codigo": 75,
@@ -971,8 +897,7 @@
     "Athleticism": 79,
     "Playmaking": 76,
     "Rebounding": 71,
-    "Defending": 74,
-    "Overall": 74.33333333333333
+    "Defending": 74
   },
   {
     "Codigo": 76,
@@ -984,8 +909,7 @@
     "Athleticism": 75,
     "Playmaking": 75,
     "Rebounding": 76,
-    "Defending": 71,
-    "Overall": 74.33333333333333
+    "Defending": 71
   },
   {
     "Codigo": 77,
@@ -997,8 +921,7 @@
     "Athleticism": 70,
     "Playmaking": 75,
     "Rebounding": 76,
-    "Defending": 75,
-    "Overall": 74.16666666666667
+    "Defending": 75
   },
   {
     "Codigo": 78,
@@ -1010,8 +933,7 @@
     "Athleticism": 74,
     "Playmaking": 73,
     "Rebounding": 71,
-    "Defending": 70,
-    "Overall": 71.66666666666667
+    "Defending": 70
   },
   {
     "Codigo": 79,
@@ -1023,8 +945,7 @@
     "Athleticism": 76,
     "Playmaking": 73,
     "Rebounding": 72,
-    "Defending": 75,
-    "Overall": 75
+    "Defending": 75
   },
   {
     "Codigo": 80,
@@ -1036,8 +957,7 @@
     "Athleticism": 70,
     "Playmaking": 78,
     "Rebounding": 76,
-    "Defending": 79,
-    "Overall": 76
+    "Defending": 79
   },
   {
     "Codigo": 81,
@@ -1049,8 +969,7 @@
     "Athleticism": 76,
     "Playmaking": 78,
     "Rebounding": 70,
-    "Defending": 74,
-    "Overall": 74.66666666666667
+    "Defending": 74
   },
   {
     "Codigo": 82,
@@ -1062,8 +981,7 @@
     "Athleticism": 77,
     "Playmaking": 79,
     "Rebounding": 76,
-    "Defending": 73,
-    "Overall": 77
+    "Defending": 73
   },
   {
     "Codigo": 83,
@@ -1075,8 +993,7 @@
     "Athleticism": 70,
     "Playmaking": 75,
     "Rebounding": 73,
-    "Defending": 72,
-    "Overall": 74.5
+    "Defending": 72
   },
   {
     "Codigo": 84,
@@ -1088,8 +1005,7 @@
     "Athleticism": 71,
     "Playmaking": 79,
     "Rebounding": 70,
-    "Defending": 78,
-    "Overall": 74.83333333333333
+    "Defending": 78
   },
   {
     "Codigo": 85,
@@ -1101,8 +1017,7 @@
     "Athleticism": 71,
     "Playmaking": 77,
     "Rebounding": 72,
-    "Defending": 74,
-    "Overall": 74.16666666666667
+    "Defending": 74
   },
   {
     "Codigo": 86,
@@ -1114,8 +1029,7 @@
     "Athleticism": 78,
     "Playmaking": 74,
     "Rebounding": 77,
-    "Defending": 72,
-    "Overall": 75.16666666666667
+    "Defending": 72
   },
   {
     "Codigo": 87,
@@ -1127,8 +1041,7 @@
     "Athleticism": 75,
     "Playmaking": 74,
     "Rebounding": 73,
-    "Defending": 72,
-    "Overall": 75
+    "Defending": 72
   },
   {
     "Codigo": 88,
@@ -1140,8 +1053,7 @@
     "Athleticism": 72,
     "Playmaking": 71,
     "Rebounding": 72,
-    "Defending": 79,
-    "Overall": 74.33333333333333
+    "Defending": 79
   },
   {
     "Codigo": 89,
@@ -1153,8 +1065,7 @@
     "Athleticism": 71,
     "Playmaking": 73,
     "Rebounding": 79,
-    "Defending": 77,
-    "Overall": 75.66666666666667
+    "Defending": 77
   },
   {
     "Codigo": 90,
@@ -1166,8 +1077,7 @@
     "Athleticism": 78,
     "Playmaking": 71,
     "Rebounding": 74,
-    "Defending": 71,
-    "Overall": 72.5
+    "Defending": 71
   },
   {
     "Codigo": 91,
@@ -1179,8 +1089,7 @@
     "Athleticism": 78,
     "Playmaking": 77,
     "Rebounding": 74,
-    "Defending": 77,
-    "Overall": 75
+    "Defending": 77
   },
   {
     "Codigo": 92,
@@ -1192,8 +1101,7 @@
     "Athleticism": 71,
     "Playmaking": 75,
     "Rebounding": 76,
-    "Defending": 77,
-    "Overall": 75.5
+    "Defending": 77
   },
   {
     "Codigo": 93,
@@ -1205,8 +1113,7 @@
     "Athleticism": 75,
     "Playmaking": 75,
     "Rebounding": 76,
-    "Defending": 75,
-    "Overall": 75.16666666666667
+    "Defending": 75
   },
   {
     "Codigo": 94,
@@ -1218,8 +1125,7 @@
     "Athleticism": 73,
     "Playmaking": 78,
     "Rebounding": 76,
-    "Defending": 79,
-    "Overall": 77.33333333333333
+    "Defending": 79
   },
   {
     "Codigo": 95,
@@ -1231,8 +1137,7 @@
     "Athleticism": 79,
     "Playmaking": 75,
     "Rebounding": 75,
-    "Defending": 73,
-    "Overall": 75.5
+    "Defending": 73
   },
   {
     "Codigo": 96,
@@ -1244,8 +1149,7 @@
     "Athleticism": 70,
     "Playmaking": 75,
     "Rebounding": 71,
-    "Defending": 76,
-    "Overall": 72.83333333333333
+    "Defending": 76
   },
   {
     "Codigo": 97,
@@ -1257,8 +1161,7 @@
     "Athleticism": 73,
     "Playmaking": 70,
     "Rebounding": 72,
-    "Defending": 76,
-    "Overall": 73.66666666666667
+    "Defending": 76
   },
   {
     "Codigo": 98,
@@ -1270,8 +1173,7 @@
     "Athleticism": 73,
     "Playmaking": 78,
     "Rebounding": 73,
-    "Defending": 70,
-    "Overall": 75.33333333333333
+    "Defending": 70
   },
   {
     "Codigo": 99,
@@ -1283,8 +1185,7 @@
     "Athleticism": 70,
     "Playmaking": 75,
     "Rebounding": 73,
-    "Defending": 76,
-    "Overall": 74.33333333333333
+    "Defending": 76
   },
   {
     "Codigo": 100,
@@ -1296,7 +1197,6 @@
     "Athleticism": 79,
     "Playmaking": 71,
     "Rebounding": 71,
-    "Defending": 73,
-    "Overall": 73.66666666666667
+    "Defending": 73
   }
 ]
