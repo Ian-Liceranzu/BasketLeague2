@@ -64,5 +64,11 @@
     "Name": "Devil S4",
     "Description": "Sacaste el diablo en la ruleta de la fortuna.",
     "Color": "primary"
+  },
+  {
+    "Id": 7,
+    "Name": "Hermit S4",
+    "Description": "Sacaste el hermitaño en la ruleta de la fortuna.",
+    "Color": "primary"
   }
 ]
