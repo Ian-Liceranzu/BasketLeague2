@@ -2,7 +2,10 @@
 
 public class TarotCard
 {
-    public static List<TarotCard> MajorArcana = new()
+    /// <summary>
+    /// All Major Arcana tarot cards
+    /// </summary>
+    public static readonly List<TarotCard> MajorArcana = new()
     {
         new TarotCard
         {
@@ -126,9 +129,24 @@ public class TarotCard
         }
     };
 
+    /// <summary>
+    /// Tarot card number
+    /// </summary>
     public int Number { get; set; }
+
+    /// <summary>
+    /// Tarot card name
+    /// </summary>
     public string Name { get; set; } = "";
+
+    /// <summary>
+    /// Tarot card description
+    /// </summary>
     public string Description { get; set; } = "";
+
+    /// <summary>
+    /// Tarot card related additional info
+    /// </summary>
 
     public string Detailed { get; set; } = "";
 }

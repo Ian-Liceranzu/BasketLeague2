@@ -1,5 +1,8 @@
 ﻿namespace BasketLeague2.Utils.Models;
 
+/// <summary>
+/// Match result
+/// </summary>
 public class Result
 {
     public DateTime Fecha { get; init; }
@@ -9,12 +12,18 @@ public class Result
     public int Resultado2 { get; init; }
 }
 
+/// <summary>
+/// Result with player statistics
+/// </summary>
 public class AdvancedResult : Result
 {
     public int[][] Stats1 { get; init; } = Array.Empty<int[]>();
     public int[][] Stats2 { get; init; } = Array.Empty<int[]>();
 }
 
+/// <summary>
+/// Player individual results
+/// </summary>
 public class PlayerResult
 {
     public int Codigo { get; init; }

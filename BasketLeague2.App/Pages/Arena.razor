@@ -156,7 +156,7 @@
     private async Task GetPlayers()
     {
         var p = await Http.GetFromJsonAsync<IEnumerable<Player>>("data/players.json");
-        _players = _players.Concat(p!.OrderBy(player => player.Team));
+        _players = _players.Concat(p!.OrderByDescending(player => player.Overall));
     }
 
     private void SimulateGame()
