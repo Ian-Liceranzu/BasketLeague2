@@ -7,6 +7,22 @@
 <div class="row mt-3">
 <CardDeck class="col-lg-8">
     <Carousel @bind-SelectedSlide="@_selectedSlide" Autoplay="false" Crossfade="true">
+        <CarouselSlide Name="10">
+            <Card class="mb-3" style="min-height: 600px">
+                <div class="card-header horizontal-gradient text-center">Vientos de grandeza.</div>
+                <CardBody>
+                    <CardText>En medio de la furia desatada por un tifón que amenazaba con arrasar todo a su paso, dos equipos legendarios se enfrentaron en la cancha con la determinación de demostrar su valía. Los Wahpeton Ducks, imbuidos con el espíritu indomable de los patos salvajes, y los Tampa Honey Badgers, conocidos por su ferocidad y agresividad, se encontraron en un duelo épico que desafiaría incluso a los elementos mismos.</CardText>
+                    <CardText>Desde el instante en que el silbato del árbitro resonó en el estadio, los jugadores se lanzaron a la batalla con una pasión desenfrenada. Las ráfagas de viento y la lluvia torrencial no lograron mermar su determinación. Cada dribbling, cada pase, cada disparo, era una oda al coraje y la perseverancia.</CardText>
+                    <CardText>Los Ducks, liderados por su capitán de acero, se lanzaron a la ofensiva con una furia desenfrenada. Embestían el aro con la ferocidad de un tornado, mientras que su defensa se erigía como un muro impenetrable ante los embates de los Honey Badgers. Pero los Badgers no retrocedieron ante el desafío; con una agresividad sin igual, desplegaron su arsenal ofensivo y se aferraron al partido como un colmillo afilado aferrándose a su presa.</CardText>
+                    <CardText>Cada jugada era una odisea de habilidad y astucia, un duelo entre titanes que desafiaba al destino mismo. Los minutos se deslizaban como hojas arrastradas por el viento, con el marcador fluctuando como las olas del mar embravecido. Pero en el corazón de la tormenta, ambos equipos se negaban a ceder, alimentados por la pasión y el deseo de la victoria.</CardText>
+                    <CardText>Y cuando el silbato finalmente sonó, anunciando el fin de la batalla, fue el rugido de los Tampa Honey Badgers el que resonó más fuerte. Con un marcador de 113 a 108 a su favor, se alzaron como campeones en medio del caos de la naturaleza. Los Wahpeton Ducks, aunque derrotados, fueron aclamados como héroes por su coraje inquebrantable.</CardText>
+                    <CardText>Así concluyó este enfrentamiento legendario, una epopeya deportiva forjada en el fragor de un tifón, donde el espíritu humano triunfó sobre la adversidad y donde el baloncesto se elevó a nuevas alturas de grandeza.</CardText>
+                    <CardText>
+                        <small class="text-muted">Publicado el 2 de Abril, 2024</small>
+                    </CardText>
+                </CardBody>
+            </Card>
+        </CarouselSlide>
         <CarouselSlide Name="9">
             <Card class="mb-3" style="min-height: 600px">
                 <div class="card-header horizontal-gradient text-center">Tocado y hundido.</div>
@@ -197,6 +213,6 @@
 
 @code {
 
-    private string _selectedSlide = "9";
+    private string _selectedSlide = "10";
 
 }
