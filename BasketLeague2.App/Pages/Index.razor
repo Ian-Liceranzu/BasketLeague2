@@ -7,6 +7,21 @@
 <div class="row mt-3">
 <CardDeck class="col-lg-8">
     <Carousel @bind-SelectedSlide="@_selectedSlide" Autoplay="false" Crossfade="true">
+        <CarouselSlide Name="11">
+            <Card class="mb-3" style="min-height: 600px">
+                <div class="card-header horizontal-gradient text-center">Vientos de grandeza.</div>
+                <CardBody>
+                    <CardText>¡Uf, chaval, te juro que este partido fue lo más emocionante que he visto en toda mi vida! Como fan número uno de los Seattle Killer Whales, estaba más que lista para vivir una noche de pura adrenalina en el partido contra los Jackson Pandas. ¿Puedes imaginar lo que se siente estar ahí, en el estadio, con toda esa energía de los fans vibrando en el aire?</CardText>
+                    <CardText>Desde el primer silbatazo, estaba en modo turbo, animando a mis Whales con todas mis fuerzas. ¡Estaba como una fiera enjaulada, gritando, saltando, y haciendo más ruido que una orquesta entera! Los Whales salieron a la cancha como verdaderos guerreros, pero los Pandas no estaban dispuestos a rendirse fácilmente. ¡Y vaya que nos dieron pelea!</CardText>
+                    <CardText>El juego era una montaña rusa de emociones, con ambos equipos luchando con uñas y dientes por cada punto. Los Whales eran imparables en defensa, pero los Pandas eran unos maestros en el ataque. El marcador estaba tan apretado que parecía que el corazón se me saldría del pecho con cada jugada.</CardText>
+                    <CardText>Cuando sonó la bocina al final del tiempo reglamentario, estábamos empatados a 124 puntos. ¡Una locura total! Y como si eso no fuera suficiente, ¡tuvimos prórroga! Ahí estaba yo, con el corazón en un puño, mordiéndome las uñas y rezando a todos los dioses del baloncesto para que los Whales se llevaran la victoria.</CardText>
+                    <CardText>Pero, por desgracia, no fue así. Los Pandas anotaron ese último punto en el último segundo, robándonos la victoria por solo uno. ¡Fue como un puñetazo en el estómago! Estaba tan enfadada que casi rompo mi camiseta de los Whales. Pero sabes qué, al final del día, sé que mis Whales dieron todo lo que tenían. Y la próxima vez, ¡seguro que arrasan! ¡Vamos, Whales, siempre contigo!</CardText>
+                    <CardText>
+                        <small class="text-muted">Publicado el 9 de Abril, 2024</small>
+                    </CardText>
+                </CardBody>
+            </Card>
+        </CarouselSlide>
         <CarouselSlide Name="10">
             <Card class="mb-3" style="min-height: 600px">
                 <div class="card-header horizontal-gradient text-center">Vientos de grandeza.</div>
@@ -213,6 +228,6 @@
 
 @code {
 
-    private string _selectedSlide = "10";
+    private string _selectedSlide = "11";
 
 }
