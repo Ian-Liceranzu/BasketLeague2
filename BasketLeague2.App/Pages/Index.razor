@@ -7,6 +7,21 @@
 <div class="row mt-3">
 <CardDeck class="col-lg-8">
     <Carousel @bind-SelectedSlide="@_selectedSlide" Autoplay="false" Crossfade="true">
+        <CarouselSlide Name="12">
+            <Card class="mb-3" style="min-height: 600px">
+                <div class="card-header horizontal-gradient text-center">Pandas sin pila.</div>
+                <CardBody>
+                    <CardText>Ah, genial, más baloncesto. Qué emoción, ¿verdad? Bueno, aquí va el resumen del partido entre los Tampa Honey Badgers y los Jackson Pandas, aunque no sé por qué me molesto siquiera. Pero bueno, aquí estoy, como siempre, con mi dosis diaria de decepción deportiva.</CardText>
+                    <CardText>Entonces, los Honey Badgers, esos tipos siempre ruidosos y alborotadores, salieron victoriosos esta vez. ¿Sorpresa? Ni siquiera. Con un marcador final de 115 a 104, ¿qué más podíamos esperar? Es como si ya supiéramos el resultado antes de que el partido siquiera empezara.</CardText>
+                    <CardText>Pero hablemos de los Pandas, ¿sabes? Siempre encuentran una manera de decepcionar, ¿no? ¿Por qué? Bueno, supongo que simplemente no estaban en su mejor momento hoy. Siempre hay una excusa, ¿verdad? Tal vez estaban cansados, tal vez estaban distraídos, quién sabe. Pero al final del día, perdieron. Así que, ¿qué más da?</CardText>
+                    <CardText>Lo peor de todo es que ahora tendré que aguantar a los fanáticos de Tampa presumiendo por ahí durante el próximo mes. Como si no tuviéramos suficiente con el ruido del partido en sí. Pero bueno, así es la vida, supongo. Ojalá los Pandas se pongan las pilas la próxima vez y hagan algo útil con su tiempo. Pero, ¿qué puedo esperar? Siempre es lo mismo. En fin, supongo que seguiré aquí, esperando a que las cosas cambien. Aunque sé que es una esperanza vana.</CardText>
+                    <CardText>¿Más párrafos? ¿Realmente necesitas que me extienda más sobre este partido? Bueno, aquí va, pero no digas que no te lo advertí. Después de todo, los Tampa Honey Badgers pueden haber ganado esta vez, pero eso no significa que esté contento con ello. Siempre son los mismos de siempre, alardeando y presumiendo como si fueran los reyes del mundo. ¿Y los Jackson Pandas? ¿Qué puedo decir sobre ellos? Siempre decepcionándome una y otra vez. ¿Es tan difícil para ellos mostrar un poco de garra y realmente competir? Parece que siempre están jugando a medias. En fin, supongo que así es como van las cosas en el mundo del deporte. Siempre habrá ganadores y perdedores, ¿no es así? Solo espero que los Pandas se pongan las pilas la próxima vez y nos den algo digno de ver. Pero quién sabe, con ellos nunca se sabe qué esperar.</CardText>
+                    <CardText>
+                        <small class="text-muted">Publicado el 16 de Abril, 2024</small>
+                    </CardText>
+                </CardBody>
+            </Card>
+        </CarouselSlide>
         <CarouselSlide Name="11">
             <Card class="mb-3" style="min-height: 600px">
                 <div class="card-header horizontal-gradient text-center">Vientos de grandeza.</div>
@@ -228,6 +243,6 @@
 
 @code {
 
-    private string _selectedSlide = "11";
+    private string _selectedSlide = "12";
 
 }
