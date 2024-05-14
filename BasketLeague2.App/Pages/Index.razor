@@ -7,6 +7,21 @@
 <div class="row mt-3">
 <CardDeck class="col-lg-8">
 <Carousel @bind-SelectedSlide="@_selectedSlide" Autoplay="false" Crossfade="true">
+<CarouselSlide Name="14">
+    <Card class="mb-3" style="min-height: 600px">
+        <div class="card-header horizontal-gradient text-center">Los tipos de Boston.</div>
+        <CardBody>
+            <CardText>Mira, déjame decirte algo sobre ese partido entre los Boston Frogs y los Honolulu Meerkats. Fue un verdadero espectáculo, ¿sabes? Los Frogs, esos tipos de Boston, salieron a la cancha con toda su ferocidad y determinación, como verdaderos hombres de honor. Desde el primer toque de balón, se notaba su determinación de imponerse en el juego y demostrar quién manda en esta ciudad. Con un marcador final de 112 a 78, dejaron claro que los Frogs son los reyes de esta jungla urbana.</CardText>
+            <CardText>Por otro lado, los Meerkats de Honolulu, pobres almas, simplemente no pudieron mantener el ritmo. Fueron como pececillos en un estanque lleno de tiburones, ¿entiendes lo que te digo? No pudieron igualar la astucia y la fuerza de los Frogs, y terminaron siendo arrastrados por la marea de nuestro dominio en la cancha. Fue triste verlos luchar, pero en el mundo del baloncesto, solo los más fuertes sobreviven.</CardText>
+            <CardText>Pero dejemos a un lado a los Meerkats y hablemos de los verdaderos protagonistas de la noche: los Frogs. Desde el primer silbatazo, jugaron con la astucia y la ferocidad de una verdadera familia. Cada pase, cada tiro, estaba lleno de determinación y coraje. Fue un espectáculo para los ojos, te lo digo yo, y estoy orgulloso de ser hincha de este equipo.</CardText>
+            <CardText>Y al final del día, los Frogs salieron victoriosos, como era de esperar. Fue como una afirmación de nuestro dominio en esta ciudad, ¿entiendes? Los Frogs son como una familia para mí, y verlos triunfar en la cancha es como ver a mis propios hijos tener éxito en la vida. Así que levantemos nuestras copas en honor a los Frogs, los reyes de esta jungla urbana.</CardText>
+            <CardText>En resumen, este partido fue una demostración de la fuerza y el poder de los Frogs. Como hincha acérrimo, no podría estar más orgulloso de mi equipo. Los Frogs son los reyes de esta ciudad, y nadie puede cambiar eso.</CardText>
+            <CardText>
+                <small class="text-muted">Publicado el 15 de Mayo, 2024</small>
+            </CardText>
+        </CardBody>
+    </Card>
+</CarouselSlide>
 <CarouselSlide Name="13">
     <Card class="mb-3" style="min-height: 600px">
         <div class="card-header horizontal-gradient text-center">Pandástico.</div>
@@ -221,6 +236,18 @@
 </CardDeck>
 <CardDeck class="col-lg-4">
     <Card class="mb-3">
+        <div class="card-header horizontal-gradient text-center">Jackson pandas al borde de la sanción.</div>
+        <CardBody>
+            <CardText>De nuevo el presidente de jackson pandas se abalanza sobre la directiva.</CardText>
+            <CardText>
+                <b>*Griterío inaudible!*</b>
+            </CardText>
+            <CardText>
+                <small class="text-muted">(No he ni escuchado lo que decía mientras se quejaba)</small>
+            </CardText>
+        </CardBody>
+    </Card>
+    <Card class="mb-3">
         <div class="card-header horizontal-gradient text-center">No tenéis modales.</div>
         <CardBody>
             <CardText>Jackson Pandas estalla de nuevo ante su derrota.</CardText>
@@ -242,12 +269,6 @@
         </CardBody>
     </Card>
     <Card class="mb-3">
-        <div class="card-header horizontal-gradient text-center">Vuelve la FBA.</div>
-        <CardBody>
-            <CardText>El 4 de Marzo comienza de nuevo la FBA con la temporada 4.</CardText>
-        </CardBody>
-    </Card>
-    <Card class="mb-3">
         <div class="card-header horizontal-gradient text-center">Terminó la temporada 3.</div>
         <CardBody>
             <CardText>Felicidades Sacramento Snails en la victoria de invierno!</CardText>
@@ -258,6 +279,6 @@
 
 @code {
 
-    private string _selectedSlide = "13";
+    private string _selectedSlide = "14";
 
 }
