@@ -15,10 +15,10 @@
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" @onclick="() => _expandSubNavLeaderboard = !_expandSubNavLeaderboard">
+            <NavLink class="nav-link" @onclick='() => ExpandAndCollapse("Leaderboard")'>
                 <span class="oi oi-clipboard" aria-hidden="true"></span> Leaderboard
             </NavLink>
-            @if (_expandSubNavLeaderboard)
+            @if (_expandSubNavStates["Leaderboard"])
             {
                 <NavLink class="nav-link" href="Leaderboard/S2">
                     Temporada 2 (2022-2023)
@@ -32,10 +32,10 @@
             }
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" @onclick="() => _expandSubNavTimetables = !_expandSubNavTimetables">
+            <NavLink class="nav-link" @onclick='() => ExpandAndCollapse("Timetables")'>
                 <span class="oi oi-clock" aria-hidden="true"></span> Timetables
             </NavLink>
-            @if (_expandSubNavTimetables)
+            @if (_expandSubNavStates["Timetables"])
             {
                 <NavLink class="nav-link" href="timetable/S2">
                     Temporada 2 (2022-2023)
@@ -65,10 +65,10 @@
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" @onclick="() => _expandSubNavResults = !_expandSubNavResults">
+            <NavLink class="nav-link" @onclick='() => ExpandAndCollapse("Results")'>
                 <span class="oi oi-file" aria-hidden="true"></span> Results
             </NavLink>
-            @if (_expandSubNavResults)
+            @if (_expandSubNavStates["Results"])
             {
                 <NavLink class="nav-link" href="results/S2">
                     Temporada 2 (2022-2023)
@@ -88,10 +88,10 @@
             }
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" @onclick="() => _expandSubNavDraft = !_expandSubNavDraft">
+            <NavLink class="nav-link" @onclick='() => ExpandAndCollapse("Drafts")'>
                 <span class="oi oi-briefcase" aria-hidden="true"></span> Drafts
             </NavLink>
-            @if (_expandSubNavDraft)
+            @if (_expandSubNavStates["Drafts"])
             {
                 <NavLink class="nav-link" href="draft/history">
                     Historial Drafts
@@ -107,10 +107,10 @@
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" @onclick="() => _expandSubNavFortune = !_expandSubNavFortune">
+            <NavLink class="nav-link" @onclick='() => ExpandAndCollapse("Fortune")'>
                 <span class="oi oi-compass" aria-hidden="true"></span> Fortune's Compass
             </NavLink>
-            @if (_expandSubNavFortune)
+            @if (_expandSubNavStates["Fortune"])
             {
                 <NavLink class="nav-link" href="fortune/WheelOfFortune">
                     Wheel Of Fortune
@@ -125,17 +125,29 @@
 
 @code {
     private bool _collapseNavMenu = true;
-    private bool _expandSubNavResults;
-    private bool _expandSubNavLeaderboard;
-    private bool _expandSubNavTimetables;
-    private bool _expandSubNavDraft;
-    private bool _expandSubNavFortune;
 
     private string? NavMenuCssClass => _collapseNavMenu ? "collapse" : null;
+
+    private Dictionary<string, bool> _expandSubNavStates = new()
+    {
+        { "Leaderboard", false },
+        { "Timetables", false },
+        { "Results", false },
+        { "Drafts", false },
+        { "Fortune", false }
+    };
 
     private void ToggleNavMenu()
     {
         _collapseNavMenu = !_collapseNavMenu;
+    }
+
+    private void ExpandAndCollapse(string menuOption)
+    {
+        foreach (var key in _expandSubNavStates.Keys.ToList())
+        {
+            _expandSubNavStates[key] = key == menuOption && !_expandSubNavStates[key];
+        }
     }
 
 }
