@@ -6,47 +6,84 @@
 
 @using BasketLeague2.Utils.Models
 
+<PageTitle>Players</PageTitle>
+
 <h3>PlayerList</h3>
 
-<button Class="btn btn-primary" @onclick="GeneratePlayers">GENERATE RANDOM PLAYER</button>
+<TextEdit Style="width:25%" Text="@_customFilterValue" TextChanged="@OnCustomFilterValueChanged"></TextEdit>
+<DataGrid @ref="_dataGrid"
+          TItem="Player"
+          Data="@_players"
+          Responsive
+          Sortable
+          ShowPager
+          CustomFilter="@OnCustomFilter"
+          ShowPageSizes
+          PagerPosition="DataGridPagerPosition.Bottom"
+          PagerOptions="new DataGridPagerOptions { ButtonSize = Size.Small }"
+          SortMode="DataGridSortMode.Single"
+          PageSize="10">
+    <DataGridColumns>
+        <DataGridCommandColumn/>
+        <DataGridColumn Field="@nameof(Player.Name)" Caption="NOMBRE">
+            <DisplayTemplate>@context.Name "@context.Nickname"</DisplayTemplate>
+        </DataGridColumn>
+        <DataGridColumn Field="@nameof(Player.Team)" Caption="EQUIPO"/>
+        <DataGridColumn Field="@nameof(Player.InsideScoring)" Caption="TIRO DOBLE"/>
+        <DataGridColumn Field="@nameof(Player.OutsideScoring)" Caption="TIRO TRIPLE"/>
+        <DataGridColumn Field="@nameof(Player.Athleticism)" Caption="FÍSICO"/>
+        <DataGridColumn Field="@nameof(Player.Playmaking)" Caption="PLAYMAKING"/>
+        <DataGridColumn Field="@nameof(Player.Rebounding)" Caption="REBOTE"/>
+        <DataGridColumn Field="@nameof(Player.Defending)" Caption="DEFENSA"/>
+        <DataGridColumn Field="@nameof(Player.Overall)" Caption="MEDIA">
+            <DisplayTemplate>@context.CalculateOverall()</DisplayTemplate>
+        </DataGridColumn>
+        <DataGridColumn Field="@nameof(Player.Codigo)">
+            <DisplayTemplate>
+                <button class="btn btn-primary" @onclick="_ => LoadJugador(context.Codigo)">INFO</button>
+            </DisplayTemplate>
+        </DataGridColumn>
+    </DataGridColumns>
+    <PageButtonTemplate>
+        <Span TextColor="TextColor.Info">
+            @context.PageNumber
+        </Span>
+    </PageButtonTemplate>
+    <NextPageButtonTemplate>
+        <Icon Name="IconName.StepForward" TextColor="TextColor.Info"/>
+    </NextPageButtonTemplate>
+    <PreviousPageButtonTemplate>
+        <Icon Name="IconName.StepBackward" TextColor="TextColor.Info"/>
+    </PreviousPageButtonTemplate>
+    <LastPageButtonTemplate>
+        <Icon Name="IconName.Forward" TextColor="TextColor.Info"/>
+    </LastPageButtonTemplate>
+    <FirstPageButtonTemplate>
+        <Icon Name="IconName.Backward" TextColor="TextColor.Info"/>
+    </FirstPageButtonTemplate>
+    <TotalItemsTemplate>
+        <Badge Color="Color.Info">@context.TotalItems items</Badge>
+    </TotalItemsTemplate>
+    <TotalItemsShortTemplate>
+        <Badge Color="Color.Info">@context.CurrentPageSize</Badge>
+    </TotalItemsShortTemplate>
+    <PageSelectorTemplate>
+        <Select TextColor="TextColor.Info" @bind-SelectedValue="@context.CurrentPage" Size="Size.Small">
+            @for (var i = context.FirstVisiblePage; i <= context.LastVisiblePage; ++i)
+            {
+                var pageNumber = i;
 
-<Table Striped>
-    <TableHeader ThemeContrast="ThemeContrast.Light">
-        <TableRow>
-            <TableHeaderCell>NOMBRE</TableHeaderCell>
-            <TableHeaderCell>EQUIPO</TableHeaderCell>
-            <TableHeaderCell>TIRO DOBLE</TableHeaderCell>
-            <TableHeaderCell>TIRO TRIPLE</TableHeaderCell>
-            <TableHeaderCell>FÍSICO</TableHeaderCell>
-            <TableHeaderCell>PLAYMAKING</TableHeaderCell>
-            <TableHeaderCell>REBOTE</TableHeaderCell>
-            <TableHeaderCell>DEFENSA</TableHeaderCell>
-            <TableHeaderCell>MEDIA</TableHeaderCell>
-            <TableHeaderCell></TableHeaderCell>
-        </TableRow>
-    </TableHeader>
-    <TableBody>
-        @foreach (var p in _players)
-        {
-            <TableRow>
-                <TableRowCell>@p.Name "@p.Nickname"</TableRowCell>
-                <TableRowCell>@p.Team</TableRowCell>
-                <TableRowCell>@p.InsideScoring</TableRowCell>
-                <TableRowCell>@p.OutsideScoring</TableRowCell>
-                <TableRowCell>@p.Athleticism</TableRowCell>
-                <TableRowCell>@p.Playmaking</TableRowCell>
-                <TableRowCell>@p.Rebounding</TableRowCell>
-                <TableRowCell>@p.Defending</TableRowCell>
-                <TableRowCell>@p.CalculateOverall()</TableRowCell>
-                <TableRowCell>
-                    <button class="btn btn-primary" @onclick="_ => LoadJugador(p.Codigo)">INFO</button>
-                </TableRowCell>
-            </TableRow>
-        }
-    </TableBody>
-</Table>
+                <SelectItem Value="@pageNumber">@pageNumber</SelectItem>
+            }
+        </Select>
+    </PageSelectorTemplate>
+</DataGrid>
 
 @code {
+
+    private string _customFilterValue = "";
+    private DataGrid<Player> _dataGrid = new();
+
     private string _jsonResult = "";
 
     private IEnumerable<Player> _players = new Player[] { };
@@ -62,16 +99,25 @@
         _players = _players.Concat(p!.OrderByDescending(player => player.CalculateOverall()));
     }
 
-    private async Task GeneratePlayers()
-    {
-        var players = Player.RandomPlayer(10);
-        _jsonResult = System.Text.Json.JsonSerializer.Serialize(players);
-        await JsRuntime.InvokeVoidAsync("clipboardCopy.copyText", _jsonResult);
-    }
-
     private void LoadJugador(int codigo)
     {
         Navigation.NavigateTo($"Players/Player/{codigo}");
+    }
+
+    private Task OnCustomFilterValueChanged(string e)
+    {
+        _customFilterValue = e;
+        return _dataGrid.Reload();
+    }
+
+    private bool OnCustomFilter(Player model)
+    {
+        // We want to accept empty value as valid or otherwise
+        // datagrid will not show anything.
+        if (string.IsNullOrEmpty(_customFilterValue))
+            return true;
+
+        return model.Name.Contains(_customFilterValue, StringComparison.OrdinalIgnoreCase) || model.Nickname.Contains(_customFilterValue, StringComparison.OrdinalIgnoreCase);
     }
 
 }

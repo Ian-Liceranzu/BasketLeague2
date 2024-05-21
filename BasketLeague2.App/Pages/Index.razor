@@ -7,6 +7,23 @@
 <div class="row mt-3">
 <CardDeck class="col-lg-8">
 <Carousel @bind-SelectedSlide="@_selectedSlide" Autoplay="false" Crossfade="true">
+<CarouselSlide Name="15">
+    <Card class="mb-3" style="min-height: 600px">
+        <div class="card-header horizontal-gradient text-center">Caos en la cancha.</div>
+        <CardBody>
+            <CardText>¡Qué desastre de partido! Los Birmingham Broncos ganaron 98 a 92 a los Honolulu Meerkats. Fue un caos de principio a fin. Los Broncos parecían haberse olvidado de cómo se defiende, y los Meerkats... bueno, ellos simplemente no podían meter el balón en la canasta en los momentos clave.</CardText>
+            <CardText>El primer cuarto fue más o menos lo que esperábamos, con ambos equipos intercambiando canastas y ningún equipo tomando una ventaja clara. Los Broncos, sin embargo, lograron sacar una pequeña ventaja al final del segundo cuarto, con una racha de triples que dejó a los Meerkats desorientados.</CardText>
+            <CardText>En la segunda mitad, los Meerkats intentaron remontar, pero entre pérdidas de balón y faltas tontas, simplemente no pudieron mantener el ritmo. Los Broncos tampoco lo hicieron mucho mejor, fallando tiros libres cruciales y regalando posesiones.</CardText>
+            <CardText>Al final, los Broncos se llevaron el partido, pero más por defecto de los Meerkats que por mérito propio. Fue un espectáculo doloroso de ver, con ambos equipos mostrando más agujeros que un queso suizo. ¿El MVP? No sé, tal vez el marcador por aguantar tanto caos.</CardText>
+            <CardText>
+                Y ahora, de vuelta al código, que aquí sí que hay bugs que resolver...
+            </CardText>
+            <CardText>
+                <small class="text-muted">Publicado el 21 de Mayo, 2024</small>
+            </CardText>
+        </CardBody>
+    </Card>
+</CarouselSlide>
 <CarouselSlide Name="14">
     <Card class="mb-3" style="min-height: 600px">
         <div class="card-header horizontal-gradient text-center">Los tipos de Boston.</div>
@@ -279,6 +296,6 @@
 
 @code {
 
-    private string _selectedSlide = "14";
+    private string _selectedSlide = "15";
 
 }

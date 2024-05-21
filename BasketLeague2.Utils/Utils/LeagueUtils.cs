@@ -17,9 +17,9 @@ public static class LeagueUtils
         for (var i = 0; i < 1000; i++) // Cantidad de tiradas que se realizan
         {
             var selected = GetTeamIndex(random);
-                
+
             if (selected == -1) continue;
-                
+
             if (!result.TryAdd(selected, 1))
             {
                 result[selected] += 1;
@@ -37,38 +37,43 @@ public static class LeagueUtils
     /// <returns></returns>
     public static void GenerateSchedule(List<Team> teams)
     {
-        List<Match> schedule = new();
+        var schedule = new List<Match>();
         var scheduleStartDate = DateTime.Now;
 
-        var restTeams = new List<Team>(teams.Skip(1));
-        var teamsCount = teams.Count;
+        var restTeams = teams.Skip(1).ToList();
         if (teams.Count % 2 != 0)
         {
-            restTeams.Add(default);
-            teamsCount++;
+            restTeams.Add(null);
         }
 
-        for (var day = 0; day < teamsCount - 1; day++)
+        var totalRounds = restTeams.Count;
+        for (var day = 0; day < totalRounds; day++)
         {
-            if (restTeams[day % restTeams.Count]?.Equals(default) == false)
+            var homeTeam = teams[0];
+            var awayTeam = restTeams[day % totalRounds];
+
+            if (awayTeam != null)
             {
                 schedule.Add(new Match
                 {
-                    Fecha = scheduleStartDate, Equipo1 = teams[0].Codigo.ToString(),
-                    Equipo2 = restTeams[day % restTeams.Count].Codigo.ToString()
+                    Fecha = scheduleStartDate,
+                    Equipo1 = homeTeam.Codigo.ToString(),
+                    Equipo2 = awayTeam.Codigo.ToString()
                 });
             }
 
-            for (var index = 1; index < teamsCount / 2; index++)
+            for (var index = 1; index < totalRounds / 2 + 1; index++)
             {
-                var firstTeam = restTeams[(day + index) % restTeams.Count];
-                var secondTeam = restTeams[(day + restTeams.Count - index) % restTeams.Count];
-                if (firstTeam?.Equals(default) == false && secondTeam?.Equals(default) == false)
+                var team1 = restTeams[(day + index) % totalRounds];
+                var team2 = restTeams[(day + totalRounds - index) % totalRounds];
+
+                if (team1 != null && team2 != null)
                 {
                     schedule.Add(new Match
                     {
-                        Fecha = scheduleStartDate, Equipo1 = firstTeam.Codigo.ToString(),
-                        Equipo2 = secondTeam.Codigo.ToString()
+                        Fecha = scheduleStartDate,
+                        Equipo1 = team1.Codigo.ToString(),
+                        Equipo2 = team2.Codigo.ToString()
                     });
                 }
             }
