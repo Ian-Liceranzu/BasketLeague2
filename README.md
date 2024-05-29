@@ -42,8 +42,8 @@ Basket League es una herramienta para la gestión de una liga simulada de balonc
   - <s>Mostrar logros individuales de los jugadores</s>
 8. Gestión de drafts
   - <s>Consultar decisiones históricas de los drafts</s>
-  - Simulador de draft
+  - <s>Simulador de draft</s>
 9. Rueda de la fortuna
-  - Sistema de cartas de tarot para decidir la suerte de los equipos en cada temporada
-  - Entrenamientos personalizados semanales y por temporada para los jugadores
+  - <s>Sistema de cartas de tarot para decidir la suerte de los equipos en cada temporada</s>
+  - <s>Entrenamientos personalizados semanales y por temporada para los jugadores</s>
 
