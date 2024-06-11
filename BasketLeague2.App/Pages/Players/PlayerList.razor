@@ -1,7 +1,6 @@
 ﻿@page "/Players"
 
 @inject HttpClient Http
-@inject IJSRuntime JsRuntime
 @inject NavigationManager Navigation
 
 @using BasketLeague2.Utils.Models
@@ -26,7 +25,16 @@
     <DataGridColumns>
         <DataGridCommandColumn/>
         <DataGridColumn Field="@nameof(Player.Name)" Caption="NOMBRE">
-            <DisplayTemplate>@context.Name "@context.Nickname"</DisplayTemplate>
+            <DisplayTemplate>
+                @if (context.Nickname.StartsWith("Shiny "))
+                {
+                    <p>@context.Name "@context.Nickname[6..]" <Icon Name="IconName.Star"/></p>
+                }
+                else
+                {
+                    <p>@context.Name "@context.Nickname"</p>
+                }
+            </DisplayTemplate>
         </DataGridColumn>
         <DataGridColumn Field="@nameof(Player.Team)" Caption="EQUIPO"/>
         <DataGridColumn Field="@nameof(Player.InsideScoring)" Caption="TIRO DOBLE"/>
@@ -112,8 +120,6 @@
 
     private bool OnCustomFilter(Player model)
     {
-        // We want to accept empty value as valid or otherwise
-        // datagrid will not show anything.
         if (string.IsNullOrEmpty(_customFilterValue))
             return true;
 

@@ -55,7 +55,7 @@
         await GetTeams();
         await GetResults();
 
-        CalculateStats();
+        CalculateStats2();
     }
 
     private async Task GetTeams()
@@ -102,5 +102,53 @@
 
         _teams = _teams.OrderByDescending(t => t.Wh + t.Wv).ThenByDescending(t => t.Dif);
     }
+    
+    private void CalculateStats2()
+    {
+        foreach (var t in _teams)
+        {
+            int gamesPlayed = 0, winsHome = 0, lossesHome = 0, winsVisitor = 0, lossesVisitor = 0;
+            int pointsScored = 0, pointsConceded = 0;
+
+            foreach (var r in _results)
+            {
+                var equipo1 = int.Parse(r.Equipo1);
+                var equipo2 = int.Parse(r.Equipo2);
+
+                if (equipo1 == t.Codigo)
+                {
+                    gamesPlayed++;
+                    pointsScored += r.Resultado1;
+                    pointsConceded += r.Resultado2;
+
+                    if (r.Resultado1 > r.Resultado2)
+                        winsHome++;
+                    else if (r.Resultado1 < r.Resultado2)
+                        lossesHome++;
+                }
+                else if (equipo2 == t.Codigo)
+                {
+                    gamesPlayed++;
+                    pointsScored += r.Resultado2;
+                    pointsConceded += r.Resultado1;
+
+                    if (r.Resultado2 > r.Resultado1)
+                        winsVisitor++;
+                    else if (r.Resultado2 < r.Resultado1)
+                        lossesVisitor++;
+                }
+            }
+
+            t.Gp = gamesPlayed;
+            t.Wh = winsHome;
+            t.Lh = lossesHome;
+            t.Wv = winsVisitor;
+            t.Lv = lossesVisitor;
+            t.Dif = pointsScored - pointsConceded;
+        }
+
+        _teams = _teams.OrderByDescending(t => t.Wh + t.Wv).ThenByDescending(t => t.Dif).ToList();
+    }
+
 
 }

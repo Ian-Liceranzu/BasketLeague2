@@ -34,6 +34,10 @@ public class Player
         Rebounding = rebounding;
         Defending = defending;
         Overall = CalculateOverall();
+        if (CalculateShiny())
+        {
+            Nickname = $"Shiny {Nickname}";
+        }
     }
 
     public Player(int insideScoring, int outsideScoring, int athleticism, int playmaking, int rebounding,
@@ -48,6 +52,10 @@ public class Player
         Rebounding = rebounding;
         Defending = defending;
         Overall = CalculateOverall();
+        if (CalculateShiny())
+        {
+            Nickname = $"Shiny {Nickname}";
+        }
     }
 
     public static List<Player> RandomPlayer(int num)
@@ -66,5 +74,14 @@ public class Player
     public double CalculateOverall()
     {
         return (InsideScoring + OutsideScoring + Athleticism + Playmaking + Rebounding + Defending) / 6.0;
+    }
+
+    /// <summary>
+    /// Calculates if the player is shiny (1 in every 36)
+    /// </summary>
+    /// <returns></returns>
+    private bool CalculateShiny()
+    {
+        return (InsideScoring + OutsideScoring + Athleticism + Playmaking + Rebounding + Defending) % 34 == 0;
     }
 }

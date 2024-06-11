@@ -74,9 +74,15 @@
                     <DisplayTemplate Context="prContext">
                         @{
                             var player = _players.First(p => p.Codigo == prContext.Codigo);
-
-                            <Label>@player.Name "@player.Nickname"</Label>
+                            var displayNickname = player.Nickname.StartsWith("Shiny ") ? player.Nickname[6..] : player.Nickname;
                         }
+                        <Label>
+                            @player.Name "@displayNickname"
+                            @if (player.Nickname.StartsWith("Shiny "))
+                            {
+                                <Icon Name="IconName.Star"/>
+                            }
+                        </Label>
                     </DisplayTemplate>
                 </DataGridColumn>
                 <DataGridColumn Field="@nameof(PlayerResult.Dobles)" Caption="Dobles"/>
@@ -97,9 +103,15 @@
                     <DisplayTemplate Context="prContext">
                         @{
                             var player = _players.First(p => p.Codigo == prContext.Codigo);
-
-                            <Label>@player.Name "@player.Nickname"</Label>
+                            var displayNickname = player.Nickname.StartsWith("Shiny ") ? player.Nickname[6..] : player.Nickname;
                         }
+                        <Label>
+                            @player.Name "@displayNickname"
+                            @if (player.Nickname.StartsWith("Shiny "))
+                            {
+                                <Icon Name="IconName.Star"/>
+                            }
+                        </Label>
                     </DisplayTemplate>
                 </DataGridColumn>
                 <DataGridColumn Field="@nameof(PlayerResult.Dobles)" Caption="Dobles"/>
@@ -210,8 +222,6 @@
 
     private bool OnCustomFilter(Result model)
     {
-        // We want to accept empty value as valid or otherwise
-        // datagrid will not show anything.
         if (string.IsNullOrEmpty(_customFilterValue))
             return true;
 
