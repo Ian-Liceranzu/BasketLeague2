@@ -76,7 +76,14 @@
                                 var p = _players.First(p => p.Codigo == playerResult.Codigo);
 
                                 <TableRow>
-                                    <TableRowCell>@p.Name "@p.Nickname"</TableRowCell>
+                                    @if (p.Nickname.StartsWith("Shiny "))
+                                    {
+                                        <TableRowCell>@p.Name "@p.Nickname.Split("Shiny ")[1]" <Icon Name="IconName.Star"/></TableRowCell>
+                                    }
+                                    else
+                                    {
+                                        <TableRowCell>@p.Name "@p.Nickname"</TableRowCell>
+                                    }
                                     <TableRowCell>@playerResult.Total</TableRowCell>
                                 </TableRow>
                             }
@@ -105,7 +112,14 @@
                                 var p = _players.First(p => p.Codigo == playerResult.Codigo);
 
                                 <TableRow>
-                                    <TableRowCell>@p.Name "@p.Nickname"</TableRowCell>
+                                    @if (p.Nickname.StartsWith("Shiny "))
+                                    {
+                                        <TableRowCell>@p.Name "@p.Nickname.Split("Shiny ")[1]" <Icon Name="IconName.Star"/></TableRowCell>
+                                    }
+                                    else
+                                    {
+                                        <TableRowCell>@p.Name "@p.Nickname"</TableRowCell>
+                                    }
                                     <TableRowCell>@playerResult.Total</TableRowCell>
                                 </TableRow>
                             }

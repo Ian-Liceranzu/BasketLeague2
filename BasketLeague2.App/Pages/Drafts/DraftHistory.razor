@@ -31,7 +31,13 @@
             <TableRow>
                 <TableRowCell>@pick.Pick</TableRowCell>
                 <TableRowCell>@_teams.First(t => t.Codigo == pick.Team).NombreCompleto</TableRowCell>
-                <TableRowCell>@player.Name "@player.Nickname"</TableRowCell>
+                <TableRowCell>
+                    @player.Name @(player.Nickname.StartsWith("Shiny ") ? player.Nickname[6..] : player.Nickname)
+                    @if (player.Nickname.StartsWith("Shiny "))
+                    {
+                        <Icon Name="IconName.Star"/>
+                    }
+                </TableRowCell>
             </TableRow>
         }
     </TableBody>

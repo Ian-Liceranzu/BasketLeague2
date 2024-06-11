@@ -13,6 +13,8 @@
     </BreadcrumbItem>
 </Breadcrumb>
 
+<PageTitle>Player Stats</PageTitle>
+
 <h3>PlayerStats</h3>
 
 @foreach (var badge in _badges)
@@ -39,7 +41,13 @@
     </TableHeader>
     <TableBody>
         <TableRow>
-            <TableRowCell>@_player.Name "@_player.Nickname"</TableRowCell>
+            <TableRowCell>
+                @_player.Name @(_player.Nickname.StartsWith("Shiny ") ? _player.Nickname[6..] : _player.Nickname)
+                @if (_player.Nickname.StartsWith("Shiny "))
+                {
+                    <Icon Name="IconName.Star"/>
+                }
+            </TableRowCell>
             <TableRowCell>@_player.InsideScoring</TableRowCell>
             <TableRowCell>@_player.OutsideScoring</TableRowCell>
             <TableRowCell>@_player.Athleticism</TableRowCell>
@@ -151,34 +159,16 @@
     private async Task GetPlayerStatistics(string season)
     {
         var r = await Http.GetFromJsonAsync<List<AdvancedResult>>($"data/results/R_{season}.json");
-        var stats1 = r!.Select(result => result.Stats1);
-        var stats2 = r!.Select(result => result.Stats2);
+        var playerCode = int.Parse(Codigo);
 
-        foreach (var s1 in stats1)
-        {
-            foreach (var ss1 in s1.Where(s => s[0] == int.Parse(Codigo)))
-            {
-                _diary.Add(ss1);
-                _totals[0] += ss1[1];
-                _totals[1] += ss1[2];
-                _totals[2] += ss1[3];
-                _totals[3] += ss1[4];
-                _totals[4] += ss1[5];
-                _totals[5] += ss1[6];
-            }
-        }
+        var allStats = r!.SelectMany(result => result.Stats1.Concat(result.Stats2));
 
-        foreach (var s2 in stats2)
+        foreach (var stats in allStats.Where(s => s[0] == playerCode))
         {
-            foreach (var ss2 in s2.Where(s => s[0] == int.Parse(Codigo)))
+            _diary.Add(stats);
+            for (var i = 1; i <= 6; i++)
             {
-                _diary.Add(ss2);
-                _totals[0] += ss2[1];
-                _totals[1] += ss2[2];
-                _totals[2] += ss2[3];
-                _totals[3] += ss2[4];
-                _totals[4] += ss2[5];
-                _totals[5] += ss2[6];
+                _totals[i - 1] += stats[i];
             }
         }
     }
