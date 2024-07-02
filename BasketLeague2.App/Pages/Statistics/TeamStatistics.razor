@@ -1,0 +1,289 @@
+﻿@page "/Statistics/Teams"
+
+@using BasketLeague2.Utils.Models
+@using BasketLeague2.Utils.Utils
+
+@inject HttpClient Http
+
+<PageTitle>TeamStatistics</PageTitle>
+
+<h3>TeamStatistics</h3>
+
+<Row Margin="Margin.Is2">
+    <Column ColumnSize="ColumnSize.Is3.Is6.WithOffset">
+        <h3>Season</h3>
+        <Select TValue="string" Size="Size.Medium" SelectedValue="_season" SelectedValueChanged="@OnSeasonValueChanged">
+            @foreach (var s in LeagueUtils.Seasons)
+            {
+                <SelectItem Value="s">@s</SelectItem>
+            }
+        </Select>
+    </Column>
+    <Column ColumnSize="ColumnSize.Is3">
+        <h3>Team</h3>
+        <Select TValue="string" Size="Size.Medium" SelectedValue="_teamCodigo" SelectedValueChanged="@OnTeamValueChanged">
+            <SelectItem Value="0" Disabled="true">---</SelectItem>
+            @foreach (var t in _teams)
+            {
+                <SelectItem Value="t.Codigo.ToString()">@t.NombreCompleto</SelectItem>
+            }
+        </Select>
+    </Column>
+</Row>
+<Row Margin="Margin.Is2">
+    <Column ColumnSize="ColumnSize.Is6">
+        <Card>
+            <CardBody>
+                <CardTitle Size="3">
+                    Team overall (Last 10 matches)
+                </CardTitle>
+                <CardText>
+                    <LineChart @ref="_lineChart" TItem="int"/>
+                </CardText>
+            </CardBody>
+        </Card>
+    </Column>
+    <Column ColumnSize="ColumnSize.Is6">
+        <Card>
+            <CardBody>
+                <CardTitle Size="3">
+                    Players (Last 10 matches)
+                </CardTitle>
+                <CardText>
+                    <LineChart @ref="_lineChartPlayers" TItem="int" Options="_options2"/>
+                </CardText>
+            </CardBody>
+        </Card>
+    </Column>
+</Row>
+
+<Row Margin="Margin.Is2">
+    <Column ColumnSize="ColumnSize.Is6.Is6.WithOffset">
+        <Card>
+            <CardBody>
+                <CardTitle Size="3">
+                    Multiple teams
+                </CardTitle>
+                <CardText>
+                    <Select TValue="string" Size="Size.Large" SelectedValues="_teamCodigos" SelectedValuesChanged="@OnTeamValuesChanged" Multiple>
+                        @foreach (var t in _teams)
+                        {
+                            <SelectItem Value="t.Codigo.ToString()">@t.NombreCompleto</SelectItem>
+                        }
+                    </Select>
+                </CardText>
+            </CardBody>
+        </Card>
+    </Column>
+</Row>
+<Row Margin="Margin.Is2">
+    <Column ColumnSize="ColumnSize.Is6">
+        <Card>
+            <CardBody>
+                <CardTitle Size="3">
+                    Team comparison (Last 10 matches)
+                </CardTitle>
+                <CardText>
+                    <LineChart @ref="_lineChartTeams" TItem="int"/>
+                </CardText>
+            </CardBody>
+        </Card>
+    </Column>
+</Row>
+
+@code {
+
+    private IEnumerable<Team> _teams = new Team[] { };
+    private IEnumerable<AdvancedResult> _resultados = new AdvancedResult[] { };
+    private IEnumerable<PlayerResult> _resultadosJugadoresEquipo = new PlayerResult[] { };
+
+    private List<int> _teamTotals = new();
+
+    private string _season = LeagueUtils.CurrentSeason;
+    private string _teamCodigo = "0";
+    private List<string> _teamCodigos = new();
+
+    private Team _team = new();
+    private List<Player> _allPlayers = new();
+
+    private LineChart<int> _lineChart = new();
+    private LineChart<int> _lineChartPlayers = new();
+    private LineChart<int> _lineChartTeams = new();
+
+    private readonly LineChartOptions _options2 = new()
+    {
+        Scales = new ChartScales
+        {
+            Y = new ChartAxis
+            {
+                BeginAtZero = true,
+                Max = 60
+            }
+        }
+    };
+
+    private readonly List<string> _colors = new() { ChartColor.FromRgba(255, 99, 132, 1f), ChartColor.FromRgba(54, 162, 235, 1f), ChartColor.FromRgba(255, 206, 86, 1f), ChartColor.FromRgba(75, 192, 192, 1f), ChartColor.FromRgba(153, 102, 255, 1f), ChartColor.FromRgba(255, 159, 64, 1f) };
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await HandleRedraw();
+            await HandleRedrawAdvanced();
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetTeams();
+        await GetResults();
+        GetResultsTeam();
+        await GetPlayers();
+    }
+
+    private async Task GetTeams()
+    {
+        var t = await Http.GetFromJsonAsync<IEnumerable<Team>>("data/teams.json");
+        _teams = _teams.Concat(t!.OrderBy(team => team.NombreCompleto));
+    }
+
+    private async Task GetResults()
+    {
+        _resultados = new AdvancedResult[] { };
+        var r = await Http.GetFromJsonAsync<List<AdvancedResult>>($"data/results/R_{_season}.json");
+        _resultados = _resultados.Concat(r!.OrderBy(result => result.Fecha));
+    }
+
+    private void GetResultsTeam()
+    {
+        _resultadosJugadoresEquipo = new PlayerResult[] { };
+
+        var results = _resultados.Where(r => r.Equipo1 == _teamCodigo || r.Equipo2 == _teamCodigo).ToList();
+        _teamTotals = results.Select(r => r.Equipo1 == _teamCodigo ? r.Resultado1 : r.Resultado2).TakeLast(10).ToList();
+        var stats = results.SelectMany(r => r.Equipo1 == _teamCodigo ? r.Stats1 : r.Stats2);
+        _resultadosJugadoresEquipo = stats.ConvertToPlayerResult();
+    }
+
+    private async Task GetPlayers()
+    {
+        var p = await Http.GetFromJsonAsync<List<Player>>("data/players.json");
+        _allPlayers = p!;
+    }
+
+    private async Task OnSeasonValueChanged(string value)
+    {
+        _season = value;
+
+        await GetResults();
+        GetResultsTeam();
+        await HandleRedraw();
+    }
+
+    private async Task OnTeamValueChanged(string value)
+    {
+        _teamCodigo = value;
+        _team = _teams.First(t => t.Codigo.ToString() == _teamCodigo);
+
+        GetResultsTeam();
+        await HandleRedraw();
+    }
+
+    private async Task OnTeamValuesChanged(IEnumerable<string> value)
+    {
+        _teamCodigos = value.ToList();
+        await HandleRedrawAdvanced();
+    }
+
+    private async Task HandleRedraw()
+    {
+        await _lineChart.Clear();
+        await _lineChartPlayers.Clear();
+
+        await _lineChart.AddLabelsDatasetsAndUpdate(GetLabels(), GetLineChartDataset());
+
+        var resultadosJugadorEquipo = _resultadosJugadoresEquipo.GroupBy(r => r.Codigo);
+
+        foreach (var result in resultadosJugadorEquipo)
+        {
+            var playerName = _allPlayers.Where(p => p.Codigo == result.Key).Select(p => p.Name).First();
+            var totalJugador = result.Select(r => r.Total).TakeLast(10).ToList();
+            await _lineChartPlayers.AddDatasetsAndUpdate(GetLineChartPlayerDataset(playerName, totalJugador));
+        }
+
+        await _lineChartPlayers.AddLabelsDatasetsAndUpdate(GetLabels());
+    }
+
+    private async Task HandleRedrawAdvanced()
+    {
+        await _lineChartTeams.Clear();
+
+        foreach (var teamCodigo in _teamCodigos)
+        {
+            var teamName = _teams.First(t => t.Codigo.ToString() == teamCodigo).NombreCompleto;
+            var results = _resultados.Where(r => r.Equipo1 == teamCodigo || r.Equipo2 == teamCodigo).ToList();
+            var teamTotals = results.Select(r => r.Equipo1 == teamCodigo ? r.Resultado1 : r.Resultado2).TakeLast(10).ToList();
+            await _lineChartTeams.AddDatasetsAndUpdate(GetLineChartTeamsDataset(teamName, teamTotals));
+        }
+
+        await _lineChartTeams.AddLabelsDatasetsAndUpdate(GetLabels());
+    }
+
+    private List<string> GetLabels()
+    {
+        List<string> labels = new();
+
+        for (var i = 1; i <= 10; i++)
+        {
+            labels.Add($"G-{i}");
+        }
+
+        return labels;
+    }
+
+    private LineChartDataset<int> GetLineChartDataset()
+    {
+        return new LineChartDataset<int>
+        {
+            Label = _team.NombreCompleto,
+            Data = _teamTotals,
+            BackgroundColor = new List<string> { ChartColor.FromRgba(255, 99, 132, 0.2f) },
+            BorderColor = new List<string> { ChartColor.FromRgba(255, 99, 132, 1f) },
+            Fill = true,
+            PointRadius = 3,
+            CubicInterpolationMode = "monotone",
+        };
+    }
+
+    private LineChartDataset<int> GetLineChartTeamsDataset(string teamName, List<int> totalesTeam)
+    {
+        return new LineChartDataset<int>
+        {
+            Label = teamName,
+            Data = totalesTeam,
+            BackgroundColor = _colors,
+            BorderColor = _colors,
+            PointBackgroundColor = new List<string> { ChartColor.FromRgba(0, 48, 73, 0.2f) },
+            PointBorderColor = new List<string> { ChartColor.FromRgba(0, 48, 73, 1f) },
+            Fill = false,
+            PointRadius = 3,
+            CubicInterpolationMode = "monotone",
+        };
+    }
+
+    private LineChartDataset<int> GetLineChartPlayerDataset(string playerName, List<int> totalJugador)
+    {
+        return new LineChartDataset<int>
+        {
+            Label = playerName,
+            Data = totalJugador,
+            BackgroundColor = _colors,
+            BorderColor = _colors,
+            PointBackgroundColor = new List<string> { ChartColor.FromRgba(0, 48, 73, 0.2f) },
+            PointBorderColor = new List<string> { ChartColor.FromRgba(0, 48, 73, 1f) },
+            Fill = false,
+            PointRadius = 3,
+            CubicInterpolationMode = "monotone"
+        };
+    }
+
+}
