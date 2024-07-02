@@ -3,6 +3,7 @@
 @inject HttpClient Http
 @using Badge = BasketLeague2.Utils.Models.Badge
 @using BasketLeague2.Utils.Models
+@using BasketLeague2.Utils.Utils
 
 <Breadcrumb>
     <BreadcrumbItem>
@@ -13,7 +14,7 @@
     </BreadcrumbItem>
 </Breadcrumb>
 
-<PageTitle>Player Stats</PageTitle>
+<PageTitle>Player @_player.Codigo</PageTitle>
 
 <h3>PlayerStats</h3>
 
@@ -61,7 +62,7 @@
 
 <h3>Season</h3>
 <Select TValue="string" Size="Size.Medium" SelectedValue="_season" SelectedValueChanged="@OnSeasonValueChanged">
-    @foreach (var s in _seasons)
+    @foreach (var s in LeagueUtils.Seasons)
     {
         <SelectItem Value="s">@s</SelectItem>
     }
@@ -132,8 +133,7 @@
     private List<int[]> _diary = new();
     private int[] _totals = { 0, 0, 0, 0, 0, 0 };
 
-    private readonly string[] _seasons = { "S3", "S3-PO", "S4" };
-    private string _season = "S4";
+    private string _season = LeagueUtils.CurrentSeason;
 
     protected override async Task OnInitializedAsync()
     {

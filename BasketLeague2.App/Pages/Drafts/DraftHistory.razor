@@ -1,6 +1,7 @@
 ﻿@page "/draft/history"
 
 @using BasketLeague2.Utils.Models
+@using BasketLeague2.Utils.Utils
 
 @inject HttpClient Http
 
@@ -10,7 +11,7 @@
 
 <h3>Season</h3>
 <Select TValue="string" Size="Size.Medium" SelectedValue="_season" SelectedValueChanged="@OnSeasonValueChanged">
-    @foreach (var s in _seasons)
+    @foreach (var s in LeagueUtils.Seasons)
     {
         <SelectItem Value="s">@s</SelectItem>
     }
@@ -47,9 +48,8 @@
     private List<Player> _players = new();
     private List<Team> _teams = new();
     private List<DraftPick> _picks = new();
-
-    private readonly string[] _seasons = { "S3", "S4" };
-    private string _season = "S4";
+    
+    private string _season = LeagueUtils.CurrentSeason;
 
     protected override async Task OnInitializedAsync()
     {

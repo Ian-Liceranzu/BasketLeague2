@@ -5,6 +5,9 @@ namespace BasketLeague2.Utils.Utils;
 
 public static class LeagueUtils
 {
+    public static readonly string[] Seasons = { "S3", "S3-PO", "S4" };
+    public const string CurrentSeason = "S4";
+
     /// <summary>
     /// Calcula el orden para el draft de la siguiente temporada en base a resultados
     /// </summary>

@@ -55,7 +55,7 @@
         await GetTeams();
         await GetResults();
 
-        CalculateStats2();
+        CalculateStats();
     }
 
     private async Task GetTeams()
@@ -76,34 +76,6 @@
     /// Calcula los detalles correspondientes a cada equipo, partidos jugados, victorias, derrotas y diferencia de puntos
     /// </summary>
     private void CalculateStats()
-    {
-        foreach (var t in _teams)
-        {
-            var personalResultsHome = _results.Where(r => int.Parse(r.Equipo1) == t.Codigo).ToList();
-            var personalResultsVisitor = _results.Where(r => int.Parse(r.Equipo2) == t.Codigo).ToList();
-            t.Gp = personalResultsHome.Count + personalResultsVisitor.Count;
-
-            t.Wh = personalResultsHome.Count(r => int.Parse(r.Equipo1) == t.Codigo && r.Resultado1 > r.Resultado2);
-            t.Lh = personalResultsHome.Count(r => int.Parse(r.Equipo1) == t.Codigo && r.Resultado1 < r.Resultado2);
-
-            t.Wv = personalResultsVisitor.Count(r => int.Parse(r.Equipo2) == t.Codigo && r.Resultado2 > r.Resultado1);
-            t.Lv = personalResultsVisitor.Count(r => int.Parse(r.Equipo2) == t.Codigo && r.Resultado2 < r.Resultado1);
-
-            // Suma de todos tus resultados
-            var t1 = personalResultsHome.Where(r => int.Parse(r.Equipo1) == t.Codigo).Sum(r => r.Resultado1);
-            t1 += personalResultsVisitor.Where(r => int.Parse(r.Equipo2) == t.Codigo).Sum(r => r.Resultado2);
-
-            // Suma de todos los resultados de los rivales
-            var t2 = personalResultsHome.Where(r => int.Parse(r.Equipo1) == t.Codigo).Sum(r => r.Resultado2);
-            t2 += personalResultsVisitor.Where(r => int.Parse(r.Equipo2) == t.Codigo).Sum(r => r.Resultado1);
-
-            t.Dif = t1 - t2;
-        }
-
-        _teams = _teams.OrderByDescending(t => t.Wh + t.Wv).ThenByDescending(t => t.Dif);
-    }
-    
-    private void CalculateStats2()
     {
         foreach (var t in _teams)
         {

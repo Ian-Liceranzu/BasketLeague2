@@ -1,0 +1,145 @@
+﻿@page "/Statistics/League"
+
+@using BasketLeague2.Utils.Models
+@using BasketLeague2.Utils.Utils
+
+@inject HttpClient Http
+
+<PageTitle>LeagueStatistics</PageTitle>
+
+<h3>Season</h3>
+<Select TValue="string" Size="Size.Medium" SelectedValue="_season" SelectedValueChanged="@OnSeasonValueChanged">
+    @foreach (var s in LeagueUtils.Seasons)
+    {
+        <SelectItem Value="s">@s</SelectItem>
+    }
+</Select>
+
+<h3>LeagueStatistics</h3>
+<CardDeck>
+    <Row HorizontalGutter="32" VerticalGutter="16" Width="Width.Is100">
+        <Column ColumnSize="ColumnSize.Is4">
+            <Card Shadow="Shadow.Small" Background="Background.Body">
+                <div class="card-header horizontal-gradient text-center">Media por partido</div>
+                <CardBody TextAlignment="TextAlignment.Center">
+                    <CardText>@Math.Round(_ptsMedia, 2, MidpointRounding.AwayFromZero)</CardText>
+                </CardBody>
+            </Card>
+        </Column>
+        <Column ColumnSize="ColumnSize.Is4">
+            <Card Shadow="Shadow.Small" Background="Background.Body">
+                <div class="card-header horizontal-gradient text-center">Mayor puntuación</div>
+                <CardBody TextAlignment="TextAlignment.Center">
+                    <CardText>@_ptsMax</CardText>
+                </CardBody>
+            </Card>
+        </Column>
+        <Column ColumnSize="ColumnSize.Is4">
+            <Card Shadow="Shadow.Small" Background="Background.Body">
+                <div class="card-header horizontal-gradient text-center">Menor puntuación</div>
+                <CardBody TextAlignment="TextAlignment.Center">
+                    <CardText>@_ptsMin</CardText>
+                </CardBody>
+            </Card>
+        </Column>
+    </Row>
+    <Row HorizontalGutter="32" VerticalGutter="16" Width="Width.Is100">
+        <Column ColumnSize="ColumnSize.Is2">
+            <Card Shadow="Shadow.Small" Background="Background.Body">
+                <div class="card-header horizontal-gradient text-center">Dobles por equipo</div>
+                <CardBody TextAlignment="TextAlignment.Center">
+                    <CardText>@Math.Round(_ptsDobles, 2, MidpointRounding.AwayFromZero)</CardText>
+                </CardBody>
+            </Card>
+        </Column>
+        <Column ColumnSize="ColumnSize.Is2">
+            <Card Shadow="Shadow.Small" Background="Background.Body">
+                <div class="card-header horizontal-gradient text-center">Triples por equipo</div>
+                <CardBody TextAlignment="TextAlignment.Center">
+                    <CardText>@Math.Round(_ptsTriples, 2, MidpointRounding.AwayFromZero)</CardText>
+                </CardBody>
+            </Card>
+        </Column>
+        <Column ColumnSize="ColumnSize.Is2">
+            <Card Shadow="Shadow.Small" Background="Background.Body">
+                <div class="card-header horizontal-gradient text-center">Física por equipo</div>
+                <CardBody TextAlignment="TextAlignment.Center">
+                    <CardText>@Math.Round(_ptsAthleticism, 2, MidpointRounding.AwayFromZero)</CardText>
+                </CardBody>
+            </Card>
+        </Column>
+        <Column ColumnSize="ColumnSize.Is2">
+            <Card Shadow="Shadow.Small" Background="Background.Body">
+                <div class="card-header horizontal-gradient text-center">Defensa por equipo</div>
+                <CardBody TextAlignment="TextAlignment.Center">
+                    <CardText>@Math.Round(_ptsDefending, 2, MidpointRounding.AwayFromZero)</CardText>
+                </CardBody>
+            </Card>
+        </Column>
+        <Column ColumnSize="ColumnSize.Is2">
+            <Card Shadow="Shadow.Small" Background="Background.Body">
+                <div class="card-header horizontal-gradient text-center">Rebotes por equipo</div>
+                <CardBody TextAlignment="TextAlignment.Center">
+                    <CardText>@Math.Round(_ptsRebounding, 2, MidpointRounding.AwayFromZero)</CardText>
+                </CardBody>
+            </Card>
+        </Column>
+        <Column ColumnSize="ColumnSize.Is2">
+            <Card Shadow="Shadow.Small" Background="Background.Body">
+                <div class="card-header horizontal-gradient text-center">Jugadas por equipo</div>
+                <CardBody TextAlignment="TextAlignment.Center">
+                    <CardText>@Math.Round(_ptsPlaymaking, 2, MidpointRounding.AwayFromZero)</CardText>
+                </CardBody>
+            </Card>
+        </Column>
+    </Row>
+</CardDeck>
+
+@code {
+    private IEnumerable<AdvancedResult> _resultados = new AdvancedResult[] { };
+
+    private double _ptsMedia, _ptsMax, _ptsMin;
+    private double _ptsDobles, _ptsTriples, _ptsAthleticism, _ptsDefending, _ptsRebounding, _ptsPlaymaking;
+
+    private string _season = LeagueUtils.CurrentSeason;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetResults();
+    }
+
+    private async Task GetResults()
+    {
+        _resultados = new AdvancedResult[] { };
+        var r = await Http.GetFromJsonAsync<List<AdvancedResult>>($"data/results/R_{_season}.json");
+
+        _resultados = _resultados.Concat(r!.OrderBy(result => result.Fecha));
+
+        AnalyzeResults();
+    }
+
+    private void AnalyzeResults()
+    {
+        _ptsMedia = _resultados.Sum(r => r.Resultado1 + r.Resultado2) / (_resultados.Count() * 2.0);
+        _ptsMax = _resultados.Select(r => Math.Max(r.Resultado1, r.Resultado2)).Max();
+        _ptsMin = _resultados.Select(r => Math.Min(r.Resultado1, r.Resultado2)).Min();
+
+        var result = _resultados.SelectMany(s => s.Stats1.Concat(s.Stats2));
+        var playerResults = result.ConvertToPlayerResult().ToList();
+
+        _ptsDobles = playerResults.Sum(pr => pr.Dobles) / (_resultados.Count() * 2.0);
+        _ptsTriples = playerResults.Sum(pr => pr.Triples) / (_resultados.Count() * 2.0);
+        _ptsAthleticism = playerResults.Sum(pr => pr.Athleticism) / (_resultados.Count() * 2.0);
+        _ptsDefending = playerResults.Sum(pr => pr.Defending) / (_resultados.Count() * 2.0);
+        _ptsRebounding = playerResults.Sum(pr => pr.Rebounding) / (_resultados.Count() * 2.0);
+        _ptsPlaymaking = playerResults.Sum(pr => pr.Playmaking) / (_resultados.Count() * 2.0);
+    }
+
+    async Task OnSeasonValueChanged(string value)
+    {
+        _season = value;
+
+        await GetResults();
+    }
+
+}

@@ -88,6 +88,20 @@
             }
         </div>
         <div class="nav-item px-3">
+            <NavLink class="nav-link" @onclick='() => ExpandAndCollapse("Statistics")'>
+                <span class="oi oi-bar-chart" aria-hidden="true"></span> Statistics
+            </NavLink>
+            @if (_expandSubNavStates["Statistics"])
+            {
+                <NavLink class="nav-link" href="statistics/league">
+                    League Statistics
+                </NavLink>
+                <NavLink class="nav-link" href="statistics/teams">
+                    Team Statistics
+                </NavLink>
+            }
+        </div>
+        <div class="nav-item px-3">
             <NavLink class="nav-link" @onclick='() => ExpandAndCollapse("Drafts")'>
                 <span class="oi oi-briefcase" aria-hidden="true"></span> Drafts
             </NavLink>
@@ -134,7 +148,8 @@
         { "Timetables", false },
         { "Results", false },
         { "Drafts", false },
-        { "Fortune", false }
+        { "Fortune", false },
+        { "Statistics", false }
     };
 
     private void ToggleNavMenu()

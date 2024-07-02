@@ -7,6 +7,24 @@
 <div class="row mt-3">
 <CardDeck class="col-lg-8">
 <Carousel @bind-SelectedSlide="@_selectedSlide" Autoplay="false" Crossfade="true">
+<CarouselSlide Name="17">
+    <Card class="mb-3" style="min-height: 600px">
+        <div class="card-header horizontal-gradient text-center">¡Una Montaña Rusa de Emociones!</div>
+        <CardBody>
+            <CardText>¡Qué temporada tan emocionante estamos viviendo en nuestra liga de baloncesto! Como aficionado, no puedo evitar sentir la adrenalina y el entusiasmo cada vez que veo un partido. La competencia está más reñida que nunca y los equipos están dejando todo en la cancha.</CardText>
+            <CardText>Birmingham Broncos ha sido una verdadera revelación esta temporada. Con un récord de 12 victorias y solo 5 derrotas, están demostrando ser el equipo a vencer. Es impresionante cómo pueden mantener ese nivel tanto en casa como fuera. Su diferencia de puntos de 107 es simplemente asombrosa. No puedo esperar a ver si pueden mantener este ritmo hasta el final.</CardText>
+            <CardText>Los Sacramento Snails también han sido una gran sorpresa. Con 11 victorias y 5 derrotas, están pisándole los talones a los Broncos. Su capacidad para ganar tanto en casa como de visitantes es impresionante, y esa diferencia de puntos de 129 realmente habla de su potencia ofensiva. ¡Estos chicos saben cómo anotar!</CardText>
+            <CardText>En cuanto a los Wahpeton Ducks, han tenido sus altibajos, pero siguen en la pelea. Con 9 victorias y 8 derrotas, tienen un desempeño decente, pero les falta esa chispa adicional para llegar a la cima. Espero que puedan encontrar su ritmo en la recta final de la temporada.</CardText>
+            <CardText>Los Las Vegas Bighorns y los Seattle Killer Whales están codo a codo con el mismo récord de 9-7. Es interesante ver cómo equipos con desempeños tan similares pueden estar en posiciones tan diferentes en términos de juego en casa y fuera. Sin embargo, ambos equipos tienen el potencial para dar la sorpresa y escalar posiciones en la tabla.</CardText>
+            <CardText>Los Jackson Pandas me han impresionado con su fortaleza en casa. Un récord de 7-3 en su cancha muestra que saben cómo aprovechar la ventaja de jugar frente a su público. Pero necesitan mejorar como visitantes si quieren escalar en la clasificación.</CardText>
+            <CardText>Por otro lado, los Tampa Honey Badgers y los Honolulu Meerkats han tenido una temporada difícil. Con 7 victorias y 9 derrotas, están luchando por mantenerse a flote. Aún así, hay algo especial en ver cómo estos equipos nunca se rinden y siguen peleando cada partido.</CardText>
+            <CardText>Los Boston Frogs, Little Rock Wombats, y los Milwaukee Platypus están pasando por momentos complicados. Ver a los Platypus con solo 4 victorias y 13 derrotas es desalentador, pero siempre hay esperanza de que puedan encontrar su ritmo y terminar la temporada con una nota positiva.</CardText>
+            <CardText>
+                <small class="text-muted">Publicado el 2 de Julio, 2024</small>
+            </CardText>
+        </CardBody>
+    </Card>
+</CarouselSlide>
 <CarouselSlide Name="16">
     <Card class="mb-3" style="min-height: 600px">
         <div class="card-header horizontal-gradient text-center">Caos en la cancha.</div>
@@ -268,50 +286,49 @@
 </Carousel>
 </CardDeck>
 <CardDeck class="col-lg-4">
-    <Card class="mb-3">
-        <div class="card-header horizontal-gradient text-center">Jackson pandas al borde de la sanción.</div>
-        <CardBody>
-            <CardText>De nuevo el presidente de jackson pandas se abalanza sobre la directiva.</CardText>
-            <CardText>
-                <b>*Griterío inaudible!*</b>
-            </CardText>
-            <CardText>
-                <small class="text-muted">(No he ni escuchado lo que decía mientras se quejaba)</small>
-            </CardText>
-        </CardBody>
-    </Card>
-    <Card class="mb-3">
-        <div class="card-header horizontal-gradient text-center">No tenéis modales.</div>
-        <CardBody>
-            <CardText>Jackson Pandas estalla de nuevo ante su derrota.</CardText>
-            <CardText>
-                <b>Lo que sois es unos hijos de puta.</b>
-            </CardText>
-            <CardText>
-                <small class="text-muted">Si supierais la verdad sobre la granja humana que somos, más de la mitad no lo soportaría.</small>
-            </CardText>
-        </CardBody>
-    </Card>
-    <Card class="mb-3">
-        <div class="card-header horizontal-gradient text-center">Los pandas indignados.</div>
-        <CardBody>
-            <CardText>El presidente de Jackson Pandas arremete contra la directiva una vez más.</CardText>
-            <CardText>
-                <b>¿Cómo que esta semana no juego? Esta liga está en mi contra.</b>
-            </CardText>
-        </CardBody>
-    </Card>
-    <Card class="mb-3">
-        <div class="card-header horizontal-gradient text-center">Terminó la temporada 3.</div>
-        <CardBody>
-            <CardText>Felicidades Sacramento Snails en la victoria de invierno!</CardText>
-        </CardBody>
-    </Card>
+    <Row Margin="Margin.Is2">
+        <Card>
+            <div class="card-header horizontal-gradient text-center">Gráficas!</div>
+            <CardBody>
+                <CardText>¿Eres un nerd de los numeritos mágicos? ¿Te gustan las lineas de colores?</CardText>
+                <CardText>Ahora puedes consultar toda una serie de estadísticas y métricas en la sección correspondiente.</CardText>
+            </CardBody>
+        </Card>
+    </Row>
+    <Row Margin="Margin.Is2">
+        <Card>
+            <div class="card-header horizontal-gradient text-center">Jackson pandas al borde de la sanción.</div>
+            <CardBody>
+                <CardText>De nuevo el presidente de jackson pandas se abalanza sobre la directiva.</CardText>
+                <CardText>
+                    <b>*Griterío inaudible!*</b>
+                </CardText>
+                <CardText>
+                    <small class="text-muted">(No he ni escuchado lo que decía mientras se quejaba)</small>
+                </CardText>
+            </CardBody>
+        </Card>
+    </Row>
+    <Row Margin="Margin.Is2">
+        <Card>
+            <div class="card-header horizontal-gradient text-center">No tenéis modales.</div>
+            <CardBody>
+                <CardText>Jackson Pandas estalla de nuevo ante su derrota.</CardText>
+                <CardText>
+                    <b>Lo que sois es unos hijos de puta.</b>
+                </CardText>
+                <CardText>
+                    <small class="text-muted">Si supierais la verdad sobre la granja humana que somos, más de la mitad no lo soportaría.</small>
+                </CardText>
+            </CardBody>
+        </Card>
+    </Row>
 </CardDeck>
 </div>
 
 @code {
 
-    private string _selectedSlide = "16";
+    private string _selectedSlide = "17";
+
 
 }
