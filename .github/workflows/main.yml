@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # uses GitHub's checkout action to checkout code form the master branch
-    - uses: actions/checkout@v4
-     # sets up .NET Core SDK 6.0.403
+    - uses: actions/checkout@v4.2.0
+     # sets up .NET Core SDK
     - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v4.0.1
       with:
-        dotnet-version: 8.0.402        
+        dotnet-version: 8.0.x        
         # publishes Blazor project to the release-folder
     - name: Publish .NET Core Project
       run: dotnet publish BasketLeague2.App/BasketLeague2.App.csproj -c Release -o release --nologo
@@ -30,6 +30,6 @@ jobs:
     - name: Deploy to GitHub Pages              
       uses: JamesIves/github-pages-deploy-action@v4.6.4
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages
         FOLDER: release/wwwroot
