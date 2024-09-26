@@ -1,0 +1,74 @@
+[
+  {
+    "Id": 6,
+    "Name": "S1 WINNER",
+    "Description": "Ganador de la S1 de la FBA.",
+    "Color": "warning"
+  },
+  {
+    "Id": 11,
+    "Name": "SUMMER EVENT WINNER",
+    "Description": "Ganador de la temporada playera de la FBA.",
+    "Color": "danger"
+  },
+  {
+    "Id": 4,
+    "Name": "S2 WINNER",
+    "Description": "Ganador de la S2 de la FBA.",
+    "Color": "warning"
+  },
+  {
+    "Id": 9,
+    "Name": "S3 WINTER WINNER",
+    "Description": "Ganador de la S3 de la FBA.",
+    "Color": "info"
+  },
+  {
+    "Id": 3,
+    "Name": "Emperor S4",
+    "Description": "Sacaste el emperador en la ruleta de la fortuna.",
+    "Color": "primary"
+  },
+  {
+    "Id": 4,
+    "Name": "Chariot S4",
+    "Description": "Sacaste el carro en la ruleta de la fortuna.",
+    "Color": "primary"
+  },
+  {
+    "Id": 8,
+    "Name": "Emperor S4",
+    "Description": "Sacaste el emperador en la ruleta de la fortuna.",
+    "Color": "primary"
+  },
+  {
+    "Id": 10,
+    "Name": "Tower S4",
+    "Description": "Sacaste la torre en la ruleta de la fortuna.",
+    "Color": "primary"
+  },
+  {
+    "Id": 5,
+    "Name": "Sun S4",
+    "Description": "Sacaste el sol en la ruleta de la fortuna.",
+    "Color": "primary"
+  },
+  {
+    "Id": 9,
+    "Name": "Lovers S4",
+    "Description": "Sacaste los amantes en la ruleta de la fortuna.",
+    "Color": "primary"
+  },
+  {
+    "Id": 7,
+    "Name": "Devil S4",
+    "Description": "Sacaste el diablo en la ruleta de la fortuna.",
+    "Color": "primary"
+  },
+  {
+    "Id": 2,
+    "Name": "Hermit S4",
+    "Description": "Sacaste el hermitaño en la ruleta de la fortuna.",
+    "Color": "primary"
+  }
+]

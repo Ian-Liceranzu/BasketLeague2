@@ -1,0 +1,56 @@
+[
+  {
+    "Id": 2,
+    "Name": "MVP S3",
+    "Description": "Más puntos anotados en la temporada 3.",
+    "Color": "warning"
+  },
+  {
+    "Id": 17,
+    "Name": "MALARDO S3",
+    "Description": "Menos puntos anotados en la temporada 3.",
+    "Color": "dark"
+  },
+  {
+    "Id": 11,
+    "Name": "NO TAN MALARDO S3",
+    "Description": "Malardo con más puntos anotados en la temporada 3.",
+    "Color": "success"
+  },
+  {
+    "Id": 34,
+    "Name": "DEL MONTÓN BUENO S3",
+    "Description": "Medio con más puntos anotados en la temporada 3.",
+    "Color": "success"
+  },
+  {
+    "Id": 8,
+    "Name": "EL DIABLO",
+    "Description": "Se convirtió en diablo.",
+    "Color": "danger"
+  },
+  {
+    "Id": 54,
+    "Name": "MVP S4",
+    "Description": "Más puntos anotados en la temporada 4.",
+    "Color": "warning"
+  },
+  {
+    "Id": 17,
+    "Name": "MALARDO S4",
+    "Description": "Menos puntos anotados en la temporada 4.",
+    "Color": "dark"
+  },
+  {
+    "Id": 68,
+    "Name": "NO TAN MALARDO S4",
+    "Description": "Malardo con más puntos anotados en la temporada 4.",
+    "Color": "success"
+  },
+  {
+    "Id": 28,
+    "Name": "DEL MONTÓN BUENO S4",
+    "Description": "Medio con más puntos anotados en la temporada 4.",
+    "Color": "success"
+  }
+]

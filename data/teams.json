@@ -1,0 +1,124 @@
+[
+  {
+    "Codigo": 1,
+    "NombreCompleto": "Milwaukee Platypus",
+    "Nombre": "MP",
+    "Ataque": 4,
+    "Defensa": 5,
+    "Tiro": 6,
+    "Rebote": 5,
+    "Dueño": "Eva",
+    "Estado": "Wisconsin"
+  },
+  {
+    "Codigo": 2,
+    "NombreCompleto": "Tampa Honey Badgers",
+    "Nombre": "THB",
+    "Ataque": 3,
+    "Defensa": 6,
+    "Tiro": 4,
+    "Rebote": 7,
+    "Dueño": "Jon",
+    "Estado": "Florida"
+  },
+  {
+    "Codigo": 3,
+    "NombreCompleto": "Jackson Pandas",
+    "Nombre": "JP",
+    "Ataque": 8,
+    "Defensa": 4,
+    "Tiro": 6,
+    "Rebote": 2,
+    "Dueño": "Sendoa",
+    "Estado": "Misisipi"
+  },
+  {
+    "Codigo": 4,
+    "NombreCompleto": "Little Rock Wombats",
+    "Nombre": "LRW",
+    "Ataque": 3,
+    "Defensa": 7,
+    "Tiro": 6,
+    "Rebote": 4,
+    "Dueño": "Rodrigo",
+    "Estado": "Arkansas"
+  },
+  {
+    "Codigo": 5,
+    "NombreCompleto": "Las Vegas Bighorns",
+    "Nombre": "LVB",
+    "Ataque": 7,
+    "Defensa": 3,
+    "Tiro": 7,
+    "Rebote": 3,
+    "Dueño": "Ian",
+    "Estado": "Nevada",
+    "Observaciones": "Antiguamente conocido como Reno Bighorns durante las temporadas 1,2,3"
+  },
+  {
+    "Codigo": 6,
+    "NombreCompleto": "Boston Frogs",
+    "Nombre": "BF",
+    "Ataque": 10,
+    "Defensa": 1,
+    "Tiro": 5,
+    "Rebote": 4,
+    "Dueño": "Óscar",
+    "Estado": "Massachusetts"
+  },
+  {
+    "Codigo": 7,
+    "NombreCompleto": "Honolulu Meerkats",
+    "Nombre": "HM",
+    "Ataque": 6,
+    "Defensa": 4,
+    "Tiro": 6,
+    "Rebote": 4,
+    "Dueño": "Estanis",
+    "Estado": "Hawaii"
+  },
+  {
+    "Codigo": 8,
+    "NombreCompleto": "Birmingham Broncos",
+    "Nombre": "BB",
+    "Ataque": 7,
+    "Defensa": 4,
+    "Tiro": 4,
+    "Rebote": 5,
+    "Dueño": "Iñigo",
+    "Estado": "Alabama"
+  },
+  {
+    "Codigo": 9,
+    "NombreCompleto": "Sacramento Snails",
+    "Nombre": "SS",
+    "Ataque": 5,
+    "Defensa": 5,
+    "Tiro": 5,
+    "Rebote": 5,
+    "Dueño": "Haizea",
+    "Estado": "California"
+  },
+  {
+    "Codigo": 10,
+    "NombreCompleto": "Wahpeton Ducks",
+    "Nombre": "WD",
+    "Ataque": 6,
+    "Defensa": 7,
+    "Tiro": 4,
+    "Rebote": 3,
+    "Dueño": "Edu",
+    "Estado": "Dakota del Norte"
+  },
+  {
+    "Codigo": 11,
+    "NombreCompleto": "Seattle Killer Whales",
+    "Nombre": "SKW",
+    "Ataque": 10,
+    "Defensa": 10,
+    "Tiro": 10,
+    "Rebote": 10,
+    "Dueño": "Daira",
+    "Estado": "Washington"
+  }
+]
